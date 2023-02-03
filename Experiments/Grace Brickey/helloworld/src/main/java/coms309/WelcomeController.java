@@ -16,4 +16,14 @@ class WelcomeController {
     public String welcome(@PathVariable String name) {
         return "Hello and welcome to COMS 309: " + name;
     }
+
+    @GetMapping("/benice/{name}")
+    public String benice(@PathVariable String name) {
+        return name + ", you are so beautiful!";
+    }
+
+    @GetMapping("/crazy")
+    public String crazy() {
+        return "IT IS SO LOUD IN HERE";
+    }
 }
