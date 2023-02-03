@@ -1,6 +1,7 @@
 package cs309;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import student.Student;
 
@@ -18,6 +19,17 @@ public class ClassController {
                         "grace.brickey@gmail.com",
                         LocalDate.of(2001, Month.DECEMBER, 1),
                         21)
+        );
+    }
+
+    @GetMapping("/newstudent/{name}")
+    public List<Student> newstudent(@PathVariable String name) {
+        return List.of(
+                new Student(2L,
+                        name,
+                        "sarah.brickey@gmail.com",
+                        LocalDate.of(2002, Month.DECEMBER, 1),
+                        20)
         );
     }
 
