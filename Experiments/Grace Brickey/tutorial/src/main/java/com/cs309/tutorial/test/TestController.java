@@ -1,26 +1,20 @@
-package com.cs309.tutorial.tests;
+package com.cs309.tutorial.test;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class TestController {
 	
 	
-	@GetMapping("/getTest")
-	public String getTest(@RequestParam(value = "username", defaultValue = "World") String message) {
+	@GetMapping("/book")
+	public String getTest(@RequestParam String message) {
 		return String.format("Hello, %s! You sent a get request with a parameter!", message);
 	}
 	
-	@PostMapping("/postTest1")
-	public String postTest1(@RequestParam(value = "username", defaultValue = "World") String message) {
-		//TODO
-		return String.format("Hello, %s! You sent a post request with a parameter!", message);
+	@PostMapping("/book")
+	public String createbookposttest(@RequestBody String words)  {
+		//message.save(words);
+		return String.format("Hello, %s! You sent a post request with a parameter!", words);
 	}
 	
 	@PostMapping("/postTest2")

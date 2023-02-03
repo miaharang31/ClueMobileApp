@@ -1,4 +1,4 @@
-package com.cs309.tutorial.tests;
+package com.cs309.tutorial.test;
 
 public class TestData {
 	
