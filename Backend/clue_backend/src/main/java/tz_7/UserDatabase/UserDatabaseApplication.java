@@ -1,4 +1,4 @@
-package _tz_7.UserDatabase;
+package tz_7.UserDatabase;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
