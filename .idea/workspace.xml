@@ -5,25 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe22853f-a850-4f58-8a4d-b87e643e6cd5" name="Changes" comment="modify names">
-      <change beforePath="$PROJECT_DIR$/Backend/UserDatabase/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/clue_backend/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/UserDatabase/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/clue_backend/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/UserDatabase/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/clue_backend/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/UserDatabase/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/clue_backend/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/UserDatabase/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/clue_backend/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/UserDatabase/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/clue_backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/UserDatabase/src/main/java/_tz_7/UserDatabase/UserDatabaseApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/clue_backend/src/main/java/_tz_7/UserDatabase/UserDatabaseApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/UserDatabase/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/clue_backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/UserDatabase/src/test/java/_tz_7/UserDatabase/UserDatabaseApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/clue_backend/src/test/java/_tz_7/UserDatabase/UserDatabaseApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/clue_mobile/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/clue_mobile/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/clue_mobile/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/clue_mobile/HELP.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/clue_mobile/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/clue_mobile/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/clue_mobile/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/clue_mobile/src/main/java/com/_tz_7/clue_mobile/ClueMobileApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/clue_mobile/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/clue_mobile/src/test/java/com/_tz_7/clue_mobile/ClueMobileApplicationTests.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/clue_backend/src/main/java/2_tz_7/ScoreDatabase/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/clue_backend/src/main/java/2_tz_7/ScoreDatabase/ScoreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/clue_backend/src/main/java/_tz_7/UserDatabase/UserDatabaseApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/clue_backend/src/main/java/2_tz_7/UserDatabase/UserDatabaseApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
