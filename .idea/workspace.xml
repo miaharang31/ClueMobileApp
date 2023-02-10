@@ -5,66 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe22853f-a850-4f58-8a4d-b87e643e6cd5" name="Changes" comment="modify names">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/UserDatabase/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/UserDatabase/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/UserDatabase/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/UserDatabase/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/UserDatabase/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/UserDatabase/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/UserDatabase/src/main/java/_tz_7/UserDatabase/UserDatabaseApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/UserDatabase/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/UserDatabase/src/test/java/_tz_7/UserDatabase/UserDatabaseApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiments/Grace Brickey/ApplicationTutorial/ApplicationTutorial/src/test/java/_tz_7/ApplicationTutorial/ApplicationTutorialApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiments/Grace Brickey/ClassTutorial/ClassTutoria363l.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/androidTest/java/com/example/loginactivity/ExampleInstrumentedTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/MainActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/SecondActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/UserSignUp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_user_sign_up.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/mipmap-anydpi-v33/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/values-night/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/values/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/test/java/com/example/loginactivity/ExampleUnitTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Experiments/piper/Experiment2/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/Experiments/Emily Salsman/experiment.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Experiments/piper/Experiment2/test.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/UserDatabase/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/clue_backend/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/UserDatabase/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/clue_backend/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/UserDatabase/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/clue_backend/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/UserDatabase/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/clue_backend/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/UserDatabase/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/clue_backend/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/UserDatabase/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/clue_backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/UserDatabase/src/main/java/_tz_7/UserDatabase/UserDatabaseApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/clue_backend/src/main/java/_tz_7/UserDatabase/UserDatabaseApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/UserDatabase/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/clue_backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/UserDatabase/src/test/java/_tz_7/UserDatabase/UserDatabaseApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/clue_backend/src/test/java/_tz_7/UserDatabase/UserDatabaseApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/clue_mobile/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/clue_mobile/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/clue_mobile/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/clue_mobile/HELP.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/clue_mobile/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/clue_mobile/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/clue_mobile/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/clue_mobile/src/main/java/com/_tz_7/clue_mobile/ClueMobileApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/clue_mobile/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/clue_mobile/src/test/java/com/_tz_7/clue_mobile/ClueMobileApplicationTests.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
