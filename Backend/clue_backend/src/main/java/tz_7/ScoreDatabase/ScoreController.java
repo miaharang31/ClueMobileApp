@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+import java.util.Optional;
+
 /**
  * @author Mia Harang
  */
@@ -29,5 +32,6 @@ class ScoreController {
     public Optional<Score> getScoreByUserID(int id) {
         logger.info("Entered into Controller Layer");
         Optional<Score> res = scoreRepository.findById(id);
+        return res;
     }
 }

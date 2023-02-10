@@ -33,6 +33,6 @@ public class Score {
 
     public Integer getUserID() {return id;}
 
-    public Integer getScore()
+    public Integer getScore() {return val;}
 
 }
