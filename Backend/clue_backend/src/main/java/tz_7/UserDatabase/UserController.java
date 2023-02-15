@@ -1,7 +1,7 @@
-package coms309.controller;
+package tz_7.UserDatabase;
 
-import coms309.dao.UserRepository;
-import coms309.model.User;
+import tz_7.UserDatabase.UserRepository;
+import tz_7.UserDatabase.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

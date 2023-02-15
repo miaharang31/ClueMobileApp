@@ -1,6 +1,6 @@
-package coms309.dao;
+package tz_7.UserDatabase;
 
-import coms309.model.User;
+import tz_7.UserDatabase.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
