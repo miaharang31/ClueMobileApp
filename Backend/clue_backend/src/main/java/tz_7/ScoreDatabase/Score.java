@@ -1,27 +1,38 @@
 package tz_7.ScoreDatabase;
-//
-//@Entity
-//@Table(name = "score")
-//public class Score {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "user_id")
-//    @NotFound(action = NotFoundAction.IGNORE)
-//    private Integer id;
-//
-//    @Column(name = "score_val")
-//    @NotFound(action = NotFoundAction.IGNORE)
-//    private Integer val;
-//
-//    public Score () {}
-//
-//    public Score(int id, int val) {
-//        this.id = id;
-//        this.val = val;
-//    }
-//
-//    public Integer getUserID() {return id;}
-//
-//    public Integer getScore() {return val;}
-//
-//}
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+import org.springframework.core.style.ToStringCreator;
+
+@Entity
+@Table(name = "score")
+public class Score {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
+    @NotFound(action = NotFoundAction.IGNORE)
+    private Integer id;
+
+    @Column(name = "score_val")
+    @NotFound(action = NotFoundAction.IGNORE)
+    private Integer val;
+
+    public Score () {}
+
+    public Score(int id, int val) {
+        this.id = id;
+        this.val = val;
+    }
+
+    public Integer getUserID() {return id;}
+
+    public Integer getScore() {return val;}
+
+}

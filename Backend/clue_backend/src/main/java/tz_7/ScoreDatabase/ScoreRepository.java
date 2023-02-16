@@ -1,13 +1,13 @@
-//package tz_7.ScoreDatabase;
-//
-//import org.springframework.data.jpa.repository.JpaRepository;
-//import org.springframework.stereotype.Repository;
-//
-///**
-// * @author Mia Harang
-// */
-//
-//@Repository
-//public interface ScoreRepository extends JpaRepository<Score, Integer> {
-//
-//}
+package tz_7.ScoreDatabase;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+/**
+ * @author Mia Harang
+ */
+
+@Repository
+public interface ScoreRepository extends JpaRepository<Score, Integer> {
+
+}
