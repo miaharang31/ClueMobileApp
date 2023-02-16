@@ -20,12 +20,11 @@ public class MainActivity extends AppCompatActivity {
         Button submitButton = (Button) findViewById(R.id.submitButton);
         TextView newPlayerLink = findViewById(R.id.NewPlayerLink);
 
+        //When the sign in button is clicked and data is entered for usename and password
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-
-                Log.d("Sign In Screen", "On Sign In Screen");
 
                 EditText username = findViewById(R.id.loginUsername);
                 EditText password = findViewById(R.id.loginPassword);
@@ -33,17 +32,40 @@ public class MainActivity extends AppCompatActivity {
                 String passwordData = password.getText().toString();
                 String firstNameData = " ";
                 String lastNameData = " ";
+                String emailData = " ";
+                boolean checkUsername, checkPassword;
 
-                intent.putExtra("usernameData",usernameData);
-                intent.putExtra("passwordData",passwordData);
-                intent.putExtra("firstNameData",firstNameData);
-                intent.putExtra("lastNameData",lastNameData);
-                startActivity(intent);
+                if(usernameData.isEmpty()){
+                    username.setError("Username cannot be empty");
+                    checkUsername = false;
+                }else{
+                    username.setError(null);
+                    checkUsername = true;
+                }
+
+                if(passwordData.isEmpty()){
+                    password.setError("Password cannot be empty");
+                    checkPassword = false;
+                }else{
+                    password.setError(null);
+                    checkPassword = true;
+                }
+
+                // if all textboxes are correct, all data will be added to the SecondActivity (main page for either regular/premium users) and will start
+                if (checkUsername == true && checkPassword == true){
+                    intent.putExtra("firstNameData",firstNameData);
+                    intent.putExtra("lastNameData",lastNameData);
+                    intent.putExtra("emailData",emailData);
+                    intent.putExtra("usernameData",usernameData);
+                    intent.putExtra("passwordData",passwordData);
+
+                    startActivity(intent);
+                }
 
             }
         });
 
-
+        //when the new player link is clicked, go to th SignUpActivity
         newPlayerLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
