@@ -1,16 +1,13 @@
 package tz_7.UserDatabase;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
 
 /**
  * @author Grace Brickey
  */
 
 @Entity
-@Table(name = "User")
-public class User {
+public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,9 +37,9 @@ public class User {
     //@NotFound(action = NotFoundAction.IGNORE)
     private int wins;
 
-    public User() {}
+    public Player() {}
 
-    public User(int id, String firstname, String lastname, String email, String password, String type) {
+    public Player(int id, String firstname, String lastname, String email, String password, String type) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -51,7 +48,7 @@ public class User {
         this.type = type;
         this.wins = 0;
     }
-    public User(int id, String firstname, String lastname, String email, String password, String type, int wins) {
+    public Player(int id, String firstname, String lastname, String email, String password, String type, int wins) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;

@@ -1,11 +1,7 @@
 package tz_7;
 
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import tz_7.UserDatabase.User;
-import tz_7.UserDatabase.UserRepository;
 
 
 /**
