@@ -26,6 +26,11 @@ public class PlayerController {
         repository.save(player);
         return "User saved:" + player.getUsername();
     }
+    @PostMapping("/findUserUnP")
+    public Optional<Player> getUserByUsernameAndPassword(@RequestBody String username, @RequestBody String password) {
+        Optional<Player> user = repository.findByUsernameAndPassword(username, password);
+        return user;
+    }
     @GetMapping("/getUser/{id}")
     public Optional<Player> getUserById(@PathVariable("id") Integer id) {
         //logger.info("Entered");
