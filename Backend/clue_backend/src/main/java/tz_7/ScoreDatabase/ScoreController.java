@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -37,13 +36,13 @@ class ScoreController {
         return res;
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = "/score/{user_id}/win")
-    public String addWin(@PathVariable("user_id") int user_id) {
-        logger.info("Entered into controller layer");
-        Optional<Score> res = scoreRepository.findById(user_id);
-        int tmp = res.get().getScore();
-        res.get().addWin();
-//        TODO: Update score value
-        return "Score updated from " + tmp + " to " + res.get().getScore();
-    }
+//    @RequestMapping(method = RequestMethod.POST, path = "/score/{user_id}/win")
+//    public String addWin(@PathVariable("user_id") int user_id) {
+//        logger.info("Entered into controller layer");
+//        Optional<Score> res = scoreRepository.findById(user_id);
+//        int tmp = res.get().getScore();
+//        res.get().addWin();
+////        TODO: Figure out how to update score value
+//        return "Score updated from " + tmp + " to " + res.get().getScore();
+//    }
 }
