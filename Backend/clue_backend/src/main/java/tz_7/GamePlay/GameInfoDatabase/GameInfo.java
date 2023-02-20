@@ -41,13 +41,19 @@ public class GameInfo {
     @NotFound(action = NotFoundAction.IGNORE)
     private Integer host;
 
+    @Column(name = "isPremium")
+    @NotFound(action = NotFoundAction.IGNORE)
+    private Boolean is_premium;
+
     public GameInfo () {}
 
-    public GameInfo(int id, int max, String gameCode, int hostCode) {
+    public GameInfo(int id, int max, String gameCode, int hostCode, boolean is_premium) {
         this.id = id;
         this.max = max;
         this.game_code = gameCode;
         this.host = hostCode;
+        this.is_premium = is_premium;
+
         playerIDs = new ArrayList<Integer>();
         playerIDs.add(hostCode);
         num = 1;
@@ -62,6 +68,7 @@ public class GameInfo {
     public String getGameCode() {return game_code;}
     public Integer getHost() {return host;}
     public Integer getGameID() {return id;}
+    public Boolean isPremiumGame() {return is_premium;}
 
 
 }
