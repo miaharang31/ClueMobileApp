@@ -26,7 +26,7 @@ class ScoreController {
     public String score(@PathVariable("user_id") int user_id) {
         Score score = new Score(user_id, 0);
         scoreRepository.save(score);
-        return "New score added for user with id " + user_id;
+        return "New score added for user with id " + score.getUserID();
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/score/{user_id}")

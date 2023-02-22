@@ -1,4 +1,4 @@
-package tz_7.GamePlay.GameInfoDatabase;
+package tz_7.GamePlay.GameLobbyDatabase;
 
 /**
  * Table in DB for all open games
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 @Entity
 @Table(name = "GameInfo")
-public class GameInfo {
+public class GameLobby {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "gameID")
@@ -45,9 +45,9 @@ public class GameInfo {
     @NotFound(action = NotFoundAction.IGNORE)
     private Boolean is_premium;
 
-    public GameInfo () {}
+    public GameLobby() {}
 
-    public GameInfo(int id, int max, String gameCode, int hostCode, boolean is_premium) {
+    public GameLobby(int id, int max, String gameCode, int hostCode, boolean is_premium) {
         this.id = id;
         this.max = max;
         this.game_code = gameCode;
@@ -69,6 +69,7 @@ public class GameInfo {
     public Integer getHost() {return host;}
     public Integer getGameID() {return id;}
     public Boolean isPremiumGame() {return is_premium;}
+
 
 
 }
