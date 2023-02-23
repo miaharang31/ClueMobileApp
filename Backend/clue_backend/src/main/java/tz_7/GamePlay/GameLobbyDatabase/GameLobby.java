@@ -14,32 +14,32 @@ import org.hibernate.annotations.NotFoundAction;
 import java.util.ArrayList;
 
 @Entity
-@Table(name = "GameInfo")
+@Table(name = "GameLobby")
 public class GameLobby {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "gameID")
+    @Column(name = "game_id", unique = true)
     @NotFound(action = NotFoundAction.IGNORE)
-    private Integer id;
+    private Integer game_id;
 
-    @Column(name = "maxPlayers")
+    @Column(name = "max_players")
     @NotFound(action = NotFoundAction.IGNORE)
-    private Integer max;
+    private Integer max_players;
 
     @Column(name = "numPlayers")
     @NotFound(action = NotFoundAction.IGNORE)
-    private Integer num;
+    private Integer num_players;
     @Column(name = "gameCode")
     @NotFound(action = NotFoundAction.IGNORE)
     private String game_code;
 
-    @Column(name = "currentPlayerIDs")
+    @Column(name = "player_ids")
     @NotFound(action = NotFoundAction.IGNORE)
-    private ArrayList<Integer> playerIDs;
+    private ArrayList<Integer> player_ids;
 
-    @Column(name = "hostID")
+    @Column(name = "host_id", unique = true)
     @NotFound(action = NotFoundAction.IGNORE)
-    private Integer host;
+    public Integer host_id;
 
     @Column(name = "isPremium")
     @NotFound(action = NotFoundAction.IGNORE)
@@ -47,27 +47,26 @@ public class GameLobby {
 
     public GameLobby() {}
 
-    public GameLobby(int id, int max, String gameCode, int hostCode, boolean is_premium) {
-        this.id = id;
-        this.max = max;
-        this.game_code = gameCode;
-        this.host = hostCode;
+    public GameLobby(Integer max_players, String game_code, Integer host_id, Boolean is_premium) {
+        this.max_players = max_players;
+        this.game_code = game_code;
+        this.host_id = host_id;
         this.is_premium = is_premium;
 
-        playerIDs = new ArrayList<Integer>();
-        playerIDs.add(hostCode);
-        num = 1;
+        player_ids = new ArrayList<Integer>();
+        player_ids.add(host_id);
+        num_players = 1;
     }
 
-    public Integer getID() {return id;}
-    public ArrayList<Integer> getCurPlayerIDs() {return playerIDs;}
+    public Integer getID() {return game_id;}
+    public ArrayList<Integer> getCurPlayerIDs() {return player_ids;}
     public boolean canAddPlayer() {
-        if(num+1 <= max) {return true;}
+        if(num_players+1 <= max_players) {return true;}
         return false;
     }
     public String getGameCode() {return game_code;}
-    public Integer getHost() {return host;}
-    public Integer getGameID() {return id;}
+    public Integer getHost() {return host_id;}
+    public Integer getGameID() {return game_id;}
     public Boolean isPremiumGame() {return is_premium;}
 
 

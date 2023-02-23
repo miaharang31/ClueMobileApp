@@ -10,7 +10,6 @@ import org.springframework.core.style.ToStringCreator;
 @Table(name = "score")
 public class Score {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     @NotFound(action = NotFoundAction.IGNORE)
     private Integer user_id;
