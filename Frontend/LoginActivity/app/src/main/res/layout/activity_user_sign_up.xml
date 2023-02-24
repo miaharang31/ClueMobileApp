@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".MainActivity"
-    android:background="#30B700">
+    android:background="#520120">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:background="#B57114"
             android:layout_gravity="center_horizontal"
             android:padding="24dp">
 
@@ -30,41 +31,113 @@
                 android:id="@+id/loginText"
                 android:textSize="30dp"
                 android:textAlignment="center"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:fontFamily="@font/abhaya_libre_extrabold"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/white"/>
+
+            <TextView
+                android:id="@+id/firstNameText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/abhaya_libre_extrabold"
+                android:labelFor="@id/firstName"
+                android:text="First Name"
+                android:textSize="20dp"
+                android:textColor="@color/white" />
 
             <EditText
                 android:id="@+id/firstName"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="First Name:"
+                android:background="@color/white"
                 />
+
+            <TextView
+                android:id="@+id/lastNameText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/abhaya_libre_extrabold"
+                android:labelFor="@id/lastName"
+                android:text="Last Name"
+                android:textSize="20dp"
+                android:textColor="@color/white" />
 
             <EditText
                 android:id="@+id/lastName"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="Last Name:"
+                android:background="@color/white"
                 />
+
+            <TextView
+                android:id="@+id/emailText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/abhaya_libre_extrabold"
+                android:labelFor="@id/email"
+                android:text="Email"
+                android:textSize="20dp"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                />
+
+            <TextView
+                android:id="@+id/userNameText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/abhaya_libre_extrabold"
+                android:labelFor="@id/signUpUsername"
+                android:text="Username"
+                android:textSize="20dp"
+                android:textColor="@color/white" />
 
             <EditText
                 android:id="@+id/signUpUsername"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="Username:"
+                android:background="@color/white"
                 />
+            <TextView
+                android:id="@+id/passwordText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/abhaya_libre_extrabold"
+                android:labelFor="@id/signUpPassword"
+                android:text="Password"
+                android:textSize="20dp"
+                android:textColor="@color/white" />
 
             <EditText
                 android:id="@+id/signUpPassword"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:inputType="textPassword"
-                android:hint="Password:"
+                android:background="@color/white"
                 />
 
             <Button
                 android:id="@+id/signUpButton"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:backgroundTint="#962B09"
+                android:fontFamily="@font/abhaya_libre_extrabold"
+                android:layout_marginTop="20dp"
                 android:text="Sign Up"/>
 
         </LinearLayout>
