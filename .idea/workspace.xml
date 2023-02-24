@@ -4,6 +4,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="44db4067-c8d7-4db9-92df-3af4db11b537" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Frontend/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/SecondActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/SecondActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_second.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_second.xml" afterDir="false" />
+=======
     <list default="true" id="fe22853f-a850-4f58-8a4d-b87e643e6cd5" name="Changes" comment="modify names">
       <change afterPath="$PROJECT_DIR$/Backend/clue_backend/src/main/java/tz_7/GamePlay/GameLobbyDatabase/GameLobby.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Backend/clue_backend/src/main/java/tz_7/GamePlay/GameLobbyDatabase/GameLobbyController.java" afterDir="false" />
@@ -175,6 +184,7 @@
       <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/SecondActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/SecondActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/UserSignUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/UserSignUp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+>>>>>>> 27c8d98594813e50099d3b7ef475da70c372804f
       <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_user_sign_up.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_user_sign_up.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -188,6 +198,10 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+<<<<<<< HEAD
+  <component name="ProjectId" id="2M1SKRSX0MnJxwnOeqJo88KuPX0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+=======
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -202,6 +216,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+>>>>>>> 27c8d98594813e50099d3b7ef475da70c372804f
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -211,15 +226,30 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
+<<<<<<< HEAD
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "C:/Users/piper/2_tz_7/Frontend"
+=======
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "cidr.known.project.marker": "true",
     "last_opened_file_path": "C:/Users/18152/OneDrive/Documents/COMP S/com s 309/2_tz_7/2_tz_7/Backend/clue_backend",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+>>>>>>> 27c8d98594813e50099d3b7ef475da70c372804f
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
+      <changelist id="44db4067-c8d7-4db9-92df-3af4db11b537" name="Changes" comment="" />
+      <created>1676933530998</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1676933530998</updated>
+    </task>
+    <servers />
+  </component>
+=======
       <changelist id="fe22853f-a850-4f58-8a4d-b87e643e6cd5" name="Changes" comment="modify names" />
       <created>1675267195233</created>
       <option name="number" value="Default" />
@@ -251,4 +281,5 @@
     <MESSAGE value="Added Experiment2" />
     <option name="LAST_COMMIT_MESSAGE" value="Added Experiment2" />
   </component>
+>>>>>>> 27c8d98594813e50099d3b7ef475da70c372804f
 </project>
