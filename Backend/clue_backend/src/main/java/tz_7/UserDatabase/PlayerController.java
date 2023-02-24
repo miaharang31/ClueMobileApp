@@ -39,6 +39,25 @@ public class PlayerController {
         Optional<Player> user = repository.findById(id);
         return user;
     }
+    @PutMapping("/changePassword/{username}")
+    public Player changePassword(@PathVariable("username") String username, @RequestBody String password) {
+        //logger.info("Entered");
+        Player player = repository.findByUsername(username)
+                .orElseThrow();
+        player.setPassword(password);
+        return player;
+    }
+
+    @PutMapping("/updateType/{username}")
+    public Player upgradeToPremium(@PathVariable("username") String username, @RequestBody String account) {
+        //logger.info("Entered");
+        Player player = repository.findByUsername(username)
+                .orElseThrow();
+        if (player.getType().equals("Basic")) {
+            player.setType("Premium");
+        }
+        return player;
+    }
 
 //    @GetMapping("/getUserByType/{type}")
 //    public List<User> getUserByType(@PathVariable String type) {
