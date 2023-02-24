@@ -2,6 +2,8 @@ package tz_7.UserDatabase;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import tz_7.UserDatabase.PlayerRepository;
+import tz_7.UserDatabase.Player;
 
 import java.util.Optional;
 
@@ -25,6 +27,11 @@ public class PlayerController {
     public String saveUser(@RequestBody Player player) {
         repository.save(player);
         return "User saved:" + player.getUsername();
+    }
+    @PostMapping("/findUserUnP")
+    public Optional<Player> getUserByUsernameAndPassword(@RequestBody String username, @RequestBody String password) {
+        Optional<Player> user = repository.findByUsernameAndPassword(username, password);
+        return user;
     }
     @GetMapping("/getUser/{id}")
     public Optional<Player> getUserById(@PathVariable("id") Integer id) {
