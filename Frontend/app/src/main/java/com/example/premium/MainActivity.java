@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         premium.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent i = new Intent(MainActivity.this, PremiumActivity.class);
+                Intent i = new Intent(MainActivity.this, PremiumLobbyActivity.class);
                 startActivity(i);
             }
         });
