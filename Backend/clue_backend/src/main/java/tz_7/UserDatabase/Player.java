@@ -33,9 +33,7 @@ public class Player {
     //@NotFound(action = NotFoundAction.IGNORE)
     private String type; //use type can be a for administer, b for basic
                             // and p for premium
-    //@Column(name = "WINS")
-    //@NotFound(action = NotFoundAction.IGNORE)
-    private int wins;
+
 
     public Player() {}
 
@@ -46,17 +44,8 @@ public class Player {
         this.email = email;
         this.password = password;
         this.type = type;
-        this.wins = 0;
     }
-    public Player(int id, String firstname, String lastname, String email, String password, String type, int wins) {
-        this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.email = email;
-        this.password = password;
-        this.type = type;
-        this.wins = wins;
-    }
+
 
     public int getId() {
         return id;
@@ -114,11 +103,4 @@ public class Player {
         this.type = type;
     }
 
-    public int getWins() {
-        return wins;
-    }
-
-    public void setWins(int wins) {
-        this.wins = wins;
-    }
 }
