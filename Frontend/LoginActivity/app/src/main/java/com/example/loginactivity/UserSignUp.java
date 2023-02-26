@@ -11,6 +11,7 @@ import android.widget.EditText;
 
 public class UserSignUp extends AppCompatActivity {
 
+    RequestQueue queue = Volley.newRequestQueue(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +24,7 @@ public class UserSignUp extends AppCompatActivity {
                 Intent intent = new Intent(UserSignUp.this, SecondActivity.class);
 
                 boolean correctFirstName, correctLastName, correctEmail, correctUsername, correctPassword;
+
 
                 EditText firstName = findViewById(R.id.firstName);
                 EditText lastName = findViewById(R.id.lastName);
