@@ -1,4 +1,4 @@
-package com.example.loginactivity;
+package com.example.clue_frontend;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,9 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.clue_frontend.MainActivity;
+
 public class UserSignUp extends AppCompatActivity {
 
-    RequestQueue queue = Volley.newRequestQueue(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,10 +22,9 @@ public class UserSignUp extends AppCompatActivity {
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(UserSignUp.this, SecondActivity.class);
+                Intent intent = new Intent(UserSignUp.this, MainActivity.class);
 
                 boolean correctFirstName, correctLastName, correctEmail, correctUsername, correctPassword;
-
 
                 EditText firstName = findViewById(R.id.firstName);
                 EditText lastName = findViewById(R.id.lastName);
