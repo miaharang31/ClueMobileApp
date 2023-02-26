@@ -61,12 +61,14 @@ public class GameLobby {
         return false;
     }
 
-    public String addPlayer(Integer playerID) {
+    public Boolean addPlayer(Integer playerID) {
         if(canAddPlayer()) {
             playerIDs.add(playerID);
             numPlayers += 1;
+            return true;
+        } else {
+            return false;
         }
-        return "Max players have been reached";
     }
     public String getGameCode() {return gameCode;}
     public Integer getHost() {return hostID;}

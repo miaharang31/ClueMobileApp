@@ -43,13 +43,19 @@ public class GameLobbyController {
         return new ResponseEntity<List<GameLobby>>(gameLobbyRepository.findByHostID(hostID), HttpStatus.OK);
     }
 
-    @PostMapping("lobby/addplayer")
+    @PostMapping("lobby/join")
     public String addPlayerByGameCode(@RequestParam("gameCode") String gameCode, @RequestParam("playerID") Integer playerID) {
         ResponseEntity<List<GameLobby>> tmp = new ResponseEntity<>(gameLobbyRepository.findByGameCode(gameCode), HttpStatus.OK);
         if(tmp.hasBody()) {
-            return "New Player Added";
+            boolean canAdd = tmp.getBody().get(0).addPlayer(playerID);
+            if(canAdd) {
+                gameLobbyRepository.save(tmp.getBody().get(0));
+                return "SUCCESS: New Player Added";
+            } else {
+                return "ERROR: Max players reached";
+            }
         } else {
-            return "No Game Found With That Code";
+            return "ERROR: No Game Found With That Code";
         }
     }
 }
