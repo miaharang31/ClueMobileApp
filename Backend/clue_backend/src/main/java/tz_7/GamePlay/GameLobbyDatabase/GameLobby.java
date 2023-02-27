@@ -37,6 +37,9 @@ public class GameLobby {
     @Column(name = "hostID", unique = true)
     @NotFound(action = NotFoundAction.IGNORE)
     private Integer hostID;
+
+
+
     @Column(name = "isPremium")
     @NotFound(action = NotFoundAction.IGNORE)
     private Boolean isPremium;
