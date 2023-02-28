@@ -77,8 +77,9 @@ public class HostLobby extends AppCompatActivity{
                     gameCode.setError("Please Enter A Game Code!");
                 } else if(numPlayers == 0) {
                     gameCode.setError("Please Select Maximum Players");
-                }
+                } else {
 //                TODO: VOLLEY ROUND TRIP HERE
+                }
             }
         });
     }
