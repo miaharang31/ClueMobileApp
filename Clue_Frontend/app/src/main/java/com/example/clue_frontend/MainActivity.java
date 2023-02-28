@@ -20,6 +20,15 @@ public class MainActivity extends AppCompatActivity {
         Button submitButton = (Button) findViewById(R.id.submitButton);
         TextView newPlayerLink = findViewById(R.id.NewPlayerLink);
 
+//      MIA USED FOR TESTING
+//        submitButton.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, HostLobby.class);
+//                startActivity(intent);
+//            }
+//        });
+
         //When the sign in button is clicked and data is entered for usename and password
         //submitButton.setOnClickListener(new View.OnClickListener() {
 
