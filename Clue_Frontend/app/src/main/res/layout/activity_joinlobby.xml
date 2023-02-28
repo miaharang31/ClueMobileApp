@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    tools:context=".HostLobby"
+    tools:context=".JoinLobby"
     android:background="#520120">
 
     <TextView
@@ -14,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/aladin"
-        android:text="H O S T"
+        android:text="J O I N"
         android:textColor="@color/white"
         android:textSize="50sp"
         android:visibility="visible"
@@ -28,10 +26,10 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="360dp"
         android:layout_height="288dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="2dp"
-
         android:backgroundTint="#962B09"
+        app:cardCornerRadius="8dp"
+
+        app:cardElevation="2dp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,83 +40,22 @@
         app:strokeColor="#B57114"
         app:strokeWidth="5dp">
 
-        <TextView
-            android:id="@+id/maxPlayers"
-            android:layout_width="360dp"
-            android:layout_height="36dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/abhaya_libre_extrabold"
-            android:text="Maximum Players"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/button4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <Button
-            android:id="@+id/button6"
-            android:layout_width="56dp"
-            android:layout_height="65dp"
-            android:layout_marginLeft="284dp"
-            android:layout_marginTop="50dp"
-            android:backgroundTint="#08403E"
-            android:fontFamily="@font/aladin"
-            android:text="6"
-            android:textSize="34sp" />
-
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="56dp"
-            android:layout_height="65dp"
-            android:layout_marginLeft="196dp"
-            android:layout_marginTop="50dp"
-            android:backgroundTint="#08403E"
-            android:fontFamily="@font/aladin"
-            android:text="5"
-            android:textSize="34sp" />
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="56dp"
-            android:layout_height="65dp"
-            android:layout_marginLeft="108dp"
-            android:layout_marginTop="50dp"
-            android:backgroundTint="#08403E"
-            android:fontFamily="@font/aladin"
-            android:text="4"
-            android:textSize="34sp" />
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="56dp"
-            android:layout_height="65dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="50dp"
-            android:backgroundTint="#08403E"
-            android:fontFamily="@font/aladin"
-            android:text="3"
-            android:textSize="34sp" />
-
-        <Button
-            android:id="@+id/lobbyCreator"
+            android:id="@+id/joinbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="115dp"
             android:layout_marginTop="230dp"
             android:backgroundTint="#B57114"
             android:fontFamily="@font/abhaya_libre_extrabold"
-            android:text="Open Lobby" />
+            android:text="Join Lobby" />
 
         <TextView
             android:id="@+id/gameCodeText"
             android:layout_width="360dp"
             android:layout_height="36dp"
             android:layout_marginLeft="100dp"
-            android:layout_marginTop="140dp"
+            android:layout_marginTop="55dp"
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/abhaya_libre_extrabold"
             android:text="Game Code"
@@ -135,9 +72,8 @@
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="170dp"
+            android:layout_marginTop="94dp"
             android:background="@color/white"
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.card.MaterialCardView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
