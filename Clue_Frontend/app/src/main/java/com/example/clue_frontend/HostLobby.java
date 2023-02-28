@@ -14,11 +14,14 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class HostLobby extends AppCompatActivity{
-    Integer numPlayers;
+    Integer numPlayers = 0;
     Button three;
     Button four;
     Button five;
     Button six;
+    Button createLobby;
+
+    EditText gameCode;
 
     @Override
     protected void onCreate(Bundle saveInstanceState) {
@@ -29,6 +32,7 @@ public class HostLobby extends AppCompatActivity{
         four = (Button) findViewById(R.id.button4);
         five = (Button) findViewById(R.id.button5);
         six = (Button) findViewById(R.id.button6);
+        createLobby = (Button) findViewById(R.id.lobbyCreator);
 
         three.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +64,21 @@ public class HostLobby extends AppCompatActivity{
                 resetButtons();
                 v.setBackgroundColor(Color.GRAY);
                 numPlayers = 6;
+            }
+        });
+
+        createLobby.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent = new Intent(HostLobby.this, Lobby.class);
+                gameCode = findViewById(R.id.gameCode);
+                String gameCodeData = gameCode.getText().toString();
+                if(gameCodeData.isEmpty()) {
+                    gameCode.setError("Please Enter A Game Code!");
+                } else if(numPlayers == 0) {
+                    gameCode.setError("Please Select Maximum Players");
+                }
+//                TODO: VOLLEY ROUND TRIP HERE
             }
         });
     }
