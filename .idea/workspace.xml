@@ -4,187 +4,16 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="44db4067-c8d7-4db9-92df-3af4db11b537" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Frontend/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/SecondActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/SecondActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_second.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_second.xml" afterDir="false" />
-=======
-    <list default="true" id="fe22853f-a850-4f58-8a4d-b87e643e6cd5" name="Changes" comment="modify names">
-      <change afterPath="$PROJECT_DIR$/Backend/clue_backend/src/main/java/tz_7/GamePlay/GameLobbyDatabase/GameLobby.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/clue_backend/src/main/java/tz_7/GamePlay/GameLobbyDatabase/GameLobbyController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/clue_backend/src/main/java/tz_7/GamePlay/GameLobbyDatabase/GameLobbyRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiments/piper/experiment1/.gradle/7.5/checksums/checksums.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiments/piper/experiment1/.gradle/7.5/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiments/piper/experiment1/.gradle/7.5/dependencies-accessors/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiments/piper/experiment1/.gradle/7.5/executionHistory/executionHistory.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiments/piper/experiment1/.gradle/7.5/executionHistory/executionHistory.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiments/piper/experiment1/.gradle/7.5/fileChanges/last-build.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiments/piper/experiment1/.gradle/7.5/fileHashes/fileHashes.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiments/piper/experiment1/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiments/piper/experiment1/.gradle/7.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiments/piper/experiment1/.gradle/7.5/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiments/piper/experiment1/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiments/piper/experiment1/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiments/piper/experiment1/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiments/piper/experiment1/.gradle/file-system.probe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiments/piper/experiment1/.gradle/vcs-1/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiments/piper/experiment1/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiments/piper/experiment1/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiments/piper/experiment1/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiments/piper/experiment1/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Experiments/piper/experiment1/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/.idea/deploymentTargetDropDown.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/font/abhaya_libre_extrabold.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/font/aladin.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_second.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/values/font_certs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/values/preloaded_fonts.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/androidTest/java/com/example/premium/ExampleInstrumentedTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/java/com/example/premium/MainActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/java/com/example/premium/PremiumActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/java/com/example/premium/PremiumLobbyActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/java/com/example/premium/StandardActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/res/layout/activity_premiumlobby.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/res/layout/activity_standard.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/res/mipmap-anydpi-v33/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/res/values-night/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/res/values/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/test/java/com/example/premium/ExampleUnitTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Experiments/piper/experiment1/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/2_tz_7.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_4_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_4_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_5_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_h2database_h2_2_1_214.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_7_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_istack_istack_commons_runtime_4_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_5_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_activation_jakarta_activation_api_2_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_annotation_jakarta_annotation_api_2_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_inject_jakarta_inject_api_2_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_persistence_jakarta_persistence_api_3_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_transaction_jakarta_transaction_api_2_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_xml_bind_jakarta_xml_bind_api_4_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_12_22.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_12_22.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_accessors_smart_2_4_8.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_json_smart_2_4_8.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_antlr_antlr4_runtime_4_10_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_19_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_19_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_9_19.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_3_23_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_angus_angus_activation_1_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_jaxb_core_4_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_jaxb_runtime_4_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_txw2_4_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_2_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_6_0_2_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_orm_hibernate_core_6_1_6_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_jandex_2_4_2_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_5_0_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_9_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_9_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_9_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_9_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_9_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_9_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_4_8_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_junit_jupiter_4_8_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_9_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_5_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_2_0_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_2_0_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_3_0_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_3_0_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_3_0_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_3_0_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_jpa_3_0_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_3_0_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_3_0_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_3_0_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_3_0_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_3_0_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_3_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_3_0_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_6_0_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aspects_6_0_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_6_0_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_6_0_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_6_0_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_6_0_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_6_0_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_6_0_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_orm_6_0_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_6_0_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_6_0_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_9_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_33.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/clue_backend/src/main/java/tz_7/ScoreDatabase/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/clue_backend/src/main/java/tz_7/ScoreDatabase/Score.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/clue_backend/src/main/java/tz_7/ScoreDatabase/ScoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/clue_backend/src/main/java/tz_7/ScoreDatabase/ScoreController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/clue_backend/src/main/java/tz_7/ScoreDatabase/ScoreRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/clue_backend/src/main/java/tz_7/ScoreDatabase/ScoreRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/clue_backend/src/main/java/tz_7/UserDatabase/PlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/clue_backend/src/main/java/tz_7/UserDatabase/PlayerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Experiments/Emily/two_screen_counter/app/src/main/res/layout/activity_text.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Experiments/Emily/two_screen_counter/app/src/main/res/layout/activity_text.xml" afterDir="false" />
+    <list default="true" id="0c24628d-32bd-4e0c-8eb3-ecdb7b891f0e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/SecondActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/SecondActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/UserSignUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/UserSignUp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_main.xml" afterDir="false" />
->>>>>>> 27c8d98594813e50099d3b7ef475da70c372804f
+      <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_second.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_second.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_user_sign_up.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_user_sign_up.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -198,25 +27,8 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-<<<<<<< HEAD
-  <component name="ProjectId" id="2M1SKRSX0MnJxwnOeqJo88KuPX0" />
+  <component name="ProjectId" id="2MIf2HOkyi0yZU5eUo8O3uL77b7" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-=======
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
-  <component name="ProjectId" id="2L8yqbUnJCU4wxpOS6RAr6J8F7k" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
->>>>>>> 27c8d98594813e50099d3b7ef475da70c372804f
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -226,60 +38,18 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
-<<<<<<< HEAD
-    "cidr.known.project.marker": "true",
-    "last_opened_file_path": "C:/Users/piper/2_tz_7/Frontend"
-=======
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "cidr.known.project.marker": "true",
-    "last_opened_file_path": "C:/Users/18152/OneDrive/Documents/COMP S/com s 309/2_tz_7/2_tz_7/Backend/clue_backend",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
->>>>>>> 27c8d98594813e50099d3b7ef475da70c372804f
+    "cidr.known.project.marker": "true"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-<<<<<<< HEAD
-      <changelist id="44db4067-c8d7-4db9-92df-3af4db11b537" name="Changes" comment="" />
-      <created>1676933530998</created>
+      <changelist id="0c24628d-32bd-4e0c-8eb3-ecdb7b891f0e" name="Changes" comment="" />
+      <created>1677459810192</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1676933530998</updated>
+      <updated>1677459810192</updated>
     </task>
     <servers />
   </component>
-=======
-      <changelist id="fe22853f-a850-4f58-8a4d-b87e643e6cd5" name="Changes" comment="modify names" />
-      <created>1675267195233</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1675267195233</updated>
-    </task>
-    <task id="LOCAL-00001" summary="Added Experiment2">
-      <created>1675267395149</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1675267395149</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
-    <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added Experiment2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Experiment2" />
-  </component>
->>>>>>> 27c8d98594813e50099d3b7ef475da70c372804f
 </project>

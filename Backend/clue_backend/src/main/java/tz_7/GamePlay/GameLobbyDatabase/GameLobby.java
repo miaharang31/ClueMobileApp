@@ -18,9 +18,9 @@ import java.util.ArrayList;
 public class GameLobby {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "gameID", unique = true)
+    @Column(name = "ID", unique = true)
     @NotFound(action = NotFoundAction.IGNORE)
-    private Integer gameID;
+    private Integer ID;
     @Column(name = "maxPlayers")
     @NotFound(action = NotFoundAction.IGNORE)
     private Integer maxPlayers;
@@ -44,7 +44,10 @@ public class GameLobby {
     @NotFound(action = NotFoundAction.IGNORE)
     private Boolean isPremium;
 
-    public GameLobby() {}
+    public GameLobby() {
+        playerIDs = new ArrayList<Integer>();
+        numPlayers = 1;
+    }
 
     public GameLobby(Integer maxPlayers, String gameCode, Integer hostID, Boolean isPremium) {
         this.maxPlayers = maxPlayers;
@@ -53,29 +56,28 @@ public class GameLobby {
         this.isPremium = isPremium;
 
         playerIDs = new ArrayList<Integer>();
-        playerIDs.add(hostID);
         numPlayers = 1;
     }
 
-    public Integer getID() {return gameID;}
     public ArrayList<Integer> getCurPlayerIDs() {return playerIDs;}
     private boolean canAddPlayer() {
         if(numPlayers+1 <= maxPlayers) {return true;}
         return false;
     }
 
-    public String addPlayer(Integer playerID) {
+    public Boolean addPlayer(Integer playerID) {
         if(canAddPlayer()) {
             playerIDs.add(playerID);
             numPlayers += 1;
+            return true;
+        } else {
+            return false;
         }
-        return "Max players have been reached";
     }
     public String getGameCode() {return gameCode;}
-    public Integer getHost() {return hostID;}
-    public Integer getGameID() {return gameID;}
-    public Boolean isPremiumGame() {return isPremium;}
-
-
-
+    public Integer getHostID() {return hostID;}
+    public Integer getID() {return ID;}
+    public Boolean getIsPremium() {return isPremium;}
+    public Integer getMaxPlayers() {return maxPlayers;}
+    public Integer getNumPlayers() {return numPlayers;}
 }
