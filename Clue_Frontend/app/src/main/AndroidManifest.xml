@@ -30,6 +30,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".UserSignUp"
+            android:label="@string/app_name" />
+        <activity
             android:name=".HostLobby"
             android:label="@string/app_name" />
         <activity
