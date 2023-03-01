@@ -1,11 +1,13 @@
 package tz_7.GamePlay.GameLobbyDatabase;
 
+import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.List;
 
@@ -16,16 +18,9 @@ public class GameLobbyController {
 
     private final Logger logger = LoggerFactory.getLogger(GameLobbyRepository.class);
 
-    @PostMapping("/lobby/new")
-    public GameLobby newLobby(Integer max, String gameCode, Integer hostID, String type) {
-        GameLobby tmp;
-        if(type.equals("premium")) {
-            tmp = new GameLobby(max, gameCode, hostID, true);
-        } else {
-            tmp = new GameLobby(max, gameCode, hostID, false);
-        }
-        gameLobbyRepository.save(tmp);
-        return tmp;
+    @PostMapping(value = "/lobby/new", consumes = "application/json")
+    public GameLobby newLobby(@RequestBody GameLobby lobby) {
+        return gameLobbyRepository.save(lobby);
     }
 
     @GetMapping("lobby")
