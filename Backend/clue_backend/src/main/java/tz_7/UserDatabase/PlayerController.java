@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import tz_7.UserDatabase.PlayerRepository;
 import tz_7.UserDatabase.Player;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -19,16 +20,22 @@ public class PlayerController {
 
     //private final Logger logger = LoggerFactory.getLogger(UserController.class);
 
-    @GetMapping("/enter/{hey}")
-    public String openpage(@PathVariable("hey") String hey) {
-        return "Hey girlie";
+//    @GetMapping("/enter/{hey}")
+//    public String openpage(@PathVariable("hey") String hey) {
+//        return "Hey girlie";
+//    }
+    @GetMapping("/allUsers")
+    public List<Player> returnPlayers() {
+        List<Player> list = repository.findAll();
+        return list;
     }
-    @PostMapping("/saveUser")
-    public String saveUser(@RequestBody Player player) {
-        repository.save(player);
-        return "User saved:" + player.getUsername();
+    @PostMapping(value = "/saveUser", consumes = "application/json")
+    public Player saveUser(@RequestBody Player player) {
+//        repository.save(player);
+//        return "User saved:" + player.getUsername();
+        return repository.save(player);
     }
-    @PostMapping("/findUserUnP")
+    @PostMapping(value = "/findUserUnP", consumes = "application/json")
     public Optional<Player> getUserByUsernameAndPassword(@RequestBody String username, @RequestBody String password) {
         Optional<Player> user = repository.findByUsernameAndPassword(username, password);
         return user;
