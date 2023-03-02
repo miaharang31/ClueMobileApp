@@ -29,16 +29,17 @@ public class PlayerController {
         List<Player> list = repository.findAll();
         return list;
     }
-    @PostMapping(value = "/saveUser", consumes = "application/json")
+    @PostMapping(value = "/register", consumes = "application/json") //was save user
     public Player saveUser(@RequestBody Player player) {
 //        repository.save(player);
 //        return "User saved:" + player.getUsername();
         return repository.save(player);
     }
-    @PostMapping(value = "/findUserUnP", consumes = "application/json")
-    public Optional<Player> getUserByUsernameAndPassword(@RequestBody String username, @RequestBody String password) {
-        Optional<Player> user = repository.findByUsernameAndPassword(username, password);
-        return user;
+    @PostMapping(value = "/login", consumes = "application/json")
+    public Optional<Player> getUserByUsernameAndPassword(@RequestBody Player player) {
+//        Optional<Player> user = repository.findByUsernameAndPassword(username, password);
+//        return user;
+        return repository.findByUsernameAndPassword(player.getUsername(), player.getPassword());
     }
     @GetMapping("/getUser/{id}")
     public Optional<Player> getUserById(@PathVariable("id") Integer id) {

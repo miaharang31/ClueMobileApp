@@ -125,7 +125,7 @@ public class UserSignUp extends AppCompatActivity {
 //                    intent.putExtra("usernameData",usernameData);
 //                    intent.putExtra("passwordData",passwordData);
 
-                    String url = "http://10.0.2.2:8080/saveUser";
+                    String url = "http://10.0.2.2:8080/register";
                     RequestQueue queue = Volley.newRequestQueue(UserSignUp.this);
                     JSONObject json = null;
                     try {
