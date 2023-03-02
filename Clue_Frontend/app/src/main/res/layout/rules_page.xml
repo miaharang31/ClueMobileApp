@@ -4,22 +4,23 @@
     android:layout_height="match_parent"
     android:background="#520120">
 
+
     <TextView
+        android:id="@+id/rules"
         android:layout_width="100mm"
         android:layout_height="wrap_content"
-        android:id="@+id/rules"
-        android:text=" Rules"
-        android:textColor="@color/white"
-        android:textSize="74px"
         android:layout_centerHorizontal="true"
         android:background="#B57114"
+        android:fontFamily="@font/abhaya_libre_extrabold"
         android:shadowColor="#520120"
-        android:shadowRadius="5"
-        android:shadowDy="4"
         android:shadowDx="4"
+        android:shadowDy="4"
+        android:shadowRadius="5"
+        android:text=" Rules"
+        android:textColor="@color/white"
 
 
-    />
+        android:textSize="74px" />
 <!--    <TextView-->
 <!--        android:layout_width="50dp"-->
 <!--        android:layout_height="20dp"-->
@@ -39,6 +40,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/rules"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/abhaya_libre_extrabold"
+        android:scrollbars="vertical"
+        android:shadowColor="@color/white"
+        android:shadowRadius="2"
         android:text="OH NO! Someone was murdered during your dinner party! Thankfully, your group of friends are a bunch of detectives who know exactly how to catch the culprit. Your job is to find the perpetrator and identify the weapon and room that they used to kill your friend. The first to do so is the hero in everyone's eyes and deserves a celebration.
 \n
 \nYOUR GOAL: Guess the suspect, weapon, and room placed in the center of the game board
@@ -56,13 +65,7 @@
 \n    1. This is where the players make their final guess: Once again, consisting of a suspect, weapon, and room
 \n    2. The player guessing will check the cards in the center envelope
 \n    3. If the player guesses correctly, the game has finished, and that player has won; else, the player puts the cards back into the center, and the game continues, but that player has lost and is out of the game."
-        android:layout_margin="16dp"
-        android:textColor="#B57114"
-        android:shadowColor="@color/white"
-        android:shadowRadius="2"
-        android:background="@drawable/rounded_behind_text"
-        android:scrollbars="vertical"
-        />
+        android:textColor="#B57114" />
 </RelativeLayout>
 <!--android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
