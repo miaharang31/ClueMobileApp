@@ -29,28 +29,20 @@ public class GameLobbyController {
     }
 
     @GetMapping("lobby/notPremium")
-    public ResponseEntity<List<GameLobby>> getNormalLobbies() {
+    public ResponseEntity<List<GameLobby>> getAllNormalLobbies() {
         return new ResponseEntity<List<GameLobby>>(gameLobbyRepository.findByIsPremium(false), HttpStatus.OK);
     }
 
-    @GetMapping("lobby/host")
-    public ResponseEntity<List<GameLobby>> getLobbyByHost(@RequestParam("hostID") int hostID) {
+    @GetMapping("lobby/{id}")
+    public ResponseEntity<List<GameLobby>> getLobbyByHost(@PathVariable("hostID") int hostID) {
         return new ResponseEntity<List<GameLobby>>(gameLobbyRepository.findByHostID(hostID), HttpStatus.OK);
     }
 
-    @PostMapping("lobby/join")
-    public String addPlayerByGameCode(@RequestParam("gameCode") String gameCode, @RequestParam("playerID") Integer playerID) {
+    @PutMapping("lobby/join/{userid}")
+    public ResponseEntity<List<GameLobby>> addPlayerByGameCode(@RequestBody String gameCode, @PathVariable("userid") Integer playerID) {
         ResponseEntity<List<GameLobby>> tmp = new ResponseEntity<>(gameLobbyRepository.findByGameCode(gameCode), HttpStatus.OK);
-        if(tmp.hasBody()) {
-            boolean canAdd = tmp.getBody().get(0).addPlayer(playerID);
-            if(canAdd) {
-                gameLobbyRepository.save(tmp.getBody().get(0));
-                return "SUCCESS: New Player Added";
-            } else {
-                return "ERROR: Max players reached";
-            }
-        } else {
-            return "ERROR: No Game Found With That Code";
-        }
+        tmp.getBody().get(0).addPlayer(playerID);
+        gameLobbyRepository.save(tmp.getBody().get(0));
+        return tmp;
     }
 }
