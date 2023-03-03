@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.Scanner;
+
 public class MainActivity extends AppCompatActivity {
 
     Button button;
@@ -50,9 +52,14 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-
-
     }
+
+//    public static void main(String []args) {
+//        Scanner input = new Scanner(System.in);
+//        String userInput;
+//        userInput = input.next();
+//
+//    }
 
 
 }
