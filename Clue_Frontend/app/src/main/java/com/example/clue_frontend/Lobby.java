@@ -23,6 +23,8 @@ public class Lobby extends AppCompatActivity {
     Button startGame;
     int count;
 
+    MainActivity newActivity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,11 +37,19 @@ public class Lobby extends AppCompatActivity {
         int topPadding = 150;
 
         // insert host name
+        // set hostName (mainActivity variable-- first and last name)
+        // check if user clicked hostGame button
+
         host.setText(hostName);
 
-        // create text boxes with each player's name
-        for(int i = 0; i <= playerNames.length; i++){
+        // fill array with player names
+        for(int i = 0; i < playerNames.length; i++){
+            // check if user clicked joinGame button
+            // check if gameCode matches
+        }
 
+        // create text boxes with each player's name
+        for(int i = 0; i < playerNames.length; i++){
             currentName = playerNames[i];
             names[i].setText(currentName);
             names[i].setPadding(45, topPadding, 45, 100);

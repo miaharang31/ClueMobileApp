@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -17,6 +20,8 @@ public class Home extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     ActionBarDrawerToggle drawerToggle;
+    Button join;
+    Button host;
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -31,6 +36,9 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        join = (Button)findViewById(R.id.join);
+        host = (Button)findViewById(R.id.host);
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -58,6 +66,21 @@ public class Home extends AppCompatActivity {
                     return true;
                 }
                 return false;
+            }
+        });
+
+        join.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(Home.this, JoinLobby.class);
+                startActivity(intent);
+            }
+        });
+        host.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(Home.this, HostLobby.class);
+                startActivity(intent);
             }
         });
     }
