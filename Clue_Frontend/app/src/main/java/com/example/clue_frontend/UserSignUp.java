@@ -125,7 +125,8 @@ public class UserSignUp extends AppCompatActivity {
 //                    intent.putExtra("usernameData",usernameData);
 //                    intent.putExtra("passwordData",passwordData);
 
-                    String url = "http://10.0.2.2:8080/register";
+//                    String url = "http://10.0.2.2:8080/register";
+                    String url = "http://coms-309-038.class.las.iastate.edu:8080/register";
                     RequestQueue queue = Volley.newRequestQueue(UserSignUp.this);
                     JSONObject json = null;
                     try {

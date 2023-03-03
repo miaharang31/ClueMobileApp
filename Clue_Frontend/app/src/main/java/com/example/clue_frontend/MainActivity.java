@@ -86,7 +86,8 @@ public class MainActivity extends AppCompatActivity {
 
 //                startActivity(intent);
 
-                String url = "http://10.0.2.2:8080/login";
+//                String url = "http://10.0.2.2:8080/login";
+                String url = "http://coms-309-038.class.las.iastate.edu:8080/login";
                 RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
                 JSONObject json = null;
                 try {

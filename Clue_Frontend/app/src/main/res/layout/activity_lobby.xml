@@ -35,7 +35,6 @@
             android:layout_marginEnd="16dp"
             android:layout_marginRight="40dp"
             android:background="#08403E"
-            android:fontFamily="@font/abhaya_libre_extrabold"
             android:text="Host:"
             android:textAlignment="textStart"
             android:textColor="@color/white"
@@ -54,7 +53,6 @@
             android:layout_marginTop="480dp"
             android:layout_marginRight="100dp"
             android:backgroundTint="#08403E"
-            android:fontFamily="@font/abhaya_libre_extrabold"
             android:text="Start Game"
             app:cornerRadius="5dp" />
 
@@ -91,6 +89,21 @@
                 android:hint="Host Name"
                 android:textColor="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/currentplayertxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_marginTop="450dp"
+            android:layout_marginLeft="20dp"/>
+        <TextView
+            android:id="@+id/maxplayertxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_marginTop="450dp"
+            android:layout_marginLeft="250dp"/>
     </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
