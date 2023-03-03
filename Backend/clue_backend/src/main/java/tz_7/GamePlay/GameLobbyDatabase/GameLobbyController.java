@@ -36,8 +36,8 @@ public class GameLobbyController {
         return new ResponseEntity<List<GameLobby>>(gameLobbyRepository.findByIsPremium(false), HttpStatus.OK);
     }
 
-    @GetMapping("lobby/{id}")
-    public ResponseEntity<List<GameLobby>> getLobbyByHost(@PathVariable("hostID") int hostID) {
+    @GetMapping(value = "lobby/{id}", produces = "application/json")
+    public ResponseEntity<List<GameLobby>> getLobbyByHost(@PathVariable("id") int hostID) {
         return new ResponseEntity<List<GameLobby>>(gameLobbyRepository.findByHostID(hostID), HttpStatus.OK);
     }
 

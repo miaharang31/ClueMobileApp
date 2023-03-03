@@ -41,7 +41,7 @@ public class PlayerController {
 //        return user;
         return repository.findByUsernameAndPassword(player.getUsername(), player.getPassword());
     }
-    @GetMapping("/getUser/{id}")
+    @GetMapping(value = "/getUser/{id}", produces = "application/json")
     public Optional<Player> getUserById(@PathVariable("id") Integer id) {
         //logger.info("Entered");
         Optional<Player> user = repository.findById(id);
