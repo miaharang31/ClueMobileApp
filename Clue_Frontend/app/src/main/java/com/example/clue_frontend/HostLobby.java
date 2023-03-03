@@ -98,7 +98,7 @@ public class HostLobby extends AppCompatActivity{
                         body = new JSONObject();
                         body.put("maxPlayers", numPlayers);
                         body.put("gameCode", gameCodeData);
-                        body.put("hostID", 0);
+                        body.put("hostID", 1);
                         body.put("isPremium", false);
                     } catch (JSONException exception) {
                         exception.printStackTrace();
