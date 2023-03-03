@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class SwipeListener implements View.OnTouchListener {
-        GestureDetectort gestureDetector;
+        GestureDetector gestureDetector;
 
         SwipeListener(View view) {
             int threshold = 100;
