@@ -45,11 +45,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:fontFamily="@font/abhaya_libre_extrabold"
+                android:fontFamily="@font/abhaya_libre"
                 android:labelFor="@id/firstName"
                 android:text="First Name"
-                android:textSize="20dp"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="20dp" />
 
             <EditText
                 android:id="@+id/firstName"
