@@ -53,7 +53,7 @@ public class Lobby extends AppCompatActivity {
 //        int topPadding = 150;
 
         RequestQueue queue = Volley.newRequestQueue(Lobby.this);
-        String url = "http://10.0.2.2:8080/lobby/1";
+        String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/1";
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
                     @Override
