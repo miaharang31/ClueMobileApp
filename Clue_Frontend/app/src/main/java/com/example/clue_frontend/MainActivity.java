@@ -40,14 +40,14 @@ public class MainActivity extends AppCompatActivity {
 //        submitButton.setOnClickListener(new View.OnClickListener(){
 //            @Override
 //            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, HostLobby.class);
+//                Intent intent = new Intent(MainActivity.this, Lobby.class);
 //                startActivity(intent);
 //            }
 //        });
 
         //When the sign in button is clicked and data is entered for usename and password
         submitButton.setOnClickListener(new View.OnClickListener() {
-
+//
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(MainActivity.this, Home.class);
