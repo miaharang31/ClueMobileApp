@@ -1,3 +1,14 @@
+<!--/*for scroll outside override*/-->
+<!--    TextView textView;-->
+<!--    TextView tv;-->
+<!--this is inside override-->
+<!--    setContentView(R.layout.rules_page); //activity_main-->
+
+<!--    textView = (TextView) findViewById(R.id.rulesText);-->
+<!--    textView.setMovementMethod(new ScrollingMovementMethod());-->
+
+<!--    tv = (TextView) findViewById(R.id.objectives);-->
+<!--    tv.setMovementMethod(new ScrollingMovementMethod());-->
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -18,9 +29,7 @@
         android:shadowRadius="5"
         android:text=" Rules"
         android:textColor="@color/white"
-
-
-        android:textSize="74px" />
+        android:textSize="40dp" />
 <!--    <TextView-->
 <!--        android:layout_width="50dp"-->
 <!--        android:layout_height="20dp"-->
@@ -34,23 +43,63 @@
 <!--        android:layout_marginTop="10dp"-->
 <!--        android:textAlignment="center"-->
 <!--        />-->
-
     <TextView
-        android:id="@+id/rulesText"
+        android:id="@+id/oword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rules"
+        android:layout_marginTop="4dp"
+        android:shadowColor="#B57114"
+        android:shadowRadius="5"
+        android:text="Objective"
+        android:layout_marginLeft="3dp"
+        android:layout_below="@id/rules"
+        android:fontFamily="@font/abhaya_libre_extrabold"
+        android:textSize="35dp"
+        android:textColor="@color/white"/>
+ <TextView
+     android:id="@+id/objectives"
+     android:layout_width="wrap_content"
+     android:layout_height="200dp"
+     android:textColor="#B57114"
+     android:text="OH NO! Someone was murdered during your dinner party! Thankfully, your group of friends are a bunch of detectives who know exactly how to catch the culprit. Your job is to find the perpetrator and identify the weapon and room that they used to kill your friend. The first to do so is the hero in everyone's eyes and deserves a celebration."
+     android:layout_below="@+id/oword"
+     android:layout_marginStart="16dp"
+     android:layout_marginTop="6dp"
+     android:layout_marginEnd="16dp"
+     android:layout_marginBottom="16dp"
+     android:fontFamily="@font/abhaya_libre_extrabold"
+     android:shadowColor="@color/white"
+     android:shadowRadius="2"
+     android:scrollbars="vertical"
+     android:textSize="30dp"/>
+    <TextView
+        android:id="@+id/goal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:shadowColor="#B57114"
+        android:shadowRadius="5"
+        android:text="Your Goal"
+        android:layout_marginLeft="3dp"
+        android:layout_below="@id/objectives"
+        android:fontFamily="@font/abhaya_libre_extrabold"
+        android:textSize="35dp"
+        android:textColor="@color/white"/>
+    <TextView
+        android:id="@+id/rulesText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:layout_below="@+id/goal"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/abhaya_libre_extrabold"
-        android:scrollbars="vertical"
         android:shadowColor="@color/white"
         android:shadowRadius="2"
-        android:text="OH NO! Someone was murdered during your dinner party! Thankfully, your group of friends are a bunch of detectives who know exactly how to catch the culprit. Your job is to find the perpetrator and identify the weapon and room that they used to kill your friend. The first to do so is the hero in everyone's eyes and deserves a celebration.
-\n
-\nYOUR GOAL: Guess the suspect, weapon, and room placed in the center of the game board
+        android:textSize="30dp"
+        android:text="Guess the suspect, weapon, and room placed in the center of the game board
 \n
 1. There are three sets of cards: a suspect, a weapon, and a room. One from each set gets taken (DON'T LOOK) and placed in an envelope in the center, this is the final suspect, weapon, and room for the end game.
 \n2. Each player chooses a character to play, and their game piece gets placed in that person's designated spot.
@@ -64,7 +113,9 @@
 \n7. ENTERING THE CENTER:
 \n    1. This is where the players make their final guess: Once again, consisting of a suspect, weapon, and room
 \n    2. The player guessing will check the cards in the center envelope
-\n    3. If the player guesses correctly, the game has finished, and that player has won; else, the player puts the cards back into the center, and the game continues, but that player has lost and is out of the game."
+\n    3. If the player guesses correctly, the game has finished, and that player has won; else, the player puts the cards back into the center, and the game continues, but that player has lost and is out of the game.
+\n
+\nMAY THE BEST DETECTIVE WIN!"
         android:textColor="#B57114" />
 </RelativeLayout>
 <!--android:layout_marginLeft="10dp"
