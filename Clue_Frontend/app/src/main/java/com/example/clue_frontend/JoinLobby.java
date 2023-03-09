@@ -37,8 +37,8 @@ public class JoinLobby extends AppCompatActivity {
                 if(gameCodeData.isEmpty()) {
                     gameCode.setError("Game Code cannot be empty!");
                 } else {
-                    String url = "http://10.0.2.2:8080/lobby/join/1";
-//                    String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/join/1";
+//                    String url = "http://10.0.2.2:8080/lobby/join/1";
+                    String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/join/1";
                     RequestQueue queue = Volley.newRequestQueue(JoinLobby.this);
                     JSONObject body = null;
                     try {
