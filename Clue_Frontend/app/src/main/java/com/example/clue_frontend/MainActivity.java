@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -25,14 +26,25 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
+/*for scroll outside override*/
+//    TextView textView;
+//    TextView tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main); //activity_main
+//GRACE USES FOR RULES PAGE
+//        setContentView(R.layout.rules_page); //activity_main
 
+//        textView = (TextView) findViewById(R.id.rulesText);
+//        textView.setMovementMethod(new ScrollingMovementMethod());
+//
+//        tv = (TextView) findViewById(R.id.objectives);
+//        tv.setMovementMethod(new ScrollingMovementMethod());
+//
         Button submitButton = (Button) findViewById(R.id.submitButton);
         TextView newPlayerLink = findViewById(R.id.NewPlayerLink);
 
