@@ -1,14 +1,3 @@
-<!--/*for scroll outside override*/-->
-<!--    TextView textView;-->
-<!--    TextView tv;-->
-<!--this is inside override-->
-<!--    setContentView(R.layout.rules_page); //activity_main-->
-
-<!--    textView = (TextView) findViewById(R.id.rulesText);-->
-<!--    textView.setMovementMethod(new ScrollingMovementMethod());-->
-
-<!--    tv = (TextView) findViewById(R.id.objectives);-->
-<!--    tv.setMovementMethod(new ScrollingMovementMethod());-->
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
