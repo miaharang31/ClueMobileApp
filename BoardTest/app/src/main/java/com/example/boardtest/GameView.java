@@ -1,52 +1,47 @@
 package com.example.boardtest;
 
-import static com.example.boardtest.Constants.*;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
+import android.util.AttributeSet;
+import android.view.View;
 
-import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
-public class GameView extends SurfaceView implements SurfaceHolder.Callback {
-    private DrawThread thread;
-    public GameView(Context context) {
-        super(context);
-        getHolder().addCallback(this);
-        thread = new DrawThread(this);
-    }
+import java.util.ArrayList;
 
-    @Override
-    public void surfaceCreated(@NonNull SurfaceHolder holder) {
-        thread.setRunning(true);
-        thread.start();
-    }
-
-    @Override
-    public void surfaceChanged(@NonNull SurfaceHolder holder, int format, int width, int height) {
-
-    }
-
-    @Override
-    public void surfaceDestroyed(@NonNull SurfaceHolder holder) {
-
+public class GameView extends View {
+    private Bitmap bm1, bm2;
+    public static int sizeOfMap = 35 * Constraints.SCREEN_WIDTH/1000;
+    private int h = 20, w = 20;
+    private ArrayList<Board> arrBoard = new ArrayList<>();
+    public GameView(Context context, @Nullable AttributeSet attrs) {
+        super(context, attrs);
+        bm1 = BitmapFactory.decodeResource(this.getResources(),R.drawable.dark);
+        bm1 = Bitmap.createScaledBitmap(bm1, sizeOfMap, sizeOfMap, true);
+        bm2 = BitmapFactory.decodeResource(this.getResources(),R.drawable.light);
+        bm2 = Bitmap.createScaledBitmap(bm2, sizeOfMap, sizeOfMap, true);
+        for(int i = 0; i < h; i++){
+            for(int j = 0; j < w; j++){
+                if((i+j)%2 ==0){
+                    arrBoard.add(new Board(bm1,j*sizeOfMap + Constraints.SCREEN_WIDTH/2-(w/2)*sizeOfMap,
+                            i * sizeOfMap + 500 * Constraints.SCREEN_HEIGHT/1920,sizeOfMap,sizeOfMap));
+                }else{
+                    arrBoard.add(new Board(bm2,j*sizeOfMap + Constraints.SCREEN_WIDTH/2-(w/2)*sizeOfMap,
+                            i * sizeOfMap + 500 * Constraints.SCREEN_HEIGHT/1920,sizeOfMap,sizeOfMap));
+                }
+            }
+        }
     }
 
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
-        canvas.drawColor(Color.WHITE);
-        Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
-        p.setColor(Color.BLACK);
-        for (int i = 0; i < 10; i++){
-            for (int j = 0; j < 9; j++){
-                canvas.drawLine(0,drawY + (i * cellWidth),cellWidth * 10,
-                        drawY+ (i* cellWidth),p);
-                canvas.drawLine(j * cellWidth, drawY, j * cellWidth, drawY + cellWidth * 9, p);
-            }
+        canvas.drawColor(0xFFFFFF);
+        for (int i = 0; i < arrBoard.size(); i++){
+            canvas.drawBitmap(arrBoard.get(i).getBm(), arrBoard.get(i).getX(),
+                    arrBoard.get(i).getY(), null);
         }
-
     }
 }
