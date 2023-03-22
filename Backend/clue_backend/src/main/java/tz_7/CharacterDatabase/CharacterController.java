@@ -1,4 +1,4 @@
-package tz_7.ChatacterDatabase;
+package tz_7.CharacterDatabase;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

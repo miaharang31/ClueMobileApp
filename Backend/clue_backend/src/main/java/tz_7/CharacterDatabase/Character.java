@@ -1,4 +1,4 @@
-package tz_7.ChatacterDatabase;
+package tz_7.CharacterDatabase;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

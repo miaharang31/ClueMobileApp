@@ -133,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
         newPlayerLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(MainActivity.this, UserSignUp.class);
 
                 startActivity(intent);

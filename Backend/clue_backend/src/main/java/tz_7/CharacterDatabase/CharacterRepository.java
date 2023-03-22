@@ -1,4 +1,4 @@
-package tz_7.ChatacterDatabase;
+package tz_7.CharacterDatabase;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.JpaRepository;
