@@ -207,8 +207,8 @@
 
     <CheckBox
         android:id="@+id/candlestick"
-        android:layout_width="182dp"
-        android:layout_height="41dp"
+        android:layout_width="216dp"
+        android:layout_height="55dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="60dp"
         android:buttonTint="#08403E"
@@ -226,8 +226,8 @@
 
     <CheckBox
         android:id="@+id/revolver"
-        android:layout_width="168dp"
-        android:layout_height="43dp"
+        android:layout_width="187dp"
+        android:layout_height="52dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="100dp"
         android:buttonTint="#08403E"
@@ -264,8 +264,8 @@
 
     <CheckBox
         android:id="@+id/pipe"
-        android:layout_width="170dp"
-        android:layout_height="42dp"
+        android:layout_width="196dp"
+        android:layout_height="48dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="180dp"
         android:buttonTint="#08403E"
