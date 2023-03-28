@@ -29,8 +29,6 @@ public class GameView extends View{
     private int h = 22, w = 22;
     private ArrayList<Board> arrBoard = new ArrayList<>();
     private Player player1;
-    private boolean move = false;
-    float mx,my;
     Handler handler;
     Runnable r;
 

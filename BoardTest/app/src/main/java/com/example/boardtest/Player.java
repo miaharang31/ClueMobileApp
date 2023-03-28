@@ -73,7 +73,6 @@ public class Player {
         setMove_right(true);
     }
 
-    //draw??
     public void move(){
         this.move_left = false;
         this.move_right = false;
