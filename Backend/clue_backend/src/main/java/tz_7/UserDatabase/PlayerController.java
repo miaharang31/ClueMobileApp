@@ -47,6 +47,13 @@ public class PlayerController {
         Optional<Player> user = repository.findById(id);
         return user;
     }
+    @GetMapping(value = "/getUserid/{username}", produces = "application/json")
+    public int getUseridByUsername(@PathVariable("username") String username) {
+        //logger.info("Entered");
+        Player user = repository.findByUsername(username)
+                .orElseThrow();
+        return user.getId();
+    }
     @PutMapping("/changePassword/{username}")
     public Player changePassword(@PathVariable("username") String username, @RequestBody String password) {
         //logger.info("Entered");
