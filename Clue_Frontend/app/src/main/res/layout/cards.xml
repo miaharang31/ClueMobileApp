@@ -4,19 +4,20 @@
     android:layout_height="1in"
     android:background="#FFFAE3">
 
-<TextView
-    android:id="@+id/space"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@drawable/name_on_card"/>
+    <TextView
+        android:layout_width=".2in"
+        android:layout_height=".2in"
+        android:layout_marginLeft=".55in"
+        android:background="@drawable/personsymbol" />
+
+    <TextView
+        android:id="@+id/space"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/name_on_card" />
 
     <TextView
         android:id="@+id/textView3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.608"
-        tools:ignore="MissingConstraints"
         android:layout_width="1.2in"
         android:layout_height=".15in"
         android:layout_below="@+id/space"
@@ -27,5 +28,7 @@
         android:rotation="-90"
         android:text="Professor Plum"
         android:textColor="@color/black" />
+
+
 
 </RelativeLayout>
