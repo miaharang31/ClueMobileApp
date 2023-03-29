@@ -20,7 +20,7 @@ public class CardController {
         Card car = repository.findByCardID(card.getCardID());
         return car.getName();
     }
-    @PostMapping(value = "/getName", consumes = "application/json")
+    @PostMapping(value = "/getDescription", consumes = "application/json")
     public String getDescription(@RequestBody Card card) {
         Card car = repository.findByCardID(card.getCardID());
         return car.getDescription();
