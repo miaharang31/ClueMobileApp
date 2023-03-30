@@ -10,6 +10,12 @@ import tz_7.GamePlay.GameLobbyDatabase.GameLobby;
 
 import java.util.List;
 
+/**
+ * Author: Mia Harang
+ * This is a controller class that deals with everything
+ * and anything to do with the GameState table of our database
+ */
+
 @RestController
 public class GameStateController {
     @Autowired
@@ -29,6 +35,11 @@ public class GameStateController {
         return stateRepository.save(state);
     }
 
+    /**
+     * Get mapping that gets all game states in session
+     * @return
+     *  A list of game state objects
+     */
     @GetMapping(value = "game")
     public ResponseEntity<List<GameState>> getAllLobbies() {
         return new ResponseEntity<List<GameState>>(stateRepository.findAll(), HttpStatus.OK);

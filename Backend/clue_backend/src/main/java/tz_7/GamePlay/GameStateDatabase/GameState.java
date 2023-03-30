@@ -60,16 +60,22 @@ public class GameState {
     @Column(name = "weapons")
     @NotFound(action = NotFoundAction.IGNORE)
     /**
-     * Card IDs for the weapons
+     * List Card IDs for the weapons
      */
     private ArrayList<Integer> weapons;
 
     @Column(name = "suspects")
     @NotFound(action = NotFoundAction.IGNORE)
+    /**
+     * List Card IDs for the suspects
+     */
     private ArrayList<Integer> suspects;
 
     @Column(name = "rooms")
     @NotFound(action = NotFoundAction.IGNORE)
+    /**
+     * List Card IDs for the rooms
+     */
     private ArrayList<Integer> rooms;
 
 //    @Column(name = "turnOrder")
@@ -79,9 +85,12 @@ public class GameState {
     private Random rand;
     private Integer turnNum;
 
+    /**
+     * Overrides default constructor to initialize all
+     * necessary variables
+     */
     public GameState() {
         finalCardIDs = new Integer[3];
-//        turnOrder = new ArrayList<>();
         rand = new Random();
         weapons = new ArrayList<>();
         rooms = new ArrayList<>();
@@ -100,6 +109,14 @@ public class GameState {
 //        return tmp;
 //    }
 
+    /**
+     * Checks the final guess that a player makes
+     * @param guess
+     *  List of card IDs
+     * @return
+     *  true - if all IDs match
+     *  false - if they don't
+     */
     public Boolean checkFinalGuess(Integer[] guess) {
         for (int i = 0; i < finalCardIDs.length; i++) {
             if(guess[i] != finalCardIDs[i]) {return false;}
@@ -107,6 +124,11 @@ public class GameState {
         return true;
     }
 
+    /**
+     * Randomly selects from weapons, suspects, and rooms
+     * to set as the final cards, takes the cards from the
+     * decks
+     */
     public void setFinalCardIDs() {
         int weapon = rand.nextInt(weapons.size());
         int suspect = rand.nextInt(suspects.size());
@@ -119,8 +141,13 @@ public class GameState {
         weapons.remove(weapon);
         suspects.remove(suspect);
         rooms.remove(room);
-
     }
+
+    /**
+     * Series of get methods for almost every variable
+     * @return
+     *  Different variables depending on the method
+     */
     public Integer[] getFinalCardIDs() {return finalCardIDs;}
     public Integer getVersionID() {return versionID;}
     public Integer getID() {return ID;}
