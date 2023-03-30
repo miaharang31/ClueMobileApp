@@ -4,9 +4,9 @@
     android:shape="rectangle">
 
     <size
-        android:height="1in"
-        android:width=".20in"/>
+        android:height=".000011in"
+        android:width=".75in"/>
     <!--- This is the background color -->
-    <solid android:color="#08403E" />
+    <solid android:color="#9E4C63" />
 
 </shape>
