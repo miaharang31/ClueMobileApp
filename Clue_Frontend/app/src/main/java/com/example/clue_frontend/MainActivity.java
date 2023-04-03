@@ -48,18 +48,18 @@ public class MainActivity extends AppCompatActivity {
         Button submitButton = (Button) findViewById(R.id.submitButton);
         TextView newPlayerLink = findViewById(R.id.NewPlayerLink);
 
-//      MIA USES FOR TESTING
-//        submitButton.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, Home.class);
-//                startActivity(intent);
-//            }
-//        });
+//      USED FOR TESTING
+        submitButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, JoinLobby.class);
+                startActivity(intent);
+            }
+        });
 
         //When the sign in button is clicked and data is entered for usename and password
         submitButton.setOnClickListener(new View.OnClickListener() {
-//
+
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(MainActivity.this, Home.class);
@@ -112,30 +112,15 @@ public class MainActivity extends AppCompatActivity {
                         new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject response) {
-//                                String url2 = "http://coms-309-038.class.las.iastate.edu:8080/getUserId/";
-//                                url2.concat(usernameData);
-//                                RequestQueue request1 = Volley.newRequestQueue(MainActivity.this);
-////
-//                                JsonObjectRequest jreq = new JsonObjectRequest(Request.Method.GET, url, null,
-//                                        new Response.Listener<JSONObject>() {
-//                                            @Override
-//                                            public void onResponse(JSONObject response) {
-//                                                int userID = (int) response;//THIS IS THE FAIL (ASK TA)
-//                                                MyApplication app = (MyApplication) getApplication();
-//                                                app.setUserid(userID);
-//                                            }
-//                                        },
-//                                        new Response.ErrorListener() {
-//                                            @Override
-//                                            public void onErrorResponse(VolleyError error) {
-//                                                Toast.makeText(MainActivity.this, "Error: " + error, Toast.LENGTH_SHORT).show();
-//                                                Log.d("ResponseError", error.toString());
-//                                            }
-//                                        });
-//
-//                                queue.add(jreq);
-//                                MyApplication app = (MyApplication) getApplication();
-//                                app.setUserid(response.);
+
+
+
+                                MyApplication app = (MyApplication) getApplication();
+                                try {
+                                    app.setUserid((Integer) response.get("id"));
+                                } catch (JSONException e) {
+                                    throw new RuntimeException(e);
+                                }
                                 startActivity(intent);
                             }
                         },

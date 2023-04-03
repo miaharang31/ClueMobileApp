@@ -41,14 +41,15 @@ public class GameLobbyController {
         return new ResponseEntity<List<GameLobby>>(gameLobbyRepository.findByHostID(hostID), HttpStatus.OK);
     }
 
-    @PutMapping(value = "lobby/join/{userid}")
-    public ResponseEntity<List<GameLobby>> addPlayerByGameCode(@RequestBody GameLobby lobby, @PathVariable("userid") Integer playerID) {
-//        ResponseEntity<List<GameLobby>> tmp = new ResponseEntity<>(gameLobbyRepository.findByGameCode(gameCode), HttpStatus.OK);
-//        tmp.getBody().get(0).addPlayer(playerID);
-//        gameLobbyRepository.save(tmp.getBody().get(0));
-        System.out.println(lobby.getGameCode());
-        ResponseEntity<List<GameLobby>> tmp = new ResponseEntity<>(gameLobbyRepository.findByGameCode(lobby.getGameCode()), HttpStatus.OK);
-        gameLobbyRepository.save(tmp.getBody().get(0));
-        return tmp;
+    @PutMapping(value = "lobby/join/{userid}", consumes = "application/json")
+    public GameLobby addPlayerByGameCode(@RequestBody GameLobby lobby, @PathVariable("userid") Integer playerID) {
+//        System.out.println(lobby.getGameCode());
+        List<GameLobby> tmp = gameLobbyRepository.findByGameCode(lobby.getGameCode());
+        if(tmp.get(0).addPlayer(playerID)) {
+            gameLobbyRepository.save(tmp.get(0));
+        } else {
+            //TODO: THROW ERROR OF SOME KIND
+        }
+        return tmp.get(0);
     }
 }

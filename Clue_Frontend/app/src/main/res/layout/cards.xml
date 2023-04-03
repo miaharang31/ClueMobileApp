@@ -1,25 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width=".75in"
     android:layout_height="1in"
     android:background="#FFFAE3">
 
+    <TextView
+        android:layout_width=".2in"
+        android:layout_height=".2in"
+        android:layout_marginLeft=".55in"
+        android:background="@drawable/personsymbol" />
+
+    <TextView
+        android:id="@+id/space"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/name_on_card" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="1.2in"
         android:layout_height=".15in"
+        android:layout_below="@+id/space"
         android:layout_marginStart="-89dp"
+        android:layout_marginTop="78dp"
         android:background="#9E4C63"
-        android:gravity="center"
-
+        android:gravity="right"
         android:rotation="-90"
         android:text="Professor Plum"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:textColor="@color/black" />
+
+
+
+</RelativeLayout>
