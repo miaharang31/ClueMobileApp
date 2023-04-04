@@ -1,9 +1,7 @@
-package tz_7.UserDatabase;
+package tz_7.PlayerDatabase;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import tz_7.UserDatabase.PlayerRepository;
-import tz_7.UserDatabase.Player;
 
 import java.util.List;
 import java.util.Optional;

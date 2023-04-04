@@ -1,4 +1,4 @@
-package tz_7.UserDatabase;
+package tz_7.PlayerDatabase;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.JpaRepository;
