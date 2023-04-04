@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.Random;
 import java.util.Timer;
@@ -17,7 +18,6 @@ public class DiceRoller extends AppCompatActivity {
 
     ImageView die1;
     ImageView die2;
-    ConstraintLayout roll;
     int numSpaces;
     int die1Number;
     int die2Number;
@@ -35,9 +35,22 @@ public class DiceRoller extends AppCompatActivity {
         setContentView(R.layout.activity_dice_roller);
         die1 = findViewById(R.id.die1);
         die2 = findViewById(R.id.die2);
-        roll = findViewById(R.id.roll);
 
-        roll.setOnClickListener(new View.OnClickListener(){
+        die1.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+
+                rollDice();
+                timer.schedule(new TimerTask(){
+                    @Override
+                    public void run() {
+                        Intent intent = new Intent(DiceRoller.this, Checklist.class);
+                        startActivity(intent);
+                    }
+                }, 2000);
+            }
+        });
+
+        die2.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
 
                 rollDice();
@@ -64,21 +77,16 @@ public class DiceRoller extends AppCompatActivity {
                     die2Number = random.nextInt(6) + 1;
                     die2.setImageResource(dice[die2Number - 1]);
                     try {
-                        // In a try block sleep the thread for a
-                        // smooth animation
                         Thread.sleep(delayTime);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
                 numSpaces = die1Number + die2Number;
+                Toast.makeText(getApplicationContext(), numSpaces, Toast.LENGTH_LONG).show();
             }
         };
-        // Define a Thread object and pass the runnable object
-        // in the constructor.
         Thread thread = new Thread(runnable);
-        // Start the thread. This will cause the run() method to be called
-        // where all the dice rolling animation happens.
         thread.start();
 
   }
