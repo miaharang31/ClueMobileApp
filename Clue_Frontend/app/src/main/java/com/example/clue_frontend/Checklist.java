@@ -2,8 +2,14 @@ package com.example.clue_frontend;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.TimerTask;
 
 public class Checklist extends AppCompatActivity {
 
@@ -21,16 +27,19 @@ public class Checklist extends AppCompatActivity {
     Button leadPipe;
     Button wrench;
 
-//    Button hall;
-//    Button lounge;
-//    Button diningRoom;
-//    Button kitchen;
-//    Button ballroom;
-//    Button conservatory;
-//    Button billiardRoom;
-//    Button library;
-//    Button study;
+    Button hall;
+    Button lounge;
+    Button diningRoom;
+    Button kitchen;
+    Button ballroom;
+    Button conservatory;
+    Button billiardRoom;
+    Button library;
+    Button study;
 
+    TextView exit;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,15 +59,29 @@ public class Checklist extends AppCompatActivity {
         leadPipe = findViewById(R.id.pipe);
         wrench = findViewById(R.id.wrench);
 
-//        hall = findViewById(R.id.hall);
-//        lounge = findViewById(R.id.lounge);
-//        diningRoom = findViewById(R.id.dining);
-//        kitchen = findViewById(R.id.kitchen);
-//        ballroom = findViewById(R.id.ballroom);
-//        conservatory = findViewById(R.id.conservatory);
-//        billiardRoom = findViewById(R.id.billiard);
-//        library = findViewById(R.id.library);
-//        study = findViewById(R.id.study);
+        hall = findViewById(R.id.hall);
+        lounge = findViewById(R.id.lounge);
+        diningRoom = findViewById(R.id.dining);
+        kitchen = findViewById(R.id.kitchen);
+        ballroom = findViewById(R.id.ballroom);
+        conservatory = findViewById(R.id.conservatory);
+        billiardRoom = findViewById(R.id.billiard);
+        library = findViewById(R.id.library);
+        study = findViewById(R.id.study);
 
+        exit = findViewById(R.id.exit);
+
+        mustard.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                getDrawerToggleDelegate();
+            }
+        });
+
+        exit.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(Checklist.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

@@ -2,13 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/roll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFFFF"
+    android:clickable="true"
     tools:context=".DiceRoller">
 
     <ImageView
-        android:id="@+id/dice"
+        android:id="@+id/die1"
         android:layout_width="181dp"
         android:layout_height="182dp"
         android:clickable="true"
@@ -17,19 +19,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.307"
         app:srcCompat="@drawable/dice1" />
+
+    <ImageView
+        android:id="@+id/die2"
+        android:layout_width="181dp"
+        android:layout_height="182dp"
+        android:clickable="true"
+        android:contentDescription="Press the die to roll"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.797"
+        app:srcCompat="@drawable/dice6" />
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="354dp"
+        android:layout_height="45dp"
         android:fontFamily="@font/abhaya_libre_bold"
-        android:text="Press the die to roll"
+        android:text="Tap the screen to roll"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="34sp"
+        android:textSize="38sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/dice"
+        app:layout_constraintBottom_toTopOf="@+id/die1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.652"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.865" />
 </androidx.constraintlayout.widget.ConstraintLayout>

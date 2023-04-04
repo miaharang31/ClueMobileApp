@@ -2,9 +2,11 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ScrollView"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:fillViewport="true"
+    android:focusable="auto"
     android:scrollbarAlwaysDrawVerticalTrack="true"
     android:scrollbarStyle="insideOverlay"
     android:scrollbars="vertical">
@@ -332,7 +334,7 @@
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="425dp"
             android:background="#08403E"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -340,7 +342,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2"
-            app:layout_constraintVertical_bias="1.0"></LinearLayout>
+            app:layout_constraintVertical_bias="0.0"></LinearLayout>
 
         <CheckBox
             android:id="@+id/hall"
@@ -359,9 +361,8 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-            app:layout_constraintVertical_bias="0">
+            app:layout_constraintVertical_bias="0" />
 
-        </CheckBox>
 
         <CheckBox
             android:id="@+id/lounge"
@@ -380,7 +381,191 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-            app:layout_constraintVertical_bias="0"/>
+            app:layout_constraintVertical_bias="0" />
+
+        <CheckBox
+            android:id="@+id/dining"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="130dp"
+            android:buttonTint="#08403E"
+            android:fontFamily="@font/abhaya_libre_medium"
+            android:text="Dining Room"
+            android:textColor="#08403E"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            app:layout_constraintVertical_bias="0" />
+
+        <CheckBox
+            android:id="@+id/kitchen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="185dp"
+            android:buttonTint="#08403E"
+            android:fontFamily="@font/abhaya_libre_medium"
+            android:text="Kitchen"
+            android:textColor="#08403E"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            app:layout_constraintVertical_bias="0" />
+
+        <CheckBox
+            android:id="@+id/ballroom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="240dp"
+            android:buttonTint="#08403E"
+            android:fontFamily="@font/abhaya_libre_medium"
+            android:text="Ballroom"
+            android:textColor="#08403E"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            app:layout_constraintVertical_bias="0" />
+
+        <CheckBox
+            android:id="@+id/conservatory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="295dp"
+            android:buttonTint="#08403E"
+            android:fontFamily="@font/abhaya_libre_medium"
+            android:text="Conservatory"
+            android:textColor="#08403E"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            app:layout_constraintVertical_bias="0" />
+
+        <CheckBox
+            android:id="@+id/billiard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="350dp"
+            android:buttonTint="#08403E"
+            android:fontFamily="@font/abhaya_libre_medium"
+            android:text="Billiard Room"
+            android:textColor="#08403E"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            app:layout_constraintVertical_bias="0" />
+
+        <CheckBox
+            android:id="@+id/library"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="405dp"
+            android:buttonTint="#08403E"
+            android:fontFamily="@font/abhaya_libre_medium"
+            android:text="Library"
+            android:textColor="#08403E"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            app:layout_constraintVertical_bias="0" />
+
+        <CheckBox
+            android:id="@+id/study"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="460dp"
+            android:layout_marginBottom="20dp"
+            android:buttonTint="#08403E"
+            android:fontFamily="@font/abhaya_libre_medium"
+            android:text="Study"
+            android:textColor="#08403E"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            app:layout_constraintVertical_bias="0" />
+
+        <TextView
+            android:id="@+id/exit"
+            android:layout_width="48dp"
+            android:layout_height="56dp"
+            android:layout_marginBottom="51dp"
+            android:clickable="true"
+            android:text="   X"
+            android:textColor="#08403E"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.981"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:layout_width="81dp"
+            android:layout_height="69dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.624"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/personsymbol" />
+
+        <ImageView
+            android:layout_width="81dp"
+            android:layout_height="69dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.724"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.299"
+            app:srcCompat="@drawable/weaponsymbol" />
+
+        <ImageView
+            android:layout_width="121dp"
+            android:layout_height="93dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.59"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.61"
+            app:srcCompat="@drawable/roomsymbol" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

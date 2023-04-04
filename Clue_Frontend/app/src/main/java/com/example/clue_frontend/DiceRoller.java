@@ -1,7 +1,9 @@
 package com.example.clue_frontend;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,8 +15,12 @@ import java.util.TimerTask;
 
 public class DiceRoller extends AppCompatActivity {
 
-    ImageView die;
+    ImageView die1;
+    ImageView die2;
+    ConstraintLayout roll;
     int numSpaces;
+    int die1Number;
+    int die2Number;
     int delayTime = 20;
     int rollAnimations = 25;
     int dice[] = {R.drawable.dice1, R.drawable.dice2, R.drawable.dice3,
@@ -22,13 +28,16 @@ public class DiceRoller extends AppCompatActivity {
     Random random = new Random();
     Timer timer = new Timer();
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dice_roller);
-        die = findViewById(R.id.dice);
+        die1 = findViewById(R.id.die1);
+        die2 = findViewById(R.id.die2);
+        roll = findViewById(R.id.roll);
 
-        die.setOnClickListener(new View.OnClickListener(){
+        roll.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
 
                 rollDice();
@@ -50,8 +59,10 @@ public class DiceRoller extends AppCompatActivity {
                 // In the run() method, use a for loop to iterate
                 // some code to show rolling dice animation
                 for (int i = 0; i < rollAnimations; i++) {
-                    numSpaces = random.nextInt(6) + 1;
-                    die.setImageResource(dice[numSpaces - 1]);
+                    die1Number = random.nextInt(6) + 1;
+                    die1.setImageResource(dice[die1Number - 1]);
+                    die2Number = random.nextInt(6) + 1;
+                    die2.setImageResource(dice[die2Number - 1]);
                     try {
                         // In a try block sleep the thread for a
                         // smooth animation
@@ -60,6 +71,7 @@ public class DiceRoller extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
+                numSpaces = die1Number + die2Number;
             }
         };
         // Define a Thread object and pass the runnable object
