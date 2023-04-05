@@ -24,42 +24,57 @@ import java.util.Random;
 public class GameView extends View {
     static Random rand = new Random();
 
-    //put dice number here:
+    //** NOTE: Put dice number roll for n:
     public static int n = rand.nextInt(11) + 1;
 
+    //** NOTE: Put number of players for number_of_players
     static int number_of_players = 6;
-    static Bitmap edge;
-    private static Bitmap tile1;
-    private static Bitmap tile2;
-    private static Bitmap study;
-    private static Bitmap library;
-    private static Bitmap billiard;
-    private static Bitmap conservatory;
-    private static Bitmap hall;
-    private static Bitmap clue;
-    private static Bitmap ball;
-    private static Bitmap lounge;
-    private static Bitmap dinning;
-    private static Bitmap kitchen;
-    private static Bitmap scarlet_start;
-    private static Bitmap white_start;
-    private static Bitmap plum_start;
-    private static Bitmap mustard_start;
-    private static Bitmap green_start;
-    private static Bitmap peacock_start;
-    private static Bitmap scarlet;
-    private static Bitmap white;
-    private static Bitmap plum;
-    private static Bitmap mustard;
-    private static Bitmap green;
-    private static Bitmap peacock;
 
-    public static int sizeOfMap = 35 * Constraints.SCREEN_WIDTH / 1000;
+    //Edge is the tan "border" sprites around the board.
+    static Bitmap edge;
+    //Tile1 and tile 2 are the dark brown and creme colored tile sprites
+    //Tiles has five attribute things: Bitmap, where Bitmap acts as the tile's sprite,
+    //                                 X, tiles x-axis on the screen,
+    //                                 Y, tiles x-axis on the screen
+    //                                 width: how wide the tiles are based on screen dimensions
+    //                                 height: how tall the tiles are based on screen dimensions
+    private static Bitmap tile1, tile2;
+    // Room sprites
+    // ** NOTE: To get boundaries for each room I will add a room class
+    //         and put the boundaries for each room in there
+    private static Bitmap study, library, billiard, conservatory,
+            hall, clue, ball, lounge, dinning, kitchen;
+
+    //Starting places for each character on the board
+    private static Bitmap scarlet_start, white_start, plum_start,
+            mustard_start, green_start, peacock_start;
+
+    // Character sprites
+    private static Bitmap scarlet, white, plum, mustard, green, peacock;
+
+    //How big each tile is based on screen size
+    public static int sizeOfTile = 35 * Constraints.SCREEN_WIDTH / 1000;
+
+    //How many tiles for the width and height of the board
     private int h = 22, w = 22;
+
+    //Holds all the tiles for the board
     public static ArrayList<Tile> arrBoard = new ArrayList<>();
+
+    //All the possible players
+    //Player has four attribute things: Bitmap, where Bitmap acts as the character's sprite,
+    //                                  Placement: the specific tile where the player is on the board
+
+    //**NOTE: I had to keep x and y values because when I only relied on placement the characters weren't centered
+    //        on their respeced tile.
+    //                                  X, players x-axis on the screen,
+    //                                  Y, players x-axis on the screen
     public static Player player1, player2, player3, player4, player5, player6;
 
+    //Player1 always starts their turn first
     public static Player turn = player1;
+
+    //handler and r redraws the board for every movement, idk the tutorial told me to do it
     Handler handler;
     Runnable r;
 
@@ -68,15 +83,15 @@ public class GameView extends View {
         super(context, attrs);
         System.out.println("************* n:" + n + "\n");
 
-        //creates tiles for the boards
+        //creates tiles for the board sprites
         edge = BitmapFactory.decodeResource(this.getResources(), R.drawable.empty);
-        edge = Bitmap.createScaledBitmap(edge, sizeOfMap, sizeOfMap, true);
+        edge = Bitmap.createScaledBitmap(edge, sizeOfTile, sizeOfTile, true);
         tile1 = BitmapFactory.decodeResource(this.getResources(), R.drawable.dark);
-        tile1 = Bitmap.createScaledBitmap(tile1, sizeOfMap, sizeOfMap, true);
+        tile1 = Bitmap.createScaledBitmap(tile1, sizeOfTile, sizeOfTile, true);
         tile2 = BitmapFactory.decodeResource(this.getResources(), R.drawable.light);
-        tile2 = Bitmap.createScaledBitmap(tile2, sizeOfMap, sizeOfMap, true);
+        tile2 = Bitmap.createScaledBitmap(tile2, sizeOfTile, sizeOfTile, true);
 
-        //create starting places
+        //create starting place sprites
         scarlet_start = BitmapFactory.decodeResource(this.getResources(), R.drawable.scarlet_start);
         scarlet_start = Bitmap.createScaledBitmap(scarlet_start, 56, 43, true);
         white_start = BitmapFactory.decodeResource(this.getResources(), R.drawable.white_start);
@@ -90,7 +105,7 @@ public class GameView extends View {
         peacock_start = BitmapFactory.decodeResource(this.getResources(), R.drawable.peacock_start);
         peacock_start = Bitmap.createScaledBitmap(peacock_start, 46, 42, true);
 
-        //create rooms
+        //create room sprite sprites
         study = BitmapFactory.decodeResource(this.getResources(), R.drawable.study);
         study = Bitmap.createScaledBitmap(study, 242, 205, true);
         library = BitmapFactory.decodeResource(this.getResources(), R.drawable.library);
@@ -112,23 +127,36 @@ public class GameView extends View {
         kitchen = BitmapFactory.decodeResource(this.getResources(), R.drawable.kitchen);
         kitchen = Bitmap.createScaledBitmap(kitchen, 206, 208, true);
 
-        //creates board
+        //creates board and assigns tiles
+
+        //the board goes:  edge: 0, edge: 1, edge: 2, ... edge: 22
+        //                 edge: 23, tile 24:, tile 25, ... tile: 43, edge: 44
+        //                                  continue for 22 rows ...
+        //                               end the board with a row of edges
+
         for (int i = 0; i < h; i++) {
             for (int j = 0; j < w; j++) {
+                //create border
                 if (j == 0 | i == 0 | i == (h - 1) | j == (w - 1)) {
-                    arrBoard.add(new Tile(edge, j * sizeOfMap + Constraints.SCREEN_WIDTH / 2 - (w / 2) * sizeOfMap,
-                            i * sizeOfMap + 500 * Constraints.SCREEN_HEIGHT / 1920, sizeOfMap, sizeOfMap));
-                } else if ((i + j) % 2 == 0) {
-                    arrBoard.add(new Tile(tile1, j * sizeOfMap + Constraints.SCREEN_WIDTH / 2 - (w / 2) * sizeOfMap,
-                            i * sizeOfMap + 500 * Constraints.SCREEN_HEIGHT / 1920, sizeOfMap, sizeOfMap));
-                } else {
-                    arrBoard.add(new Tile(tile2, j * sizeOfMap + Constraints.SCREEN_WIDTH / 2 - (w / 2) * sizeOfMap,
-                            i * sizeOfMap + 500 * Constraints.SCREEN_HEIGHT / 1920, sizeOfMap, sizeOfMap));
+                    arrBoard.add(new Tile(edge, j * sizeOfTile + Constraints.SCREEN_WIDTH / 2 - (w / 2) * sizeOfTile,
+                            i * sizeOfTile + 500 * Constraints.SCREEN_HEIGHT / 1920, sizeOfTile, sizeOfTile));
+                }
+                //create dark tiles
+                else if ((i + j) % 2 == 0) {
+                    arrBoard.add(new Tile(tile1, j * sizeOfTile + Constraints.SCREEN_WIDTH / 2 - (w / 2) * sizeOfTile,
+                            i * sizeOfTile + 500 * Constraints.SCREEN_HEIGHT / 1920, sizeOfTile, sizeOfTile));
+                }
+                //create creme tiles
+                else {
+                    arrBoard.add(new Tile(tile2, j * sizeOfTile + Constraints.SCREEN_WIDTH / 2 - (w / 2) * sizeOfTile,
+                            i * sizeOfTile + 500 * Constraints.SCREEN_HEIGHT / 1920, sizeOfTile, sizeOfTile));
                 }
             }
         }
 
         //set up players and player pieces based on how many players
+        //places characters on respected starting tile
+        //**NOTE: always sets the first turn to player 1
         switch (number_of_players) {
             case 4:
                 scarlet = BitmapFactory.decodeResource(this.getResources(), R.drawable.scarlet);
@@ -257,7 +285,7 @@ public class GameView extends View {
 
         }
 
-
+        // invalidate tells the draw method to redraw everything
         handler = new Handler();
         r = new Runnable() {
             @Override
@@ -298,6 +326,7 @@ public class GameView extends View {
 
 
         //draws player pieces based on how many players
+        //idk why the tutorial told me to put a postDelayed but it works so I'm not complaining
         switch (number_of_players) {
             case 4:
                 canvas.drawBitmap(player1.getBm(), player1.getX(), player1.getY(), null);
@@ -329,6 +358,11 @@ public class GameView extends View {
 
     }
 
+    //for all movement functions:
+    //subtract/add the number of moves by 1 or 22
+    //set the player's placement on the board with x and y
+
+
     public static void TurnLeft() {
         n--;
         System.out.println("********************** TurnLeft updated n: " + GameView.n + "\n");
@@ -348,7 +382,6 @@ public class GameView extends View {
     }
 
     public static void MoveUp() {
-
         n--;
         System.out.println("********************** MoveUp updated n: " + GameView.n + "\n");
         turn.setPlacement(turn.getPlacement() - 22);
@@ -359,8 +392,6 @@ public class GameView extends View {
     }
 
     public static void MoveDown() {
-
-        //(arrBoard.get(turn.getPlacement() + 22).getBm() != edge) && (turn.getPlacement() < 462)
         n--;
         System.out.println("********************** MoveDown updated n: " + GameView.n + "\n");
         turn.setPlacement(turn.getPlacement() + 22);
