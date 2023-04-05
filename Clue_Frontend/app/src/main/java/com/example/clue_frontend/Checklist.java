@@ -7,13 +7,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.TimerTask;
 
 public class Checklist extends AppCompatActivity {
 
-    Button mustard;
+    CheckBox mustard;
     Button plum;
     Button green;
     Button peacock;
@@ -73,7 +74,7 @@ public class Checklist extends AppCompatActivity {
 
         mustard.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                getDrawerToggleDelegate();
+                mustard.setChecked(true);
             }
         });
 
