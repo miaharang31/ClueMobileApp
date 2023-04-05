@@ -6,6 +6,20 @@ public class Tile {
     private Bitmap bm;
     private int x ,y, width, height;
 
+<<<<<<< HEAD
+=======
+    public Bitmap getBm() {
+        return bm;
+    }
+
+    public int getTileX() {
+        return x;
+    }
+
+    public int getTileY() {
+        return y;
+    }
+>>>>>>> d1c6acab2a62f6baafff8147032537a14a6cdabf
     public Tile(Bitmap bm, int x, int y, int width, int height){
         this.bm = bm;
         this.x = x;
@@ -14,6 +28,7 @@ public class Tile {
         this.height = height;
     }
 
+<<<<<<< HEAD
     public Bitmap getBm() {
         return bm;
     }
@@ -53,5 +68,8 @@ public class Tile {
     public void setHeight(int height) {
         this.height = height;
     }
+=======
+
+>>>>>>> d1c6acab2a62f6baafff8147032537a14a6cdabf
 }
 

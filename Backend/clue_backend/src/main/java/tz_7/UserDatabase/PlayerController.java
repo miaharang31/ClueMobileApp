@@ -29,21 +29,30 @@ public class PlayerController {
         List<Player> list = repository.findAll();
         return list;
     }
-    @PostMapping("/saveUser")
-    public String saveUser(@RequestBody Player player) {
-        repository.save(player);
-        return "User saved:" + player.getUsername();
+    @PostMapping(value = "/register", consumes = "application/json") //was save user
+    public Player saveUser(@RequestBody Player player) {
+//        repository.save(player);
+//        return "User saved:" + player.getUsername();
+        return repository.save(player);
     }
-    @PostMapping("/findUserUnP")
-    public Optional<Player> getUserByUsernameAndPassword(@RequestBody String username, @RequestBody String password) {
-        Optional<Player> user = repository.findByUsernameAndPassword(username, password);
-        return user;
+    @PostMapping(value = "/login", consumes = "application/json")
+    public Optional<Player> getUserByUsernameAndPassword(@RequestBody Player player) {
+//        Optional<Player> user = repository.findByUsernameAndPassword(username, password);
+//        return user;
+        return repository.findByUsernameAndPassword(player.getUsername(), player.getPassword());
     }
-    @GetMapping("/getUser/{id}")
+    @GetMapping(value = "/getUser/{id}", produces = "application/json")
     public Optional<Player> getUserById(@PathVariable("id") Integer id) {
         //logger.info("Entered");
         Optional<Player> user = repository.findById(id);
         return user;
+    }
+    @GetMapping(value = "/getUserid/{username}", produces = "application/json")
+    public int getUseridByUsername(@PathVariable("username") String username) {
+        //logger.info("Entered");
+        Player user = repository.findByUsername(username)
+                .orElseThrow();
+        return user.getId();
     }
     @PutMapping("/changePassword/{username}")
     public Player changePassword(@PathVariable("username") String username, @RequestBody String password) {

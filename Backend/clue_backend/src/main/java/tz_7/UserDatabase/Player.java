@@ -11,25 +11,25 @@ public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "User_Id")
+    @Column(name = "id")
     //@NotFound(action = NotFoundAction.IGNORE)
     private int id;
-    @Column(name = "First_Name")
+    @Column(name = "firstname")
     //@NotFound(action = NotFoundAction.IGNORE)
     private String firstname;
-    @Column(name = "Last_Name")
+    @Column(name = "lastname")
     //@NotFound(action = NotFoundAction.IGNORE)
     private String lastname;
-    @Column(name = "Username")
+    @Column(name = "username")
     //@NotFound(action = NotFoundAction.IGNORE)
     private String username;
-    @Column(name = "Email")
+    @Column(name = "email")
     //@NotFound(action = NotFoundAction.IGNORE)
     private String email;
-    @Column(name = "Password")
+    @Column(name = "password")
     //@NotFound(action = NotFoundAction.IGNORE)
     private String password;
-    @Column(name = "User_type")
+    @Column(name = "type")
     //@NotFound(action = NotFoundAction.IGNORE)
     private String type; //use type can be a for administer, b for basic
                             // and p for premium
@@ -37,11 +37,12 @@ public class Player {
 
     public Player() {}
 
-    public Player(int id, String firstname, String lastname, String email, String password, String type) {
-        this.id = id;
+    public Player(String firstname, String lastname, String email, String username, String password, String type) {
+//        this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
+        this.username = username;
         this.password = password;
         this.type = type;
     }

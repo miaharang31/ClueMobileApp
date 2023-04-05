@@ -1,6 +1,7 @@
 package tz_7.GamePlay.GameLobbyDatabase;
 
 import jakarta.servlet.http.HttpServletResponse;
+import net.minidev.json.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.io.FileReader;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 public class GameLobbyController {
@@ -29,28 +32,24 @@ public class GameLobbyController {
     }
 
     @GetMapping("lobby/notPremium")
-    public ResponseEntity<List<GameLobby>> getNormalLobbies() {
+    public ResponseEntity<List<GameLobby>> getAllNormalLobbies() {
         return new ResponseEntity<List<GameLobby>>(gameLobbyRepository.findByIsPremium(false), HttpStatus.OK);
     }
 
-    @GetMapping("lobby/host")
-    public ResponseEntity<List<GameLobby>> getLobbyByHost(@RequestParam("hostID") int hostID) {
+    @GetMapping(value = "lobby/{id}", produces = "application/json")
+    public ResponseEntity<List<GameLobby>> getLobbyByHost(@PathVariable("id") int hostID) {
         return new ResponseEntity<List<GameLobby>>(gameLobbyRepository.findByHostID(hostID), HttpStatus.OK);
     }
 
-    @PostMapping("lobby/join")
-    public String addPlayerByGameCode(@RequestParam("gameCode") String gameCode, @RequestParam("playerID") Integer playerID) {
-        ResponseEntity<List<GameLobby>> tmp = new ResponseEntity<>(gameLobbyRepository.findByGameCode(gameCode), HttpStatus.OK);
-        if(tmp.hasBody()) {
-            boolean canAdd = tmp.getBody().get(0).addPlayer(playerID);
-            if(canAdd) {
-                gameLobbyRepository.save(tmp.getBody().get(0));
-                return "SUCCESS: New Player Added";
-            } else {
-                return "ERROR: Max players reached";
-            }
+    @PutMapping(value = "lobby/join/{userid}", consumes = "application/json")
+    public GameLobby addPlayerByGameCode(@RequestBody GameLobby lobby, @PathVariable("userid") Integer playerID) {
+//        System.out.println(lobby.getGameCode());
+        List<GameLobby> tmp = gameLobbyRepository.findByGameCode(lobby.getGameCode());
+        if(tmp.get(0).addPlayer(playerID)) {
+            gameLobbyRepository.save(tmp.get(0));
         } else {
-            return "ERROR: No Game Found With That Code";
+            //TODO: THROW ERROR OF SOME KIND
         }
+        return tmp.get(0);
     }
 }
