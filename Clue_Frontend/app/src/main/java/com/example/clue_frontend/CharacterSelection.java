@@ -17,7 +17,10 @@ public class CharacterSelection extends AppCompatActivity {
     Button scarlet;
     Button white;
     Button startGame;
-    boolean clicked;
+    int totalPlayers;
+    int numPlayers;
+
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -35,46 +38,71 @@ public class CharacterSelection extends AppCompatActivity {
 
         mustard.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+                mustard.setClickable(false);
+                clicked(mustard);
+                numPlayers++;
 
             }
         });
 
         plum.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-               // plum.isClickable() = false;
+               plum.setClickable(false);
+               clicked(plum);
+               numPlayers++;
 
             }
         });
 
         green.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+                green.setClickable(false);
+                clicked(green);
+                numPlayers++;
 
             }
         });
 
         peacock.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+                peacock.setClickable(false);
+                clicked(peacock);
+                numPlayers++;
 
             }
         });
 
         scarlet.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-
+                scarlet.setClickable(false);
+                clicked(scarlet);
+                numPlayers++;
             }
         });
 
         white.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-
+                clicked(white);
+                numPlayers++;
             }
         });
 
         startGame.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent intent = new Intent(CharacterSelection.this, Game.class);
-                startActivity(intent);
+                if(numPlayers == totalPlayers) {
+                    Intent intent = new Intent(CharacterSelection.this, Game.class);
+                    startActivity(intent);
+                }
             }
         });
+
     }
+
+    private void clicked(Button characterName) {
+        characterName.setClickable(false);
+        characterName.setText(null);
+        characterName.setBackgroundColor(0x8A8787);
+    }
+
+
 }

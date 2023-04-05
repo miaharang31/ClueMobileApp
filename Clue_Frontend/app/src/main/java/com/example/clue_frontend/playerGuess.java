@@ -69,7 +69,7 @@ public class playerGuess extends AppCompatActivity {
 
         exit.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent intent = new Intent(playerGuess.this, MainActivity.class);
+                Intent intent = new Intent(playerGuess.this, CharacterSelection.class);
                 startActivity(intent);
             }
         });
