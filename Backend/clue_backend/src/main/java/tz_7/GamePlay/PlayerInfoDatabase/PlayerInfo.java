@@ -3,6 +3,8 @@ package tz_7.GamePlay.PlayerInfoDatabase;
 import jakarta.persistence.*;
 import tz_7.GamePlay.GameStateDatabase.GameState;
 import tz_7.PlayerDatabase.Player;
+import tz_7.CharacterDatabase.Character;
+
 
 @Entity
 @Table(name = "PlayerInfo")

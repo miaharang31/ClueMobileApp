@@ -1,6 +1,8 @@
 package tz_7.PlayerDatabase;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import tz_7.GamePlay.GameLobbyDatabase.GameLobby;
 
 /**
  * @author Grace Brickey
@@ -34,6 +36,10 @@ public class Player {
     private String type; //use type can be a for administer, b for basic
                             // and p for premium
 
+    @ManyToOne
+    @JoinColumn(name = "gameLobby")
+    @JsonIgnore
+    private GameLobby gameLobby;
 
     public Player() {}
 
@@ -104,4 +110,9 @@ public class Player {
         this.type = type;
     }
 
+    public GameLobby getGameLobby () {return gameLobby;}
+
+    public void setGameLobby(GameLobby lobby) {
+        gameLobby = lobby;
+    }
 }

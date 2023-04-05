@@ -9,15 +9,22 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import tz_7.PlayerDatabase.Player;
+import tz_7.PlayerDatabase.PlayerRepository;
 
+import javax.swing.text.html.Option;
 import java.io.FileReader;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 
 @RestController
 public class GameLobbyController {
     @Autowired
     GameLobbyRepository repo;
+    @Autowired
+    PlayerRepository playerRepo;
 
     private final Logger logger = LoggerFactory.getLogger(GameLobbyRepository.class);
 
@@ -41,15 +48,24 @@ public class GameLobbyController {
         return new ResponseEntity<List<GameLobby>>(repo.findByHostID(hostID), HttpStatus.OK);
     }
 
-    @PutMapping(value = "lobby/join/{userid}", consumes = "application/json")
-    public GameLobby addPlayerByGameCode(@RequestBody GameLobby lobby, @PathVariable("userid") Integer playerID) {
+    @PutMapping(value = "lobby/join/{playerID}", consumes = "application/json")
+    public GameLobby addPlayerByGameCode(@RequestBody GameLobby lobby, @PathVariable Integer playerID) {
 //        System.out.println(lobby.getGameCode());
-        List<GameLobby> tmp = repo.findByGameCode(lobby.getGameCode());
-        if(tmp.get(0).addPlayer(playerID)) {
-            repo.save(tmp.get(0));
+        Optional<GameLobby> tmp = repo.findByGameCode(lobby.getGameCode());
+        Optional<Player> player = playerRepo.findById(playerID);
+        if(tmp.get().addPlayer(player.get())) {
+            player.get().setGameLobby(tmp.get());
+            repo.save(tmp.get());
+            playerRepo.save(player.get());
         } else {
             //TODO: THROW ERROR OF SOME KIND
         }
-        return tmp.get(0);
+        return tmp.get();
+    }
+
+    @GetMapping(value = "lobby/players/{gameLobbyID}")
+    public Set<Player> getAllPlayers(@PathVariable Integer gameLobbyID) {
+        Optional<GameLobby> lobby = repo.findById(gameLobbyID);
+        return lobby.get().getPlayers();
     }
 }

@@ -10,8 +10,11 @@ package tz_7.GamePlay.GameLobbyDatabase;
 import jakarta.persistence.*;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
+import tz_7.PlayerDatabase.Player;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "GameLobby")
@@ -30,8 +33,8 @@ public class GameLobby {
     @Column(name = "gameCode")
     @NotFound(action = NotFoundAction.IGNORE)
     private String gameCode;
-    @Column(name = "playerIDs")
-    private ArrayList<Player> playerIDs;
+    @OneToMany(mappedBy = "gameLobby")
+    private Set<Player> players;
     @Column(name = "hostID", unique = true)
     @NotFound(action = NotFoundAction.IGNORE)
     private Integer hostID;
@@ -40,7 +43,7 @@ public class GameLobby {
     private Boolean isPremium;
 
     public GameLobby() {
-        playerIDs = new ArrayList<Integer>();
+        players = new HashSet<>();
         numPlayers = 1;
     }
 
@@ -50,19 +53,19 @@ public class GameLobby {
         this.hostID = hostID;
         this.isPremium = isPremium;
 
-        playerIDs = new ArrayList<Integer>();
+        players = new HashSet<>();
         numPlayers = 1;
     }
 
-    public ArrayList<Integer> getCurPlayerIDs() {return playerIDs;}
+    public Set<Player> getCurPlayerIDs() {return players;}
     private boolean canAddPlayer() {
         if(numPlayers+1 <= maxPlayers) {return true;}
         return false;
     }
 
-    public Boolean addPlayer(Integer playerID) {
+    public Boolean addPlayer(Player player) {
         if(canAddPlayer()) {
-            playerIDs.add(playerID);
+            this.players.add(player);
             numPlayers += 1;
             return true;
         } else {
@@ -75,4 +78,5 @@ public class GameLobby {
     public Boolean getIsPremium() {return isPremium;}
     public Integer getMaxPlayers() {return maxPlayers;}
     public Integer getNumPlayers() {return numPlayers;}
+    public Set<Player> getPlayers() {return players;}
 }
