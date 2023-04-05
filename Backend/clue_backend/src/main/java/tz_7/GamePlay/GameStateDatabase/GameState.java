@@ -18,7 +18,6 @@ public class GameState {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", unique = true)
-    @NotFound(action = NotFoundAction.IGNORE)
     /**
      * Game ID
      */
