@@ -326,6 +326,5 @@ public class MainActivity extends AppCompatActivity {
         public boolean onTouch(View v, MotionEvent event) {
             return gestureDetector.onTouchEvent(event);
         }
->>>>>>> d1c6acab2a62f6baafff8147032537a14a6cdabf
     }
 }
