@@ -1,10 +1,10 @@
 package tz_7.GamePlay.GameLobbyDatabase;
 
 /**
+ * Author: Mia Harang
  * Table in DB for all open games
  * Includes:
  *  Game type (ie. Premium or Normal)
- *
  */
 
 import jakarta.persistence.*;
@@ -31,8 +31,7 @@ public class GameLobby {
     @NotFound(action = NotFoundAction.IGNORE)
     private String gameCode;
     @Column(name = "playerIDs")
-    @NotFound(action = NotFoundAction.IGNORE)
-    private ArrayList<Integer> playerIDs;
+    private ArrayList<Player> playerIDs;
     @Column(name = "hostID", unique = true)
     @NotFound(action = NotFoundAction.IGNORE)
     private Integer hostID;

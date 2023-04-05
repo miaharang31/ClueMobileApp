@@ -19,7 +19,7 @@ import java.util.List;
 @RestController
 public class GameStateController {
     @Autowired
-    GameStateRepository stateRepository;
+    GameStateRepository repo;
     private final Logger logger = LoggerFactory.getLogger(GameStateRepository.class);
 
     /**
@@ -32,7 +32,7 @@ public class GameStateController {
     @PostMapping(value = "game/new", consumes = "application/json")
     public GameState newState(@RequestBody GameState state) {
         state.setFinalCardIDs();
-        return stateRepository.save(state);
+        return repo.save(state);
     }
 
     /**
@@ -42,7 +42,7 @@ public class GameStateController {
      */
     @GetMapping(value = "game")
     public ResponseEntity<List<GameState>> getAllLobbies() {
-        return new ResponseEntity<List<GameState>>(stateRepository.findAll(), HttpStatus.OK);
+        return new ResponseEntity<List<GameState>>(repo.findAll(), HttpStatus.OK);
     }
 
     /**
@@ -55,7 +55,7 @@ public class GameStateController {
      */
     @GetMapping(value = "game/checkGuess", consumes = "application/json")
     public Boolean checkGuess (@RequestBody Integer[] guess, @RequestBody Integer gameID) {
-        GameState state = stateRepository.getById(gameID);
+        GameState state = repo.getById(gameID);
         return state.checkFinalGuess(guess);
     }
 
