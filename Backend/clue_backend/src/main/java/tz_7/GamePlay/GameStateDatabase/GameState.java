@@ -15,35 +15,32 @@ import java.util.Random;
 @Entity
 @Table(name = "GameState")
 public class GameState {
+    /**
+     * JPA Database Columns
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", unique = true)
-    /**
-     * Game ID
-     */
+//    ID for the current game state
     private Integer ID;
 
+    /**
+     * JPA Relationships
+     */
     @Column(name = "versionID")
     @NotFound(action = NotFoundAction.IGNORE)
-    /**
-     * The ID of the version of game that it is
-     * i.e basic or some sort of premium game (held in separate table)
-     */
+//    TODO: DATABASE FOR RELATIONSHIP HAS YET TO BE CREATED
     private Integer versionID;
 
+    @OneToOne
     @Column(name = "lobbyID")
     @NotFound(action = NotFoundAction.IGNORE)
-    /**
-     * ID of the lobby that everyone came from
-     */
+//    TODO: CREATE RELATIONSHIP
     private Integer lobbyID;
 
     @Column(name = "finalCardIDs")
     @NotFound(action = NotFoundAction.IGNORE)
-    /**
-     * IDs of the cards that are "put in the center"
-     * Used to check if the final guess of a player is correct
-     */
+//   TODO: CREATE RELATIONSHIP
     private Integer[] finalCardIDs;
 
 //    @Column(name = "abilityDeck")
@@ -58,23 +55,14 @@ public class GameState {
 
     @Column(name = "weapons")
     @NotFound(action = NotFoundAction.IGNORE)
-    /**
-     * List Card IDs for the weapons
-     */
     private ArrayList<Integer> weapons;
 
     @Column(name = "suspects")
     @NotFound(action = NotFoundAction.IGNORE)
-    /**
-     * List Card IDs for the suspects
-     */
     private ArrayList<Integer> suspects;
 
     @Column(name = "rooms")
     @NotFound(action = NotFoundAction.IGNORE)
-    /**
-     * List Card IDs for the rooms
-     */
     private ArrayList<Integer> rooms;
 
 //    @Column(name = "turnOrder")

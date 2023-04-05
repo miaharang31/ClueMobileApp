@@ -1,6 +1,8 @@
 package tz_7.CardDatabase;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import tz_7.GamePlay.PlayerInfoDatabase.PlayerInfo;
 
 @Entity
 public class Card {
@@ -12,6 +14,11 @@ public class Card {
     private String description;
     private String type; //weapon, room, person
     private String color; //hex
+
+    @ManyToOne
+    @JoinColumn(name = "playerInfo")
+    @JsonIgnore
+    private PlayerInfo playerInfo;
 
     public Card() {}
     public Card(int cardID, String name, String description, String type, String color) {
@@ -60,5 +67,12 @@ public class Card {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public PlayerInfo getPlayerInfo() {
+        return playerInfo;
+    }
+    public void setPlayerInfo(PlayerInfo playerInfo) {
+        this.playerInfo = playerInfo;
     }
 }
