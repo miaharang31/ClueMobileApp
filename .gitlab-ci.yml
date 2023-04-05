@@ -3,15 +3,29 @@ stages:
   - androidtest
 
 android-build:
+  image: gjandres/android-ci:latest
   stage: androidbuild
   tags:
     - Piper_tag
   before_script:
       - export GRADLE_USER_HOME=`pwd`/.gradle
       - chmod +x ./Clue_Frontend/gradlew
-      script:
-        - cd Clue_Frontend # to where you have ‘gradlew’
-        - ./gradlew build
-      artifacts:
-        paths:
-          - Clue_Frontend/app/build/outputs/
+  script:
+    - cd Clue_Frontend # to where you have ‘gradlew’
+    - ./gradlew build
+  artifacts:
+    paths:
+      - Clue_Frontend/app/build/outputs/
+
+android-test:
+  image: gjandres/android-ci:latest
+  stage: androidtest
+  tags:
+    - android_tag
+  before_script:
+    - export GRADLE_USER_HOME=`pwd`/.gradle
+    - chmod +x ./Clue_Frontend/gradlew
+  script:
+    - cd Clue_Frontend
+    - ./gradlew test
+
