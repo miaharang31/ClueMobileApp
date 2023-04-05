@@ -176,12 +176,8 @@ public class MainActivity extends AppCompatActivity {
 //        });
     }
 
-<<<<<<< HEAD
-                Intent intent = new Intent(MainActivity.this, UserSignUp.class);
-=======
     private class SwipeListener implements View.OnTouchListener {
-        GestureDetector gestureDetector;
->>>>>>> main
+        GestureDetectort gestureDetector;
 
         SwipeListener(View view) {
             int threshold = 100;
