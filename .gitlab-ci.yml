@@ -21,7 +21,7 @@ android-test:
   image: gjandres/android-ci:latest
   stage: androidtest
   tags:
-    - android_tag
+    - Piper_tag
   before_script:
     - export GRADLE_USER_HOME=`pwd`/.gradle
     - chmod +x ./Clue_Frontend/gradlew
