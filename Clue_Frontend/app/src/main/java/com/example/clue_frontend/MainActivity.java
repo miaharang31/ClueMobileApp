@@ -36,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout relativeLayout;
     SwipeListener swipeListener;
 
+/*for scroll outside override*/
+//    TextView textView;
+//    TextView tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
