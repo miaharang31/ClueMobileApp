@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Game.class);
+                Intent intent = new Intent(MainActivity.this, playerGuess.class);
                 startActivity(intent);
             }
             //
