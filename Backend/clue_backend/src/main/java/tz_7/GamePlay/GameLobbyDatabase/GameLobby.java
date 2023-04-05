@@ -33,13 +33,9 @@ public class GameLobby {
     @Column(name = "playerIDs")
     @NotFound(action = NotFoundAction.IGNORE)
     private ArrayList<Integer> playerIDs;
-
     @Column(name = "hostID", unique = true)
     @NotFound(action = NotFoundAction.IGNORE)
     private Integer hostID;
-
-
-
     @Column(name = "isPremium")
     @NotFound(action = NotFoundAction.IGNORE)
     private Boolean isPremium;
