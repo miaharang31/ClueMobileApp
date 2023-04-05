@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0c24628d-32bd-4e0c-8eb3-ecdb7b891f0e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/SecondActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/SecondActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/UserSignUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/java/com/example/loginactivity/UserSignUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_second.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_second.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_user_sign_up.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/LoginActivity/app/src/main/res/layout/activity_user_sign_up.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2MIf2HOkyi0yZU5eUo8O3uL77b7" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0c24628d-32bd-4e0c-8eb3-ecdb7b891f0e" name="Changes" comment="" />
+      <created>1677459810192</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1677459810192</updated>
+    </task>
+    <servers />
+  </component>
+</project>

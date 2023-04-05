@@ -90,14 +90,15 @@ public class HostLobby extends AppCompatActivity{
                 } else if(numPlayers == 0) {
                     gameCode.setError("Please Select Maximum Players");
                 } else {
-                    String url = "http://10.0.2.2:8080/lobby/new";
+//                    String url = "http://10.0.2.2:8080/lobby/new";
+                    String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/new";
                     RequestQueue queue = Volley.newRequestQueue(HostLobby.this);
                     JSONObject body = null;
                     try {
                         body = new JSONObject();
                         body.put("maxPlayers", numPlayers);
                         body.put("gameCode", gameCodeData);
-                        body.put("hostID", 0);
+                        body.put("hostID", 1);
                         body.put("isPremium", false);
                     } catch (JSONException exception) {
                         exception.printStackTrace();
