@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Mia Harang
@@ -12,7 +13,7 @@ import java.util.List;
 @Repository
 public interface GameLobbyRepository extends JpaRepository<GameLobby, Integer> {
     List<GameLobby> findByHostID(Integer hostID);
-    List<GameLobby> findByGameCode(String gameCode);
+    Optional<GameLobby> findByGameCode(String gameCode);
 
     @Override
     List<GameLobby> findAll();

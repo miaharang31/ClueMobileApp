@@ -118,7 +118,7 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/abhaya_libre_medium"
+        android:fontFamily="@font/abhaya_libre_extrabold"
         android:text="Choose a Character:"
         android:textColor="@color/white"
         android:textSize="48sp"
