@@ -8,18 +8,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.clue_frontend.GamePlay.Constraints;
 import com.example.clue_frontend.GamePlay.Game;
 import com.example.clue_frontend.GamePlay.GameView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -69,12 +81,12 @@ public class MainActivity extends AppCompatActivity {
 
         //When the sign in button is clicked and data is entered for usename and password
         submitButton.setOnClickListener(new View.OnClickListener() {
+//            USED FOR TESTING
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Game.class);
                 startActivity(intent);
             }
-            //
 //        @Override
 //        public void onClick(View v) {
 //            Intent intent = new Intent(MainActivity.this, Home.class);
@@ -127,9 +139,6 @@ public class MainActivity extends AppCompatActivity {
 //                        new Response.Listener<JSONObject>() {
 //                            @Override
 //                            public void onResponse(JSONObject response) {
-//
-//
-//
 //                                MyApplication app = (MyApplication) getApplication();
 //                                try {
 //                                    app.setUserid((Integer) response.get("id"));
@@ -154,16 +163,16 @@ public class MainActivity extends AppCompatActivity {
     });
 
         //when the new player link is clicked, go to th SignUpActivity
-//        newPlayerLink.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent intent = new Intent(MainActivity.this, UserSignUp.class);
-//
-//                startActivity(intent);
-//
-//            }
-//        });
+        newPlayerLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this, UserSignUp.class);
+
+                startActivity(intent);
+
+            }
+        });
     }
 
     private class SwipeListener implements View.OnTouchListener {

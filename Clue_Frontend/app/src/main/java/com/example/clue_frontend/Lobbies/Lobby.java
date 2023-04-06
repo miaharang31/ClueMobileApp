@@ -1,4 +1,4 @@
-package com.example.clue_frontend;
+package com.example.clue_frontend.Lobbies;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.clue_frontend.GamePlay.StartGame;
+import com.example.clue_frontend.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
