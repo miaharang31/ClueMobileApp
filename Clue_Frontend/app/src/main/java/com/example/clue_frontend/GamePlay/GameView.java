@@ -1,22 +1,19 @@
-package com.example.clue_frontend;
+package com.example.clue_frontend.GamePlay;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.os.Bundle;
 import android.util.AttributeSet;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
 import android.os.Handler;
-import android.widget.Button;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.io.ObjectInputStream;
+import com.example.clue_frontend.Constraints;
+import com.example.clue_frontend.Player;
+import com.example.clue_frontend.R;
+
 import java.util.ArrayList;
 import java.util.Random;
 
