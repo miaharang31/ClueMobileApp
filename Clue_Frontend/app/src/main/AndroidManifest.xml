@@ -15,9 +15,25 @@
         android:theme="@style/Theme.Clue_Frontend"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <activity
-            android:name=".Home"
-            android:exported="false" />
+<!--        <activity-->
+<!--<<<<<<< HEAD-->
+<!--            android:name=".playerGuess"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".CharacterSelection"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".Checklist"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".DiceRoller"-->
+<!--            android:exported="false"-->
+<!--            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />-->
+<!--        <activity-->
+<!--=======-->
+<!--&gt;>>>>>> main-->
+<!--            android:name=".Home"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".MainActivity"
             android:exported="true">
