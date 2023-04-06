@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.clue_frontend.GamePlay.Constraints;
 import com.example.clue_frontend.GamePlay.Game;
 import com.example.clue_frontend.GamePlay.GameView;
 

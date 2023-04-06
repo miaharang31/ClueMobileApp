@@ -13,7 +13,6 @@ import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.clue_frontend.Constraints;
 import com.example.clue_frontend.R;
 
 

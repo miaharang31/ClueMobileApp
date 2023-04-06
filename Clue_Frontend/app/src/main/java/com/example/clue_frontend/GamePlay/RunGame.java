@@ -6,7 +6,6 @@ import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.clue_frontend.Constraints;
 import com.example.clue_frontend.R;
 
 //NOTE: Not connected from the lobby

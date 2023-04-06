@@ -10,7 +10,6 @@ import android.os.Handler;
 
 import androidx.annotation.Nullable;
 
-import com.example.clue_frontend.Constraints;
 import com.example.clue_frontend.Player;
 import com.example.clue_frontend.R;
 
@@ -19,13 +18,13 @@ import java.util.Random;
 
 
 public class GameView extends View {
-    static Random rand = new Random();
+    public static Random rand = new Random();
 
     //put dice number here:
     public static int n = rand.nextInt(11) + 1;
 
-    static int number_of_players = 6;
-    static Bitmap edge;
+    public static int number_of_players = 6;
+    public static Bitmap edge;
     private static Bitmap tile1;
     private static Bitmap tile2;
     private static Bitmap study;
