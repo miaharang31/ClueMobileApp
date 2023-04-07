@@ -15,6 +15,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.clue_frontend.GamePlay.StartGame;
 import com.example.clue_frontend.R;
@@ -26,17 +27,25 @@ import org.json.JSONObject;
 public class Lobby extends AppCompatActivity {
 
     HostLobby newLobby;
-    String hostName;
+//    String hostName;
 //    EditText host;
 //    String[] playerNames = new String[newLobby.numPlayers];
 //    EditText[] names = new EditText[newLobby.numPlayers];
     Button startGame;
-//    int count;
+    TextView host;
+    TextView player01;
+    TextView player02;
+    TextView player03;
+    TextView player04;
+    TextView player05;
+    TextView player06;
+    TextView max;
+    TextView cur;
 
-    int max;
-    TextView maxPlayers;
-    TextView currentPlayers;
     JSONObject gameLobby;
+    JSONObject gameHost;
+    JSONArray players;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,22 +55,95 @@ public class Lobby extends AppCompatActivity {
        // startGame = (Button)findViewById(R.id.startGame);
 //        host = findViewById(R.id.host);
         startGame = findViewById(R.id.startGame);
-        maxPlayers = findViewById(R.id.maxplayertxt);
-        currentPlayers = findViewById(R.id.currentplayertxt);
-//        String currentName;
-//        int topPadding = 150;
+        host = findViewById(R.id.hostNameText);
+        max = findViewById(R.id.max);
+        cur = findViewById(R.id.cur);
+        player01 = findViewById(R.id.player_01);
+        player02 = findViewById(R.id.player_02);
+        player03 = findViewById(R.id.player_03);
+        player04 = findViewById(R.id.player_04);
+        player05 = findViewById(R.id.player_05);
+        player06 = findViewById(R.id.player_06);
 
         RequestQueue queue = Volley.newRequestQueue(Lobby.this);
-        String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/1";
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONArray>() {
+//        String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/1";
+        String url = "http://10.0.2.2:8080/lobby/1";
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONArray response) {
+                    public void onResponse(JSONObject response) {
                         Log.d("Response", response.toString());
                         try {
-                            max = (int) response.getJSONObject(0).get("maxPlayers");
-                            maxPlayers.setText("Max Players: " + max);
-                            currentPlayers.setText("Current Players" + response.getJSONObject(0).get("numPlayers") + "/" + max);
+                            int gameID = response.getInt("id");
+                            max.setText(response.get("maxPlayers").toString());
+                            String url = "http://10.0.2.2:8080/lobby/host/" + gameID;
+                            JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                                    new Response.Listener<JSONObject>() {
+                                        @Override
+                                        public void onResponse(JSONObject response) {
+                                            try {
+                                                host.setText(response.getString("firstname") + " " + response.getString("lastname"));
+                                            } catch (JSONException e) {
+                                                throw new RuntimeException(e);
+                                            }
+                                        }
+                                    },
+                                    new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+//                                            TODO: HANDLE ERROR RESPONSE
+                                        }
+                                    });
+                                    queue.add(request);
+//                                    TODO: FIGURE OUT HOW TO DO DYNAMICALLY
+                                    cur.setText(response.get("numPlayers").toString());
+                                    url = "http://10.0.2.2:8080/lobby/players/" + gameID;
+                                    JsonArrayRequest request1  = new JsonArrayRequest(Request.Method.GET, url, null,
+                                            new Response.Listener<JSONArray>() {
+                                                @Override
+                                                public void onResponse(JSONArray response) {
+                                                    for (int i = 0; i < response.length(); i++) {
+                                                        try {
+                                                            switch (i) {
+                                                                case 0:
+                                                                    player01.setVisibility(View.VISIBLE);
+                                                                    player01.setText(response.getJSONObject(i).get("firstname") + " " + response.getJSONObject(i).get("lastname"));
+                                                                    break;
+                                                                case 1:
+                                                                    player02.setVisibility(View.VISIBLE);
+                                                                    player02.setText(response.getJSONObject(i).get("firstname") + " " + response.getJSONObject(i).get("lastname"));
+                                                                    break;
+                                                                case 2:
+                                                                    player03.setVisibility(View.VISIBLE);
+                                                                    player03.setText(response.getJSONObject(i).get("firstname") + " " + response.getJSONObject(i).get("lastname"));
+                                                                    break;
+                                                                case 3:
+                                                                    player04.setVisibility(View.VISIBLE);
+                                                                    player04.setText(response.getJSONObject(i).get("firstname") + " " + response.getJSONObject(i).get("lastname"));
+                                                                    break;
+                                                                case 4:
+                                                                    player05.setVisibility(View.VISIBLE);
+                                                                    player05.setText(response.getJSONObject(i).get("firstname") + " " + response.getJSONObject(i).get("lastname"));
+                                                                    break;
+                                                                case 5:
+                                                                    player01.setVisibility(View.VISIBLE);
+                                                                    player06.setText(response.getJSONObject(i).get("firstname") + " " + response.getJSONObject(i).get("lastname"));
+                                                                    break;
+
+                                                            }
+                                                        } catch (JSONException e) {
+                                                            throw new RuntimeException(e);
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            new Response.ErrorListener() {
+                                                @Override
+                                                public void onErrorResponse(VolleyError error) {
+
+                                                }
+                                            });
+                                        queue.add(request1);
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
@@ -77,27 +159,10 @@ public class Lobby extends AppCompatActivity {
             );
         queue.add(request);
 
-        System.out.println("hi");
-
-        // insert host name
-//        host.setText(hostName);
-
-
-
-        // create text boxes with each player's name
-//        for(int i = 0; i <= playerNames.length; i++){
-//
-//            currentName = playerNames[i];
-//            names[i].setText(currentName);
-//            names[i].setPadding(45, topPadding, 45, 100);
-//            //names[i].setBackgroundColor(#);
-//            topPadding+= 50;
-//            count++;
-//        }
-
         startGame.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                String url = "http://10.0.2.2:8080/"
                 Intent intent = new Intent(Lobby.this, StartGame.class);
                 startActivity(intent);
             }

@@ -32,7 +32,7 @@ public class GameState {
 //    TODO: DATABASE FOR RELATIONSHIP HAS YET TO BE CREATED
     private Integer versionID;
 
-    @OneToOne
+//    @OneToOne
     @Column(name = "lobbyID")
     @NotFound(action = NotFoundAction.IGNORE)
 //    TODO: CREATE RELATIONSHIP
