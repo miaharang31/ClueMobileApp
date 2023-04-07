@@ -1,4 +1,4 @@
-package com.example.clue_frontend;
+package com.example.clue_frontend.GamePlay;
 
 import androidx.appcompat.app.AppCompatActivity;
 
