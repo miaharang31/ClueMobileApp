@@ -1,4 +1,6 @@
 package com.example.clue_frontend.GamePlay;
 
-public class StartGame {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class StartGame extends AppCompatActivity {
 }
