@@ -3,13 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#520120">
-
+<Button
+    android:id="@+id/exitbtn"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="EXIT"
+    android:textSize="15dp"
+    />
 
     <TextView
         android:id="@+id/rules"
         android:layout_width="100mm"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_below="@+id/exitbtn"
         android:background="#B57114"
         android:fontFamily="@font/abhaya_libre_extrabold"
         android:shadowColor="#520120"

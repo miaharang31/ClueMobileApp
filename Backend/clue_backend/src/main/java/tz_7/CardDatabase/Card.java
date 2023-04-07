@@ -10,7 +10,7 @@ public class Card {
     private int cardID;
     private String name;
     private String type; //weapon, room, person
-    private String cardImage; //hex
+    private String cardImage; 
 
     public Card() {}
     public Card(int cardID, String name, String type, String cardImage) {
