@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
     tools:context=".MainActivity"
     android:id="@+id/relative_layout"
     android:background="#520120">
@@ -14,6 +13,7 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:layout_marginTop="0in"
         android:textColor="@color/white"
         android:shadowColor="#B57114"
         android:shadowDx="9"
@@ -28,6 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="80dp"
+        android:layout_below="@+id/textView2"
         android:fontFamily="@font/aladin"
         android:shadowColor="#B57114"
         android:shadowDx="9"
@@ -43,6 +44,7 @@
         android:layout_margin="50dp"
         app:cardCornerRadius="30dp"
         app:cardElevation="20dp"
+        android:layout_below="@+id/textView"
         >
 
         <LinearLayout
@@ -51,7 +53,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center_horizontal"
-            android:padding="24dp">
+            android:padding="10dp">
 
             <LinearLayout
                 android:background="#B57114"
@@ -59,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_gravity="center_horizontal"
-                android:padding="24dp">
+                android:padding="10dp">
 
                 <TextView
                     android:id="@+id/loginText"
