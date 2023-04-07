@@ -56,38 +56,11 @@ public class MainActivity extends AppCompatActivity {
         relativeLayout = findViewById(R.id.relative_layout);
         swipeListener = new SwipeListener(relativeLayout);
 
-//GRACE USES FOR RULES PAGE
-//        setContentView(R.layout.rules_page); //activity_main
-
-//        textView = (TextView) findViewById(R.id.rulesText);
-//        textView.setMovementMethod(new ScrollingMovementMethod());
-//
-//        tv = (TextView) findViewById(R.id.objectives);
-//        tv.setMovementMethod(new ScrollingMovementMethod());
-//
         Button submitButton = (Button) findViewById(R.id.submitButton);
         TextView newPlayerLink = findViewById(R.id.NewPlayerLink);
 
-//      USED FOR TESTING
-//        submitButton.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, JoinLobby.class);
-//                startActivity(intent);
-//            }
-
-
-//        });
-
         //When the sign in button is clicked and data is entered for usename and password
         submitButton.setOnClickListener(new View.OnClickListener() {
-//            USED FOR TESTING
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, Game.class);
-//                startActivity(intent);
-//            }
-
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(MainActivity.this, Home.class);
@@ -118,14 +91,6 @@ public class MainActivity extends AppCompatActivity {
 
             // if all textboxes are correct, all data will be added to the SecondActivity (main page for either regular/premium users) and will start
             if (checkUsername == true && checkPassword == true){
-//                intent.putExtra("firstNameData",firstNameData);
-//                intent.putExtra("lastNameData",lastNameData);
-//                intent.putExtra("emailData",emailData);
-//                intent.putExtra("usernameData",usernameData);
-//                intent.putExtra("passwordData",passwordData);
-
-//                startActivity(intent);
-
                 String url = "http://coms-309-038.class.las.iastate.edu:8080/login";
                 RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
                 JSONObject json = null;

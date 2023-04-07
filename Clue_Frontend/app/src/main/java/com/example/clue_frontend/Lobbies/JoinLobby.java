@@ -15,6 +15,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.clue_frontend.MyApplication;
 import com.example.clue_frontend.R;
 
 import org.json.JSONException;
@@ -38,8 +39,9 @@ public class JoinLobby extends AppCompatActivity {
                 if(gameCodeData.isEmpty()) {
                     gameCode.setError("Game Code cannot be empty!");
                 } else {
-                    String url = "http://10.0.2.2:8080/lobby/join/2";
-//                    String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/join/1";
+                    MyApplication app = (MyApplication) getApplication();
+//                    String url = "http://10.0.2.2:8080/lobby/join/2";
+                    String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/join/" + app.getUserid();
                     RequestQueue queue = Volley.newRequestQueue(JoinLobby.this);
                     JSONObject body = null;
                     try {
@@ -53,6 +55,11 @@ public class JoinLobby extends AppCompatActivity {
                             new Response.Listener<JSONObject>() {
                                 @Override
                                 public void onResponse(JSONObject response) {
+                                    try {
+                                        app.setLobbyid((Integer) response.get("id"));
+                                    } catch (JSONException e) {
+                                        throw new RuntimeException(e);
+                                    }
                                     startActivity(intent);
                                 }
                             },

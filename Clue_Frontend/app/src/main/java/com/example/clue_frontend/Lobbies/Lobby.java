@@ -18,6 +18,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.clue_frontend.GamePlay.StartGame;
+import com.example.clue_frontend.MyApplication;
 import com.example.clue_frontend.R;
 
 import org.json.JSONArray;
@@ -27,10 +28,6 @@ import org.json.JSONObject;
 public class Lobby extends AppCompatActivity {
 
     HostLobby newLobby;
-//    String hostName;
-//    EditText host;
-//    String[] playerNames = new String[newLobby.numPlayers];
-//    EditText[] names = new EditText[newLobby.numPlayers];
     Button startGame;
     TextView host;
     TextView player01;
@@ -66,8 +63,9 @@ public class Lobby extends AppCompatActivity {
         player06 = findViewById(R.id.player_06);
 
         RequestQueue queue = Volley.newRequestQueue(Lobby.this);
-//        String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/1";
-        String url = "http://10.0.2.2:8080/lobby/1";
+        MyApplication app = (MyApplication) getApplication();
+        String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/" + app.getGameid();
+//        String url = "http://10.0.2.2:8080/lobby/" + app.getGameid();
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -76,7 +74,8 @@ public class Lobby extends AppCompatActivity {
                         try {
                             int gameID = response.getInt("id");
                             max.setText(response.get("maxPlayers").toString());
-                            String url = "http://10.0.2.2:8080/lobby/host/" + gameID;
+                            String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/host." + gameID;
+//                            String url = "http://10.0.2.2:8080/lobby/host/" + gameID;
                             JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                                     new Response.Listener<JSONObject>() {
                                         @Override
@@ -97,7 +96,8 @@ public class Lobby extends AppCompatActivity {
                                     queue.add(request);
 //                                    TODO: FIGURE OUT HOW TO DO DYNAMICALLY
                                     cur.setText(response.get("numPlayers").toString());
-                                    url = "http://10.0.2.2:8080/lobby/players/" + gameID;
+                                    url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/players/" + gameID;
+//                                    url = "http://10.0.2.2:8080/lobby/players/" + gameID;
                                     JsonArrayRequest request1  = new JsonArrayRequest(Request.Method.GET, url, null,
                                             new Response.Listener<JSONArray>() {
                                                 @Override
@@ -162,7 +162,8 @@ public class Lobby extends AppCompatActivity {
         startGame.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                String url = "http://10.0.2.2:8080/"
+//                TODO: create game state
+//                String url = "http://10.0.2.2:8080/";
                 Intent intent = new Intent(Lobby.this, StartGame.class);
                 startActivity(intent);
             }
