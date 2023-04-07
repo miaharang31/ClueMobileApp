@@ -36,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout relativeLayout;
     SwipeListener swipeListener;
 
+/*for scroll outside override*/
+//    TextView textView;
+//    TextView tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,11 +80,13 @@ public class MainActivity extends AppCompatActivity {
 
         //When the sign in button is clicked and data is entered for usename and password
         submitButton.setOnClickListener(new View.OnClickListener() {
+
 //            @Override
 //            public void onClick(View v) {
 //                Intent intent = new Intent(MainActivity.this, Game.class);
 //                startActivity(intent);
 //            }
+
             //
         @Override
         public void onClick(View v) {

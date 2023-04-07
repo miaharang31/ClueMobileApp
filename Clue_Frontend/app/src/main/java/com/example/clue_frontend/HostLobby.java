@@ -32,9 +32,12 @@ public class HostLobby extends AppCompatActivity{
     Button five;
     Button six;
     Button createLobby;
-
     EditText gameCode;
 
+    /**
+     * Overriding the onCreate method to show the layout we need
+     * @param saveInstanceState
+     */
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
@@ -123,6 +126,11 @@ public class HostLobby extends AppCompatActivity{
             }
         });
     }
+
+    /**
+     * Method that clears the colors of the buttons
+     * when the user chooses a button
+     */
     private void resetButtons() {
         three.setBackgroundColor(Color.parseColor("#08403E"));
         four.setBackgroundColor(Color.parseColor("#08403E"));
