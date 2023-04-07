@@ -1,34 +1,29 @@
-package com.example.clue_frontend;
+package com.example.clue_frontend.GamePlay;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.os.Bundle;
 import android.util.AttributeSet;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
 import android.os.Handler;
-import android.widget.Button;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.io.ObjectInputStream;
+import com.example.clue_frontend.R;
+
 import java.util.ArrayList;
 import java.util.Random;
 
 
 public class GameView extends View {
-    static Random rand = new Random();
+    public static Random rand = new Random();
 
     //put dice number here:
     public static int n = rand.nextInt(11) + 1;
 
-    static int number_of_players = 6;
-    static Bitmap edge;
+    public static int number_of_players = 6;
+    public static Bitmap edge;
     private static Bitmap tile1;
     private static Bitmap tile2;
     private static Bitmap study;

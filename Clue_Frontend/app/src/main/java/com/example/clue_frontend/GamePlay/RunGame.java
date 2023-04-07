@@ -1,10 +1,12 @@
-package com.example.clue_frontend;
+package com.example.clue_frontend.GamePlay;
 
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.clue_frontend.R;
 
 //NOTE: Not connected from the lobby
 
