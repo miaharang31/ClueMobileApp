@@ -32,7 +32,7 @@ public class GameState {
 //    TODO: DATABASE FOR RELATIONSHIP HAS YET TO BE CREATED
     private Integer versionID;
 
-    @OneToOne
+//    @OneToOne
     @Column(name = "lobbyID")
     @NotFound(action = NotFoundAction.IGNORE)
 //    TODO: CREATE RELATIONSHIP
@@ -42,16 +42,6 @@ public class GameState {
     @NotFound(action = NotFoundAction.IGNORE)
 //   TODO: CREATE RELATIONSHIP
     private Integer[] finalCardIDs;
-
-//    @Column(name = "abilityDeck")
-//    @NotFound(action = NotFoundAction.IGNORE)
-//    /**
-//     * IDs of all special ability cards
-//     *  if the cards are in a player's hand, then it is taken out of the deck
-//     * FOR PREMIUM GAME ONLY
-//     * FOR BASIC: is a non-initialized array errors thrown when trying to access it
-//     */
-//    private ArrayList<Integer> abilityDeck;
 
     @Column(name = "weapons")
     @NotFound(action = NotFoundAction.IGNORE)

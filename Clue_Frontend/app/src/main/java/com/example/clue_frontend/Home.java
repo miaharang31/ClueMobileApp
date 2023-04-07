@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.clue_frontend.Lobbies.HostLobby;
+import com.example.clue_frontend.Lobbies.JoinLobby;
 import com.google.android.material.navigation.NavigationView;
 
 public class Home extends AppCompatActivity {

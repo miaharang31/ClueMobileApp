@@ -1,8 +1,7 @@
-package com.example.clue_frontend;
+package com.example.clue_frontend.GamePlay;
 
-import static com.example.clue_frontend.GameView.turn;
+import static com.example.clue_frontend.GamePlay.GameView.turn;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.GestureDetector;
@@ -13,6 +12,8 @@ import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.clue_frontend.R;
 
 
 public class Game extends AppCompatActivity {

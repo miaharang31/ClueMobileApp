@@ -6,6 +6,7 @@ package tz_7.GamePlay.GameLobbyDatabase;
  *  Starting the setup for the game as a whole
  */
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
@@ -32,7 +33,7 @@ public class GameLobby {
         @NotFound(action = NotFoundAction.IGNORE)
     //    Max players allowed for the game
         private Integer maxPlayers;
-        @Column(name = "numPlayers")
+        @Column(name = "numPlayers") 
         @NotFound(action = NotFoundAction.IGNORE)
     //    Current number of players in the lobby
         private Integer numPlayers;
@@ -54,11 +55,11 @@ public class GameLobby {
     //    Players in the lobby (not including the host)
         private Set<Player> players;
 
-        @Column(name = "hostID", unique = true)
-        @NotFound(action = NotFoundAction.IGNORE)
+        @OneToOne
+        @JsonIgnore
     //    Host that created the lobby
     //    TODO: CREATE A ONE TO ONE RELATIONSHIP
-        private Integer hostID;
+        private Player host;
 
     /**
      * No-Argument constructor
@@ -75,13 +76,13 @@ public class GameLobby {
      *  Sets the related variables to given arguments
      * @param maxPlayers
      * @param gameCode
-     * @param hostID
+     * @param host
      * @param isPremium
      */
-    public GameLobby(Integer maxPlayers, String gameCode, Integer hostID, Boolean isPremium) {
+    public GameLobby(Integer maxPlayers, String gameCode, Player host, Boolean isPremium) {
         this.maxPlayers = maxPlayers;
         this.gameCode = gameCode;
-        this.hostID = hostID;
+        this.host = host;
         this.isPremium = isPremium;
 
         players = new HashSet<>();
@@ -112,7 +113,7 @@ public class GameLobby {
     public Boolean addPlayer(Player player) {
         if(canAddPlayer()) {
             this.players.add(player);
-            numPlayers += 1;
+            numPlayers = players.size() + 1;
             return true;
         } else {
             return false;
@@ -132,9 +133,13 @@ public class GameLobby {
     public Boolean removePlayer(Player player) {
         if(numPlayers > 0 && players.contains(player)) {
             players.remove(player);
-            numPlayers--;
+            numPlayers = players.size() + 1;
             return true;
         } else { return false;}
+    }
+
+    public void setHost(Player host) {
+        this.host = host;
     }
 
     /**
@@ -142,12 +147,11 @@ public class GameLobby {
      * @return
      *  the variable that is needed
      */
-    public Set<Player> getCurPlayerIDs() {return players;}
     public String getGameCode() {return gameCode;}
-    public Integer getHostID() {return hostID;}
     public Integer getID() {return ID;}
     public Boolean getIsPremium() {return isPremium;}
     public Integer getMaxPlayers() {return maxPlayers;}
     public Integer getNumPlayers() {return numPlayers;}
     public Set<Player> getPlayers() {return players;}
+    public Player getHost() {return host;}
 }
