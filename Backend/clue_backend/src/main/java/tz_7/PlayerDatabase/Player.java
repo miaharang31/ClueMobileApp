@@ -41,6 +41,10 @@ public class Player {
     @JsonIgnore
     private GameLobby gameLobby;
 
+    @OneToOne
+    @JoinColumn(name = "gameLobbyHost")
+    private GameLobby gameLobbyHost;
+
     public Player() {}
 
     public Player(String firstname, String lastname, String email, String username, String password, String type) {
@@ -115,4 +119,8 @@ public class Player {
     public void setGameLobby(GameLobby lobby) {
         gameLobby = lobby;
     }
+    public void setGameLobbyHost(GameLobby lobby) {
+        gameLobbyHost = lobby;
+    }
+
 }

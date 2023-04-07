@@ -28,9 +28,14 @@ public class GameLobbyController {
 
     private final Logger logger = LoggerFactory.getLogger(GameLobbyRepository.class);
 
-    @PostMapping(value = "/lobby/new", consumes = "application/json")
-    public GameLobby newLobby(@RequestBody GameLobby lobby) {
-        return repo.save(lobby);
+    @PostMapping(value = "/lobby/new/{hostid}", consumes = "application/json")
+    public GameLobby newLobby(@RequestBody GameLobby lobby, @PathVariable Integer hostid) {
+        Optional<Player> host = playerRepo.findById(hostid);
+        lobby.setHost(host.get());
+        host.get().setGameLobbyHost(lobby);
+        repo.save(lobby);
+        playerRepo.save(host.get());
+        return lobby;
     }
 
     @GetMapping("lobby")
@@ -44,8 +49,9 @@ public class GameLobbyController {
     }
 
     @GetMapping(value = "lobby/{id}", produces = "application/json")
-    public ResponseEntity<List<GameLobby>> getLobbyByHost(@PathVariable("id") int hostID) {
-        return new ResponseEntity<List<GameLobby>>(repo.findByHostID(hostID), HttpStatus.OK);
+    public GameLobby getLobbyByHost(@PathVariable("id") int hostID) {
+        Optional<Player> host = playerRepo.findById(hostID);
+        return repo.findByHost(host.get());
     }
 
     @PutMapping(value = "lobby/join/{playerID}", consumes = "application/json")
@@ -66,6 +72,19 @@ public class GameLobbyController {
     @GetMapping(value = "lobby/players/{gameLobbyID}")
     public Set<Player> getAllPlayers(@PathVariable Integer gameLobbyID) {
         Optional<GameLobby> lobby = repo.findById(gameLobbyID);
+//        return null;
         return lobby.get().getPlayers();
+    }
+
+    @GetMapping(value = "lobby/host/{gameLobbyID}")
+    public Player getHost(@PathVariable Integer gameLobbyID) {
+        Optional<GameLobby> lobby = repo.findById(gameLobbyID);
+        return lobby.get().getHost();
+    }
+
+    @DeleteMapping(value = "lobby/delete/{id}")
+    public void deleteLobby(@PathVariable Integer id) {
+        Optional<GameLobby> lobby = repo.findById(id);
+        repo.delete(lobby.get());
     }
 }
