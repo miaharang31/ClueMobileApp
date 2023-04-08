@@ -75,6 +75,21 @@ public class GameView extends View {
     //Player1 always starts their turn first
     public static Player turn = player1;
 
+    //Room: study_tile_placements, Border, door_placements
+    public static Integer[] study_total_tiles = {23,24,25,26,27,28,45,46,47,48,49,50,71,72,120,121};
+
+    //Border: Tile #, wall up, wall down, wall left, wall right
+    public static Object[][] study_borders = {{23,true,false,true,false},{24,true,false,false,false},
+            {25,true,false,false,false},{26,true,false,false,false},{27,true,false,false,false},
+            {28,true,false,false,true},{45,false,false,true,false},{46,false,true,false,false},
+            {47,false,true,false,false},{48,false,true,false,false},{50,false,false,false,true},
+            {71,false,false,true,false},{72,false,false,false,true},{120,false,false,true,false},
+            {121,false,false,true,false}};
+    public static Integer[] study_doors = {45,120};
+    public static Room study_room = new Room(study_total_tiles,study_borders,study_doors);
+
+
+
     //handler and r redraws the board for every movement, idk the tutorial told me to do it
     Handler handler;
     Runnable r;

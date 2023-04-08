@@ -65,12 +65,13 @@ public class Game extends AppCompatActivity {
                                 if (Math.abs(xDiff) > threshold && Math.abs(velocityX) > velocity_threshold) {
                                     if (xDiff > 0) {
                                         //Swiped right
+
                                         //**NOTE: I added a try catch while debugging the out of bounds error, idk if we need it
                                         try {
                                             //If you are not starting on the edge and if there's no edge when you turn right:
                                             if ((GameView.arrBoard.get(turn.getPlacement() + 1).getBm() != GameView.edge) && (turn.getPlacement() % 23 != 22)) {
                                                 //Turn right
-                                                GameView.TurnRight();
+                                                //GameView.TurnRight();
                                             }
                                         }catch (Exception e){
                                             e.printStackTrace();
@@ -81,7 +82,7 @@ public class Game extends AppCompatActivity {
                                             //If you are not starting on the edge and if there's no edge when you turn left:
                                             if ((GameView.arrBoard.get(turn.getPlacement() - 1).getBm() != GameView.edge) && (turn.getPlacement() % 23 != 0)) {
                                                 //Turn left
-                                                GameView.TurnLeft();
+                                                //GameView.TurnLeft();
                                             }
                                         }catch (Exception e){
                                             e.printStackTrace();
@@ -100,7 +101,7 @@ public class Game extends AppCompatActivity {
                                             //If you are not starting on the edge and if there's no edge if you move down:
                                             if(GameView.arrBoard.get(GameView.turn.getPlacement() + 22).getBm() != GameView.edge && turn.getPlacement() < 462){
                                                 //Move down
-                                                GameView.MoveDown();
+                                                //GameView.MoveDown();
                                             }
                                         }catch (Exception e){
                                             e.printStackTrace();
@@ -111,7 +112,7 @@ public class Game extends AppCompatActivity {
                                             //If you are not starting on the edge and if there's no edge if you move up:
                                             if(GameView.arrBoard.get(GameView.turn.getPlacement() - 22).getBm() != GameView.edge && turn.getPlacement() > 22){
                                                 //Move up
-                                                GameView.MoveUp();
+                                                //GameView.MoveUp();
                                             }
                                         }catch (Exception e){
                                             e.printStackTrace();

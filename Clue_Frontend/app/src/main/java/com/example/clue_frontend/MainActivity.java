@@ -198,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
                                         //Swiped right
                                         try {
                                             if ((GameView.arrBoard.get(turn.getPlacement() + 1).getBm() != GameView.edge) && (turn.getPlacement() % 23 != 22)) {
-                                                GameView.TurnRight();
+                                                //GameView.TurnRight();
                                             }
                                         }catch (Exception e){
                                             e.printStackTrace();
@@ -207,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
                                         //Swiped left
                                         try {
                                             if ((GameView.arrBoard.get(turn.getPlacement() - 1).getBm() != GameView.edge) && (turn.getPlacement() % 23 != 0)) {
-                                                GameView.TurnLeft();
+                                                //GameView.TurnLeft();
                                             }
                                         }catch (Exception e){
                                             e.printStackTrace();
@@ -222,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
                                         //Swiped down
                                         try {
                                             if(GameView.arrBoard.get(GameView.turn.getPlacement() + 22).getBm() != GameView.edge && turn.getPlacement() < 462){
-                                                GameView.MoveDown();
+                                                //GameView.MoveDown();
                                             }
                                         }catch (Exception e){
                                             e.printStackTrace();
@@ -231,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
                                         //Swiped up
                                         try {
                                             if(GameView.arrBoard.get(GameView.turn.getPlacement() - 22).getBm() != GameView.edge && turn.getPlacement() > 22){
-                                                GameView.MoveUp();
+                                                //GameView.MoveUp();
                                             }
                                         }catch (Exception e){
                                             e.printStackTrace();
