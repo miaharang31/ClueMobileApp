@@ -1,105 +1,142 @@
 package com.example.clue_frontend.GamePlay;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.os.Bundle;
 import android.util.AttributeSet;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.os.Handler;
+import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.clue_frontend.R;
 
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.Random;
 
 
 public class GameView extends View {
     public static Random rand = new Random();
 
-    //** NOTE: Put dice number roll for n:
+    //put dice number here:
     public static int n = rand.nextInt(11) + 1;
 
-    //** NOTE: Put number of players for number_of_players
-    static int number_of_players = 6;
+    public static int number_of_players = 6;
+    public static Bitmap edge;
+    private static Bitmap tile1;
+    private static Bitmap tile2;
+    private static Bitmap study;
+    private static Bitmap library;
+    private static Bitmap billiard;
+    private static Bitmap conservatory;
+    private static Bitmap hall;
+    private static Bitmap clue;
+    private static Bitmap ball;
+    private static Bitmap lounge;
+    private static Bitmap dinning;
+    private static Bitmap kitchen;
+    private static Bitmap scarlet_start;
+    private static Bitmap white_start;
+    private static Bitmap plum_start;
+    private static Bitmap mustard_start;
+    private static Bitmap green_start;
+    private static Bitmap peacock_start;
+    private static Bitmap scarlet;
+    private static Bitmap white;
+    private static Bitmap plum;
+    private static Bitmap mustard;
+    private static Bitmap green;
+    private static Bitmap peacock;
 
-    //Edge is the tan "border" sprites around the board.
-    static Bitmap edge;
-    //Tile1 and tile 2 are the dark brown and creme colored tile sprites
-    //Tiles has five attribute things: Bitmap, where Bitmap acts as the tile's sprite,
-    //                                 X, tiles x-axis on the screen,
-    //                                 Y, tiles x-axis on the screen
-    //                                 width: how wide the tiles are based on screen dimensions
-    //                                 height: how tall the tiles are based on screen dimensions
-    private static Bitmap tile1, tile2;
-    // Room sprites
-    // ** NOTE: To get boundaries for each room I will add a room class
-    //         and put the boundaries for each room in there
-    private static Bitmap study, library, billiard, conservatory,
-            hall, clue, ball, lounge, dinning, kitchen;
-
-    //Starting places for each character on the board
-    private static Bitmap scarlet_start, white_start, plum_start,
-            mustard_start, green_start, peacock_start;
-
-    // Character sprites
-    private static Bitmap scarlet, white, plum, mustard, green, peacock;
-
-    //How big each tile is based on screen size
-    public static int sizeOfTile = 35 * Constraints.SCREEN_WIDTH / 1000;
-
-    //How many tiles for the width and height of the board
+    public static int sizeOfMap = 35 * Constraints.SCREEN_WIDTH / 1000;
     private int h = 22, w = 22;
-
-    //Holds all the tiles for the board
     public static ArrayList<Tile> arrBoard = new ArrayList<>();
 
-    //All the possible players
-    //Player has four attribute things: Bitmap, where Bitmap acts as the character's sprite,
-    //                                  Placement: the specific tile where the player is on the board
+    //up,down,left,right
+    public static String[][] study_room_info = {{"28","right"}, {"45", "door"}, {"46", "down"}, {"47", "down"}, {"48", "down"}, {"50", "right"}, {"71", "left"}, {"72", "right"},
+            {"120", "left", "door"}, {"121", "down", "right"}};
+    public static String[][] library_room_info = {{"111", "up"},{"112", "door"},{"113", "up", "right"},{"135","right"},
+            {"158", "up"},{"159", "up"},{"160", "up","right"},{"182", "door"},{"199", "down"},
+            {"200", "down"},{"201", "down"},{"202", "down"},{"203", "down"},{"204", "down", "right"}};
+    public static String[][] billiard_room_info = {{"243","door"},{"244", "up"},{"245", "up"},{"246", "up"}, {"247", "up"},
+            {"248", "up"},{"249", "up","right"},{"268", "down"},{"269", "down"},{"270", "down"},{"271", "down","right"},{"289", "door"},
+            {"309", "down"},{"310", "down"},{"311", "down","right"}};
+    public static String[][] conservatory_room_info = {{"353","up"},{"354","up"},{"355","up","door"},{"378","up","right"},
+            {"400","right"},{"422","right"},{"444","right"}};
+    public static String[][] hall_room_info = {{"30","left"},{"35","right"},{"52","door"},{"57","door"},{"74","left"},{"79","right"},
+            {"96","left"},{"101","right"},{"118","left","down"},{"119","down"},{"120","door"},{"121","door"},{"122","down"},{"123","down","right"}};
 
-    //**NOTE: I had to keep x and y values because when I only relied on placement the characters weren't centered
-    //        on their respeced tile.
-    //                                  X, players x-axis on the screen,
-    //                                  Y, players x-axis on the screen
+    public static String[][] ball_room_info = {{"313","up","left"},{"314","up"},{"315","up"},{"316","up"},{"317","up"},{"318","door"},
+            {"319","door"},{"320","up"},{"321","up"},{"322","up","right"},{"335","down","left"},{"336","down"},{"344","door"},{"359","left"},{"366","right"},
+            {"381","door"},{"388","right"},{"403","left"},{"410","right"},{"425","down","left"},{"426","down"},{"427","door"},{"430","door"},{"431","down"},
+            {"432","down","right"},{"450","down","left"},{"451","down","right"}};
+
+    public static String[][] lounge_room_info = {{"37","door"},{"59","left"},{"81","down","left"},{"104","left"},{"126","left","down"},{"127","door"},{"128","down"},
+            {"129","down"},{"130","down"}};
+
+    public static String[][] dinning_room_info = {{"190","up","left"},{"191","up"},{"192","up"},{"193","up"},{"194","up"},{"195","down"},{"196","up"},{"212","left"},
+            {"234","left"},{"256","left"},{"278","down","left"},{"279","down"},{"280","down"},{"303","down","door"},{"304","down"},{"305","down"},{"306","down"}};
+    public static String[][] kitchen_room_info = {{"368","up","left"},{"369","down"},{"370","up"},{"371","up"},{"372","up"},{"390","left"},{"412","left"},
+            {"434","left"},{"456","left"}};
+
+    public static Room study_room, library_room, billiard_room, conservatory_room, hall_room, ball_room,
+            lounge_room, dinning_room, kitchen_room;
+
+    public static ArrayList<Room> total_rooms = new ArrayList<>();
+
+
     public static Player player1, player2, player3, player4, player5, player6;
 
-    //Player1 always starts their turn first
     public static Player turn = player1;
-
-    //Room: study_tile_placements, Border, door_placements
-    public static Integer[] study_total_tiles = {23,24,25,26,27,28,45,46,47,48,49,50,71,72,120,121};
-
-    //Border: Tile #, wall up, wall down, wall left, wall right
-    public static Object[][] study_borders = {{23,true,false,true,false},{24,true,false,false,false},
-            {25,true,false,false,false},{26,true,false,false,false},{27,true,false,false,false},
-            {28,true,false,false,true},{45,false,false,true,false},{46,false,true,false,false},
-            {47,false,true,false,false},{48,false,true,false,false},{50,false,false,false,true},
-            {71,false,false,true,false},{72,false,false,false,true},{120,false,false,true,false},
-            {121,false,false,true,false}};
-    public static Integer[] study_doors = {45,120};
-
-
-    //handler and r redraws the board for every movement, idk the tutorial told me to do it
     Handler handler;
     Runnable r;
 
 
     public GameView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+
+        //create rooms
+        study_room = new Room(study_room_info);
+        library_room = new Room(library_room_info);
+        billiard_room = new Room(billiard_room_info);
+        conservatory_room = new Room(conservatory_room_info);
+        hall_room = new Room(hall_room_info);
+        ball_room = new Room(ball_room_info);
+        lounge_room = new Room(lounge_room_info);
+        dinning_room = new Room(dinning_room_info);
+        kitchen_room = new Room(kitchen_room_info);
+
+        total_rooms.add(study_room);
+        total_rooms.add(library_room);
+        total_rooms.add(billiard_room);
+        total_rooms.add(conservatory_room);
+        total_rooms.add(hall_room);
+        total_rooms.add(ball_room);
+        total_rooms.add(lounge_room);
+        total_rooms.add(dinning_room);
+        total_rooms.add(kitchen_room);
         System.out.println("************* n:" + n + "\n");
 
-        //creates tiles for the board sprites
-        edge = BitmapFactory.decodeResource(this.getResources(), R.drawable.empty);
-        edge = Bitmap.createScaledBitmap(edge, sizeOfTile, sizeOfTile, true);
-        tile1 = BitmapFactory.decodeResource(this.getResources(), R.drawable.dark);
-        tile1 = Bitmap.createScaledBitmap(tile1, sizeOfTile, sizeOfTile, true);
-        tile2 = BitmapFactory.decodeResource(this.getResources(), R.drawable.light);
-        tile2 = Bitmap.createScaledBitmap(tile2, sizeOfTile, sizeOfTile, true);
 
-        //create starting place sprites
+        //creates tiles for the boards
+        edge = BitmapFactory.decodeResource(this.getResources(), R.drawable.empty);
+        edge = Bitmap.createScaledBitmap(edge, sizeOfMap, sizeOfMap, true);
+        tile1 = BitmapFactory.decodeResource(this.getResources(), R.drawable.dark);
+        tile1 = Bitmap.createScaledBitmap(tile1, sizeOfMap, sizeOfMap, true);
+        tile2 = BitmapFactory.decodeResource(this.getResources(), R.drawable.light);
+        tile2 = Bitmap.createScaledBitmap(tile2, sizeOfMap, sizeOfMap, true);
+
+        //create starting places
         scarlet_start = BitmapFactory.decodeResource(this.getResources(), R.drawable.scarlet_start);
         scarlet_start = Bitmap.createScaledBitmap(scarlet_start, 56, 43, true);
         white_start = BitmapFactory.decodeResource(this.getResources(), R.drawable.white_start);
@@ -113,7 +150,7 @@ public class GameView extends View {
         peacock_start = BitmapFactory.decodeResource(this.getResources(), R.drawable.peacock_start);
         peacock_start = Bitmap.createScaledBitmap(peacock_start, 46, 42, true);
 
-        //create room sprite sprites
+        //create rooms
         study = BitmapFactory.decodeResource(this.getResources(), R.drawable.study);
         study = Bitmap.createScaledBitmap(study, 242, 205, true);
         library = BitmapFactory.decodeResource(this.getResources(), R.drawable.library);
@@ -135,36 +172,23 @@ public class GameView extends View {
         kitchen = BitmapFactory.decodeResource(this.getResources(), R.drawable.kitchen);
         kitchen = Bitmap.createScaledBitmap(kitchen, 206, 208, true);
 
-        //creates board and assigns tiles
-
-        //the board goes:  edge: 0, edge: 1, edge: 2, ... edge: 22
-        //                 edge: 23, tile 24:, tile 25, ... tile: 43, edge: 44
-        //                                  continue for 22 rows ...
-        //                               end the board with a row of edges
-
+        //creates board
         for (int i = 0; i < h; i++) {
             for (int j = 0; j < w; j++) {
-                //create border
                 if (j == 0 | i == 0 | i == (h - 1) | j == (w - 1)) {
-                    arrBoard.add(new Tile(edge, j * sizeOfTile + Constraints.SCREEN_WIDTH / 2 - (w / 2) * sizeOfTile,
-                            i * sizeOfTile + 500 * Constraints.SCREEN_HEIGHT / 1920, sizeOfTile, sizeOfTile));
-                }
-                //create dark tiles
-                else if ((i + j) % 2 == 0) {
-                    arrBoard.add(new Tile(tile1, j * sizeOfTile + Constraints.SCREEN_WIDTH / 2 - (w / 2) * sizeOfTile,
-                            i * sizeOfTile + 500 * Constraints.SCREEN_HEIGHT / 1920, sizeOfTile, sizeOfTile));
-                }
-                //create creme tiles
-                else {
-                    arrBoard.add(new Tile(tile2, j * sizeOfTile + Constraints.SCREEN_WIDTH / 2 - (w / 2) * sizeOfTile,
-                            i * sizeOfTile + 500 * Constraints.SCREEN_HEIGHT / 1920, sizeOfTile, sizeOfTile));
+                    arrBoard.add(new Tile(edge, j * sizeOfMap + Constraints.SCREEN_WIDTH / 2 - (w / 2) * sizeOfMap,
+                            i * sizeOfMap + 500 * Constraints.SCREEN_HEIGHT / 1920, sizeOfMap, sizeOfMap));
+                } else if ((i + j) % 2 == 0) {
+                    arrBoard.add(new Tile(tile1, j * sizeOfMap + Constraints.SCREEN_WIDTH / 2 - (w / 2) * sizeOfMap,
+                            i * sizeOfMap + 500 * Constraints.SCREEN_HEIGHT / 1920, sizeOfMap, sizeOfMap));
+                } else {
+                    arrBoard.add(new Tile(tile2, j * sizeOfMap + Constraints.SCREEN_WIDTH / 2 - (w / 2) * sizeOfMap,
+                            i * sizeOfMap + 500 * Constraints.SCREEN_HEIGHT / 1920, sizeOfMap, sizeOfMap));
                 }
             }
         }
 
         //set up players and player pieces based on how many players
-        //places characters on respected starting tile
-        //**NOTE: always sets the first turn to player 1
         switch (number_of_players) {
             case 4:
                 scarlet = BitmapFactory.decodeResource(this.getResources(), R.drawable.scarlet);
@@ -243,6 +267,7 @@ public class GameView extends View {
                 peacock = BitmapFactory.decodeResource(this.getResources(), R.drawable.peacock);
                 peacock = Bitmap.createScaledBitmap(peacock, 30, 30, true);
 
+
                 player1 = new Player(scarlet, 468, 0, 0);
                 player1.setX(arrBoard.get(player1.getPlacement()).getTileX() + 3);
                 player1.setY(arrBoard.get(player1.getPlacement()).getTileY() + 3);
@@ -261,6 +286,7 @@ public class GameView extends View {
                 player4.setX(arrBoard.get(player4.getPlacement()).getTileX() + 1);
                 player4.setY(arrBoard.get(player4.getPlacement()).getTileY() + 3);
 
+                //14
                 player5 = new Player(green, 14, 0, 0);
                 player5.setX(arrBoard.get(player5.getPlacement()).getTileX() + 3);
                 player5.setY(arrBoard.get(player5.getPlacement()).getTileY() + 3);
@@ -293,7 +319,7 @@ public class GameView extends View {
 
         }
 
-        // invalidate tells the draw method to redraw everything
+
         handler = new Handler();
         r = new Runnable() {
             @Override
@@ -334,7 +360,6 @@ public class GameView extends View {
 
 
         //draws player pieces based on how many players
-        //idk why the tutorial told me to put a postDelayed but it works so I'm not complaining
         switch (number_of_players) {
             case 4:
                 canvas.drawBitmap(player1.getBm(), player1.getX(), player1.getY(), null);
@@ -366,46 +391,110 @@ public class GameView extends View {
 
     }
 
-    //for all movement functions:
-    //subtract/add the number of moves by 1 or 22
-    //set the player's placement on the board with x and y
-
-
     public static void TurnLeft() {
-        n--;
-        System.out.println("********************** TurnLeft updated n: " + GameView.n + "\n");
-        turn.setPlacement(turn.getPlacement() - 1);
-        turn.setX(GameView.arrBoard.get(turn.getPlacement()).getTileX() + 3);
-        turn.setY(GameView.arrBoard.get(turn.getPlacement()).getTileY() + 3);
-
+        boolean border = false;
+        for (Room element : total_rooms) {
+            for (int i = 0; i <= element.getRoom().length-1; i++) {
+                System.out.println("i: " + i + ", element.getRoom()[i][0]: " + element.getRoom()[i][0]);
+                System.out.println("turn.getPlacement() - 1: " + (turn.getPlacement() - 1));
+                System.out.println("confirmation: " + String.valueOf(turn.getPlacement() - 1).equals(element.getRoom()[i][0]));
+                System.out.println("wall: " + element.getRoom()[i][element.getRoom()[i].length-1]);
+                if (String.valueOf(turn.getPlacement() - 1).equals(element.getRoom()[i][0])) {
+                    if(element.getRoom()[i][element.getRoom()[i].length - 1].equals("right")){
+                        border = true;
+                        break;
+                    }
+                }
+            }
+            if(border){
+                break;
+            }
+        }
+        if(!border){
+            n--;
+            turn.setPlacement(turn.getPlacement() - 1);
+            turn.setX(GameView.arrBoard.get(turn.getPlacement()).getTileX() + 3);
+            turn.setY(GameView.arrBoard.get(turn.getPlacement()).getTileY() + 3);
+        }
+        System.out.println("---------------------------------------- \n\n");
     }
 
     public static void TurnRight() {
-        n--;
-        System.out.println("********************** TurnRight updated n: " + GameView.n + "\n");
-        turn.setPlacement(turn.getPlacement() + 1);
-        turn.setX(GameView.arrBoard.get(turn.getPlacement()).getTileX() + 3);
-        turn.setY(GameView.arrBoard.get(turn.getPlacement()).getTileY() + 3);
+        boolean border = false;
+        for (Room element : total_rooms) {
+            for (int i = 0; i <= element.getRoom().length-1; i++) {
+                System.out.println("i: " + i + ", element.getRoom()[i][0]: " + element.getRoom()[i][0]);
+                System.out.println("turn.getPlacement() - 1: " + (turn.getPlacement() - 1));
+                if (String.valueOf(turn.getPlacement() + 1).equals(element.getRoom()[i][0])) {
+                    if(element.getRoom()[i][element.getRoom()[i].length-1]=="left"){
+                        border = true;
+                        break;
+                    }
+                }
+            }
+            if(border){
+                break;
+            }
+        }
+        if (!border){
+            n--;
+            turn.setPlacement(turn.getPlacement() + 1);
+            turn.setX(GameView.arrBoard.get(turn.getPlacement()).getTileX() + 3);
+            turn.setY(GameView.arrBoard.get(turn.getPlacement()).getTileY() + 3);
 
+        }
+        System.out.println("---------------------------------------- \n\n");
     }
 
     public static void MoveUp() {
-        n--;
-        System.out.println("********************** MoveUp updated n: " + GameView.n + "\n");
-        turn.setPlacement(turn.getPlacement() - 22);
-        turn.setX(GameView.arrBoard.get(turn.getPlacement()).getTileX() + 3);
-        turn.setY(GameView.arrBoard.get(turn.getPlacement()).getTileY() + 3);
-
-
+        boolean border = false;
+        for (Room element : total_rooms) {
+            for (int i = 0; i <= element.getRoom().length-1; i++) {
+                System.out.println("i: " + i + ", element.getRoom()[i][0]: " + element.getRoom()[i][0]);
+                System.out.println("turn.getPlacement() - 1: " + (turn.getPlacement() - 1));
+                if (String.valueOf(turn.getPlacement() - 22).equals(element.getRoom()[i][0])) {
+                    if(element.getRoom()[i][1]=="down"){
+                        border = true;
+                        break;
+                    }
+                }
+            }
+            if(border){
+                break;
+            }
+        }
+        if(!border){
+            n--;
+            turn.setPlacement(turn.getPlacement() - 22);
+            turn.setX(GameView.arrBoard.get(turn.getPlacement()).getTileX() + 3);
+            turn.setY(GameView.arrBoard.get(turn.getPlacement()).getTileY() + 3);
+        }
+        System.out.println("---------------------------------------- \n\n");
     }
 
     public static void MoveDown() {
-        n--;
-        System.out.println("********************** MoveDown updated n: " + GameView.n + "\n");
-        turn.setPlacement(turn.getPlacement() + 22);
-        turn.setX(GameView.arrBoard.get(turn.getPlacement()).getTileX() + 3);
-        turn.setY(GameView.arrBoard.get(turn.getPlacement()).getTileY() + 3);
-
+        boolean border = false;
+        for (Room element : total_rooms) {
+            for (int i = 0; i <= element.getRoom().length-1; i++) {
+                System.out.println("i: " + i + ", element.getRoom()[i][0]: " + element.getRoom()[i][0]);
+                System.out.println("turn.getPlacement() - 1: " + (turn.getPlacement() - 1));
+                if (String.valueOf(turn.getPlacement() + 22).equals(element.getRoom()[i][0])) {
+                    if(element.getRoom()[i][1]=="up"){
+                        border = true;
+                        break;
+                    }
+                }
+            }
+            if(border){
+                break;
+            }
+        }
+        if(!border){
+            n--;
+            turn.setPlacement(turn.getPlacement() + 22);
+            turn.setX(GameView.arrBoard.get(turn.getPlacement()).getTileX() + 3);
+            turn.setY(GameView.arrBoard.get(turn.getPlacement()).getTileY() + 3);
+        }
+        System.out.println("---------------------------------------- \n\n");
     }
-
 }
