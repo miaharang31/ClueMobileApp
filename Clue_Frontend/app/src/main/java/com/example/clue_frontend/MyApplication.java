@@ -7,6 +7,8 @@ public class MyApplication extends Application {
     private int gameid;
     private int lobbyid;
 
+    private int usersplaying;
+
     public int getLobbyid() {return lobbyid;}
     public int getGameid() {return gameid;}
     public int getUserid() {
@@ -15,8 +17,13 @@ public class MyApplication extends Application {
     public void setUserid(int userid) {
         this.userid = userid;
     }
+
     public void setGameid(int gameid) {
         this.gameid = gameid;
     }
     public void setLobbyid(int lobbyid) {this.lobbyid = lobbyid;}
+
+    public int getUsersplaying() {return usersplaying;}
+
+    public void setUsersplaying(int usersplaying) { this.usersplaying = usersplaying; }
 }
