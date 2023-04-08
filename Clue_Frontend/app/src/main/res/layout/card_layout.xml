@@ -4,9 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <GridView
+        android:id="@+id/gridViewCards"
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:numColumns="3"
+        android:numColumns="2"
         android:horizontalSpacing="20dp"
         android:verticalSpacing="20dp"/>
 </RelativeLayout>

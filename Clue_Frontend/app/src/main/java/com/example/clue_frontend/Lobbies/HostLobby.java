@@ -111,6 +111,7 @@ public class HostLobby extends AppCompatActivity{
                                 public void onResponse(JSONObject response) {
                                     try {
                                         app.setLobbyid((Integer) response.get("id"));
+                                        app.setUsersplaying((Integer) response.get("maxPlayers"));
                                     } catch (JSONException e) {
                                         throw new RuntimeException(e);
                                     }

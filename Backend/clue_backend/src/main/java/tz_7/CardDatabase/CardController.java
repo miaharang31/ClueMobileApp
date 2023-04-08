@@ -30,6 +30,10 @@ public class CardController {
         Card car = repository.findByCardID(card.getCardID());
         return car.getType();
     }
+    @PostMapping(value = "/getCardById", consumes = "application/json")
+    public Card getCardById(@RequestBody Card card) {
+        return repository.findByCardID(card.getCardID());
+    }
     @PostMapping(value = "/createCard", consumes = "application/json")
     public Card createCard(@RequestBody Card card) {
         return repository.save(card);

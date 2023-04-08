@@ -24,6 +24,5 @@ public class MyApplication extends Application {
     public void setLobbyid(int lobbyid) {this.lobbyid = lobbyid;}
 
     public int getUsersplaying() {return usersplaying;}
-
     public void setUsersplaying(int usersplaying) { this.usersplaying = usersplaying; }
 }
