@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, playerGuess.class);
+                Intent intent = new Intent(MainActivity.this, DiceRoller.class);
                 startActivity(intent);
             }
             //
