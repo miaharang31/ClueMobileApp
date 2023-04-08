@@ -8,8 +8,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.clue_frontend.Home;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.clue_frontend.Lobbies.Lobby;
+import com.example.clue_frontend.MyApplication;
+
 import com.example.clue_frontend.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class CharacterSelection extends AppCompatActivity {
 
@@ -22,6 +34,7 @@ public class CharacterSelection extends AppCompatActivity {
     Button startGame;
     int totalPlayers;
     int numPlayers;
+    String chosenChar;
 
 
 
@@ -44,7 +57,7 @@ public class CharacterSelection extends AppCompatActivity {
                 mustard.setClickable(false);
                 clicked(mustard);
                 numPlayers++;
-
+                chosenChar="mustard";
             }
         });
 
@@ -53,7 +66,7 @@ public class CharacterSelection extends AppCompatActivity {
                plum.setClickable(false);
                clicked(plum);
                numPlayers++;
-
+                chosenChar="plum";
             }
         });
 
@@ -62,6 +75,7 @@ public class CharacterSelection extends AppCompatActivity {
                 green.setClickable(false);
                 clicked(green);
                 numPlayers++;
+                chosenChar="green";
 
             }
         });
@@ -71,15 +85,16 @@ public class CharacterSelection extends AppCompatActivity {
                 peacock.setClickable(false);
                 clicked(peacock);
                 numPlayers++;
+                chosenChar="peacock";
 
             }
         });
 
         scarlet.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                scarlet.setClickable(false);
                 clicked(scarlet);
                 numPlayers++;
+                chosenChar="scarlet";
             }
         });
 
@@ -87,24 +102,69 @@ public class CharacterSelection extends AppCompatActivity {
             public void onClick(View v){
                 clicked(white);
                 numPlayers++;
+                chosenChar="white";
             }
         });
 
         startGame.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                if(numPlayers == totalPlayers) {
-                    Intent intent = new Intent(CharacterSelection.this, Home.class); //Game.class
-                    startActivity(intent);
-                }
-            }
-        });
 
+//                if(numPlayers == totalPlayers) {
+                    RequestQueue queue = Volley.newRequestQueue(CharacterSelection.this);
+                    MyApplication app = (MyApplication) getApplication();
+                    Intent intent = new Intent(CharacterSelection.this, Game.class);
+//                    String url = "http://10.0.2.2:8080/info/" + app.getUserid();
+                    String url = "http://coms-309-038.class.las.iastate.edu:8080/info/" + app.getUserid();
+                    JSONObject body = new JSONObject();
+                    try {
+                        body.put("turn", false);
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+                    JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, body,
+                            new Response.Listener<JSONObject>() {
+                                @Override
+                                public void onResponse(JSONObject response) {
+                                    try {
+                                        app.setInfoid(response.getInt("id"));
+                                    } catch (JSONException e) {
+                                        throw new RuntimeException(e);
+                                    }
+//                                    String url = "http://10.0.2.2:8080/info/"+app.getInfoid()+"/character/"+chosenChar;
+                                    String url = "http://coms-309-038.class.las.iastate.edu:8080/info/"+app.getInfoid()+"/character/"+chosenChar;
+                                    JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null,
+                                            new Response.Listener<JSONObject>() {
+                                                @Override
+                                                public void onResponse(JSONObject response) {
+                                                    startActivity(intent);
+                                                }
+                                            },
+                                            new Response.ErrorListener() {
+                                                @Override
+                                                public void onErrorResponse(VolleyError error) {
+//                                                    TODO: handle error
+                                                }
+                                            });
+                                    queue.add(request);
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+//                                    TODO: handle error
+                                }
+                            });
+                    queue.add(request);
+
+                }
+//            }
+        });
     }
 
     private void clicked(Button characterName) {
-        characterName.setClickable(false);
-        characterName.setText(null);
-        characterName.setBackgroundColor(0x8A8787);
+//        characterName.setClickable(false);
+//        characterName.setVisibility(View.INVISIBLE);
+//        characterName.setBackgroundColor(0x8A8787);
     }
 
 

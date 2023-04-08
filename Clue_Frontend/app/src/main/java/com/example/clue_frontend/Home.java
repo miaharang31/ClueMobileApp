@@ -44,6 +44,7 @@ public class Home extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.drawer_layout);
 //        navigationView = findViewById(R.id.nav_view);
+
 //        drawerToggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close);
 //        drawerLayout.addDrawerListener(drawerToggle);
 //        drawerToggle.syncState();

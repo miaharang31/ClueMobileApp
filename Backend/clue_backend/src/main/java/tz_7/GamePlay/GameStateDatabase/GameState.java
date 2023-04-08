@@ -1,11 +1,17 @@
 package tz_7.GamePlay.GameStateDatabase;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
+import org.springframework.beans.factory.annotation.Autowired;
+import tz_7.CardDatabase.Card;
+import tz_7.GamePlay.GameLobbyDatabase.GameLobby;
+import tz_7.CardDatabase.CardRepository;
+import tz_7.PlayerDatabase.Player;
 
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Author: Mia Harang
@@ -29,37 +35,29 @@ public class GameState {
      */
     @Column(name = "versionID")
     @NotFound(action = NotFoundAction.IGNORE)
-//    TODO: DATABASE FOR RELATIONSHIP HAS YET TO BE CREATED
+//    TODO: create version database
     private Integer versionID;
 
-//    @OneToOne
-    @Column(name = "lobbyID")
-    @NotFound(action = NotFoundAction.IGNORE)
-//    TODO: CREATE RELATIONSHIP
-    private Integer lobbyID;
+//    @OneToMany(mappedBy = "gameState")
+//    @JsonIgnore
+//    private Set<Card> finalCards;
+//
+//    @OneToMany(mappedBy = "gameState")
+//    @JsonIgnore
+//    private Set<Card> weapons;
+//
+//    @OneToMany(mappedBy = "gameState")
+//    @JsonIgnore
+//    private Set<Card> suspects;
+//
+//    @OneToMany(mappedBy = "gameState")
+//    @JsonIgnore
+//    private Set<Card> rooms;
 
-    @Column(name = "finalCardIDs")
-    @NotFound(action = NotFoundAction.IGNORE)
-//   TODO: CREATE RELATIONSHIP
-    private Integer[] finalCardIDs;
+    @OneToMany
+    private Set<Player> turnOrder;
 
-    @Column(name = "weapons")
-    @NotFound(action = NotFoundAction.IGNORE)
-    private ArrayList<Integer> weapons;
-
-    @Column(name = "suspects")
-    @NotFound(action = NotFoundAction.IGNORE)
-    private ArrayList<Integer> suspects;
-
-    @Column(name = "rooms")
-    @NotFound(action = NotFoundAction.IGNORE)
-    private ArrayList<Integer> rooms;
-
-//    @Column(name = "turnOrder")
-//    @NotFound(action = NotFoundAction.IGNORE)
-//    private ArrayList<Integer> turnOrder;
-//    private ArrayList<Integer> deck;
-    private Random rand;
+//    private Random rand;
     private Integer turnNum;
 
     /**
@@ -67,11 +65,12 @@ public class GameState {
      * necessary variables
      */
     public GameState() {
-        finalCardIDs = new Integer[3];
-        rand = new Random();
-        weapons = new ArrayList<>();
-        rooms = new ArrayList<>();
-        suspects = new ArrayList<>();
+//        rand = new Random();
+        turnOrder = new HashSet<>();
+//        weapons = new HashSet<>();
+//        suspects = new HashSet<>();
+//        rooms = new HashSet<>();
+//        finalCards = new HashSet<>();
         turnNum = 0;
     }
 
@@ -79,12 +78,13 @@ public class GameState {
         this.versionID = versionID;
     }
 
-//    public Integer getNextPlayer() {
-//        Integer tmp = turnOrder.get(turnNum);
-//        if(turnNum == turnOrder.size()-1) {turnNum = 0;}
-//        else {turnNum += 1;}
-//        return tmp;
-//    }
+    public Player getNextPlayer() {
+        Player[] players = turnOrder.toArray(new Player[0]);
+        Player tmp = players[turnNum];
+        if(turnNum == turnOrder.size()-1) {turnNum = 0;}
+        else {turnNum += 1;}
+        return tmp;
+    }
 
     /**
      * Checks the final guess that a player makes
@@ -94,42 +94,67 @@ public class GameState {
      *  true - if all IDs match
      *  false - if they don't
      */
-    public Boolean checkFinalGuess(Integer[] guess) {
-        for (int i = 0; i < finalCardIDs.length; i++) {
-            if(guess[i] != finalCardIDs[i]) {return false;}
-        }
-        return true;
-    }
+//    public Boolean checkFinalGuess(Set<Card> guess) {
+//        for (int i = 0; i < finalCards.size(); i++) {
+//            if(!finalCards.containsAll(guess)) {return false;}
+//        }
+//        return true;
+//    }
 
     /**
      * Randomly selects from weapons, suspects, and rooms
      * to set as the final cards, takes the cards from the
      * decks
      */
-    public void setFinalCardIDs() {
-        int weapon = rand.nextInt(weapons.size());
-        int suspect = rand.nextInt(suspects.size());
-        int room = rand.nextInt(rooms.size());
+//    public Set<Card> setFinalCards() {
+//        int weapon = rand.nextInt(weapons.size());
+//        int suspect = rand.nextInt(suspects.size());
+//        int room = rand.nextInt(rooms.size());
+//
+//        Card[] weaponstmp = weapons.toArray(new Card[0]);
+//        Card[] suspectstmp = suspects.toArray(new Card[0]);
+//        Card[] roomstmp = rooms.toArray(new Card[0]);
+//
+//        finalCards.add(weaponstmp[weapon]);
+//        finalCards.add(suspectstmp[suspect]);
+//        finalCards.add(roomstmp[room]);
+//
+//        weapons.remove(weaponstmp[weapon]);
+//        suspects.remove(suspectstmp[suspect]);
+//        rooms.remove(roomstmp[room]);
+//
+//        return finalCards;
+//    }
 
-        finalCardIDs[0] = weapons.get(weapon);
-        finalCardIDs[1] = suspects.get(suspect);
-        finalCardIDs[2] = rooms.get(room);
-
-        weapons.remove(weapon);
-        suspects.remove(suspect);
-        rooms.remove(room);
+    public void setTurnOrder(Set<Player> players) {
+        turnOrder = players;
     }
+
+//    public void setWeapons(Set<Card> weapons) {
+//        this.weapons = weapons;
+//    }
+//
+//    public void setRooms(Set<Card> rooms) {
+//        this.rooms = rooms;
+//    }
+//
+//    public void setSuspects(Set<Card> suspects) {
+//        this.suspects = suspects;
+//    }
 
     /**
      * Series of get methods for almost every variable
      * @return
      *  Different variables depending on the method
      */
-    public Integer[] getFinalCardIDs() {return finalCardIDs;}
     public Integer getVersionID() {return versionID;}
     public Integer getID() {return ID;}
-    public Integer getLobbyID() {return lobbyID;}
-    public ArrayList<Integer> getWeapons() {return weapons;}
-    public ArrayList<Integer> getSuspects() {return suspects;}
-    public ArrayList<Integer> getRooms() {return rooms;}
+//    public Set<Card> getFinalCards() {return finalCards;}
+//    public Set<Card> getWeapons() {return weapons;}
+//    public Set<Card> getSuspects() {return suspects;}
+//    public Set<Card> getRooms() {return rooms;}
+
+    public Set<Player> getTurnOrder() {
+        return turnOrder;
+    }
 }

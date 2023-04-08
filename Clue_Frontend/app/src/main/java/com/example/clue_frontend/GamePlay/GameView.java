@@ -1,27 +1,18 @@
 package com.example.clue_frontend.GamePlay;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.os.Bundle;
 import android.util.AttributeSet;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
 import android.os.Handler;
-import android.widget.Button;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.clue_frontend.R;
 
-import java.io.ObjectInputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
 import java.util.Random;
 
 
@@ -61,40 +52,6 @@ public class GameView extends View {
     public static int sizeOfMap = 35 * Constraints.SCREEN_WIDTH / 1000;
     private int h = 22, w = 22;
     public static ArrayList<Tile> arrBoard = new ArrayList<>();
-
-    //up,down,left,right
-    public static String[][] study_room_info = {{"28","right"}, {"45", "door"}, {"46", "down"}, {"47", "down"}, {"48", "down"}, {"50", "right"}, {"71", "left"}, {"72", "right"},
-            {"120", "left", "door"}, {"121", "down", "right"}};
-    public static String[][] library_room_info = {{"111", "up"},{"112", "door"},{"113", "up", "right"},{"135","right"},
-            {"158", "up"},{"159", "up"},{"160", "up","right"},{"182", "door"},{"199", "down"},
-            {"200", "down"},{"201", "down"},{"202", "down"},{"203", "down"},{"204", "down", "right"}};
-    public static String[][] billiard_room_info = {{"243","door"},{"244", "up"},{"245", "up"},{"246", "up"}, {"247", "up"},
-            {"248", "up"},{"249", "up","right"},{"268", "down"},{"269", "down"},{"270", "down"},{"271", "down","right"},{"289", "door"},
-            {"309", "down"},{"310", "down"},{"311", "down","right"}};
-    public static String[][] conservatory_room_info = {{"353","up"},{"354","up"},{"355","up","door"},{"378","up","right"},
-            {"400","right"},{"422","right"},{"444","right"}};
-    public static String[][] hall_room_info = {{"30","left"},{"35","right"},{"52","door"},{"57","door"},{"74","left"},{"79","right"},
-            {"96","left"},{"101","right"},{"118","left","down"},{"119","down"},{"120","door"},{"121","door"},{"122","down"},{"123","down","right"}};
-
-    public static String[][] ball_room_info = {{"313","up","left"},{"314","up"},{"315","up"},{"316","up"},{"317","up"},{"318","door"},
-            {"319","door"},{"320","up"},{"321","up"},{"322","up","right"},{"335","down","left"},{"336","down"},{"344","door"},{"359","left"},{"366","right"},
-            {"381","door"},{"388","right"},{"403","left"},{"410","right"},{"425","down","left"},{"426","down"},{"427","door"},{"430","door"},{"431","down"},
-            {"432","down","right"},{"450","down","left"},{"451","down","right"}};
-
-    public static String[][] lounge_room_info = {{"37","door"},{"59","left"},{"81","down","left"},{"104","left"},{"126","left","down"},{"127","door"},{"128","down"},
-            {"129","down"},{"130","down"}};
-
-    public static String[][] dinning_room_info = {{"190","up","left"},{"191","up"},{"192","up"},{"193","up"},{"194","up"},{"195","down"},{"196","up"},{"212","left"},
-            {"234","left"},{"256","left"},{"278","down","left"},{"279","down"},{"280","down"},{"303","down","door"},{"304","down"},{"305","down"},{"306","down"}};
-    public static String[][] kitchen_room_info = {{"368","up","left"},{"369","down"},{"370","up"},{"371","up"},{"372","up"},{"390","left"},{"412","left"},
-            {"434","left"},{"456","left"}};
-
-    public static Room study_room, library_room, billiard_room, conservatory_room, hall_room, ball_room,
-            lounge_room, dinning_room, kitchen_room;
-
-    public static ArrayList<Room> total_rooms = new ArrayList<>();
-
-
     public static Player player1, player2, player3, player4, player5, player6;
 
     public static Player turn = player1;
@@ -104,29 +61,7 @@ public class GameView extends View {
 
     public GameView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-
-        //create rooms
-        study_room = new Room(study_room_info);
-        library_room = new Room(library_room_info);
-        billiard_room = new Room(billiard_room_info);
-        conservatory_room = new Room(conservatory_room_info);
-        hall_room = new Room(hall_room_info);
-        ball_room = new Room(ball_room_info);
-        lounge_room = new Room(lounge_room_info);
-        dinning_room = new Room(dinning_room_info);
-        kitchen_room = new Room(kitchen_room_info);
-
-        total_rooms.add(study_room);
-        total_rooms.add(library_room);
-        total_rooms.add(billiard_room);
-        total_rooms.add(conservatory_room);
-        total_rooms.add(hall_room);
-        total_rooms.add(ball_room);
-        total_rooms.add(lounge_room);
-        total_rooms.add(dinning_room);
-        total_rooms.add(kitchen_room);
         System.out.println("************* n:" + n + "\n");
-
 
         //creates tiles for the boards
         edge = BitmapFactory.decodeResource(this.getResources(), R.drawable.empty);
@@ -267,7 +202,6 @@ public class GameView extends View {
                 peacock = BitmapFactory.decodeResource(this.getResources(), R.drawable.peacock);
                 peacock = Bitmap.createScaledBitmap(peacock, 30, 30, true);
 
-
                 player1 = new Player(scarlet, 468, 0, 0);
                 player1.setX(arrBoard.get(player1.getPlacement()).getTileX() + 3);
                 player1.setY(arrBoard.get(player1.getPlacement()).getTileY() + 3);
@@ -286,7 +220,6 @@ public class GameView extends View {
                 player4.setX(arrBoard.get(player4.getPlacement()).getTileX() + 1);
                 player4.setY(arrBoard.get(player4.getPlacement()).getTileY() + 3);
 
-                //14
                 player5 = new Player(green, 14, 0, 0);
                 player5.setX(arrBoard.get(player5.getPlacement()).getTileX() + 3);
                 player5.setY(arrBoard.get(player5.getPlacement()).getTileY() + 3);
@@ -392,109 +325,43 @@ public class GameView extends View {
     }
 
     public static void TurnLeft() {
-        boolean border = false;
-        for (Room element : total_rooms) {
-            for (int i = 0; i <= element.getRoom().length-1; i++) {
-                System.out.println("i: " + i + ", element.getRoom()[i][0]: " + element.getRoom()[i][0]);
-                System.out.println("turn.getPlacement() - 1: " + (turn.getPlacement() - 1));
-                System.out.println("confirmation: " + String.valueOf(turn.getPlacement() - 1).equals(element.getRoom()[i][0]));
-                System.out.println("wall: " + element.getRoom()[i][element.getRoom()[i].length-1]);
-                if (String.valueOf(turn.getPlacement() - 1).equals(element.getRoom()[i][0])) {
-                    if(element.getRoom()[i][element.getRoom()[i].length - 1].equals("right")){
-                        border = true;
-                        break;
-                    }
-                }
-            }
-            if(border){
-                break;
-            }
-        }
-        if(!border){
-            n--;
-            turn.setPlacement(turn.getPlacement() - 1);
-            turn.setX(GameView.arrBoard.get(turn.getPlacement()).getTileX() + 3);
-            turn.setY(GameView.arrBoard.get(turn.getPlacement()).getTileY() + 3);
-        }
-        System.out.println("---------------------------------------- \n\n");
+        n--;
+        System.out.println("********************** TurnLeft updated n: " + GameView.n + "\n");
+        turn.setPlacement(turn.getPlacement() - 1);
+        turn.setX(GameView.arrBoard.get(turn.getPlacement()).getTileX() + 3);
+        turn.setY(GameView.arrBoard.get(turn.getPlacement()).getTileY() + 3);
+
     }
 
     public static void TurnRight() {
-        boolean border = false;
-        for (Room element : total_rooms) {
-            for (int i = 0; i <= element.getRoom().length-1; i++) {
-                System.out.println("i: " + i + ", element.getRoom()[i][0]: " + element.getRoom()[i][0]);
-                System.out.println("turn.getPlacement() - 1: " + (turn.getPlacement() - 1));
-                if (String.valueOf(turn.getPlacement() + 1).equals(element.getRoom()[i][0])) {
-                    if(element.getRoom()[i][element.getRoom()[i].length-1]=="left"){
-                        border = true;
-                        break;
-                    }
-                }
-            }
-            if(border){
-                break;
-            }
-        }
-        if (!border){
-            n--;
-            turn.setPlacement(turn.getPlacement() + 1);
-            turn.setX(GameView.arrBoard.get(turn.getPlacement()).getTileX() + 3);
-            turn.setY(GameView.arrBoard.get(turn.getPlacement()).getTileY() + 3);
+        n--;
+        System.out.println("********************** TurnRight updated n: " + GameView.n + "\n");
+        turn.setPlacement(turn.getPlacement() + 1);
+        turn.setX(GameView.arrBoard.get(turn.getPlacement()).getTileX() + 3);
+        turn.setY(GameView.arrBoard.get(turn.getPlacement()).getTileY() + 3);
 
-        }
-        System.out.println("---------------------------------------- \n\n");
     }
 
     public static void MoveUp() {
-        boolean border = false;
-        for (Room element : total_rooms) {
-            for (int i = 0; i <= element.getRoom().length-1; i++) {
-                System.out.println("i: " + i + ", element.getRoom()[i][0]: " + element.getRoom()[i][0]);
-                System.out.println("turn.getPlacement() - 1: " + (turn.getPlacement() - 1));
-                if (String.valueOf(turn.getPlacement() - 22).equals(element.getRoom()[i][0])) {
-                    if(element.getRoom()[i][1]=="down"){
-                        border = true;
-                        break;
-                    }
-                }
-            }
-            if(border){
-                break;
-            }
-        }
-        if(!border){
-            n--;
-            turn.setPlacement(turn.getPlacement() - 22);
-            turn.setX(GameView.arrBoard.get(turn.getPlacement()).getTileX() + 3);
-            turn.setY(GameView.arrBoard.get(turn.getPlacement()).getTileY() + 3);
-        }
-        System.out.println("---------------------------------------- \n\n");
+
+        n--;
+        System.out.println("********************** MoveUp updated n: " + GameView.n + "\n");
+        turn.setPlacement(turn.getPlacement() - 22);
+        turn.setX(GameView.arrBoard.get(turn.getPlacement()).getTileX() + 3);
+        turn.setY(GameView.arrBoard.get(turn.getPlacement()).getTileY() + 3);
+
+
     }
 
     public static void MoveDown() {
-        boolean border = false;
-        for (Room element : total_rooms) {
-            for (int i = 0; i <= element.getRoom().length-1; i++) {
-                System.out.println("i: " + i + ", element.getRoom()[i][0]: " + element.getRoom()[i][0]);
-                System.out.println("turn.getPlacement() - 1: " + (turn.getPlacement() - 1));
-                if (String.valueOf(turn.getPlacement() + 22).equals(element.getRoom()[i][0])) {
-                    if(element.getRoom()[i][1]=="up"){
-                        border = true;
-                        break;
-                    }
-                }
-            }
-            if(border){
-                break;
-            }
-        }
-        if(!border){
-            n--;
-            turn.setPlacement(turn.getPlacement() + 22);
-            turn.setX(GameView.arrBoard.get(turn.getPlacement()).getTileX() + 3);
-            turn.setY(GameView.arrBoard.get(turn.getPlacement()).getTileY() + 3);
-        }
-        System.out.println("---------------------------------------- \n\n");
+
+        //(arrBoard.get(turn.getPlacement() + 22).getBm() != edge) && (turn.getPlacement() < 462)
+        n--;
+        System.out.println("********************** MoveDown updated n: " + GameView.n + "\n");
+        turn.setPlacement(turn.getPlacement() + 22);
+        turn.setX(GameView.arrBoard.get(turn.getPlacement()).getTileX() + 3);
+        turn.setY(GameView.arrBoard.get(turn.getPlacement()).getTileY() + 3);
+
     }
+
 }
