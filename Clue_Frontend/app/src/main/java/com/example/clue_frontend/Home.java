@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.clue_frontend.Lobbies.HostLobby;
+import com.example.clue_frontend.Lobbies.JoinLobby;
 import com.google.android.material.navigation.NavigationView;
 
 public class Home extends AppCompatActivity {
@@ -41,33 +43,33 @@ public class Home extends AppCompatActivity {
         host = (Button)findViewById(R.id.host);
 
         drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
-        drawerToggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close);
-        drawerLayout.addDrawerListener(drawerToggle);
-        drawerToggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId() == R.id.profile){
-                    Toast.makeText(Home.this, "Profile Selected", Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-                if(item.getItemId() == R.id.settings){
-                    Toast.makeText(Home.this, "Settings Selected", Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-                if(item.getItemId() == R.id.howToPlay){
-                    Toast.makeText(Home.this, "How To Play Selected", Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-                if(item.getItemId() == R.id.logout){
-                    Toast.makeText(Home.this, "Logout Selected", Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-                return false;
-            }
-        });
+//        navigationView = findViewById(R.id.nav_view);
+//        drawerToggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close);
+//        drawerLayout.addDrawerListener(drawerToggle);
+//        drawerToggle.syncState();
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                if(item.getItemId() == R.id.profile){
+//                    Toast.makeText(Home.this, "Profile Selected", Toast.LENGTH_SHORT).show();
+//                    return true;
+//                }
+//                if(item.getItemId() == R.id.settings){
+//                    Toast.makeText(Home.this, "Settings Selected", Toast.LENGTH_SHORT).show();
+//                    return true;
+//                }
+//                if(item.getItemId() == R.id.howToPlay){
+//                    Toast.makeText(Home.this, "How To Play Selected", Toast.LENGTH_SHORT).show();
+//                    return true;
+//                }
+//                if(item.getItemId() == R.id.logout){
+//                    Toast.makeText(Home.this, "Logout Selected", Toast.LENGTH_SHORT).show();
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
 
         join.setOnClickListener(new View.OnClickListener(){
             @Override

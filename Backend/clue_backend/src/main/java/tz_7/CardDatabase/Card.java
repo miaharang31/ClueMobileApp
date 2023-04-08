@@ -1,6 +1,8 @@
 package tz_7.CardDatabase;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import tz_7.GamePlay.PlayerInfoDatabase.PlayerInfo;
 
 @Entity
 public class Card {
@@ -9,17 +11,20 @@ public class Card {
     @Column(name = "cardID")
     private int cardID;
     private String name;
-    private String description;
     private String type; //weapon, room, person
-    private String color; //hex
+    private String cardImage; 
+
+    @ManyToOne
+    @JoinColumn(name = "playerInfo")
+    @JsonIgnore
+    private PlayerInfo playerInfo;
 
     public Card() {}
-    public Card(int cardID, String name, String description, String type, String color) {
+    public Card(int cardID, String name, String type, String cardImage) {
         this.cardID = cardID;
         this.name = name;
-        this.description = description;
         this.type = type;
-        this.color = color;
+        this.cardImage = cardImage;
     }
 
     public int getCardID() {
@@ -38,14 +43,6 @@ public class Card {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getType() {
         return type;
     }
@@ -54,11 +51,18 @@ public class Card {
         this.type = type;
     }
 
-    public String getColor() {
-        return color;
+    public String getCardImage() {
+        return cardImage;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setCardImage(String cardImage) {
+        this.cardImage = cardImage;
+    }
+
+    public PlayerInfo getPlayerInfo() {
+        return playerInfo;
+    }
+    public void setPlayerInfo(PlayerInfo playerInfo) {
+        this.playerInfo = playerInfo;
     }
 }

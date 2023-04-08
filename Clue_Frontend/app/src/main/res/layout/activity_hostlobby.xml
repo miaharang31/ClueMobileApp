@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".HostLobby"
+    tools:context=".Lobbies.HostLobby"
     android:background="#520120">
 
     <TextView
