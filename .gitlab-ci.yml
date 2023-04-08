@@ -1,7 +1,6 @@
 stages:          
   - build
   - test
-  - deploy
 
 build-job:
   stage: build
@@ -10,6 +9,17 @@ build-job:
   script:
     - cd Backend/clue_backend
     - mvn package
+
+maven-test:
+  stage: maventest
+  tags:
+    - Mia_tag
+  script:
+    - cd Backend/clue_backend
+    - mvn test
+  artifacts:
+    paths:
+      - Backend/clue_backend/target/*.jar
 
 # build-job:
 #   stage: build
