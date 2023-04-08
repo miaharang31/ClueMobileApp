@@ -6,11 +6,18 @@ public class MyApplication extends Application {
     private int userid;
     private int gameid;
     private int lobbyid;
+    private int infoid;
 
     public int getLobbyid() {return lobbyid;}
     public int getGameid() {return gameid;}
     public int getUserid() {
         return userid;
+    }
+    public int getInfoid() {
+        return infoid;
+    }
+    public void setInfoid(int infoid) {
+        this.infoid = infoid;
     }
     public void setUserid(int userid) {
         this.userid = userid;

@@ -1,7 +1,11 @@
 package tz_7.CharacterDatabase;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import tz_7.GamePlay.PlayerInfoDatabase.PlayerInfo;
 
 @Entity
 public class Character {
@@ -10,6 +14,13 @@ public class Character {
     String color; // use hex
     String photo; //link to photo
     String game; //the type of game
+
+    @OneToOne
+    @JoinColumn(name = "playerInfo")
+    @JsonIgnore
+    private PlayerInfo playerInfo;
+
+
 
     public Character() {}
     public Character(String name, String color, String photo, String game) {
@@ -50,5 +61,13 @@ public class Character {
 
     public void setGame(String game) {
         this.game = game;
+    }
+
+    public void setPlayerInfo(PlayerInfo playerInfo) {
+        this.playerInfo = playerInfo;
+    }
+
+    public PlayerInfo getPlayerInfo() {
+        return playerInfo;
     }
 }
