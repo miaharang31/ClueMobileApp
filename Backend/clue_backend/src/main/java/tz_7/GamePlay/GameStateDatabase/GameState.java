@@ -57,7 +57,7 @@ public class GameState {
     @OneToMany
     private Set<Player> turnOrder;
 
-    private Random rand;
+//    private Random rand;
     private Integer turnNum;
 
     /**
@@ -65,7 +65,7 @@ public class GameState {
      * necessary variables
      */
     public GameState() {
-        rand = new Random();
+//        rand = new Random();
         turnOrder = new HashSet<>();
 //        weapons = new HashSet<>();
 //        suspects = new HashSet<>();

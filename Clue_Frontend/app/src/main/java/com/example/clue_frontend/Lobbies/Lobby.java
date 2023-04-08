@@ -17,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.clue_frontend.GamePlay.CharacterSelection;
 import com.example.clue_frontend.GamePlay.Game;
 import com.example.clue_frontend.GamePlay.StartGame;
 import com.example.clue_frontend.MyApplication;
@@ -214,16 +215,7 @@ public class Lobby extends AppCompatActivity {
 //                                                                                            try {
 //                                                                                                System.out.println("rooms: " + response.length());
 //                                                                                                game.put("rooms", response);
-//
-                                    Iterator<?> keys = game.keys();
-
-                                    while (keys.hasNext()) {
-                                        String key = (String) keys.next();
-                                        String value = game.getString(key);
-
-                                        System.out.println(key + " : " + value);
-                                    }
-                                                                                                Intent intent = new Intent(Lobby.this, Game.class);
+                                                                                                Intent intent = new Intent(Lobby.this, CharacterSelection.class);
                                                                                                 String url = "http://10.0.2.2:8080/game/new";
                                                                                                 JsonObjectRequest finalRequest = new JsonObjectRequest(Request.Method.POST, url, game,
                                                                                                         new Response.Listener<JSONObject>() {

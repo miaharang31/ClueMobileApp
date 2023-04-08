@@ -39,22 +39,10 @@ public class GameStateController {
      */
     @PostMapping(value = "game/new", consumes = "application/json")
     public GameState newState(@RequestBody GameState state) {
-//        Card[] weapons = state.getWeapons().toArray(new Card[0]);
-//        Card[] suspects = state.getSuspects().toArray(new Card[0]);
-//        Card[] rooms = state.getRooms().toArray(new Card[0]);
-//        System.out.println("Weapons size: " + state.getWeapons().size());
-//        System.out.println("Suspects size: " + state.getSuspects().size());
-//        System.out.println("Rooms size: " + state.getRooms().size());
-        System.out.println("Players size: " + state.getTurnOrder().size());
-
         Iterator<Player> players = state.getTurnOrder().iterator();
         while(players.hasNext()) {
             players.next().setGameState(state);
         }
-//        for(int i = 0; i < players.length; i++) {
-//            System.out.println(players[i].getFirstname());
-//            players[i].setGameState(state);
-//        }
         repo.save(state);
         playerRepository.saveAll(state.getTurnOrder());
         return state;
