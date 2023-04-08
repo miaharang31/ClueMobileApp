@@ -74,6 +74,7 @@ public class Lobby extends AppCompatActivity {
                         try {
                             int gameID = response.getInt("id");
                             max.setText(response.get("maxPlayers").toString());
+//                            Get the host to display their name
                             String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/host." + gameID;
 //                            String url = "http://10.0.2.2:8080/lobby/host/" + gameID;
                             JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -90,12 +91,13 @@ public class Lobby extends AppCompatActivity {
                                     new Response.ErrorListener() {
                                         @Override
                                         public void onErrorResponse(VolleyError error) {
-//                                            TODO: HANDLE ERROR RESPONSE
+//                                            TODO: handle error response
                                         }
                                     });
                                     queue.add(request);
 //                                    TODO: FIGURE OUT HOW TO DO DYNAMICALLY
                                     cur.setText(response.get("numPlayers").toString());
+//                                    Display names of players in lobby
                                     url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/players/" + gameID;
 //                                    url = "http://10.0.2.2:8080/lobby/players/" + gameID;
                                     JsonArrayRequest request1  = new JsonArrayRequest(Request.Method.GET, url, null,
@@ -140,7 +142,7 @@ public class Lobby extends AppCompatActivity {
                                             new Response.ErrorListener() {
                                                 @Override
                                                 public void onErrorResponse(VolleyError error) {
-
+//                                                    TODO: handle error response
                                                 }
                                             });
                                         queue.add(request1);
@@ -163,7 +165,27 @@ public class Lobby extends AppCompatActivity {
             @Override
             public void onClick(View v){
 //                TODO: create game state
-//                String url = "http://10.0.2.2:8080/";
+                JSONObject game = new JSONObject();
+                game.put("versionID")
+                String url = "http://coms-309-038.class.las.iastate.edu:8080/card/weapon";
+                JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
+                        new Response.Listener<JSONArray>() {
+                            @Override
+                            public void onResponse(JSONArray response) {
+                                try {
+                                    game.put("weapons", response);
+                                } catch (JSONException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+//                                TODO: handle error response
+                            }
+                        });
+                queue.add(request);
                 Intent intent = new Intent(Lobby.this, StartGame.class);
                 startActivity(intent);
             }

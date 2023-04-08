@@ -3,6 +3,7 @@ package tz_7.PlayerDatabase;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import tz_7.GamePlay.GameLobbyDatabase.GameLobby;
+import tz_7.GamePlay.GameStateDatabase.GameState;
 
 /**
  * @author Grace Brickey
@@ -44,6 +45,11 @@ public class Player {
     @OneToOne
     @JoinColumn(name = "gameLobbyHost")
     private GameLobby gameLobbyHost;
+
+    @ManyToOne
+    @JoinColumn(name = "gameState")
+    @JsonIgnore
+    private GameState gameState;
 
     public Player() {}
 
@@ -123,4 +129,15 @@ public class Player {
         gameLobbyHost = lobby;
     }
 
+    public void setPlayerOrder(GameState gameState) {
+        this.gameState = gameState;
+    }
+
+    public GameState getPlayerOrder() {
+        return gameState;
+    }
+
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
+    }
 }

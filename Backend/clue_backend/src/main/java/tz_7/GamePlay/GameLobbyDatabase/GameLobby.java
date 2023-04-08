@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
+import tz_7.GamePlay.GameStateDatabase.GameState;
 import tz_7.PlayerDatabase.Player;
 
 import java.util.ArrayList;
@@ -57,9 +58,12 @@ public class GameLobby {
 
         @OneToOne
         @JsonIgnore
-    //    Host that created the lobby
-    //    TODO: CREATE A ONE TO ONE RELATIONSHIP
+//        Host that creates the lobby
         private Player host;
+
+        @OneToOne
+        @JoinColumn(name = "gameState")
+        private GameState gameState;
 
     /**
      * No-Argument constructor
@@ -140,6 +144,10 @@ public class GameLobby {
 
     public void setHost(Player host) {
         this.host = host;
+    }
+
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
     }
 
     /**

@@ -1,11 +1,19 @@
 package tz_7.GamePlay.GameStateDatabase;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
+import org.springframework.beans.factory.annotation.Autowired;
+import tz_7.CardDatabase.Card;
+import tz_7.GamePlay.GameLobbyDatabase.GameLobby;
+import tz_7.CardDatabase.CardRepository;
+import tz_7.PlayerDatabase.Player;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 /**
  * Author: Mia Harang
@@ -29,49 +37,46 @@ public class GameState {
      */
     @Column(name = "versionID")
     @NotFound(action = NotFoundAction.IGNORE)
-//    TODO: DATABASE FOR RELATIONSHIP HAS YET TO BE CREATED
+//    TODO: create version database
     private Integer versionID;
 
-//    @OneToOne
-    @Column(name = "lobbyID")
-    @NotFound(action = NotFoundAction.IGNORE)
-//    TODO: CREATE RELATIONSHIP
-    private Integer lobbyID;
+    @OneToOne
+    @JsonIgnore
+//    Game Lobby the players were coming from
+    private GameLobby gameLobby;
 
-    @Column(name = "finalCardIDs")
-    @NotFound(action = NotFoundAction.IGNORE)
-//   TODO: CREATE RELATIONSHIP
-    private Integer[] finalCardIDs;
+    @OneToMany(mappedBy = "gameStateFinal")
+    private Set<Card> finalCards;
 
-    @Column(name = "weapons")
-    @NotFound(action = NotFoundAction.IGNORE)
-    private ArrayList<Integer> weapons;
+    @OneToMany(mappedBy = "gameStateWeapons")
+    private Set<Card> weapons;
 
-    @Column(name = "suspects")
-    @NotFound(action = NotFoundAction.IGNORE)
-    private ArrayList<Integer> suspects;
+    @OneToMany(mappedBy = "gameStateSuspects")
+    private Set<Card> suspects;
 
-    @Column(name = "rooms")
-    @NotFound(action = NotFoundAction.IGNORE)
-    private ArrayList<Integer> rooms;
+    @OneToMany(mappedBy = "gameStateRooms")
+    private Set<Card> rooms;
 
-//    @Column(name = "turnOrder")
-//    @NotFound(action = NotFoundAction.IGNORE)
-//    private ArrayList<Integer> turnOrder;
-//    private ArrayList<Integer> deck;
+    @OneToMany(mappedBy = "gameState")
+    private Set<Player> turnOrder;
+
     private Random rand;
     private Integer turnNum;
+
+//    @Autowired
+//    private CardRepository cardRepository;
 
     /**
      * Overrides default constructor to initialize all
      * necessary variables
      */
     public GameState() {
-        finalCardIDs = new Integer[3];
+        finalCards = new HashSet<>();
         rand = new Random();
-        weapons = new ArrayList<>();
-        rooms = new ArrayList<>();
-        suspects = new ArrayList<>();
+        weapons = new HashSet<>();
+        rooms = new HashSet<>();
+        suspects = new HashSet<>();
+        turnOrder = new HashSet<>();
         turnNum = 0;
     }
 
@@ -79,12 +84,13 @@ public class GameState {
         this.versionID = versionID;
     }
 
-//    public Integer getNextPlayer() {
-//        Integer tmp = turnOrder.get(turnNum);
-//        if(turnNum == turnOrder.size()-1) {turnNum = 0;}
-//        else {turnNum += 1;}
-//        return tmp;
-//    }
+    public Player getNextPlayer() {
+        Player[] players = turnOrder.toArray(new Player[0]);
+        Player tmp = players[turnNum];
+        if(turnNum == turnOrder.size()-1) {turnNum = 0;}
+        else {turnNum += 1;}
+        return tmp;
+    }
 
     /**
      * Checks the final guess that a player makes
@@ -94,9 +100,9 @@ public class GameState {
      *  true - if all IDs match
      *  false - if they don't
      */
-    public Boolean checkFinalGuess(Integer[] guess) {
-        for (int i = 0; i < finalCardIDs.length; i++) {
-            if(guess[i] != finalCardIDs[i]) {return false;}
+    public Boolean checkFinalGuess(Set<Card> guess) {
+        for (int i = 0; i < finalCards.size(); i++) {
+            if(!finalCards.containsAll(guess)) {return false;}
         }
         return true;
     }
@@ -106,18 +112,34 @@ public class GameState {
      * to set as the final cards, takes the cards from the
      * decks
      */
-    public void setFinalCardIDs() {
+    public void setFinalCards() {
         int weapon = rand.nextInt(weapons.size());
         int suspect = rand.nextInt(suspects.size());
         int room = rand.nextInt(rooms.size());
 
-        finalCardIDs[0] = weapons.get(weapon);
-        finalCardIDs[1] = suspects.get(suspect);
-        finalCardIDs[2] = rooms.get(room);
+        Card[] weaponstmp = weapons.toArray(new Card[0]);
+        Card[] suspectstmp = suspects.toArray(new Card[0]);
+        Card[] roomstmp = rooms.toArray(new Card[0]);
 
-        weapons.remove(weapon);
-        suspects.remove(suspect);
-        rooms.remove(room);
+        finalCards.add(weaponstmp[weapon]);
+        finalCards.add(suspectstmp[suspect]);
+        finalCards.add(roomstmp[room]);
+
+        weaponstmp[weapon].setGameStateFinal(this);
+        suspectstmp[suspect].setGameStateFinal(this);
+        roomstmp[room].setGameStateFinal(this);
+
+//        cardRepository.save(weaponstmp[weapon]);
+//        cardRepository.save(suspectstmp[suspect]);
+//        cardRepository.save(roomstmp[room]);
+
+        weapons.remove(weaponstmp[weapon]);
+        suspects.remove(suspectstmp[suspect]);
+        rooms.remove(roomstmp[room]);
+    }
+
+    public void setGameLobby(GameLobby lobby) {
+        gameLobby = lobby;
     }
 
     /**
@@ -125,11 +147,15 @@ public class GameState {
      * @return
      *  Different variables depending on the method
      */
-    public Integer[] getFinalCardIDs() {return finalCardIDs;}
+    public Set<Card> getFinalCards() {return finalCards;}
     public Integer getVersionID() {return versionID;}
     public Integer getID() {return ID;}
-    public Integer getLobbyID() {return lobbyID;}
-    public ArrayList<Integer> getWeapons() {return weapons;}
-    public ArrayList<Integer> getSuspects() {return suspects;}
-    public ArrayList<Integer> getRooms() {return rooms;}
+    public GameLobby getLobby() {return gameLobby;}
+    public Set<Card> getWeapons() {return weapons;}
+    public Set<Card> getSuspects() {return suspects;}
+    public Set<Card> getRooms() {return rooms;}
+
+    public Set<Player> getTurnOrder() {
+        return turnOrder;
+    }
 }

@@ -2,6 +2,7 @@ package tz_7.CardDatabase;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import tz_7.GamePlay.GameStateDatabase.GameState;
 import tz_7.GamePlay.PlayerInfoDatabase.PlayerInfo;
 
 @Entity
@@ -18,6 +19,23 @@ public class Card {
     @JoinColumn(name = "playerInfo")
     @JsonIgnore
     private PlayerInfo playerInfo;
+
+    @ManyToOne
+    @JoinColumn(name = "gameStateWeapons")
+    @JsonIgnore
+    private GameState gameStateWeapons;
+    @ManyToOne
+    @JoinColumn(name = "gameStateSuspects")
+    @JsonIgnore
+    private GameState gameStateSuspects;
+    @ManyToOne
+    @JoinColumn(name = "gameStateRooms")
+    @JsonIgnore
+    private GameState gameStateRooms;
+    @ManyToOne
+    @JoinColumn(name = "gameStateFinal")
+    @JsonIgnore
+    private GameState gameStateFinal;
 
     public Card() {}
     public Card(int cardID, String name, String type, String cardImage) {
@@ -64,5 +82,37 @@ public class Card {
     }
     public void setPlayerInfo(PlayerInfo playerInfo) {
         this.playerInfo = playerInfo;
+    }
+
+    public GameState getGameStateFinal() {
+        return gameStateFinal;
+    }
+
+    public GameState getGameStateRooms() {
+        return gameStateRooms;
+    }
+
+    public GameState getGameStateSuspects() {
+        return gameStateSuspects;
+    }
+
+    public GameState getGameStateWeapons() {
+        return gameStateWeapons;
+    }
+
+    public void setGameStateFinal(GameState gameStateFinal) {
+        this.gameStateFinal = gameStateFinal;
+    }
+
+    public void setGameStateRooms(GameState gameStateRooms) {
+        this.gameStateRooms = gameStateRooms;
+    }
+
+    public void setGameStateSuspects(GameState gameStateSuspects) {
+        this.gameStateSuspects = gameStateSuspects;
+    }
+
+    public void setGameStateWeapons(GameState gameStateWeapons) {
+        this.gameStateWeapons = gameStateWeapons;
     }
 }
