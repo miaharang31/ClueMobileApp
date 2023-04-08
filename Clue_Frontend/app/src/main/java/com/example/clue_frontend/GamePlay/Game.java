@@ -2,23 +2,31 @@ package com.example.clue_frontend.GamePlay;
 
 import static com.example.clue_frontend.GamePlay.GameView.turn;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.clue_frontend.CardButton;
+import com.example.clue_frontend.CardLayout;
 import com.example.clue_frontend.R;
+import com.example.clue_frontend.playerGuess;
 
 
 public class Game extends AppCompatActivity {
     RelativeLayout relativeLayout;
     SwipeListener swipeListener;
+    ImageView iv;
+
+    ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +41,24 @@ public class Game extends AppCompatActivity {
 
         relativeLayout = findViewById(R.id.relative_layout);
         swipeListener = new SwipeListener(relativeLayout);
+        iv = findViewById(R.id.open_checklist);
+        iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Game.this, playerGuess.class);
+                startActivity(intent);
+            }
+        });
 
+        imageView = findViewById(R.id.open_cards);
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Game.this, CardLayout.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private class SwipeListener implements View.OnTouchListener {

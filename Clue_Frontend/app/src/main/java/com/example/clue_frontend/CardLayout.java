@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.clue_frontend.GamePlay.Game;
 import com.example.clue_frontend.databinding.CardLayoutBinding;
 
 public class CardLayout extends AppCompatActivity {
@@ -18,7 +19,7 @@ public class CardLayout extends AppCompatActivity {
     private CardLayoutBinding binding;
 
     public void exitName(View v) {
-        startActivity(new Intent(CardLayout.this, CardButton.class));
+        startActivity(new Intent(CardLayout.this, Game.class));
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

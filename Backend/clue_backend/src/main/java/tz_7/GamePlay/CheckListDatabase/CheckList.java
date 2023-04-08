@@ -20,15 +20,55 @@ public class CheckList {
     @OneToOne
     @JoinColumn(name = "playerID")
     private Player player;
+    boolean mustard;
+    boolean plum;
+    boolean green;
+    boolean peacock;
+    boolean scarlet;
+    boolean white;
+    boolean knife;
+    boolean candlestick;
+    boolean revolver;
+    boolean rope;
+    boolean leadpipe;
+    boolean wrench;
+    boolean hall;
+    boolean lounge;
+    boolean dining;
+    boolean kitchen;
+    boolean ballroom;
+    boolean conservatory;
+    boolean billiard;
+    boolean library;
+    boolean study;
 //    private ArrayList<Boolean> weapons;
 //    private ArrayList<Boolean> suspects;
 //    private ArrayList<Boolean> rooms;
 
 //    TODO: figure out something idk
-    public CheckList() {
-//        weapons = new ArrayList<>();
-//        suspects = new ArrayList<>();
-//        rooms = new ArrayList<>();
+    public CheckList(int id, Player player, boolean mustard, boolean plum, boolean green, boolean peacock,boolean scarlet, boolean white, boolean knife,boolean candlestick, boolean revolver, boolean rope,boolean leadpipe, boolean wrench, boolean hall, boolean lounge,boolean dining,boolean kitchen, boolean ballroom,  boolean conservatory, boolean billiard, boolean library,boolean study) {
+        this.ID =id;
+        this.player = player;
+        this.plum =plum;
+        this.green = green;
+        this.peacock = peacock;
+        this.scarlet = scarlet;
+        this.white = white;
+        this.knife = knife;
+        this.candlestick = candlestick;
+        this.revolver = revolver;
+        this.rope = rope;
+        this.leadpipe = leadpipe;
+        this.wrench = wrench;
+        this.hall = hall;
+        this.lounge = lounge;
+        this.dining = dining;
+        this.kitchen = kitchen;
+        this.ballroom = ballroom;
+        this.conservatory = conservatory;
+        this.billiard = billiard;
+        this.library = library;
+        this.study = study;
     }
 
     public Integer getID() {return ID;}
@@ -36,13 +76,20 @@ public class CheckList {
 //    public ArrayList<Boolean> getRooms() {return rooms;}
 //    public ArrayList<Boolean> getSuspects() {return suspects;}
     public Player getPlayer() {return player;}
-//    public Boolean isWeaponChecked(Integer weapon) {
-//        return weapons.get(weapon);
-//    }
-//    public Boolean isSuspectChecked(Integer suspect) {
-//        return suspects.get(suspect);
-//    }
-//    public Boolean isRoomChecked(Integer room) {
-//        return rooms.get(room);
-//    }
+
+    public void setID(Integer ID) {
+        this.ID = ID;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public boolean isMustard() {
+        return mustard;
+    }
+
+    public void setMustard(boolean mustard) {
+        this.mustard = mustard;
+    }
 }
