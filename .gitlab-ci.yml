@@ -1,0 +1,27 @@
+stages:
+  - mavenbuild
+  - maventest
+  - mavenDeploy
+  - androidbuild
+  - androidtest
+
+
+maven-build: #this is a JOB
+  stage: mavenbuild
+  tags:
+    - grace_tag
+  script:
+    - cd Backend/clue_backend # to where you have the pom.xml
+    - mvn package
+
+maven-test:
+  stage: maventest
+  tags:
+    - grace_tag
+  script:
+    - cd Backend/clue_backend
+    - mvn test
+  artifacts:
+    paths:
+      - Backend/clue_backend/target/*.jar
+
