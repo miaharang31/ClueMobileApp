@@ -11,7 +11,7 @@ build-job:
     - mvn package
 
 maven-test:
-  stage: maventest
+  stage: test
   tags:
     - Mia_tag
   script:
