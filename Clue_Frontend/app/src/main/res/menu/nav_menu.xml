@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <group android:checkableBehavior="single">
+    xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" >
+    <group>
         <item android:id="@+id/profile"
             android:icon="@drawable/account_circle"
             android:title="Profile"/>
@@ -10,7 +10,8 @@
             android:title="Settings"/>
         <item android:id="@+id/howToPlay"
             android:icon="@drawable/question_mark"
-            android:title="How to Play"/>
+            android:title="How to Play"
+            android:onClick="@layout/rules_page"/>
         <item android:id="@+id/logout"
             android:icon="@drawable/logout"
             android:title="Log Out"/>

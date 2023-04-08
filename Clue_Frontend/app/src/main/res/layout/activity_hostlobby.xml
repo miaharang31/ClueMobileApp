@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#520120"
-    android:gravity="center"
     android:orientation="vertical"
-    tools:context=".HostLobby">
+    android:gravity="center"
+    tools:context=".Lobbies.HostLobby"
+    android:background="#520120">
 
     <TextView
         android:id="@+id/lobbyCreation"
@@ -28,10 +28,10 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="360dp"
         android:layout_height="288dp"
-        android:backgroundTint="#962B09"
         app:cardCornerRadius="8dp"
-
         app:cardElevation="2dp"
+
+        android:backgroundTint="#962B09"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -137,7 +137,6 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="170dp"
             android:background="@color/white"
-            android:fontFamily="@font/aladin"
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.card.MaterialCardView>
 

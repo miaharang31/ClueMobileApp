@@ -10,8 +10,18 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.clue_frontend.MainActivity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class UserSignUp extends AppCompatActivity {
 
@@ -108,14 +118,48 @@ public class UserSignUp extends AppCompatActivity {
 
                 // if all textboxes are correct, all data will be added to the SecondActivity (main page for either regular/premium users) and will start
                 if (correctFirstName == true && correctLastName == true && correctUsername == true && correctPassword == true && correctEmail == true){
-                    intent.putExtra("firstNameData",firstNameData);
-                    intent.putExtra("lastNameData",lastNameData);
-                    intent.putExtra("emailData",emailData);
-                    intent.putExtra("usernameData",usernameData);
-                    intent.putExtra("passwordData",passwordData);
+                    //      Pipers code
+                    //                  intent.putExtra("firstNameData",firstNameData);
+//                    intent.putExtra("lastNameData",lastNameData);
+//                    intent.putExtra("emailData",emailData);
+//                    intent.putExtra("usernameData",usernameData);
+//                    intent.putExtra("passwordData",passwordData);
+
+//                    String url = "http://10.0.2.2:8080/register";
+                    String url = "http://coms-309-038.class.las.iastate.edu:8080/register";
+                    RequestQueue queue = Volley.newRequestQueue(UserSignUp.this);
+                    JSONObject json = null;
+                    try {
+                        json = new JSONObject();
+                        json.put("firstname", firstNameData);
+                        json.put("lastname", lastNameData);
+                        json.put("email", emailData);
+                        json.put("username", usernameData);
+                        json.put("password", passwordData);
+                        json.put("type", "Basic");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    JsonObjectRequest jreq = new JsonObjectRequest(Request.Method.POST, url, json,
+                            new Response.Listener<JSONObject>() {
+                                @Override
+                                public void onResponse(JSONObject response) {
+                                    startActivity(intent);
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Toast.makeText(UserSignUp.this, "Error: " + error, Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                    queue.add(jreq);
 
 
-                    startActivity(intent);
+
+
+
                 }
             }
         });

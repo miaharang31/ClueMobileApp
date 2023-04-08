@@ -1,0 +1,182 @@
+[
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_scarlet_start.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\scarlet_start.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_conservatory.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\conservatory.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_dinning_roon.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\dinning_roon.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_lounge.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\lounge.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_green_start.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\green_start.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_clue_room.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\clue_room.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_plum_start.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\plum_start.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_study_room.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\study_room.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_kitchen_room.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\kitchen_room.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_clue.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\clue.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_ball_room.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\ball_room.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_library_room.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\library_room.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_billiard_room.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\billiard_room.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_conservatory_room.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\conservatory_room.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_hall_room.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\hall_room.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_kitchen.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\kitchen.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_lounge_room.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\lounge_room.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_dark.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\dark.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_white_start.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\white_start.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_dinning_room.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\dinning_room.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_hall.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\hall.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_library.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\library.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\mipmap-anydpi-v33_ic_launcher.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\mipmap-anydpi-v33\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_background.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\background.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_light.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\light.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_mustard_start.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\mustard_start.png"
+    },
+    {
+        "merged": "com.example.boardtest.app-merged_res-29:/drawable_peacock_start.png.flat",
+        "source": "com.example.boardtest.app-main-31:/drawable/peacock_start.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-pngs-24:\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-merged_res-29:\\drawable_study.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.boardtest.app-main-31:\\drawable\\study.png"
+    }
+]

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#520120"
-    tools:context=".Lobby">
+    tools:context=".Lobbies.Lobby">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"
@@ -26,71 +26,199 @@
         app:strokeColor="#B57114"
         app:strokeWidth="5dp">
 
-        <TextView
-            android:id="@+id/hostName"
-            android:layout_width="352dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="40dp"
-            android:background="#08403E"
-            android:fontFamily="@font/abhaya_libre_extrabold"
-            android:text="Host:"
-            android:textAlignment="textStart"
-            android:textColor="@color/white"
-            android:textSize="60sp"
-            app:cornerRadius="20dp"
-            app:layout_constraintBottom_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/Host"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="41dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="41dp"
+            app:cardBackgroundColor="#08403E"
+            app:cardCornerRadius="7dp">
+
+            <TextView
+                android:id="@+id/hostNameText"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF"
+                android:textSize="21sp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/Player01"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="41dp"
+            android:layout_marginTop="130dp"
+            android:layout_marginRight="41dp"
+            app:cardBackgroundColor="#B27114"
+            app:cardCornerRadius="7dp">
+
+            <TextView
+                android:id="@+id/player_01"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF"
+                android:textSize="21sp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/Player02"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="41dp"
+            android:layout_marginTop="190dp"
+            android:layout_marginRight="41dp"
+            app:cardBackgroundColor="#B37114"
+            app:cardCornerRadius="7dp">
+
+            <TextView
+                android:id="@+id/player_02"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF"
+                android:textSize="21sp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/Player03"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="41dp"
+            android:layout_marginTop="250dp"
+            android:layout_marginRight="41dp"
+            app:cardBackgroundColor="#B37114"
+            app:cardCornerRadius="7dp">
+
+            <TextView
+                android:id="@+id/player_03"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF"
+                android:textSize="21sp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/Player04"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="41dp"
+            android:layout_marginTop="310dp"
+            android:layout_marginRight="41dp"
+            app:cardBackgroundColor="#B37114"
+            app:cardCornerRadius="7dp">
+
+            <TextView
+                android:id="@+id/player_04"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF"
+                android:textSize="21sp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/Player05"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="41dp"
+            android:layout_marginTop="370dp"
+            android:layout_marginRight="41dp"
+            app:cardBackgroundColor="#B37114"
+            app:cardCornerRadius="7dp">
+
+            <TextView
+                android:id="@+id/player_05"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF"
+                android:textSize="21sp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/Player06"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="41dp"
+            android:layout_marginTop="430dp"
+            android:layout_marginRight="41dp"
+            app:cardBackgroundColor="#B37114"
+            app:cardCornerRadius="7dp">
+
+            <TextView
+                android:id="@+id/player_06"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF"
+                android:textSize="21sp" />
+        </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/startGame"
             android:layout_width="168dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="120dp"
-            android:layout_marginTop="480dp"
-            android:layout_marginRight="100dp"
+            android:layout_marginLeft="97dp"
+            android:layout_marginTop="490dp"
+            android:layout_marginRight="97dp"
             android:backgroundTint="#08403E"
-            android:fontFamily="@font/abhaya_libre_extrabold"
             android:text="Start Game"
             app:cornerRadius="5dp" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/playerName"
-            android:layout_width="357dp"
-            android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/max"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="105dp"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/name"
-                android:layout_width="277dp"
-                android:layout_height="49dp"
-                android:layout_marginLeft="45dp"
-                android:layout_marginTop="200dp"
-                android:backgroundTint="#B57114"
-                android:hint="Player Name"
-                android:inputType="text"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
+        <TextView
+            android:id="@+id/slash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="298dp"
+            android:layout_marginTop="105dp"
+            android:text="/"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:id="@+id/cur"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="280dp"
+            android:layout_marginTop="105dp"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/host"
-                android:layout_width="203dp"
-                android:layout_height="55dp"
-                android:layout_marginLeft="130sp"
-                android:layout_marginTop="20sp"
-                android:background="#08403E"
-                android:hint="Host Name"
-                android:textColor="@color/white" />
-        </com.google.android.material.textfield.TextInputLayout>
     </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
