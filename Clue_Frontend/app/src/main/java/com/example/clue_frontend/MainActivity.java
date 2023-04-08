@@ -36,7 +36,7 @@ import org.json.JSONObject;
 public class MainActivity extends AppCompatActivity {
 
     RelativeLayout relativeLayout;
-    SwipeListener swipeListener;
+    Game.SwipeListener swipeListener;
 
 /*for scroll outside override*/
 //    TextView textView;
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             }else{
                 username.setError(null);
                 checkUsername = true;
-            }
+
 
             if(passwordData.isEmpty()){
                 password.setError("Password cannot be empty");
