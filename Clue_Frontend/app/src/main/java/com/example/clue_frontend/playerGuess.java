@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.clue_frontend.GamePlay.CharacterSelection;
-import com.example.clue_frontend.GamePlay.Game;
+//import com.example.clue_frontend.GamePlay.Game;
 
 public class playerGuess extends AppCompatActivity {
 
@@ -83,7 +83,7 @@ public class playerGuess extends AppCompatActivity {
             public void onClick(View v){
                 if(suspects.getCheckedRadioButtonId() != -1) {
                     if(weapons.getCheckedRadioButtonId() != -1) {
-                        Intent intent = new Intent(playerGuess.this, Game.class);
+                        Intent intent = new Intent(playerGuess.this, Home.class); //used to say game.class
                         startActivity(intent);
                     }
                     else {

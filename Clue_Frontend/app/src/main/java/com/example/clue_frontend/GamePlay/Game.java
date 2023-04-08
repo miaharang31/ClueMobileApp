@@ -34,7 +34,7 @@ public class Game extends AppCompatActivity {
         Constraints.SCREEN_WIDTH = dm.widthPixels;
         Constraints.SCREEN_HEIGHT = dm.heightPixels;
         View relativeLayout = findViewById(R.id.relative_layout);
-        MainActivity.SwipeListener swipeListener = new MainActivity.SwipeListener(relativeLayout);
+//        MainActivity.SwipeListener swipeListener = new MainActivity.SwipeListener(relativeLayout);
         setContentView(R.layout.board);
 
         //Sets up the swipe lister
