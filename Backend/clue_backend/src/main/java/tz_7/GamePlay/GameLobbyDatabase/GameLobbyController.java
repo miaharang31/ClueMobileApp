@@ -49,9 +49,8 @@ public class GameLobbyController {
     }
 
     @GetMapping(value = "lobby/{id}", produces = "application/json")
-    public GameLobby getLobbyByHost(@PathVariable("id") int hostID) {
-        Optional<Player> host = playerRepo.findById(hostID);
-        return repo.findByHost(host.get());
+    public GameLobby getLobbyById(@PathVariable int id) {
+        return repo.findById(id).get();
     }
 
     @PutMapping(value = "lobby/join/{playerID}", consumes = "application/json")
@@ -72,8 +71,16 @@ public class GameLobbyController {
     @GetMapping(value = "lobby/players/{gameLobbyID}")
     public Set<Player> getAllPlayers(@PathVariable Integer gameLobbyID) {
         Optional<GameLobby> lobby = repo.findById(gameLobbyID);
-//        return null;
-        return lobby.get().getPlayers();
+        Set<Player> players = lobby.get().getPlayers();
+        players.add(lobby.get().getHost());
+        return players;
+    }
+
+    @GetMapping(value = "lobby/nothost/{gameLobbyID}")
+    public Set<Player> getNonHost(@PathVariable Integer gameLobbyID) {
+        Optional<GameLobby> lobby = repo.findById(gameLobbyID);
+        Set<Player> players = lobby.get().getPlayers();
+        return players;
     }
 
     @GetMapping(value = "lobby/host/{gameLobbyID}")

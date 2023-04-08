@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
+import tz_7.GamePlay.GameStateDatabase.GameState;
 import tz_7.PlayerDatabase.Player;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class GameLobby {
         @NotFound(action = NotFoundAction.IGNORE)
     //    Max players allowed for the game
         private Integer maxPlayers;
-        @Column(name = "numPlayers") 
+        @Column(name = "numPlayers")
         @NotFound(action = NotFoundAction.IGNORE)
     //    Current number of players in the lobby
         private Integer numPlayers;
@@ -57,8 +58,7 @@ public class GameLobby {
 
         @OneToOne
         @JsonIgnore
-    //    Host that created the lobby
-    //    TODO: CREATE A ONE TO ONE RELATIONSHIP
+//        Host that creates the lobby
         private Player host;
 
     /**
@@ -149,7 +149,6 @@ public class GameLobby {
      */
     public String getGameCode() {return gameCode;}
     public Integer getID() {return ID;}
-    public Boolean getIsPremium() {return isPremium;}
     public Integer getMaxPlayers() {return maxPlayers;}
     public Integer getNumPlayers() {return numPlayers;}
     public Set<Player> getPlayers() {return players;}

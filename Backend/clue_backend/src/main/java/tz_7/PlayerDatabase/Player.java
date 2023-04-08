@@ -1,8 +1,12 @@
 package tz_7.PlayerDatabase;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 import tz_7.GamePlay.GameLobbyDatabase.GameLobby;
+import tz_7.GamePlay.GameStateDatabase.GameState;
+import tz_7.GamePlay.PlayerInfoDatabase.PlayerInfo;
 
 /**
  * @author Grace Brickey
@@ -43,7 +47,18 @@ public class Player {
 
     @OneToOne
     @JoinColumn(name = "gameLobbyHost")
+    @JsonIgnore
     private GameLobby gameLobbyHost;
+
+    @ManyToOne
+    @JoinColumn(name = "gameState")
+    @JsonBackReference
+    private GameState gameState;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "playerInfo")
+    @JsonIgnore
+    private PlayerInfo playerInfo;
 
     public Player() {}
 
@@ -123,4 +138,19 @@ public class Player {
         gameLobbyHost = lobby;
     }
 
+    public GameState getGameState() {
+        return gameState;
+    }
+
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
+    }
+
+    public void setPlayerInfo(PlayerInfo playerInfo) {
+        this.playerInfo = playerInfo;
+    }
+
+    public PlayerInfo getPlayerInfo() {
+        return playerInfo;
+    }
 }
