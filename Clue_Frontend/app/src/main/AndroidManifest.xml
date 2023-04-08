@@ -63,7 +63,6 @@
             android:label="@string/app_name" />
         <activity android:name=".Home"
             android:label="Home"/>
-<<<<<<< HEAD
         <activity android:name=".CardButton"
             android:label="CardButton"/>
         <activity
@@ -72,10 +71,9 @@
         <activity android:name=".playerGuess"
             android:label="playerGuess"/>
 
-=======
         <activity android:name=".GamePlay.CharacterSelection"
             android:label="Clue"/>
->>>>>>> main
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
