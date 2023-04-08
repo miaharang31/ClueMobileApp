@@ -1,4 +1,4 @@
-package com.example.clue_frontend.GamePlay;
+package com.example.clue_frontend;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,8 +6,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.clue_frontend.R;
 
 public class CardButton extends AppCompatActivity {
 
