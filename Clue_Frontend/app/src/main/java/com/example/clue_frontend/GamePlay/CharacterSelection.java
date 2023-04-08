@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -16,6 +17,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.clue_frontend.Lobbies.Lobby;
 import com.example.clue_frontend.MyApplication;
+
 import com.example.clue_frontend.R;
 
 import org.json.JSONException;
@@ -106,6 +108,7 @@ public class CharacterSelection extends AppCompatActivity {
 
         startGame.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+
 //                if(numPlayers == totalPlayers) {
                     RequestQueue queue = Volley.newRequestQueue(CharacterSelection.this);
                     MyApplication app = (MyApplication) getApplication();
@@ -152,6 +155,7 @@ public class CharacterSelection extends AppCompatActivity {
                                 }
                             });
                     queue.add(request);
+
                 }
 //            }
         });

@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
@@ -57,10 +58,12 @@ public class MainActivity extends AppCompatActivity {
         relativeLayout = findViewById(R.id.relative_layout);
         swipeListener = new SwipeListener(relativeLayout);
 
+
         Button submitButton = (Button) findViewById(R.id.submitButton);
         TextView newPlayerLink = findViewById(R.id.NewPlayerLink);
         //When the sign in button is clicked and data is entered for usename and password
         submitButton.setOnClickListener(new View.OnClickListener() {
+
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(MainActivity.this, Home.class);
@@ -80,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
             }else{
                 username.setError(null);
                 checkUsername = true;
+
             }
 
             if(passwordData.isEmpty()){
@@ -140,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private class SwipeListener implements View.OnTouchListener {
         GestureDetector gestureDetector;
