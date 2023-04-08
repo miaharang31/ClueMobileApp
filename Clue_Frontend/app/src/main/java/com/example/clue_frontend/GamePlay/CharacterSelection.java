@@ -110,7 +110,8 @@ public class CharacterSelection extends AppCompatActivity {
                     RequestQueue queue = Volley.newRequestQueue(CharacterSelection.this);
                     MyApplication app = (MyApplication) getApplication();
                     Intent intent = new Intent(CharacterSelection.this, Game.class);
-                    String url = "http://10.0.2.2:8080/info/" + app.getUserid();
+//                    String url = "http://10.0.2.2:8080/info/" + app.getUserid();
+                    String url = "http://coms-309-038.class.las.iastate.edu:8080/info/" + app.getUserid();
                     JSONObject body = new JSONObject();
                     try {
                         body.put("turn", false);
@@ -126,7 +127,8 @@ public class CharacterSelection extends AppCompatActivity {
                                     } catch (JSONException e) {
                                         throw new RuntimeException(e);
                                     }
-                                    String url = "http://10.0.2.2:8080/info/"+app.getInfoid()+"/character/"+chosenChar;
+//                                    String url = "http://10.0.2.2:8080/info/"+app.getInfoid()+"/character/"+chosenChar;
+                                    String url = "http://coms-309-038.class.las.iastate.edu:8080/info/"+app.getInfoid()+"/character/"+chosenChar;
                                     JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null,
                                             new Response.Listener<JSONObject>() {
                                                 @Override
