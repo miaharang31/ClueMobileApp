@@ -92,4 +92,45 @@ public class CheckList {
     public void setMustard(boolean mustard) {
         this.mustard = mustard;
     }
+
+    public boolean isPlum() {
+        return plum;
+    }
+
+    public boolean isGreen() {
+        return green;
+    }
+
+    public void setGreen(boolean green) {
+        this.green = green;
+    }
+
+    public void setPlum(boolean plum) {
+        this.plum = plum;
+    }
+
+    public boolean isPeacock() {
+        return peacock;
+    }
+
+    public void setPeacock(boolean peacock) {
+        this.peacock = peacock;
+    }
+
+    public boolean isScarlet() {
+        return scarlet;
+    }
+
+    public void setScarlet(boolean scarlet) {
+        this.scarlet = scarlet;
+    }
+
+    public boolean isWhite() {
+        return white;
+    }
+
+    public void setWhite(boolean white) {
+        this.white = white;
+    }
+
 }
