@@ -21,21 +21,9 @@ public class Card {
     private PlayerInfo playerInfo;
 
     @ManyToOne
-    @JoinColumn(name = "gameStateWeapons")
+    @JoinColumn(name = "gameState")
     @JsonIgnore
-    private GameState gameStateWeapons;
-    @ManyToOne
-    @JoinColumn(name = "gameStateSuspects")
-    @JsonIgnore
-    private GameState gameStateSuspects;
-    @ManyToOne
-    @JoinColumn(name = "gameStateRooms")
-    @JsonIgnore
-    private GameState gameStateRooms;
-    @ManyToOne
-    @JoinColumn(name = "gameStateFinal")
-    @JsonIgnore
-    private GameState gameStateFinal;
+    private GameState gameState;
 
     public Card() {}
     public Card(int cardID, String name, String type, String cardImage) {
@@ -84,35 +72,11 @@ public class Card {
         this.playerInfo = playerInfo;
     }
 
-    public GameState getGameStateFinal() {
-        return gameStateFinal;
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
     }
 
-    public GameState getGameStateRooms() {
-        return gameStateRooms;
-    }
-
-    public GameState getGameStateSuspects() {
-        return gameStateSuspects;
-    }
-
-    public GameState getGameStateWeapons() {
-        return gameStateWeapons;
-    }
-
-    public void setGameStateFinal(GameState gameStateFinal) {
-        this.gameStateFinal = gameStateFinal;
-    }
-
-    public void setGameStateRooms(GameState gameStateRooms) {
-        this.gameStateRooms = gameStateRooms;
-    }
-
-    public void setGameStateSuspects(GameState gameStateSuspects) {
-        this.gameStateSuspects = gameStateSuspects;
-    }
-
-    public void setGameStateWeapons(GameState gameStateWeapons) {
-        this.gameStateWeapons = gameStateWeapons;
+    public GameState getGameState() {
+        return gameState;
     }
 }

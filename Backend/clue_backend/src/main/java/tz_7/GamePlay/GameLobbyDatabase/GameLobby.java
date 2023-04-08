@@ -34,7 +34,7 @@ public class GameLobby {
         @NotFound(action = NotFoundAction.IGNORE)
     //    Max players allowed for the game
         private Integer maxPlayers;
-        @Column(name = "numPlayers") 
+        @Column(name = "numPlayers")
         @NotFound(action = NotFoundAction.IGNORE)
     //    Current number of players in the lobby
         private Integer numPlayers;
@@ -60,10 +60,6 @@ public class GameLobby {
         @JsonIgnore
 //        Host that creates the lobby
         private Player host;
-
-        @OneToOne
-        @JoinColumn(name = "gameState")
-        private GameState gameState;
 
     /**
      * No-Argument constructor
@@ -146,10 +142,6 @@ public class GameLobby {
         this.host = host;
     }
 
-    public void setGameState(GameState gameState) {
-        this.gameState = gameState;
-    }
-
     /**
      * All the get arguments for every variable
      * @return
@@ -157,7 +149,6 @@ public class GameLobby {
      */
     public String getGameCode() {return gameCode;}
     public Integer getID() {return ID;}
-    public Boolean getIsPremium() {return isPremium;}
     public Integer getMaxPlayers() {return maxPlayers;}
     public Integer getNumPlayers() {return numPlayers;}
     public Set<Player> getPlayers() {return players;}

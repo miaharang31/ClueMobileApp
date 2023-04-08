@@ -12,9 +12,7 @@ import tz_7.GamePlay.GameLobbyDatabase.GameLobbyRepository;
 import tz_7.PlayerDatabase.Player;
 import tz_7.PlayerDatabase.PlayerRepository;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Author: Mia Harang
@@ -39,14 +37,26 @@ public class GameStateController {
      * @return
      *  GameState Entity
      */
-    @PostMapping(value = "game/new/{lobbyid}", consumes = "application/json")
-    public GameState newState(@RequestBody GameState state, @PathVariable Integer lobbyid) {
-        GameLobby lobby = gameLobbyRepository.findById(lobbyid).get();
-        state.setGameLobby(lobby);
-        state.setFinalCards();
-        lobby.setGameState(state);
+    @PostMapping(value = "game/new", consumes = "application/json")
+    public GameState newState(@RequestBody GameState state) {
+//        Card[] weapons = state.getWeapons().toArray(new Card[0]);
+//        Card[] suspects = state.getSuspects().toArray(new Card[0]);
+//        Card[] rooms = state.getRooms().toArray(new Card[0]);
+//        System.out.println("Weapons size: " + state.getWeapons().size());
+//        System.out.println("Suspects size: " + state.getSuspects().size());
+//        System.out.println("Rooms size: " + state.getRooms().size());
+        System.out.println("Players size: " + state.getTurnOrder().size());
+
+        Iterator<Player> players = state.getTurnOrder().iterator();
+        while(players.hasNext()) {
+            players.next().setGameState(state);
+        }
+//        for(int i = 0; i < players.length; i++) {
+//            System.out.println(players[i].getFirstname());
+//            players[i].setGameState(state);
+//        }
         repo.save(state);
-        gameLobbyRepository.save(lobby);
+        playerRepository.saveAll(state.getTurnOrder());
         return state;
     }
 
@@ -55,10 +65,17 @@ public class GameStateController {
      * @return
      *  A list of game state objects
      */
-    @GetMapping(value = "game")
-    public List<GameState> getAllLobbies() {
-        return repo.findAll();
+    @GetMapping("game")
+    public ResponseEntity<List<GameState>> getAllLobbies() {
+        return new ResponseEntity<List<GameState>>(repo.findAll(), HttpStatus.OK);
     }
+
+    @GetMapping("game/{id}/players")
+    public Set<Player> getPlayers(@PathVariable Integer id) {
+        GameState state = repo.findById(id).get();
+        return state.getTurnOrder();
+    }
+
 
     /**
      * Get mapping to verify if the user's final guess is correct
@@ -68,16 +85,16 @@ public class GameStateController {
      *  true - if all the ids match
      *  false - if the ids don't match
      */
-    @GetMapping(value = "game/checkGuess/{id}", consumes = "application/json")
-    public Boolean checkGuess (@RequestBody Set<Card> guess, @PathVariable Integer id) {
-        GameState state = repo.getById(id);
-        return state.checkFinalGuess(guess);
-    }
+//    @GetMapping(value = "game/checkGuess/{id}", consumes = "application/json")
+//    public Boolean checkGuess (@RequestBody Set<Card> guess, @PathVariable Integer id) {
+//        GameState state = repo.getById(id);
+//        return state.checkFinalGuess(guess);
+//    }
 
-    @GetMapping(value = "game/{id}/next")
-    public Player getNextPlayer (@PathVariable Integer id) {
-        Optional<GameState> state = repo.findById(id);
-        return state.get().getNextPlayer();
-    }
+//    @GetMapping(value = "game/{id}/next")
+//    public Player getNextPlayer (@PathVariable Integer id) {
+//        Optional<GameState> state = repo.findById(id);
+//        return state.get().getNextPlayer();
+//    }
 
 }

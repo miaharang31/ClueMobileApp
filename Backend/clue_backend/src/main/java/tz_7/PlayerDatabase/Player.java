@@ -1,5 +1,6 @@
 package tz_7.PlayerDatabase;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import tz_7.GamePlay.GameLobbyDatabase.GameLobby;
@@ -44,11 +45,12 @@ public class Player {
 
     @OneToOne
     @JoinColumn(name = "gameLobbyHost")
+    @JsonIgnore
     private GameLobby gameLobbyHost;
 
     @ManyToOne
     @JoinColumn(name = "gameState")
-    @JsonIgnore
+    @JsonBackReference
     private GameState gameState;
 
     public Player() {}
@@ -129,11 +131,7 @@ public class Player {
         gameLobbyHost = lobby;
     }
 
-    public void setPlayerOrder(GameState gameState) {
-        this.gameState = gameState;
-    }
-
-    public GameState getPlayerOrder() {
+    public GameState getGameState() {
         return gameState;
     }
 
