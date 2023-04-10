@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.example.clue_frontend.GamePlay.playerGuess;
+
 import java.util.TimerTask;
 
 public class Checklist extends AppCompatActivity {
@@ -74,7 +76,7 @@ public class Checklist extends AppCompatActivity {
 
         exit.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Intent intent = new Intent(Checklist.this, MainActivity.class);
+                Intent intent = new Intent(Checklist.this, playerGuess.class);
                 startActivity(intent);
             }
         });

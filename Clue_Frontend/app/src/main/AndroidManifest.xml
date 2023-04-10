@@ -28,7 +28,8 @@
 <!--        <activity-->
 <!--            android:name=".DiceRoller"-->
 <!--            android:exported="false"-->
-<!--            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />-->
+<!--
+ />-->
 <!--        <activity-->
 <!--=======-->
 <!--&gt;>>>>>> main-->
@@ -63,6 +64,7 @@
             android:label="@string/app_name" />
         <activity android:name=".Home"
             android:label="Home"/>
+        <
 
         <meta-data
             android:name="preloaded_fonts"

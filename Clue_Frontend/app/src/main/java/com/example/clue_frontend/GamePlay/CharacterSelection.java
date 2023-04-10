@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.clue_frontend.DiceRoller;
 import com.example.clue_frontend.R;
 
 public class CharacterSelection extends AppCompatActivity {
@@ -92,7 +93,7 @@ public class CharacterSelection extends AppCompatActivity {
         startGame.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 if(numPlayers == totalPlayers) {
-                    Intent intent = new Intent(CharacterSelection.this, Game.class);
+                    Intent intent = new Intent(CharacterSelection.this, DiceRoller.class);
                     startActivity(intent);
                 }
             }
