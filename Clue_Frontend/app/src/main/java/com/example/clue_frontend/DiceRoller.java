@@ -91,7 +91,7 @@ public class DiceRoller extends AppCompatActivity {
                     }
                 }
                 numSpaces = die1Number + die2Number;
-                Toast.makeText(getApplicationContext(), numSpaces, Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(), numSpaces, Toast.LENGTH_LONG).show();
             }
         };
         Thread thread = new Thread(runnable);
