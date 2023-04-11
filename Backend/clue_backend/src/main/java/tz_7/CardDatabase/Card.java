@@ -2,6 +2,7 @@ package tz_7.CardDatabase;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import tz_7.GamePlay.GameStateDatabase.GameState;
 import tz_7.GamePlay.PlayerInfoDatabase.PlayerInfo;
 
 @Entity
@@ -18,6 +19,11 @@ public class Card {
     @JoinColumn(name = "playerInfo")
     @JsonIgnore
     private PlayerInfo playerInfo;
+
+    @ManyToOne
+    @JoinColumn(name = "gameState")
+    @JsonIgnore
+    private GameState gameState;
 
     public Card() {}
     public Card(int cardID, String name, String type, String cardImage) {
@@ -64,5 +70,13 @@ public class Card {
     }
     public void setPlayerInfo(PlayerInfo playerInfo) {
         this.playerInfo = playerInfo;
+    }
+
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
+    }
+
+    public GameState getGameState() {
+        return gameState;
     }
 }

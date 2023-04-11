@@ -8,4 +8,5 @@ import java.util.List;
 @Repository
 public interface CharacterRepository extends JpaRepository<Character, Integer> {
     List<Character> findAllByGame(String game);
+    Character findByName(String name);
 }

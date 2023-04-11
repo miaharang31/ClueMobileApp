@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
@@ -57,22 +58,33 @@ public class MainActivity extends AppCompatActivity {
         relativeLayout = findViewById(R.id.relative_layout);
         swipeListener = new SwipeListener(relativeLayout);
 
+
         Button submitButton = (Button) findViewById(R.id.submitButton);
         TextView newPlayerLink = findViewById(R.id.NewPlayerLink);
-
         //When the sign in button is clicked and data is entered for usename and password
         submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Home.class);
-                EditText username = findViewById(R.id.loginUsername);
-                EditText password = findViewById(R.id.loginPassword);
-                String usernameData = username.getText().toString();
-                String passwordData = password.getText().toString();
-                String firstNameData = " ";
-                String lastNameData = " ";
-                String emailData = " ";
-                boolean checkUsername, checkPassword;
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(MainActivity.this, Home.class);
+//            startActivity(intent);
+            EditText username = findViewById(R.id.loginUsername);
+            EditText password = findViewById(R.id.loginPassword);
+            String usernameData = username.getText().toString();
+            String passwordData = password.getText().toString();
+            String firstNameData = " ";
+            String lastNameData = " ";
+            String emailData = " ";
+            boolean checkUsername, checkPassword;
+
+            if(usernameData.isEmpty()){
+                username.setError("Username cannot be empty");
+                checkUsername = false;
+            }else{
+                username.setError(null);
+                checkUsername = true;
+
+            }
 
                 if(usernameData.isEmpty()){
                     username.setError("Username cannot be empty");
@@ -123,11 +135,10 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             });
 
-                    queue.add(jreq);
-                }
-
+                queue.add(jreq);
             }
-        });
+        }
+    });
 
         //when the new player link is clicked, go to th SignUpActivity
         newPlayerLink.setOnClickListener(new View.OnClickListener() {
@@ -141,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private class SwipeListener implements View.OnTouchListener {
         GestureDetector gestureDetector;

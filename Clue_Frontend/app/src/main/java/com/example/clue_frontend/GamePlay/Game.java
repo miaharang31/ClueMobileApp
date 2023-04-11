@@ -27,6 +27,8 @@ public class Game extends AppCompatActivity {
         this.getWindowManager().getDefaultDisplay().getMetrics(dm);
         Constraints.SCREEN_WIDTH = dm.widthPixels;
         Constraints.SCREEN_HEIGHT = dm.heightPixels;
+
+
         setContentView(R.layout.board);
 
         relativeLayout = findViewById(R.id.relative_layout);

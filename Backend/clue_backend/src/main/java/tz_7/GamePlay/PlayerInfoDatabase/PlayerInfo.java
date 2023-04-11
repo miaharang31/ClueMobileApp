@@ -6,6 +6,7 @@ import tz_7.GamePlay.GameStateDatabase.GameState;
 import tz_7.PlayerDatabase.Player;
 import tz_7.CharacterDatabase.Character;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -43,16 +44,11 @@ public class PlayerInfo {
     //    gamestate cannot have the same character)
         private Character character;
 
-        @OneToOne
-        @JoinColumn(name = "gamestate")
-    //    The game state that they are in
-        private GameState gamestate;
-
         @OneToMany(mappedBy = "playerInfo")
         private Set<Card> cardHand;
 
     public PlayerInfo() {
-
+        cardHand = new HashSet<>();
     }
 
     public void setPlayer(Player player) {
@@ -60,9 +56,6 @@ public class PlayerInfo {
     }
     public void setCharacter(Character character) {
         this.character = character;
-    }
-    public void setGamestate(GameState gamestate) {
-        this.gamestate = gamestate;
     }
     public void setRoll(Integer roll) {
         this.roll = roll;
@@ -82,6 +75,5 @@ public class PlayerInfo {
     public Boolean getTurn() {return turn;}
     public Player getPlayer() {return player;}
     public Character getCharacter() {return character;}
-    public GameState getGamestate() {return gamestate;}
     public Integer getRoll() {return roll;}
 }
