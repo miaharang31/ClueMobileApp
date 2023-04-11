@@ -133,4 +133,123 @@ public class CheckList {
         this.white = white;
     }
 
+    public boolean isKnife() {
+        return knife;
+    }
+
+    public void setKnife(boolean knife) {
+        this.knife = knife;
+    }
+
+    public boolean isCandlestick() {
+        return candlestick;
+    }
+
+    public void setCandlestick(boolean candlestick) {
+        this.candlestick = candlestick;
+    }
+
+    public boolean isRevolver() {
+        return revolver;
+    }
+
+    public void setRevolver(boolean revolver) {
+        this.revolver = revolver;
+    }
+
+    public boolean isRope() {
+        return rope;
+    }
+
+    public void setRope(boolean rope) {
+        this.rope = rope;
+    }
+
+    public boolean isLeadpipe() {
+        return leadpipe;
+    }
+
+    public void setLeadpipe(boolean leadpipe) {
+        this.leadpipe = leadpipe;
+    }
+
+    public boolean isWrench() {
+        return wrench;
+    }
+
+    public void setWrench(boolean wrench) {
+        this.wrench = wrench;
+    }
+
+    public boolean isHall() {
+        return hall;
+    }
+
+    public void setHall(boolean hall) {
+        this.hall = hall;
+    }
+
+    public boolean isLounge() {
+        return lounge;
+    }
+
+    public void setLounge(boolean lounge) {
+        this.lounge = lounge;
+    }
+
+    public boolean isDining() {
+        return dining;
+    }
+
+    public void setDining(boolean dining) {
+        this.dining = dining;
+    }
+
+    public boolean isKitchen() {
+        return kitchen;
+    }
+
+    public void setKitchen(boolean kitchen) {
+        this.kitchen = kitchen;
+    }
+
+    public boolean isBallroom() {
+        return ballroom;
+    }
+
+    public void setBallroom(boolean ballroom) {
+        this.ballroom = ballroom;
+    }
+
+    public boolean isConservatory() {
+        return conservatory;
+    }
+
+    public void setConservatory(boolean conservatory) {
+        this.conservatory = conservatory;
+    }
+
+    public boolean isBilliard() {
+        return billiard;
+    }
+
+    public void setBilliard(boolean billiard) {
+        this.billiard = billiard;
+    }
+
+    public boolean isLibrary() {
+        return library;
+    }
+
+    public void setLibrary(boolean library) {
+        this.library = library;
+    }
+
+    public boolean isStudy() {
+        return study;
+    }
+
+    public void setStudy(boolean study) {
+        this.study = study;
+    }
 }
