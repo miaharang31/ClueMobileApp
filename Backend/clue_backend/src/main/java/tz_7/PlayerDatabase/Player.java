@@ -10,6 +10,8 @@ import tz_7.GamePlay.PlayerInfoDatabase.PlayerInfo;
 
 /**
  * @author Grace Brickey
+ *  Stores the forever information of a user
+ *  Used to log in the user and identify them
  */
 
 @Entity
