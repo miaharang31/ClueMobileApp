@@ -5,7 +5,10 @@ stages:
   - androidbuild
   - androidtest
 
-
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+      
 maven-build:
   stage: mavenbuild
   tags:
