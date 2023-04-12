@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 
 @Entity
-@Table(name = "GameLobby")
+@Table(name = "Checklist")
 public class CheckList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
