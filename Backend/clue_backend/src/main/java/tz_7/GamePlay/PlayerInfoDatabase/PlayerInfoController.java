@@ -2,10 +2,8 @@ package tz_7.GamePlay.PlayerInfoDatabase;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import tz_7.CharacterDatabase.Character;
-import tz_7.CharacterDatabase.CharacterRepository;
-import tz_7.GamePlay.GameStateDatabase.GameState;
-import tz_7.GamePlay.GameStateDatabase.GameStateRepository;
+import tz_7.RoleDatabase.Role;
+import tz_7.RoleDatabase.RoleRepository;
 import tz_7.PlayerDatabase.Player;
 import tz_7.PlayerDatabase.PlayerRepository;
 
@@ -16,7 +14,7 @@ public class PlayerInfoController {
     @Autowired
     PlayerRepository playerRepo;
     @Autowired
-    CharacterRepository charRepo;
+    RoleRepository charRepo;
 
     @PostMapping(value = "info/{id}", consumes = "application/json")
     public PlayerInfo newInfo(@RequestBody PlayerInfo info, @PathVariable Integer id) {
@@ -29,16 +27,16 @@ public class PlayerInfoController {
         return info;
     }
 
-    @PutMapping(value = "info/{id}/character/{charid}")
-    public PlayerInfo chooseCharacter(@PathVariable Integer id, @PathVariable String charid) {
-        Character character = charRepo.findByName(charid);
+    @PutMapping(value = "info/{id}/role/{charid}")
+    public PlayerInfo chooseRole(@PathVariable Integer id, @PathVariable String charid) {
+        Role role = charRepo.findByName(charid);
         PlayerInfo info = repo.findById(id).get();
 
-        info.setCharacter(character);
-        character.setPlayerInfo(info);
+        info.setRole(role);
+        role.setPlayerInfo(info);
 
         repo.save(info);
-        charRepo.save(character);
+        charRepo.save(role);
         return info;
     }
 

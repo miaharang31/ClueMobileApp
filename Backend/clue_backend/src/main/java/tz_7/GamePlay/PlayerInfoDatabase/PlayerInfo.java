@@ -2,9 +2,8 @@ package tz_7.GamePlay.PlayerInfoDatabase;
 
 import jakarta.persistence.*;
 import tz_7.CardDatabase.Card;
-import tz_7.GamePlay.GameStateDatabase.GameState;
 import tz_7.PlayerDatabase.Player;
-import tz_7.CharacterDatabase.Character;
+import tz_7.RoleDatabase.Role;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -39,10 +38,10 @@ public class PlayerInfo {
         private Player player;
 
         @OneToOne
-        @JoinColumn(name = "character")
+        @JoinColumn(name = "role")
     //    Selected character to play with (two players in the same
     //    gamestate cannot have the same character)
-        private Character character;
+        private Role role;
 
         @OneToMany(mappedBy = "playerInfo")
         private Set<Card> cardHand;
@@ -54,8 +53,8 @@ public class PlayerInfo {
     public void setPlayer(Player player) {
         this.player = player;
     }
-    public void setCharacter(Character character) {
-        this.character = character;
+    public void setRole(Role role) {
+        this.role = role;
     }
     public void setRoll(Integer roll) {
         this.roll = roll;
@@ -74,6 +73,6 @@ public class PlayerInfo {
     public Integer getID() {return ID;}
     public Boolean getTurn() {return turn;}
     public Player getPlayer() {return player;}
-    public Character getCharacter() {return character;}
+    public Role getRole() {return role;}
     public Integer getRoll() {return roll;}
 }

@@ -8,6 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+//<<<<<<< HEAD
+//=======
+////<<<<<<< HEAD
+//>>>>>>> main
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,6 +22,10 @@ import com.android.volley.toolbox.Volley;
 import com.example.clue_frontend.Lobbies.Lobby;
 import com.example.clue_frontend.MyApplication;
 
+//<<<<<<< HEAD
+//=======
+//
+//>>>>>>> main
 import com.example.clue_frontend.R;
 
 import org.json.JSONException;
@@ -108,6 +116,18 @@ public class CharacterSelection extends AppCompatActivity {
 
         startGame.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+//<<<<<<< HEAD
+//=======
+////<<<<<<< HEAD
+////=======
+////                if(numPlayers == totalPlayers) {
+////                    Intent intent = new Intent(CharacterSelection.this, DiceRoller.class);
+////                    startActivity(intent);
+////                }
+////            }
+////        });
+////>>>>>>> emilysalsman
+//>>>>>>> main
 
 //                if(numPlayers == totalPlayers) {
                     RequestQueue queue = Volley.newRequestQueue(CharacterSelection.this);
@@ -162,9 +182,9 @@ public class CharacterSelection extends AppCompatActivity {
     }
 
     private void clicked(Button characterName) {
-//        characterName.setClickable(false);
-//        characterName.setVisibility(View.INVISIBLE);
-//        characterName.setBackgroundColor(0x8A8787);
+        characterName.setClickable(false);
+        characterName.setVisibility(View.INVISIBLE);
+        characterName.setBackgroundColor(0x8A8787);
     }
 
 
