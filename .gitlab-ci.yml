@@ -13,6 +13,11 @@ maven-build:
   script:
     - cd Backend/clue_backend
     - mvn package
+  only:
+    refs:
+      - main
+    changes:
+      - Backend/clue_backend
 
 maven-test:
   stage: maventest
@@ -24,7 +29,11 @@ maven-test:
   artifacts:
     paths:
       - Backend/target/*.jar
-
+  only:
+    refs:
+      - main
+    changes:
+      - Backend/clue_backend
 
 autoDeploy:
   stage: mavenDeploy
@@ -36,6 +45,11 @@ autoDeploy:
     - sudo mv target/*.jar /target/web-demo.jar
     - sudo systemctl stop system-web-demo
     - sudo systemctl start system-web-demo
+  only:
+    refs:
+      - main
+    changes:
+      - Backend/clue_backend/*
 
 android-build:
   image: gjandres/android-ci:latest
@@ -51,6 +65,11 @@ android-build:
   artifacts:
     paths:
       - Clue_Frontend/app/build/outputs/
+  only:
+    refs:
+      - main
+    changes:
+      - Clue_Frontend/*
 
 android-test:
   image: gjandres/android-ci:latest
@@ -63,4 +82,9 @@ android-test:
   script:
     - cd Clue_Frontend
     - ./gradlew test
+  only:
+    refs:
+      - main
+    changes:
+      - Clue_Frontend/*
 
