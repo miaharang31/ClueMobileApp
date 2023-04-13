@@ -63,10 +63,7 @@ public class MainActivity extends AppCompatActivity {
         TextView newPlayerLink = findViewById(R.id.NewPlayerLink);
         //When the sign in button is clicked and data is entered for usename and password
         submitButton.setOnClickListener(new View.OnClickListener() {
-<<<<<<< HEAD
-=======
-//<<<<<<< HEAD
->>>>>>> main
+
 
         @Override
         public void onClick(View v) {
@@ -90,14 +87,14 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
-<<<<<<< HEAD
+
                 if(usernameData.isEmpty()){
                     username.setError("Username cannot be empty");
                     checkUsername = false;
                 }else{
                     username.setError(null);
                     checkUsername = true;
-=======
+
             if(passwordData.isEmpty()){
                 password.setError("Password cannot be empty");
                 checkPassword = false;
@@ -137,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
 //                    username.setError(null);
 //                    checkUsername = true;
 //>>>>>>> emilysalsman
->>>>>>> main
+
                 }
 
                 if(passwordData.isEmpty()){
@@ -183,17 +180,12 @@ public class MainActivity extends AppCompatActivity {
 
                 queue.add(jreq);
             }
-<<<<<<< HEAD
+
+        }
+    };
         }
     });
-=======
-//<<<<<<< HEAD
-        }
-    });
-//=======
-//        });
-//>>>>>>> emilysalsman
->>>>>>> main
+
 
         //when the new player link is clicked, go to th SignUpActivity
         newPlayerLink.setOnClickListener(new View.OnClickListener() {
