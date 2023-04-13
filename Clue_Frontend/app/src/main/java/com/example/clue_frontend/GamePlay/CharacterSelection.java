@@ -8,11 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-//<<<<<<< HEAD
-//=======
-////<<<<<<< HEAD
-//>>>>>>> main
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -22,10 +17,6 @@ import com.android.volley.toolbox.Volley;
 import com.example.clue_frontend.Lobbies.Lobby;
 import com.example.clue_frontend.MyApplication;
 
-//<<<<<<< HEAD
-//=======
-//
-//>>>>>>> main
 import com.example.clue_frontend.R;
 
 import org.json.JSONException;
