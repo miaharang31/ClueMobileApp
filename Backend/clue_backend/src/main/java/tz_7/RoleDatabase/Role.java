@@ -5,12 +5,9 @@ import jakarta.persistence.*;
 import tz_7.GamePlay.PlayerInfoDatabase.PlayerInfo;
 
 @Entity
-<<<<<<< HEAD:Backend/clue_backend/src/main/java/tz_7/CharacterDatabase/Character.java
 @Table
-public class Character {
-=======
 public class Role {
->>>>>>> main:Backend/clue_backend/src/main/java/tz_7/RoleDatabase/Role.java
+
     @Id
     String name;
     String color; // use hex

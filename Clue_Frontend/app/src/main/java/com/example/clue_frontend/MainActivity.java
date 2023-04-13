@@ -95,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
                 checkPassword = true;
             }
 
+
             // if all textboxes are correct, all data will be added to the SecondActivity (main page for either regular/premium users) and will start
             if (checkUsername == true && checkPassword == true){
                 String url = "http://coms-309-038.class.las.iastate.edu:8080/login";

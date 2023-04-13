@@ -27,4 +27,7 @@ public class RoleController {
         repository.save(role);
         return "Role saved: " + role.getName();
     }
+//    @PostMapping("/getCharacterFromId") {
+//
+//    }
 }

@@ -39,6 +39,11 @@ public class PlayerInfoController {
         charRepo.save(role);
         return info;
     }
+    @PostMapping(value = "/getInfo", consumes = "application/json")
+    public PlayerInfo getInfo(@RequestBody PlayerInfo info) {
+        PlayerInfo information = repo.getById(info.getID());
+        return information;
+    }
 
 
 }
