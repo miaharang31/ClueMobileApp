@@ -26,6 +26,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.clue_frontend.GamePlay.CharacterSelection;
 import com.example.clue_frontend.GamePlay.Constraints;
 import com.example.clue_frontend.GamePlay.Game;
 import com.example.clue_frontend.GamePlay.GameView;
@@ -35,8 +36,6 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
-    RelativeLayout relativeLayout;
-    SwipeListener swipeListener;
 
     /*for scroll outside override*/
 //    TextView textView;
@@ -55,10 +54,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main); //activity_main
 
 
-        relativeLayout = findViewById(R.id.relative_layout);
-        swipeListener = new SwipeListener(relativeLayout);
-
-
         Button submitButton = (Button) findViewById(R.id.submitButton);
         TextView newPlayerLink = findViewById(R.id.NewPlayerLink);
         //When the sign in button is clicked and data is entered for usename and password
@@ -67,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(MainActivity.this, Home.class);
+//            Intent intent = new Intent(MainActivity.this, Home.class);
+            Intent intent = new Intent(MainActivity.this, Game.class);
 //            startActivity(intent);
             EditText username = findViewById(R.id.loginUsername);
             EditText password = findViewById(R.id.loginPassword);
@@ -192,7 +188,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private class SwipeListener implements View.OnTouchListener {
         GestureDetector gestureDetector;

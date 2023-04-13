@@ -12,8 +12,6 @@ import android.widget.TextView;
 
 import com.example.clue_frontend.GamePlay.playerGuess;
 
-import java.util.TimerTask;
-
 public class Checklist extends AppCompatActivity {
 
     CheckBox mustard;
