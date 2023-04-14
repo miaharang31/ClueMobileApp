@@ -1,7 +1,3 @@
-workflow:
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-
 stages:
   - mavenbuild
   - maventest
@@ -19,6 +15,7 @@ maven-build:
   only:
     refs:
       - main
+      - merge_requests
     changes:
       - Backend/clue_backend
 
@@ -35,6 +32,7 @@ maven-test:
   only:
     refs:
       - main
+      - merge_requests
     changes:
       - Backend/clue_backend
 
@@ -51,6 +49,7 @@ autoDeploy:
   only:
     refs:
       - main
+      - merge_requests
     changes:
       - Backend/clue_backend/*
 
@@ -71,6 +70,7 @@ android-build:
   only:
     refs:
       - main
+      - merge_requests
     changes:
       - Clue_Frontend/*
 
@@ -88,6 +88,7 @@ android-test:
   only:
     refs:
       - main
+      - merge_requests
     changes:
       - Clue_Frontend/*
 
