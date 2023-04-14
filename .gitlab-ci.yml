@@ -15,7 +15,6 @@ maven-build:
   only:
     refs:
       - main
-      - merge_requests
     changes:
       - Backend/clue_backend
 
@@ -32,7 +31,6 @@ maven-test:
   only:
     refs:
       - main
-      - merge_requests
     changes:
       - Backend/clue_backend
 
@@ -43,13 +41,12 @@ autoDeploy:
   script:
     - cd Backend/clue_backend
     - mvn package
-    - sudo mv target/*.jar /target/clue.jar
+    - sudo mv target/*.jar /target/web-demo.jar
     - sudo systemctl stop system-web-demo
     - sudo systemctl start system-web-demo
   only:
     refs:
       - main
-      - merge_requests
     changes:
       - Backend/clue_backend/*
 
@@ -70,7 +67,6 @@ android-build:
   only:
     refs:
       - main
-      - merge_requests
     changes:
       - Clue_Frontend/*
 
@@ -88,7 +84,6 @@ android-test:
   only:
     refs:
       - main
-      - merge_requests
     changes:
       - Clue_Frontend/*
 
