@@ -40,5 +40,13 @@ public class PlayerInfoController {
         return info;
     }
 
+    @GetMapping(value = "info/player/{id}")
+    public PlayerInfo getInfoByPlayerID(@PathVariable Integer id) {
+        Player player = playerRepo.findById(id).get();
+        PlayerInfo playerInfo = repo.findByPlayer(player);
+
+        return playerInfo;
+    }
+
 
 }
