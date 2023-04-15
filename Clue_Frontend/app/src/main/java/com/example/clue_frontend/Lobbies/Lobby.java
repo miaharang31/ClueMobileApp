@@ -90,6 +90,7 @@ public class Lobby extends AppCompatActivity {
                                             } catch (JSONException e) {
                                                 throw new RuntimeException(e);
                                             }
+                                            return null;
                                         }
                                     },
                                     new Response.ErrorListener() {
@@ -142,6 +143,7 @@ public class Lobby extends AppCompatActivity {
                                                             throw new RuntimeException(e);
                                                         }
                                                     }
+                                                    return null;
                                                 }
                                             },
                                             new Response.ErrorListener() {
@@ -155,6 +157,7 @@ public class Lobby extends AppCompatActivity {
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
+                        return null;
                     }
                 },
                 new Response.ErrorListener() {
@@ -230,6 +233,7 @@ public class Lobby extends AppCompatActivity {
                                                                                                                 } catch (JSONException e) {
                                                                                                                     throw new RuntimeException(e);
                                                                                                                 }
+                                                                                                                return null;
                                                                                                             }
                                                                                                         },
                                                                                                         new Response.ErrorListener() {
@@ -282,6 +286,7 @@ public class Lobby extends AppCompatActivity {
                                 } catch (JSONException e) {
                                     throw new RuntimeException(e);
                                 }
+                                return null;
                             }
                         },
                         new Response.ErrorListener() {

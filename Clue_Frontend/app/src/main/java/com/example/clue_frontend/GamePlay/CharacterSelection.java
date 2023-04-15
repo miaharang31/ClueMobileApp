@@ -148,6 +148,7 @@ public class CharacterSelection extends AppCompatActivity {
                                                 @Override
                                                 public void onResponse(JSONObject response) {
                                                     startActivity(intent);
+                                                    //return null;
                                                 }
                                             },
                                             new Response.ErrorListener() {
@@ -157,6 +158,7 @@ public class CharacterSelection extends AppCompatActivity {
                                                 }
                                             });
                                     queue.add(request);
+                                    //return url;
                                 }
                             },
                             new Response.ErrorListener() {

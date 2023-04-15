@@ -145,6 +145,7 @@ public class UserSignUp extends AppCompatActivity {
                                 @Override
                                 public void onResponse(JSONObject response) {
                                     startActivity(intent);
+                                    return null;
                                 }
                             },
                             new Response.ErrorListener() {

@@ -116,6 +116,8 @@ public class HostLobby extends AppCompatActivity{
                                         throw new RuntimeException(e);
                                     }
                                     startActivity(intent);
+                                    //line 120
+                                    //return null;
                                 }
                             },
                             new Response.ErrorListener() {

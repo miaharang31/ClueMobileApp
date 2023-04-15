@@ -22,7 +22,7 @@ public class GameView extends View {
     //put dice number here:
     public static int n = rand.nextInt(11) + 1;
 
-    public static int number_of_players = 6;
+    public static int number_of_players = 3;
     public static Bitmap edge;
     private static Bitmap tile1;
     private static Bitmap tile2;
@@ -179,6 +179,7 @@ public class GameView extends View {
                 }
             }
         }
+
 
         //set up players and player pieces based on how many players
         switch (number_of_players) {
