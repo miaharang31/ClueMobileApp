@@ -13,11 +13,22 @@ import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.clue_frontend.Lobbies.Lobby;
+import com.example.clue_frontend.MyApplication;
 import com.example.clue_frontend.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class Game extends AppCompatActivity {
-    RelativeLayout relativeLayout;
+    View relativeLayout = findViewById(R.id.relative_layout);
     SwipeListener swipeListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +40,35 @@ public class Game extends AppCompatActivity {
         Constraints.SCREEN_HEIGHT = dm.heightPixels;
 
 
-        setContentView(R.layout.board);
+        RequestQueue queue = Volley.newRequestQueue(Game.this);
+        MyApplication app = (MyApplication) getApplication();
+        String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/role" + app.getUserid();
 
-        relativeLayout = findViewById(R.id.relative_layout);
-        swipeListener = new SwipeListener(relativeLayout);
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+
+                            response.get("role");
+                            setContentView(R.layout.board);
+
+                            relativeLayout = findViewById(R.id.relative_layout);
+                            swipeListener = new SwipeListener(relativeLayout);
+
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+
 
     }
 
