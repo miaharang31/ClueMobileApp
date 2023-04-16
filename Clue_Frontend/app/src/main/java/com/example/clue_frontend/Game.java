@@ -1,6 +1,6 @@
-package com.example.clue_frontend.GamePlay;
+package com.example.clue_frontend;
 
-import static com.example.clue_frontend.GamePlay.GameView.turn;
+import static com.example.clue_frontend.GameView.turn;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,38 +9,15 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-<<<<<<< HEAD
-import com.example.clue_frontend.CardButton;
-import com.example.clue_frontend.CardLayout;
-=======
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-import com.example.clue_frontend.Lobbies.Lobby;
-import com.example.clue_frontend.MyApplication;
->>>>>>> main
-import com.example.clue_frontend.R;
-import com.example.clue_frontend.playerGuess;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 
 public class Game extends AppCompatActivity {
-    View relativeLayout = findViewById(R.id.relative_layout);
+    RelativeLayout relativeLayout;
     SwipeListener swipeListener;
-    ImageView iv;
-
-    ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,60 +26,11 @@ public class Game extends AppCompatActivity {
         this.getWindowManager().getDefaultDisplay().getMetrics(dm);
         Constraints.SCREEN_WIDTH = dm.widthPixels;
         Constraints.SCREEN_HEIGHT = dm.heightPixels;
+        setContentView(R.layout.board);
 
-
-        RequestQueue queue = Volley.newRequestQueue(Game.this);
-        MyApplication app = (MyApplication) getApplication();
-        String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/role" + app.getUserid();
-
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-
-                            response.get("role");
-                            setContentView(R.layout.board);
-
-                            relativeLayout = findViewById(R.id.relative_layout);
-                            swipeListener = new SwipeListener(relativeLayout);
-
-                        } catch (JSONException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-                });
-
-<<<<<<< HEAD
         relativeLayout = findViewById(R.id.relative_layout);
         swipeListener = new SwipeListener(relativeLayout);
-        iv = findViewById(R.id.open_checklist);
-        iv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Game.this, playerGuess.class);
-                startActivity(intent);
-            }
-        });
-=======
->>>>>>> main
 
-        imageView = findViewById(R.id.open_cards);
-
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Game.this, CardLayout.class);
-                startActivity(intent);
-            }
-        });
     }
 
     private class SwipeListener implements View.OnTouchListener {
