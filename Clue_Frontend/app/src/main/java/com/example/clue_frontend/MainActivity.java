@@ -114,26 +114,6 @@ public class MainActivity extends AppCompatActivity {
                     json.put("password", passwordData);
                 } catch (JSONException e) {
                     e.printStackTrace();
-//=======
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, Home.class);
-//                EditText username = findViewById(R.id.loginUsername);
-//                EditText password = findViewById(R.id.loginPassword);
-//                String usernameData = username.getText().toString();
-//                String passwordData = password.getText().toString();
-//                String firstNameData = " ";
-//                String lastNameData = " ";
-//                String emailData = " ";
-//                boolean checkUsername, checkPassword;
-//
-//                if(usernameData.isEmpty()){
-//                    username.setError("Username cannot be empty");
-//                    checkUsername = false;
-//                }else{
-//                    username.setError(null);
-//                    checkUsername = true;
-//>>>>>>> emilysalsman
 
                 }
 
@@ -192,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(MainActivity.this, Checklist.class);
+                Intent intent = new Intent(MainActivity.this, DiceRoller.class);
 
                 startActivity(intent);
 
