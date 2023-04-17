@@ -1,6 +1,7 @@
 package com.example.clue_frontend;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -15,6 +16,8 @@ public class EndGameLose extends AppCompatActivity {
     int weaponCard;
     int roomCard;
 
+    ConstraintLayout endGame;
+
 
 
     @Override
@@ -27,6 +30,7 @@ public class EndGameLose extends AppCompatActivity {
         suspect = findViewById(R.id.suspect);
         weapon = findViewById(R.id.weapon);
         room = findViewById(R.id.room);
+        endGame = findViewById(R.id.lastPage);
 
 
         // set to
@@ -40,6 +44,12 @@ public class EndGameLose extends AppCompatActivity {
         suspect.setImageResource(suspectCard);
         weapon.setImageResource(weaponCard);
         room.setImageResource(roomCard);
+
+
+
+
+
+
 
     }
 }

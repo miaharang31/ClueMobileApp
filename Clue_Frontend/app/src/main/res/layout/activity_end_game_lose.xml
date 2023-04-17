@@ -2,12 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lastPage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".EndGameLose">
 
     <TextView
-        android:id="@+id/win"
+        android:id="@+id/lose"
         android:layout_width="match_parent"
         android:layout_height="165dp"
         android:layout_marginTop="25dp"
@@ -26,9 +27,9 @@
     <ImageView
         android:id="@+id/suspect"
         android:layout_width="175dp"
-        android:layout_height="225dp"
+        android:layout_height="245dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="225dp"
+        android:layout_marginTop="205dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
@@ -40,9 +41,9 @@
     <ImageView
         android:id="@+id/weapon"
         android:layout_width="175dp"
-        android:layout_height="225dp"
+        android:layout_height="245dp"
         android:layout_marginStart="225dp"
-        android:layout_marginTop="225dp"
+        android:layout_marginTop="205dp"
         android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,9 +56,9 @@
     <ImageView
         android:id="@+id/room"
         android:layout_width="175dp"
-        android:layout_height="225dp"
+        android:layout_height="245dp"
         android:layout_marginStart="120dp"
-        android:layout_marginTop="490dp"
+        android:layout_marginTop="470dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"

@@ -1,0 +1,1000 @@
+    5  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+    6  git push origin master
+    7  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+    8  git pull origin master
+    9  clear
+   10  git add .
+   11  git push origin master
+   12  cd /c/Users/emily/OneDrive/cs309/2_tz_7/Experiments
+   13  git add .
+   14  git push origin master
+   15  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+   16  git push 
+   17  git pull
+   18  git push
+   19  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+   20  git push
+   21  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+   22  git status
+   23  git add .
+   24  git commit -m "initial commit
+   25  clear
+   26  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+   27  git add
+   28  git add .
+   29  git commit -m "initial commit"
+   30  git push
+   31  git push
+   32  clear
+   33  cd /c/Users/emily/OneDrive/cs309/2_tz_7/Experiments
+   34  git push
+   35  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+   36  git push origin
+   37  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+   38  git status
+   39  git add .
+   40  git commit -m "initial commit"
+   41  git pull
+   42  git push
+   43  git status
+   44  cd /c/Users/emily/OneDrive/cs309
+   45  git clone https://git.las.iastate.edu/cs309/tutorials.git
+   46  cd /c/Users/emily/OneDrive/cs309/tutorials
+   47  git checkout android_unit1_1_two_screen_counter
+   48  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+   49  git status
+   50  git pull
+   51  git push
+   52  git status
+   53  git commit -m "initial commit"
+   54  git pull
+   55  git push
+   56  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+   57  git status
+   58  git add .
+   59  git status
+   60  git commit -m "emilys experiment"
+   61  git push
+   62  git pull
+   63  git push
+   64  git status
+   65  git add .
+   66  git commit -m "new commit"
+   67  git pull 
+   68  git push
+   69  cd /c/Users/emily/OneDrive/cs309/tutorials
+   70  cd /c/Users/emily/OneDrive/cs309/tutorials
+   71  git clone https://git.las.iastate.edu/cs309/tutorials.git
+   72  cd /c/Users/emily/OneDrive/cs309/tutorials
+   73  cd /c/Users/emily/OneDrive/cs309/tutorials
+   74  git clone https://git.las.iastate.edu/cs309/tutorials/-/tree/android_unit2_1_volley
+   75  cd /c/Users/emily/OneDrive/cs309/tutorials
+   76  git status
+   77  git pull
+   78  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+   79  git status
+   80  git add .
+   81  git commit -m "premium user"
+   82  git pull
+   83  git push
+   84  cd /c/Users/emily/OneDrive/cs319/emrsal23/secoms319
+   85  git init
+   86  git config --global user.name "emrsal23"
+   87  git config --global user.email "esalsman@iastate.edu
+   88  "
+   89  git config --list
+   90  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+   91  git branch -a
+   92  git fetch orgin emilysalsman:emilysalsman
+   93  git fetch 2_tz_7 emilysalsman
+   94  git fetch origin emilysalsman:emilysalsman
+   95  git add .
+   96  git commit -m "adding premium page"
+   97  git pull
+   98  git push origin emilysalsman
+   99  git push
+  100  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  101  git merge emilysalsman
+  102  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  103  git remote prune origin
+  104  git branch -a
+  105  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  106  git add .
+  107  git commit -m "add lobby"
+  108  git pull
+  109  git chechout emilysalsman
+  110  git checkout emilysalsman
+  111  git merge emilysalsman
+  112  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  113  git add .
+  114  git commit -m "add lobby"
+  115  git checkout emilysalsman
+  116  git push
+  117  git checkout main
+  118  git push
+  119  git checkout emilysalsman
+  120  git pull
+  121  git merge main
+  122  git commit
+  123  git push
+  124  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  125  git merge main
+  126  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  127  git merge main
+  128  git checkout main
+  129  git pull
+  130  git checkout emilysalsman
+  131  git merge main
+  132  git checkout main
+  133  got pull
+  134  git pull
+  135  git restore ,
+  136  git restore .
+  137  git status
+  138  git status
+  139  git pull
+  140  git status
+  141  git checkout emilysalsman
+  142  git merge main
+  143  git push
+  144  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  145  git status
+  146  git pull
+  147  git status
+  148  cd Clue_Frontend/
+  149  ls -la
+  150  git status
+  151  git rm -r .idea
+  152  git rm -rf .idea
+  153  git status
+  154  git add .
+  155  git status
+  156  cat .gitignore 
+  157  git rm local.properties 
+  158  git status
+  159  git rm ../Frontend/local.properties 
+  160  git rm -f  ../Frontend/local.properties 
+  161  git status
+  162  git add .
+  163  git status
+  164  git commit -m "deleting .idea etc"
+  165  git status
+  166  git push
+  167  git status
+  168  git pull
+  169  git status
+  170  ls
+  171  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  172  git pull
+  173  git checkout main
+  174  git checkout main
+  175  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  176  git checkout main
+  177  git status
+  178  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  179  git checkout main
+  180  git statis
+  181  git status
+  182  git restore --staged Frontend/.idea/compiler.xml
+  183  git status
+  184  git pull
+  185  git status
+  186  git add .
+  187  git commit -m "dev"
+  188  git add .
+  189  git commit -m "not allowed"
+  190  git push
+  191  git status
+  192  git checkout main
+  193  git pull
+  194  git add .
+  195  git commit -m "delete folder"
+  196  git status
+  197  git checkout emilysalsman
+  198  git merge main
+  199  git add .
+  200  git commit
+  201  git push
+  202  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  203  git add .
+  204  git commit -m "game lobby"
+  205  git push
+  206  git checkout main
+  207  git pull
+  208  git merge emilysalsman
+  209  git pull
+  210  git merge emilysalsmna
+  211  git add .
+  212  git commit
+  213  git push
+  214  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  215  git add.
+  216  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  217  git add .
+  218  git commit -m "game lobby"
+  219  git push
+  220  git checkout mail
+  221  git checkout main
+  222  git pull
+  223  git merge emilysalsman
+  224  git add .
+  225  git commit
+  226  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  227  git checkout emilysalsman
+  228  git fetch
+  229  git rebase origin/main
+  230  git add .
+  231  git commit -m "merge conflicts"
+  232  git rebase --continue
+  233  git add .
+  234  git commit "game lobby"
+  235  git commit -m "game lobby"
+  236  git checkout main
+  237  git pull
+  238  git merge emilysalsman
+  239  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  240  git merge emilysalsman
+  241  git checkout main
+  242  git checkout emilysalsman
+  243  git pull
+  244  git pull
+  245  git add .
+  246  git commit -m "idea"
+  247  git pull
+  248  git checlout main
+  249  git checkout main
+  250  git checkout emilysalsman
+  251  git push
+  252  git checkout main
+  253  git push
+  254  git merge emilysalsman
+  255  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  256  git status
+  257  git checkout emilysalsman
+  258  git pull
+  259  git add .
+  260  git commit -m "lobby"
+  261  git push
+  262  git checkout main
+  263  git merge emilysalsman
+  264  git push
+  265  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  266  git add .
+  267  git commit -m "host and join buttons"
+  268  git push
+  269  git checkout main
+  270  git pull
+  271  git merge emilysalsman
+  272  git push
+  273  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  274  git pull
+  275  git checkout emilysalsman
+  276  git pull
+  277  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  278  git chech status
+  279  git check status
+  280  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  281  git status
+  282  git pull
+  283  /c/Users/emily/OneDrive/cs309/2_tz_7
+  284  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  285  git checkout main
+  286  git pull
+  287  git status
+  288  git add .
+  289  git commit -m "checklist"
+  290  git push
+  291  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  292  git checkout main
+  293  git checkout main
+  294  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  295  git checkout main
+  296  git merge emilysalsman
+  297  git checkout emilysalmsn
+  298  git checkout emilysalsman
+  299  git merge main
+  300  git status
+  301  git checkout emilySalsman
+  302  git status
+  303  git add .
+  304  git commit -m "checklist"
+  305  git push
+  306  git checkout emilysalsman
+  307  git add .
+  308  git commit -m "checklist"
+  309  git push
+  310  git checkout emilysalsman
+  311  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  312  git checkout main
+  313  git add .
+  314  git status
+  315  git add .
+  316  git commit -m "dice roll"
+  317  git checkout main
+  318  git pull main
+  319  git pull
+  320  git checkout emilysalsman
+  321  git merge main
+  322  git push
+  323  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  324  git checkout main
+  325  git pull
+  326  git add .
+  327  git commit -m "dice roller transparent backround"
+  328  git checkout main
+  329  git pull
+  330  git checkout emilysalsman
+  331  git merge main
+  332  git push
+  333  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  334  ssh esalsman@coms-309-038.las.class.iastate.edu
+  335  ssh esalsman@coms-309-038.class.las.iastate.edu
+  336  ssh esalsman@coms-309-038.class.las.iastate.edu
+  337  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  338  git add .
+  339  git commit -m "checklist"
+  340  git checkout main
+  341  git pull
+  342  git checkout emilysalsman
+  343  git merge main
+  344  git push
+  345  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  346  git status
+  347  git add .
+  348  git commit -m "added die and finished checklist"
+  349  git checkout main
+  350  git pull
+  351  git checkout emilysalsman
+  352  git add .
+  353  git commit -m "dice roller update"
+  354  git checkout main
+  355  git pull
+  356  git checkout emilysalsman
+  357  git merge main
+  358  git push
+  359  git status
+  360  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  361  git add .
+  362  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  363  git add .
+  364  git commit -m "player guess page"
+  365  git checkout main
+  366  git pull
+  367  git checkout emilysalsman
+  368  git merge main
+  369  git push
+  370  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  371  git add .
+  372  git commit -m "character selection updates"
+  373  git checkout main
+  374  git pull
+  375  git checkout emilysalsman
+  376  git push
+  377  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  378  git add .
+  379  git commit -m "character selection and guess"
+  380  git checkout main
+  381  git pull
+  382  git checkout emilysalsman
+  383  git merge main
+  384  git mege main
+  385  git merge main
+  386  git push
+  387  git merge main
+  388  git checkout emilysalsman
+  389  git fetch origin
+  390  git checkout -b 'emilysalsman' 'origin/emilysalsman
+  391  '
+  392  git checkout -b 'emilysalsman' 'origin/emilysalsman'
+  393  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  394  git merge main
+  395  git checkout emilysalsman
+  396  git add .
+  397  git commit -m "fixed conflicts"
+  398  git checkout emilysalsman
+  399  git push
+  400  git merge main
+  401  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  402  git checkout emilysalsman
+  403  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  404  ssh esalsman@coms-309-038.class.las.iastate.edu
+  405  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  406  git checkout main
+  407  git pull
+  408  git checkout emilysalsman
+  409  giut merge main
+  410  git merge main
+  411  git remote update
+  412  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  413  git remote update
+  414  git rebase abort
+  415  git rebase --abort
+  416  git rebase --continue
+  417  git add .
+  418  git status
+  419  git commit -m "fix conflicts"
+  420  git status
+  421  git rebase --continue
+  422  git remote prune origin
+  423  git push
+  424  git rebase --continue
+  425  git rebase --abort
+  426  git remote update
+  427  git status
+  428  git add .
+  429  git commit -m "created job"
+  430  git push
+  431  git checkout main
+  432  git pull
+  433  git checkout emilysalsman
+  434  git merge main
+  435  git add .
+  436  git commit -m "fixed conflicts"
+  437  git push
+  438  git pull
+  439  git add .
+  440  git commit -m "fix conflicts"
+  441  git push
+  442  git checkout emily-job
+  443  git add .
+  444  git commit -m "cicd"
+  445  git push
+  446  git checkout emilysalsman
+  447  git checkout main
+  448  git checkout emilysalsman
+  449  git merge main
+  450  git checkout main
+  451  git checkout emilysalsman
+  452  git add .
+  453  git commit "fixed errors"
+  454  git commit -m "fixed errors"
+  455  git push
+  456  git checkout emilysalsman
+  457  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  458  git checkout emily-job
+  459  git add .
+  460  git commit
+  461  git commit -m "new changes"
+  462  git push
+  463  git checkout main
+  464  git pull
+  465  git checkout emilysalsman
+  466  git pull
+  467  git add .
+  468  git commit -m "fixed conflicts"
+  469  git pull
+  470  git push
+  471  git checkout emily-job
+  472  git add .
+  473  git commit -m "ci/cd"
+  474  git push
+  475  git checkout emilysalsman
+  476  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  477  git checkout emily-job
+  478  git add .
+  479  git commit -m "ci/cd"
+  480  git push
+  481  git checkout emily-job
+  482  git add .
+  483  git commit -m "ci/cd"
+  484  git push
+  485  git add .
+  486  git commit -m "ci/cd"
+  487  git push
+  488  git checkout emilysalsman
+  489  ssh esalsman@coms-309-038.class.las.iastate.edu
+  490  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  491  git checkout emily-job
+  492  git checkout emily-job
+  493  git add .
+  494  git commit -m "ci/cd"
+  495  git push
+  496  ssh esalsman@coms-309-038.class.las.iastate.edussh esalsman@coms-309-038.class.las.iastate.edu
+  497  ssh esalsman@coms-309-038.class.las.iastate.edu
+  498  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  499  git checkout emilysalsman
+  500  git update origin
+  501  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  502  git checkout emily-job
+  503  git origin update
+  504  history >> history.txt
+    4  git push origin master
+    5  cd /c/Users/emily/OneDrive/cs309/2_tz_7/Experiments
+    6  git add .
+    7  git push origin master
+    8  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+    9  git push 
+   10  git pull
+   11  git push
+   12  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+   13  git push
+   14  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+   15  git status
+   16  git add .
+   17  git commit -m "initial commit
+   18  clear
+   19  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+   20  git add
+   21  git add .
+   22  git commit -m "initial commit"
+   23  git push
+   24  git push
+   25  clear
+   26  cd /c/Users/emily/OneDrive/cs309/2_tz_7/Experiments
+   27  git push
+   28  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+   29  git push origin
+   30  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+   31  git status
+   32  git add .
+   33  git commit -m "initial commit"
+   34  git pull
+   35  git push
+   36  git status
+   37  cd /c/Users/emily/OneDrive/cs309
+   38  git clone https://git.las.iastate.edu/cs309/tutorials.git
+   39  cd /c/Users/emily/OneDrive/cs309/tutorials
+   40  git checkout android_unit1_1_two_screen_counter
+   41  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+   42  git status
+   43  git pull
+   44  git push
+   45  git status
+   46  git commit -m "initial commit"
+   47  git pull
+   48  git push
+   49  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+   50  git status
+   51  git add .
+   52  git status
+   53  git commit -m "emilys experiment"
+   54  git push
+   55  git pull
+   56  git push
+   57  git status
+   58  git add .
+   59  git commit -m "new commit"
+   60  git pull 
+   61  git push
+   62  cd /c/Users/emily/OneDrive/cs309/tutorials
+   63  cd /c/Users/emily/OneDrive/cs309/tutorials
+   64  git clone https://git.las.iastate.edu/cs309/tutorials.git
+   65  cd /c/Users/emily/OneDrive/cs309/tutorials
+   66  cd /c/Users/emily/OneDrive/cs309/tutorials
+   67  git clone https://git.las.iastate.edu/cs309/tutorials/-/tree/android_unit2_1_volley
+   68  cd /c/Users/emily/OneDrive/cs309/tutorials
+   69  git status
+   70  git pull
+   71  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+   72  git status
+   73  git add .
+   74  git commit -m "premium user"
+   75  git pull
+   76  git push
+   77  cd /c/Users/emily/OneDrive/cs319/emrsal23/secoms319
+   78  git init
+   79  git config --global user.name "emrsal23"
+   80  git config --global user.email "esalsman@iastate.edu
+   81  "
+   82  git config --list
+   83  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+   84  git branch -a
+   85  git fetch orgin emilysalsman:emilysalsman
+   86  git fetch 2_tz_7 emilysalsman
+   87  git fetch origin emilysalsman:emilysalsman
+   88  git add .
+   89  git commit -m "adding premium page"
+   90  git pull
+   91  git push origin emilysalsman
+   92  git push
+   93  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+   94  git merge emilysalsman
+   95  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+   96  git remote prune origin
+   97  git branch -a
+   98  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+   99  git add .
+  100  git commit -m "add lobby"
+  101  git pull
+  102  git chechout emilysalsman
+  103  git checkout emilysalsman
+  104  git merge emilysalsman
+  105  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  106  git add .
+  107  git commit -m "add lobby"
+  108  git checkout emilysalsman
+  109  git push
+  110  git checkout main
+  111  git push
+  112  git checkout emilysalsman
+  113  git pull
+  114  git merge main
+  115  git commit
+  116  git push
+  117  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  118  git merge main
+  119  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  120  git merge main
+  121  git checkout main
+  122  git pull
+  123  git checkout emilysalsman
+  124  git merge main
+  125  git checkout main
+  126  got pull
+  127  git pull
+  128  git restore ,
+  129  git restore .
+  130  git status
+  131  git status
+  132  git pull
+  133  git status
+  134  git checkout emilysalsman
+  135  git merge main
+  136  git push
+  137  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  138  git status
+  139  git pull
+  140  git status
+  141  cd Clue_Frontend/
+  142  ls -la
+  143  git status
+  144  git rm -r .idea
+  145  git rm -rf .idea
+  146  git status
+  147  git add .
+  148  git status
+  149  cat .gitignore 
+  150  git rm local.properties 
+  151  git status
+  152  git rm ../Frontend/local.properties 
+  153  git rm -f  ../Frontend/local.properties 
+  154  git status
+  155  git add .
+  156  git status
+  157  git commit -m "deleting .idea etc"
+  158  git status
+  159  git push
+  160  git status
+  161  git pull
+  162  git status
+  163  ls
+  164  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  165  git pull
+  166  git checkout main
+  167  git checkout main
+  168  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  169  git checkout main
+  170  git status
+  171  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  172  git checkout main
+  173  git statis
+  174  git status
+  175  git restore --staged Frontend/.idea/compiler.xml
+  176  git status
+  177  git pull
+  178  git status
+  179  git add .
+  180  git commit -m "dev"
+  181  git add .
+  182  git commit -m "not allowed"
+  183  git push
+  184  git status
+  185  git checkout main
+  186  git pull
+  187  git add .
+  188  git commit -m "delete folder"
+  189  git status
+  190  git checkout emilysalsman
+  191  git merge main
+  192  git add .
+  193  git commit
+  194  git push
+  195  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  196  git add .
+  197  git commit -m "game lobby"
+  198  git push
+  199  git checkout main
+  200  git pull
+  201  git merge emilysalsman
+  202  git pull
+  203  git merge emilysalsmna
+  204  git add .
+  205  git commit
+  206  git push
+  207  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  208  git add.
+  209  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  210  git add .
+  211  git commit -m "game lobby"
+  212  git push
+  213  git checkout mail
+  214  git checkout main
+  215  git pull
+  216  git merge emilysalsman
+  217  git add .
+  218  git commit
+  219  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  220  git checkout emilysalsman
+  221  git fetch
+  222  git rebase origin/main
+  223  git add .
+  224  git commit -m "merge conflicts"
+  225  git rebase --continue
+  226  git add .
+  227  git commit "game lobby"
+  228  git commit -m "game lobby"
+  229  git checkout main
+  230  git pull
+  231  git merge emilysalsman
+  232  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  233  git merge emilysalsman
+  234  git checkout main
+  235  git checkout emilysalsman
+  236  git pull
+  237  git pull
+  238  git add .
+  239  git commit -m "idea"
+  240  git pull
+  241  git checlout main
+  242  git checkout main
+  243  git checkout emilysalsman
+  244  git push
+  245  git checkout main
+  246  git push
+  247  git merge emilysalsman
+  248  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  249  git status
+  250  git checkout emilysalsman
+  251  git pull
+  252  git add .
+  253  git commit -m "lobby"
+  254  git push
+  255  git checkout main
+  256  git merge emilysalsman
+  257  git push
+  258  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  259  git add .
+  260  git commit -m "host and join buttons"
+  261  git push
+  262  git checkout main
+  263  git pull
+  264  git merge emilysalsman
+  265  git push
+  266  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  267  git pull
+  268  git checkout emilysalsman
+  269  git pull
+  270  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  271  git chech status
+  272  git check status
+  273  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  274  git status
+  275  git pull
+  276  /c/Users/emily/OneDrive/cs309/2_tz_7
+  277  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  278  git checkout main
+  279  git pull
+  280  git status
+  281  git add .
+  282  git commit -m "checklist"
+  283  git push
+  284  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  285  git checkout main
+  286  git checkout main
+  287  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  288  git checkout main
+  289  git merge emilysalsman
+  290  git checkout emilysalmsn
+  291  git checkout emilysalsman
+  292  git merge main
+  293  git status
+  294  git checkout emilySalsman
+  295  git status
+  296  git add .
+  297  git commit -m "checklist"
+  298  git push
+  299  git checkout emilysalsman
+  300  git add .
+  301  git commit -m "checklist"
+  302  git push
+  303  git checkout emilysalsman
+  304  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  305  git checkout main
+  306  git add .
+  307  git status
+  308  git add .
+  309  git commit -m "dice roll"
+  310  git checkout main
+  311  git pull main
+  312  git pull
+  313  git checkout emilysalsman
+  314  git merge main
+  315  git push
+  316  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  317  git checkout main
+  318  git pull
+  319  git add .
+  320  git commit -m "dice roller transparent backround"
+  321  git checkout main
+  322  git pull
+  323  git checkout emilysalsman
+  324  git merge main
+  325  git push
+  326  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  327  ssh esalsman@coms-309-038.las.class.iastate.edu
+  328  ssh esalsman@coms-309-038.class.las.iastate.edu
+  329  ssh esalsman@coms-309-038.class.las.iastate.edu
+  330  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  331  git add .
+  332  git commit -m "checklist"
+  333  git checkout main
+  334  git pull
+  335  git checkout emilysalsman
+  336  git merge main
+  337  git push
+  338  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  339  git status
+  340  git add .
+  341  git commit -m "added die and finished checklist"
+  342  git checkout main
+  343  git pull
+  344  git checkout emilysalsman
+  345  git add .
+  346  git commit -m "dice roller update"
+  347  git checkout main
+  348  git pull
+  349  git checkout emilysalsman
+  350  git merge main
+  351  git push
+  352  git status
+  353  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  354  git add .
+  355  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  356  git add .
+  357  git commit -m "player guess page"
+  358  git checkout main
+  359  git pull
+  360  git checkout emilysalsman
+  361  git merge main
+  362  git push
+  363  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  364  git add .
+  365  git commit -m "character selection updates"
+  366  git checkout main
+  367  git pull
+  368  git checkout emilysalsman
+  369  git push
+  370  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  371  git add .
+  372  git commit -m "character selection and guess"
+  373  git checkout main
+  374  git pull
+  375  git checkout emilysalsman
+  376  git merge main
+  377  git mege main
+  378  git merge main
+  379  git push
+  380  git merge main
+  381  git checkout emilysalsman
+  382  git fetch origin
+  383  git checkout -b 'emilysalsman' 'origin/emilysalsman
+  384  '
+  385  git checkout -b 'emilysalsman' 'origin/emilysalsman'
+  386  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  387  git merge main
+  388  git checkout emilysalsman
+  389  git add .
+  390  git commit -m "fixed conflicts"
+  391  git checkout emilysalsman
+  392  git push
+  393  git merge main
+  394  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  395  git checkout emilysalsman
+  396  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  397  ssh esalsman@coms-309-038.class.las.iastate.edu
+  398  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  399  git checkout main
+  400  git pull
+  401  git checkout emilysalsman
+  402  giut merge main
+  403  git merge main
+  404  git remote update
+  405  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  406  git remote update
+  407  git rebase abort
+  408  git rebase --abort
+  409  git rebase --continue
+  410  git add .
+  411  git status
+  412  git commit -m "fix conflicts"
+  413  git status
+  414  git rebase --continue
+  415  git remote prune origin
+  416  git push
+  417  git rebase --continue
+  418  git rebase --abort
+  419  git remote update
+  420  git status
+  421  git add .
+  422  git commit -m "created job"
+  423  git push
+  424  git checkout main
+  425  git pull
+  426  git checkout emilysalsman
+  427  git merge main
+  428  git add .
+  429  git commit -m "fixed conflicts"
+  430  git push
+  431  git pull
+  432  git add .
+  433  git commit -m "fix conflicts"
+  434  git push
+  435  git checkout emily-job
+  436  git add .
+  437  git commit -m "cicd"
+  438  git push
+  439  git checkout emilysalsman
+  440  git checkout main
+  441  git checkout emilysalsman
+  442  git merge main
+  443  git checkout main
+  444  git checkout emilysalsman
+  445  git add .
+  446  git commit "fixed errors"
+  447  git commit -m "fixed errors"
+  448  git push
+  449  git checkout emilysalsman
+  450  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  451  git checkout emily-job
+  452  git add .
+  453  git commit
+  454  git commit -m "new changes"
+  455  git push
+  456  git checkout main
+  457  git pull
+  458  git checkout emilysalsman
+  459  git pull
+  460  git add .
+  461  git commit -m "fixed conflicts"
+  462  git pull
+  463  git push
+  464  git checkout emily-job
+  465  git add .
+  466  git commit -m "ci/cd"
+  467  git push
+  468  git checkout emilysalsman
+  469  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  470  git checkout emily-job
+  471  git add .
+  472  git commit -m "ci/cd"
+  473  git push
+  474  git checkout emily-job
+  475  git add .
+  476  git commit -m "ci/cd"
+  477  git push
+  478  git add .
+  479  git commit -m "ci/cd"
+  480  git push
+  481  git checkout emilysalsman
+  482  ssh esalsman@coms-309-038.class.las.iastate.edu
+  483  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  484  git checkout emily-job
+  485  git checkout emily-job
+  486  git add .
+  487  git commit -m "ci/cd"
+  488  git push
+  489  ssh esalsman@coms-309-038.class.las.iastate.edussh esalsman@coms-309-038.class.las.iastate.edu
+  490  ssh esalsman@coms-309-038.class.las.iastate.edu
+  491  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  492  git checkout emilysalsman
+  493  git update origin
+  494  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  495  git checkout emily-job
+  496  git origin update
+  497  history >> history.txt
+  498  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  499  git checkout emilysalsman
+  500  git reflog
+  501  cd /c/Users/emily/OneDrive/cs309/2_tz_7
+  502  git history
+  503  history >> history.txt
