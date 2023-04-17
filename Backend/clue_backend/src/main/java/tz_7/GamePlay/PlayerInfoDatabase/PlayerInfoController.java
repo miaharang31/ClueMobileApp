@@ -22,6 +22,11 @@ public class PlayerInfoController {
         info.setPlayer(player);
         player.setPlayerInfo(info);
 
+        PlayerInfo tmp = repo.findByPlayer(player);
+        if(tmp != null) {
+            deleteInfo(tmp.getID());
+        }
+
         repo.save(info);
         playerRepo.save(player);
         return info;
@@ -54,6 +59,12 @@ public class PlayerInfoController {
         PlayerInfo playerInfo = repo.findByPlayer(player);
 
         return playerInfo.getRole();
+    }
+
+    @DeleteMapping(value = "info/{id}/delete")
+    public String deleteInfo(@PathVariable Integer id) {
+        repo.deleteById(id);
+        return "info deleted";
     }
 
 
