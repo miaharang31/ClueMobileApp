@@ -11,10 +11,19 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.example.clue_frontend.CardButton;
+import com.example.clue_frontend.Home;
 import com.example.clue_frontend.R;
 
+
+import com.example.clue_frontend.R;
 public class playerGuess extends AppCompatActivity {
+
+
+    public void exitCheck(View v) {
+        startActivity(new Intent(playerGuess.this, CardButton.class));
+    }
+
 
     TextView exit;
 
@@ -77,6 +86,7 @@ public class playerGuess extends AppCompatActivity {
             public void onClick(View v){
                 if(suspects.getCheckedRadioButtonId() != -1) {
                     if(weapons.getCheckedRadioButtonId() != -1) {
+
                         Intent intent = new Intent(playerGuess.this, Game.class);
                         startActivity(intent);
                     }

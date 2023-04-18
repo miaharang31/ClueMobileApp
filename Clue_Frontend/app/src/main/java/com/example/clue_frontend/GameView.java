@@ -368,5 +368,4 @@ public class GameView extends View {
         turn.setY(GameView.arrBoard.get(turn.getPlacement()).getTileY() + 3);
 
     }
-
 }

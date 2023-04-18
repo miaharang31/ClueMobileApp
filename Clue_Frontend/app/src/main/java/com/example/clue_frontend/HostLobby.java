@@ -127,6 +127,7 @@ public class HostLobby extends AppCompatActivity{
         });
     }
 
+
     /**
      * Method that clears the colors of the buttons
      * when the user chooses a button

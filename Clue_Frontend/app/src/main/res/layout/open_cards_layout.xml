@@ -16,7 +16,6 @@
             android:layout_marginTop="3.5in"
             android:layout_marginLeft="1.30in"
             android:adjustViewBounds="true"
-            android:onClick="onClickTest"
             android:src="@drawable/checklist_button" />
 
         <ImageView

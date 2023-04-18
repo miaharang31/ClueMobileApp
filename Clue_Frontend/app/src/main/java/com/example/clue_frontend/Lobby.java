@@ -48,8 +48,12 @@ public class Lobby extends AppCompatActivity {
        // startGame = (Button)findViewById(R.id.startGame);
 //        host = findViewById(R.id.host);
         startGame = findViewById(R.id.startGame);
+
 //        maxPlayers = findViewById(R.id.maxplayertxt);
 //        currentPlayers = findViewById(R.id.currentplayertxt);
+        maxPlayers = findViewById(R.id.max);
+        currentPlayers = findViewById(R.id.cur);
+
 //        String currentName;
 //        int topPadding = 150;
 

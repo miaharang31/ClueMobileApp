@@ -2,12 +2,12 @@ package com.example.clue_frontend;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.clue_frontend.GamePlay.playerGuess;
 
 public class CardButton extends AppCompatActivity {
     ImageView iv;
