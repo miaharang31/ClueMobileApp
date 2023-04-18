@@ -37,13 +37,7 @@
 <!--            android:exported="false" />-->
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:label="Clue"/>
         <activity
             android:name=".UserSignUp"
             android:label="@string/app_name" />
@@ -63,35 +57,25 @@
             android:name=".GamePlay.Game"
             android:label="@string/app_name"/>
         <activity android:name=".Home"
-            android:label="Home"/>
-<!--<<<<<<< HEAD-->
+            android:label="Home"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".CardButton"
             android:label="CardButton"/>
         <activity
             android:name=".CardLayout"
             android:label="CardLayout"/>
-        <activity android:name=".playerGuess"
+        <activity android:name=".GamePlay.playerGuess"
             android:label="playerGuess"/>
 
         <activity android:name=".GamePlay.CharacterSelection"
             android:label="Clue"/>
-<!--=======-->
-<!--&lt;!&ndash;<<<<<<< HEAD&ndash;&gt;-->
-<!--&lt;!&ndash;        <&ndash;&gt;-->
-<!--&lt;!&ndash;=======&ndash;&gt;-->
-<!--&lt;!&ndash;        <activity android:name=".DiceRoller"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:label="DiceRoller"/>&ndash;&gt;-->
-<!--&lt;!&ndash;        <activity android:name=".GamePlay.CharacterSelection"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:exported="true">&ndash;&gt;-->
-<!--&lt;!&ndash;            <intent-filter>&ndash;&gt;-->
-<!--&lt;!&ndash;                <action android:name="android.intent.action.MAIN" />&ndash;&gt;-->
-
-<!--&lt;!&ndash;                <category android:name="android.intent.category.LAUNCHER" />&ndash;&gt;-->
-<!--&lt;!&ndash;            </intent-filter>&ndash;&gt;-->
-<!--&lt;!&ndash;        </activity>&ndash;&gt;-->
-
-<!--&lt;!&ndash;&gt;>>>>>> b65a0c8af6adee572343148f734ff2b94fe8fd60&ndash;&gt;-->
-<!--&gt;>>>>>> emilysalsman-->
 
         <meta-data
             android:name="preloaded_fonts"

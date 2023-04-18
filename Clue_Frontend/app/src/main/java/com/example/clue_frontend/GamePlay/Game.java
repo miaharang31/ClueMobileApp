@@ -15,10 +15,9 @@ import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-<<<<<<< HEAD
 import com.example.clue_frontend.CardButton;
 import com.example.clue_frontend.CardLayout;
-=======
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -27,9 +26,9 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.clue_frontend.Lobbies.Lobby;
 import com.example.clue_frontend.MyApplication;
->>>>>>> main
+
 import com.example.clue_frontend.R;
-import com.example.clue_frontend.playerGuess;
+import com.example.clue_frontend.GamePlay.playerGuess;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -80,7 +79,7 @@ public class Game extends AppCompatActivity {
                     }
                 });
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
         relativeLayout = findViewById(R.id.relative_layout);
         swipeListener = new SwipeListener(relativeLayout);
         iv = findViewById(R.id.open_checklist);
@@ -91,8 +90,8 @@ public class Game extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-=======
->>>>>>> main
+//=======
+//>>>>>>> main
 
         imageView = findViewById(R.id.open_cards);
 

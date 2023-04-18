@@ -12,15 +12,13 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-<<<<<<< HEAD:Clue_Frontend/app/src/main/java/com/example/clue_frontend/playerGuess.java
 import com.example.clue_frontend.GamePlay.CharacterSelection;
 import com.example.clue_frontend.GamePlay.Game;
-=======
+
 
 import com.example.clue_frontend.CardButton;
 import com.example.clue_frontend.Home;
 import com.example.clue_frontend.R;
->>>>>>> main:Clue_Frontend/app/src/main/java/com/example/clue_frontend/GamePlay/playerGuess.java
 //import com.example.clue_frontend.GamePlay.Game;
 
 public class playerGuess extends AppCompatActivity {
@@ -91,13 +89,8 @@ public class playerGuess extends AppCompatActivity {
             public void onClick(View v){
                 if(suspects.getCheckedRadioButtonId() != -1) {
                     if(weapons.getCheckedRadioButtonId() != -1) {
-<<<<<<< HEAD:Clue_Frontend/app/src/main/java/com/example/clue_frontend/playerGuess.java
                         Intent intent = new Intent(playerGuess.this, Game.class); //used to say game.class
-=======
 
-                        Intent intent = new Intent(playerGuess.this, Game.class);
-
->>>>>>> main:Clue_Frontend/app/src/main/java/com/example/clue_frontend/GamePlay/playerGuess.java
                         startActivity(intent);
                     }
                     else {
