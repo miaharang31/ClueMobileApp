@@ -14,26 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Clue_Frontend"
         android:usesCleartextTraffic="true"
-
         tools:targetApi="31">
         <activity
-            android:name=".EndGameLose"
+            android:name=".EndGameOtherPlayers"
             android:exported="false" />
         <activity
-            android:name=".EndGameWin"
+            android:name=".EndGameWinOrLose"
             android:exported="false" />
-
-
         <activity
             android:name=".DiceRoller"
             android:exported="false" />
-
         <activity
             android:name=".Checklist"
-            android:exported="false" />
-
-
-        <!-- <<<<<<< HEAD -->
+            android:exported="false" /> <!-- <<<<<<< HEAD -->
         <!-- android:name=".playerGuess" -->
         <!-- android:exported="false" /> -->
         <!-- <activity -->
@@ -51,7 +44,7 @@
         <!-- &gt;>>>>>> main -->
         <!-- android:name=".Home" -->
         <!-- android:exported="false" /> -->
-<!--         <activity android:name=".MainActivity" /> &lt;!&ndash; android:exported="true"> &ndash;&gt;-->
+        <!-- <activity android:name=".MainActivity" /> &lt;!&ndash; android:exported="true"> &ndash;&gt; -->
         <!-- <intent-filter> -->
         <!-- <action android:name="android.intent.action.MAIN" /> -->
         <!-- <category android:name="android.intent.category.LAUNCHER" /> -->

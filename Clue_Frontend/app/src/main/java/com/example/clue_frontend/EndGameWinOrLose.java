@@ -2,10 +2,12 @@ package com.example.clue_frontend;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.TextView;
 
-public class EndGameWin extends AppCompatActivity {
+public class EndGameWinOrLose extends AppCompatActivity {
 
     ImageView suspect;
     ImageView weapon;
@@ -15,14 +17,18 @@ public class EndGameWin extends AppCompatActivity {
     int weaponCard;
     int roomCard;
 
+    TextView winOrLose;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_end_game_win);
+        setContentView(R.layout.activity_end_game_win_or_lose);
 
         suspect = findViewById(R.id.suspect);
         weapon = findViewById(R.id.weapon);
         room = findViewById(R.id.room);
+        winOrLose = findViewById(R.id.winLose);
 
 
         // randomly chosen suspect card players had to guess
@@ -41,6 +47,12 @@ public class EndGameWin extends AppCompatActivity {
         suspect.setImageResource(suspectCard);
         weapon.setImageResource(weaponCard);
         room.setImageResource(roomCard);
+
+        // display this text if player guessed correctly
+        winOrLose.setText("Congratulations! You solved the murder!");
+
+        // display this text if player guessed wrong
+        winOrLose.setText("\"Oh No!                             You failed to solve the murder.\"");
 
     }
 }
