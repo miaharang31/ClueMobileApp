@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tz_7.CardDatabase.Card;
+import tz_7.CardDatabase.CardRepository;
 import tz_7.GamePlay.GameLobbyDatabase.GameLobby;
 import tz_7.GamePlay.GameLobbyDatabase.GameLobbyRepository;
 import tz_7.PlayerDatabase.Player;
@@ -30,6 +31,9 @@ public class GameStateController {
     @Autowired
     private GameLobbyRepository gameLobbyRepository;
 
+    @Autowired
+    private CardRepository cardRepository;
+
     /**
      * Post mapping that creates a new Game State
      * @param state
@@ -45,6 +49,45 @@ public class GameStateController {
         }
         repo.save(state);
         playerRepository.saveAll(state.getTurnOrder());
+        return state;
+    }
+
+    @PutMapping(value = "/game/{id}/setcards/weapons", consumes = "application/json")
+    public GameState addWeapons(@PathVariable Integer id, @RequestBody Set<Card> weapons) {
+        GameState state = repo.findById(id).get();
+        state.setWeapons(weapons);
+        Iterator<Card> cards = weapons.iterator();
+        while(cards.hasNext()) {
+            cards.next().addGameState(state);
+        }
+        repo.save(state);
+        cardRepository.saveAll(weapons);
+        return state;
+    }
+
+    @PutMapping(value = "/game/{id}/setcards/suspects", consumes = "application/json")
+    public GameState addSuspects(@PathVariable Integer id, @RequestBody Set<Card> suspects) {
+        GameState state = repo.findById(id).get();
+        state.setSuspects(suspects);
+        Iterator<Card> cards = suspects.iterator();
+        while(cards.hasNext()) {
+            cards.next().addGameState(state);
+        }
+        repo.save(state);
+        cardRepository.saveAll(suspects);
+        return state;
+    }
+
+    @PutMapping(value = "/game/{id}/setcards/rooms", consumes = "application/json")
+    public GameState addRooms(@PathVariable Integer id, @RequestBody Set<Card> rooms) {
+        GameState state = repo.findById(id).get();
+        state.setRooms(rooms);
+        Iterator<Card> cards = rooms.iterator();
+        while(cards.hasNext()) {
+            cards.next().addGameState(state);
+        }
+        repo.save(state);
+        cardRepository.saveAll(rooms);
         return state;
     }
 

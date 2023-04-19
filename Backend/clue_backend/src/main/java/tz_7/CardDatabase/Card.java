@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import tz_7.GamePlay.GameStateDatabase.GameState;
 import tz_7.GamePlay.PlayerInfoDatabase.PlayerInfo;
 
+import java.util.Set;
+
 @Entity
 public class Card {
     @Id
@@ -20,10 +22,10 @@ public class Card {
     @JsonIgnore
     private PlayerInfo playerInfo;
 
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(name = "gameState")
     @JsonIgnore
-    private GameState gameState;
+    private Set<GameState> gameState;
 
     public Card() {}
     public Card(int cardID, String name, String type, String cardImage) {
@@ -72,11 +74,10 @@ public class Card {
         this.playerInfo = playerInfo;
     }
 
-    public void setGameState(GameState gameState) {
-        this.gameState = gameState;
+    public void addGameState(GameState gameState) {
+        this.gameState.add(gameState);
     }
-
-    public GameState getGameState() {
+    public Set<GameState> getGameState() {
         return gameState;
     }
 }
