@@ -22,7 +22,7 @@ public class GameView extends View {
     //put dice number here:
     public static int n = rand.nextInt(11) + 1;
 
-    public static int number_of_players = 3;
+    public static int number_of_players = 6;
     public static Bitmap edge;
     private static Bitmap tile1;
     private static Bitmap tile2;
@@ -96,6 +96,7 @@ public class GameView extends View {
 
     public GameView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+
 
         //create rooms
         study_room = new Room(study_room_info);
@@ -179,7 +180,6 @@ public class GameView extends View {
                 }
             }
         }
-
 
         //set up players and player pieces based on how many players
         switch (number_of_players) {
@@ -293,6 +293,8 @@ public class GameView extends View {
                 white = Bitmap.createScaledBitmap(white, 30, 30, true);
                 plum = BitmapFactory.decodeResource(this.getResources(), R.drawable.plum);
                 plum = Bitmap.createScaledBitmap(plum, 30, 30, true);
+
+                //Game.getCharacter();
 
                 player1 = new Player(scarlet, 468, 0, 0);
                 player1.setX(arrBoard.get(player1.getPlacement()).getTileX() + 3);

@@ -61,9 +61,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-//            Intent intent = new Intent(MainActivity.this, Home.class);
+                //Intent intent = new Intent(MainActivity.this, Home.class);
+                //Intent intent = new Intent(MainActivity.this, Game.class);
                 Intent intent = new Intent(MainActivity.this, CharacterSelection.class);
-//            startActivity(intent);
+                startActivity(intent);
                 EditText username = findViewById(R.id.loginUsername);
                 EditText password = findViewById(R.id.loginPassword);
                 String usernameData = username.getText().toString();
@@ -134,7 +135,6 @@ public class MainActivity extends AppCompatActivity {
                                             throw new RuntimeException(e);
                                         }
                                         startActivity(intent);
-                                        return null;
                                     }
                                 },
                                 new Response.ErrorListener() {
@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //when the new player link is clicked, go to the SignUpActivity
+        //when the new player link is clicked, go to th SignUpActivity
         newPlayerLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

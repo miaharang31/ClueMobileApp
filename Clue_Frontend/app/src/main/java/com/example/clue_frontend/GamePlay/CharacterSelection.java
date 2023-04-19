@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 //<<<<<<< HEAD
 
@@ -39,7 +41,6 @@ public class CharacterSelection extends AppCompatActivity {
     String chosenChar;
 
 
-
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,122 +55,114 @@ public class CharacterSelection extends AppCompatActivity {
         white = findViewById(R.id.whiteSelect);
         startGame = findViewById(R.id.gameStart);
 
-        mustard.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        mustard.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 mustard.setClickable(false);
                 clicked(mustard);
                 numPlayers++;
-                chosenChar="mustard";
+                chosenChar = "mustard";
             }
         });
 
-        plum.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-               plum.setClickable(false);
-               clicked(plum);
-               numPlayers++;
-                chosenChar="plum";
+        plum.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                plum.setClickable(false);
+                clicked(plum);
+                numPlayers++;
+                chosenChar = "plum";
             }
         });
 
-        green.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        green.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 green.setClickable(false);
                 clicked(green);
                 numPlayers++;
-                chosenChar="green";
+                chosenChar = "green";
+                System.out.println("Green Selected");
 
             }
         });
 
-        peacock.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        peacock.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 peacock.setClickable(false);
                 clicked(peacock);
                 numPlayers++;
-                chosenChar="peacock";
+                chosenChar = "peacock";
 
             }
         });
 
-        scarlet.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        scarlet.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 clicked(scarlet);
                 numPlayers++;
-                chosenChar="scarlet";
+                chosenChar = "scarlet";
             }
         });
 
-        white.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        white.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 clicked(white);
                 numPlayers++;
-                chosenChar="white";
+                chosenChar = "white";
             }
         });
 
-        startGame.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-//<<<<<<< HEAD
-//=======
-//                if(numPlayers == totalPlayers) {
-//                    Intent intent = new Intent(CharacterSelection.this, DiceRoller.class);
-//                    startActivity(intent);
-//                }
-//            }
-//        });
-//>>>>>>> emilysalsman
-
-//                if(numPlayers == totalPlayers) {
-                    RequestQueue queue = Volley.newRequestQueue(CharacterSelection.this);
-                    MyApplication app = (MyApplication) getApplication();
-                    Intent intent = new Intent(CharacterSelection.this, Game.class);
-//                    String url = "http://10.0.2.2:8080/info/" + app.getUserid();
-                    String url = "http://coms-309-038.class.las.iastate.edu:8080/info/" + app.getUserid();
-                    JSONObject body = new JSONObject();
-                    try {
-                        body.put("turn", false);
-                    } catch (JSONException e) {
-                        throw new RuntimeException(e);
-                    }
-                    JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, body,
-                            new Response.Listener<JSONObject>() {
-                                @Override
-                                public void onResponse(JSONObject response) {
-                                    try {
-                                        app.setInfoid(response.getInt("id"));
-                                    } catch (JSONException e) {
-                                        throw new RuntimeException(e);
-                                    }
-//                                    String url = "http://10.0.2.2:8080/info/"+app.getInfoid()+"/character/"+chosenChar;
-                                    String url = "http://coms-309-038.class.las.iastate.edu:8080/info/"+app.getInfoid()+"/character/"+chosenChar;
-                                    JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null,
-                                            new Response.Listener<JSONObject>() {
-                                                @Override
-                                                public void onResponse(JSONObject response) {
-                                                    startActivity(intent);
-                                                    //return null;
-                                                }
-                                            },
-                                            new Response.ErrorListener() {
-                                                @Override
-                                                public void onErrorResponse(VolleyError error) {
-//                                                    TODO: handle error
-                                                }
-                                            });
-                                    queue.add(request);
-                                    //return url;
-                                }
-                            },
-                            new Response.ErrorListener() {
-                                @Override
-                                public void onErrorResponse(VolleyError error) {
-//                                    TODO: handle error
-                                }
-                            });
-                    queue.add(request);
-
+        startGame.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+//              if(numPlayers == totalPlayers) {
+                RequestQueue queue = Volley.newRequestQueue(CharacterSelection.this);
+                MyApplication app = (MyApplication) getApplication();
+                Intent intent = new Intent(CharacterSelection.this, Game.class);
+//              String url = "http://10.0.2.2:8080/info/" + app.getUserid();
+                String url = "http://coms-309-038.class.las.iastate.edu:8080/info/" + app.getUserid();
+                System.out.println("character url: " + url);
+                JSONObject body = new JSONObject();
+                try {
+                    body.put("turn", false);
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
                 }
+
+                JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, body,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                try {
+                                    app.setInfoid(response.getInt("id"));
+                                } catch (JSONException e) {
+                                    throw new RuntimeException(e);
+                                }
+//                              String url = "http://10.0.2.2:8080/info/"+app.getInfoid()+"/character/"+chosenChar;
+                                String url = "http://coms-309-038.class.las.iastate.edu:8080/info/" + app.getInfoid() + "/role/" + chosenChar;
+                                JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null,
+                                        new Response.Listener<JSONObject>() {
+                                            @Override
+                                            public void onResponse(JSONObject response) {
+                                                startActivity(intent);
+                                            }
+                                        },
+                                        new Response.ErrorListener() {
+                                            @Override
+                                            public void onErrorResponse(VolleyError error) {
+
+//                                                    TODO: handle error
+                                            }
+                                        });
+                                queue.add(request);
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+//                                    TODO: handle error
+                            }
+                        });
+                queue.add(request);
+
+            }
 //            }
         });
     }

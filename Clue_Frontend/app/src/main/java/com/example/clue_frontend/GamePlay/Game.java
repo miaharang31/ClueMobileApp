@@ -28,8 +28,9 @@ import org.json.JSONObject;
 
 
 public class Game extends AppCompatActivity {
-    View relativeLayout = findViewById(R.id.relative_layout);
+    View relativeLayout;
     SwipeListener swipeListener;
+    String characterSelected;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,20 +39,23 @@ public class Game extends AppCompatActivity {
         this.getWindowManager().getDefaultDisplay().getMetrics(dm);
         Constraints.SCREEN_WIDTH = dm.widthPixels;
         Constraints.SCREEN_HEIGHT = dm.heightPixels;
+
+        characterSelected = getCharacter();
         setContentView(R.layout.board);
 
         relativeLayout = findViewById(R.id.relative_layout);
         swipeListener = new SwipeListener(relativeLayout);
-
     }
 
-    public String getCharacter() {
+    public String getCharacter(){
         final String[] name = new String[1];
         RequestQueue queue = Volley.newRequestQueue(Game.this);
         MyApplication app = (MyApplication) getApplication();
-        String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/role" + app.getUserid();
+        String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/" + app.getUserid() + "/role";
+        System.out.println("game url: " + url);
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -61,7 +65,6 @@ public class Game extends AppCompatActivity {
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
-                        //return null;
                     }
                 },
                 new Response.ErrorListener() {
