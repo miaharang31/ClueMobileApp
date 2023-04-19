@@ -10,13 +10,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.clue_frontend.CardButton;
-import com.example.clue_frontend.CardLayout;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -24,11 +20,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.clue_frontend.Lobbies.Lobby;
 import com.example.clue_frontend.MyApplication;
 
 import com.example.clue_frontend.R;
-import com.example.clue_frontend.GamePlay.playerGuess;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -49,7 +43,7 @@ public class Game extends AppCompatActivity {
         Constraints.SCREEN_WIDTH = dm.widthPixels;
         Constraints.SCREEN_HEIGHT = dm.heightPixels;
 
-
+        
         RequestQueue queue = Volley.newRequestQueue(Game.this);
         MyApplication app = (MyApplication) getApplication();
         String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/role" + app.getUserid();
@@ -79,7 +73,6 @@ public class Game extends AppCompatActivity {
                     }
                 });
 
-//<<<<<<< HEAD
         relativeLayout = findViewById(R.id.relative_layout);
         swipeListener = new SwipeListener(relativeLayout);
         iv = findViewById(R.id.open_checklist);
@@ -90,8 +83,6 @@ public class Game extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//=======
-//>>>>>>> main
 
         imageView = findViewById(R.id.open_cards);
 

@@ -95,7 +95,12 @@ public class Lobby extends AppCompatActivity {
                                             try {
                                                 app = (MyApplication) getApplication();
                                                 host.setText("Host: " + response.getString("firstname") + " " + response.getString("lastname"));
-//                                                if (host)
+                                                if ((Integer)response.get("id") == app.getUserid()) {
+                                                    startGame.setVisibility(View.VISIBLE);
+                                                }
+                                                else {
+                                                    startGame.setVisibility(View.GONE);
+                                                }
                                             } catch (JSONException e) {
                                                 throw new RuntimeException(e);
                                             }
@@ -181,6 +186,7 @@ public class Lobby extends AppCompatActivity {
             public void onClick(View v){
 //                TODO: create game state
                 app = (MyApplication) getApplication();
+
 
                 if (app.getUsersplaying() == 3) {
 
