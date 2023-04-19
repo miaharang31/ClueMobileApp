@@ -10,8 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-//<<<<<<< HEAD
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -20,7 +18,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.clue_frontend.Lobbies.Lobby;
 import com.example.clue_frontend.MyApplication;
-
 
 import com.example.clue_frontend.R;
 

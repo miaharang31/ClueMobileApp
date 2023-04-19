@@ -15,9 +15,8 @@ maven-build:
   only:
     refs:
       - main
-      - merge_requests
     changes:
-      - Backend/clue_backend
+      - Backend/clue_backend/*
 
 maven-test:
   stage: maventest
@@ -28,13 +27,12 @@ maven-test:
     - mvn test
   artifacts:
     paths:
-      - Backend/target/*.jar
+      - Backend/clue_backend/target/*.jar
   only:
     refs:
       - main
-      - merge_requests
     changes:
-      - Backend/clue_backend
+      - Backend/clue_backend/*
 
 autoDeploy:
   stage: mavenDeploy
@@ -49,7 +47,6 @@ autoDeploy:
   only:
     refs:
       - main
-      - merge_requests
     changes:
       - Backend/clue_backend/*
 
@@ -70,7 +67,6 @@ android-build:
   only:
     refs:
       - main
-      - merge_requests
     changes:
       - Clue_Frontend/*
 
@@ -88,7 +84,6 @@ android-test:
   only:
     refs:
       - main
-      - merge_requests
     changes:
       - Clue_Frontend/*
 
