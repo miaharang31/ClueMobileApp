@@ -51,7 +51,7 @@ public class DiceRoller extends AppCompatActivity {
                 timer.schedule(new TimerTask(){
                     @Override
                     public void run() {
-                        Intent intent = new Intent(DiceRoller.this, Checklist.class);
+                        Intent intent = new Intent(DiceRoller.this, MainActivity.class);
                         startActivity(intent);
                     }
                 }, 2000);
@@ -65,7 +65,7 @@ public class DiceRoller extends AppCompatActivity {
                 timer.schedule(new TimerTask(){
                     @Override
                     public void run() {
-                        Intent intent = new Intent(DiceRoller.this, Checklist.class);
+                        Intent intent = new Intent(DiceRoller.this, MainActivity.class);
                         startActivity(intent);
                     }
                 }, 2000);
@@ -91,7 +91,6 @@ public class DiceRoller extends AppCompatActivity {
                     }
                 }
                 numSpaces = die1Number + die2Number;
-//                Toast.makeText(getApplicationContext(), numSpaces, Toast.LENGTH_LONG).show();
             }
         };
         Thread thread = new Thread(runnable);

@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
         TextView newPlayerLink = findViewById(R.id.NewPlayerLink);
         //When the sign in button is clicked and data is entered for usename and password
         submitButton.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
 //            Intent intent = new Intent(MainActivity.this, Home.class);
@@ -79,7 +78,33 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     username.setError(null);
                     checkUsername = true;
+            }
+                if(usernameData.isEmpty()){
+                    username.setError("Username cannot be empty");
+                    checkUsername = false;
+                }else{
+                    username.setError(null);
+                    checkUsername = true;
 
+            if(passwordData.isEmpty()){
+                password.setError("Password cannot be empty");
+                checkPassword = false;
+            }else{
+                password.setError(null);
+                checkPassword = true;
+            }
+
+            // if all textboxes are correct, all data will be added to the SecondActivity (main page for either regular/premium users) and will start
+            if (checkUsername == true && checkPassword == true){
+                String url = "http://coms-309-038.class.las.iastate.edu:8080/login";
+                RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+                JSONObject json = null;
+                try {
+                    json = new JSONObject();
+                    json.put("username", usernameData);
+                    json.put("password", passwordData);
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
 
                 if (passwordData.isEmpty()) {
@@ -92,9 +117,6 @@ public class MainActivity extends AppCompatActivity {
 
                 // if all textboxes are correct, all data will be added to the SecondActivity (main page for either regular/premium users) and will start
                 if (checkUsername == true && checkPassword == true) {
-                    String url = "http://coms-309-038.class.las.iastate.edu:8080/login";
-                    RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
-                    JSONObject json = null;
                     try {
                         json = new JSONObject();
                         json.put("username", usernameData);
@@ -112,10 +134,8 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     // if all textboxes are correct, all data will be added to the SecondActivity (main page for either regular/premium users) and will start
+                    JsonObjectRequest jreq = null;
                     if (checkUsername == true && checkPassword == true) {
-                        //String url = "http://coms-309-038.class.las.iastate.edu:8080/login";
-                        //RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
-                        //JSONObject json = null;
                         try {
                             json = new JSONObject();
                             json.put("username", usernameData);
@@ -123,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        JsonObjectRequest jreq = new JsonObjectRequest(Request.Method.POST, url, json,
+                        jreq = new JsonObjectRequest(Request.Method.POST, url, json,
                                 new Response.Listener<JSONObject>() {
                                     @Override
                                     public void onResponse(JSONObject response) {
@@ -147,20 +167,31 @@ public class MainActivity extends AppCompatActivity {
                         queue.add(jreq);
                     }
 
+
+                    queue.add(jreq);
                 }
-            }
-        });
+
+        }
+    };
+        }
+    });
 
         //when the new player link is clicked, go to th SignUpActivity
         newPlayerLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(MainActivity.this, Checklist.class);
+                Intent intent = new Intent(MainActivity.this, UserSignUp.class);
 
                 startActivity(intent);
 
             }
         });
-    }
-}
+
+
+                }
+            }
+
+
+
+
