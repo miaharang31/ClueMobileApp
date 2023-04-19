@@ -16,7 +16,7 @@ maven-build:
     refs:
       - main
     changes:
-      - Backend/clue_backend
+      - Backend/clue_backend/*
 
 maven-test:
   stage: maventest
@@ -27,12 +27,12 @@ maven-test:
     - mvn test
   artifacts:
     paths:
-      - Backend/target/*.jar
+      - Backend/clue_backend/target/*.jar
   only:
     refs:
       - main
     changes:
-      - Backend/clue_backend
+      - Backend/clue_backend/*
 
 autoDeploy:
   stage: mavenDeploy

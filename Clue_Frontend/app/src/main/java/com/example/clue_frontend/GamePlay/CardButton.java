@@ -15,6 +15,9 @@ public class CardButton extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.six_cards);
+
         setContentView(R.layout.open_cards_layout);
 
         imageView = findViewById(R.id.open_cards);

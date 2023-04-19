@@ -17,7 +17,8 @@ public class Tile {
     public int getTileY() {
         return y;
     }
-    public Tile(Bitmap bm, int x, int y, int width, int height) {
+
+    public Tile(Bitmap bm, int x, int y, int width, int height){
         this.bm = bm;
         this.x = x;
         this.y = y;

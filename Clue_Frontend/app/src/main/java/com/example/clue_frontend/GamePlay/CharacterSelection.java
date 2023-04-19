@@ -8,8 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-//<<<<<<< HEAD
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -18,7 +16,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.clue_frontend.Lobbies.Lobby;
 import com.example.clue_frontend.MyApplication;
-
 
 import com.example.clue_frontend.R;
 
@@ -110,15 +107,7 @@ public class CharacterSelection extends AppCompatActivity {
 
         startGame.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-//<<<<<<< HEAD
-//=======
-//                if(numPlayers == totalPlayers) {
-//                    Intent intent = new Intent(CharacterSelection.this, DiceRoller.class);
-//                    startActivity(intent);
-//                }
-//            }
-//        });
-//>>>>>>> emilysalsman
+
 
 //                if(numPlayers == totalPlayers) {
                     RequestQueue queue = Volley.newRequestQueue(CharacterSelection.this);
@@ -142,7 +131,7 @@ public class CharacterSelection extends AppCompatActivity {
                                         throw new RuntimeException(e);
                                     }
 //                                    String url = "http://10.0.2.2:8080/info/"+app.getInfoid()+"/character/"+chosenChar;
-                                    String url = "http://coms-309-038.class.las.iastate.edu:8080/info/"+app.getInfoid()+"/character/"+chosenChar;
+                                    String url = "http://coms-309-038.class.las.iastate.edu:8080/info/"+app.getInfoid()+"/role/"+chosenChar;
                                     JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null,
                                             new Response.Listener<JSONObject>() {
                                                 @Override

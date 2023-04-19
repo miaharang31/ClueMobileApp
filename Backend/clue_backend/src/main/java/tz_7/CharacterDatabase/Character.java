@@ -1,11 +1,21 @@
 package tz_7.CharacterDatabase;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+<<<<<<< HEAD
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import tz_7.GamePlay.PlayerInfoDatabase.PlayerInfo;
+
+@Entity
+=======
 import jakarta.persistence.*;
 import tz_7.GamePlay.PlayerInfoDatabase.PlayerInfo;
 
 @Entity
 @Table
+>>>>>>> main
 public class Character {
     @Id
     String name;

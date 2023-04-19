@@ -5,7 +5,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
