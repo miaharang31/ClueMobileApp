@@ -52,42 +52,37 @@ public class GameStateController {
         return state;
     }
 
-    @PutMapping(value = "/game/{id}/setcards/weapons", consumes = "application/json")
-    public GameState addWeapons(@PathVariable Integer id, @RequestBody Set<Card> weapons) {
+    /**
+     * Sets the cards based on type for that game state
+     * @param id
+     *  ID of the game state
+     * @param type
+     *  Type of cards to add (i.e. w, s, r)
+     * @return
+     *  updated gamestate object
+     */
+    @PutMapping(value = "/game/{id}/setcards/{type}")
+    public GameState addWeapons(@PathVariable Integer id, @PathVariable String type) {
         GameState state = repo.findById(id).get();
-        state.setWeapons(weapons);
-        Iterator<Card> cards = weapons.iterator();
-        while(cards.hasNext()) {
-            cards.next().addGameState(state);
+        Set<Card> cards = cardRepository.findByType(type);
+        switch(type){
+            case "w" :
+                state.setWeapons(cards);
+                break;
+            case "s" :
+                state.setSuspects(cards);
+                break;
+            case "r" :
+                state.setRooms(cards);
+                break;
         }
-        repo.save(state);
-        cardRepository.saveAll(weapons);
-        return state;
-    }
 
-    @PutMapping(value = "/game/{id}/setcards/suspects", consumes = "application/json")
-    public GameState addSuspects(@PathVariable Integer id, @RequestBody Set<Card> suspects) {
-        GameState state = repo.findById(id).get();
-        state.setSuspects(suspects);
-        Iterator<Card> cards = suspects.iterator();
-        while(cards.hasNext()) {
-            cards.next().addGameState(state);
+        Iterator<Card> tmp = cards.iterator();
+        while(tmp.hasNext()) {
+            tmp.next().addGameState(state);
         }
         repo.save(state);
-        cardRepository.saveAll(suspects);
-        return state;
-    }
-
-    @PutMapping(value = "/game/{id}/setcards/rooms", consumes = "application/json")
-    public GameState addRooms(@PathVariable Integer id, @RequestBody Set<Card> rooms) {
-        GameState state = repo.findById(id).get();
-        state.setRooms(rooms);
-        Iterator<Card> cards = rooms.iterator();
-        while(cards.hasNext()) {
-            cards.next().addGameState(state);
-        }
-        repo.save(state);
-        cardRepository.saveAll(rooms);
+        cardRepository.saveAll(cards);
         return state;
     }
 
@@ -97,10 +92,17 @@ public class GameStateController {
      *  A list of game state objects
      */
     @GetMapping("game")
-    public ResponseEntity<List<GameState>> getAllLobbies() {
+    public ResponseEntity<List<GameState>> getAllStates() {
         return new ResponseEntity<List<GameState>>(repo.findAll(), HttpStatus.OK);
     }
 
+    /**
+     * Gets mapping the provides the caller with all the players in the game
+     * @param id
+     *  ID of the game state
+     * @return
+     *  Set of player objects
+     */
     @GetMapping("game/{id}/players")
     public Set<Player> getPlayers(@PathVariable Integer id) {
         GameState state = repo.findById(id).get();
@@ -116,16 +118,16 @@ public class GameStateController {
      *  true - if all the ids match
      *  false - if the ids don't match
      */
-//    @GetMapping(value = "game/checkGuess/{id}", consumes = "application/json")
-//    public Boolean checkGuess (@RequestBody Set<Card> guess, @PathVariable Integer id) {
-//        GameState state = repo.getById(id);
-//        return state.checkFinalGuess(guess);
-//    }
+    @GetMapping(value = "game/checkGuess/{id}", consumes = "application/json")
+    public Boolean checkGuess (@RequestBody Set<Card> guess, @PathVariable Integer id) {
+        GameState state = repo.getById(id);
+        return state.checkFinalGuess(guess);
+    }
 
-//    @GetMapping(value = "game/{id}/next")
-//    public Player getNextPlayer (@PathVariable Integer id) {
-//        Optional<GameState> state = repo.findById(id);
-//        return state.get().getNextPlayer();
-//    }
+    @GetMapping(value = "game/{id}/next")
+    public Player getNextPlayer (@PathVariable Integer id) {
+        Optional<GameState> state = repo.findById(id);
+        return state.get().getNextPlayer();
+    }
 
 }
