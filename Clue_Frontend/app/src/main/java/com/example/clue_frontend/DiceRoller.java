@@ -17,11 +17,10 @@ import java.util.TimerTask;
 
 public class DiceRoller extends AppCompatActivity {
 
+    public static int numSpaces;
     ImageView die1;
     ImageView die2;
-
     TextView direction;
-    int numSpaces;
     int die1Number;
     int die2Number;
     int delayTime = 20;

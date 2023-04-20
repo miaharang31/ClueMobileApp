@@ -22,19 +22,8 @@
             android:name=".EndGameWinOrLose"
             android:exported="false" />
         <activity
-            android:name=".DiceRoller"
-            android:exported="false" />
-        <activity
             android:name=".Checklist"
             android:exported="false" />
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-
         <activity
             android:name=".UserSignUp"
             android:label="@string/app_name" />
@@ -48,12 +37,14 @@
             android:name=".Lobbies.Lobby"
             android:label="@string/app_name" />
         <activity
+            android:name=".DiceRoller"
+            android:exported="false" />
+        <activity
             android:name=".GamePlay.StartGame"
             android:label="@string/app_name" />
         <activity
             android:name=".GamePlay.Game"
             android:label="@string/app_name" />
-
         <activity
             android:name=".Home"
             android:label="Home" />

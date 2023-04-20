@@ -1,6 +1,6 @@
 package com.example.clue_frontend.GamePlay;
 
-import static com.example.clue_frontend.GamePlay.GameView.turn;
+import static com.example.clue_frontend.GamePlay.GameView.player;
 
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -28,11 +28,13 @@ import org.json.JSONObject;
 
 
 public class Game extends AppCompatActivity {
+
     View relativeLayout;
     SwipeListener swipeListener;
-    String characterSelected;
+    static String characterSelected;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println("In Game");
         super.onCreate(savedInstanceState);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAGS_CHANGED, WindowManager.LayoutParams.FLAGS_CHANGED);
         DisplayMetrics dm = new DisplayMetrics();
@@ -40,19 +42,20 @@ public class Game extends AppCompatActivity {
         Constraints.SCREEN_WIDTH = dm.widthPixels;
         Constraints.SCREEN_HEIGHT = dm.heightPixels;
 
-        characterSelected = getCharacter();
-        setContentView(R.layout.board);
+        getCharacter();
+        System.out.println("In Game, character selected: " + characterSelected);
 
         relativeLayout = findViewById(R.id.relative_layout);
         swipeListener = new SwipeListener(relativeLayout);
+
+        setContentView(R.layout.board);
     }
 
     public String getCharacter(){
-        final String[] name = new String[1];
         RequestQueue queue = Volley.newRequestQueue(Game.this);
         MyApplication app = (MyApplication) getApplication();
         String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/" + app.getUserid() + "/role";
-        System.out.println("game url: " + url);
+        System.out.println("Game: in getCharacter()");
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
 
@@ -60,8 +63,8 @@ public class Game extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            name[0] = response.get("name").toString();
-                            System.out.println("name[0]: " + name[0]);
+                            characterSelected = response.get("name").toString();
+                            System.out.println("characterSelected: " + characterSelected);
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
@@ -74,7 +77,7 @@ public class Game extends AppCompatActivity {
                     }
                 });
         queue.add(request);
-        return name[0];
+        return characterSelected;
     }
 
     private class SwipeListener implements View.OnTouchListener {
@@ -95,13 +98,14 @@ public class Game extends AppCompatActivity {
                     float yDiff = e2.getY() - e1.getY();
 
                     try {
-                        if(GameView.n > 0){
+                        System.out.println("Game: in try block");
+                        if(GameView.moves > 0){
                             if (Math.abs(xDiff) > Math.abs(yDiff)) {
                                 if (Math.abs(xDiff) > threshold && Math.abs(velocityX) > velocity_threshold) {
                                     if (xDiff > 0) {
                                         //Swiped right
                                         try {
-                                            if ((GameView.arrBoard.get(turn.getPlacement() + 1).getBm() != GameView.edge) && (turn.getPlacement() % 23 != 22)) {
+                                            if ((GameView.arrBoard.get(player.getPlacement() + 1).getBm() != GameView.edge) && (player.getPlacement() % 23 != 22)) {
                                                 GameView.TurnRight();
                                             }
                                         }catch (Exception e){
@@ -110,7 +114,7 @@ public class Game extends AppCompatActivity {
                                     } else {
                                         //Swiped left
                                         try {
-                                            if ((GameView.arrBoard.get(turn.getPlacement() - 1).getBm() != GameView.edge) && (turn.getPlacement() % 23 != 0)) {
+                                            if ((GameView.arrBoard.get(player.getPlacement() - 1).getBm() != GameView.edge) && (player.getPlacement() % 23 != 0)) {
                                                 GameView.TurnLeft();
                                             }
                                         }catch (Exception e){
@@ -125,7 +129,7 @@ public class Game extends AppCompatActivity {
                                     if (yDiff > 0) {
                                         //Swiped down
                                         try {
-                                            if(GameView.arrBoard.get(GameView.turn.getPlacement() + 22).getBm() != GameView.edge && turn.getPlacement() < 462){
+                                            if(GameView.arrBoard.get(player.getPlacement() + 22).getBm() != GameView.edge && player.getPlacement() < 462){
                                                 GameView.MoveDown();
                                             }
                                         }catch (Exception e){
@@ -134,7 +138,7 @@ public class Game extends AppCompatActivity {
                                     }else {
                                         //Swiped up
                                         try {
-                                            if(GameView.arrBoard.get(GameView.turn.getPlacement() - 22).getBm() != GameView.edge && turn.getPlacement() > 22){
+                                            if(GameView.arrBoard.get(player.getPlacement() - 22).getBm() != GameView.edge && player.getPlacement() > 22){
                                                 GameView.MoveUp();
                                             }
                                         }catch (Exception e){
@@ -144,76 +148,6 @@ public class Game extends AppCompatActivity {
                                     return true;
                                 }
                             }
-                        }else {
-                            switch (GameView.number_of_players){
-                                case 4:
-                                    if(turn == GameView.player1){
-                                        turn = GameView.player2;
-                                        System.out.println("******************** player2's turn(white)");
-                                    }else if(turn == GameView.player2){
-                                        turn = GameView.player3;
-                                        System.out.println("******************** player3's turn(plum)");
-                                    }else if(turn == GameView.player3){
-                                        turn = GameView.player4;
-                                        System.out.println("******************** player4's turn(mustard)");
-                                    }else{
-                                        turn = GameView.player1;
-                                        System.out.println("******************** player1's turn(scarlet)");
-                                    }
-                                    break;
-                                case 5:
-                                    if(turn == GameView.player1){
-                                        turn = GameView.player2;
-                                        System.out.println("******************** player2's turn(white)");
-                                    }else if(turn == GameView.player2){
-                                        turn = GameView.player3;
-                                        System.out.println("******************** player3's turn(plum)");
-                                    }else if(turn == GameView.player3){
-                                        turn = GameView.player4;
-                                        System.out.println("******************** player4's turn(mustard)");
-                                    }else if(turn == GameView.player4){
-                                        turn = GameView.player5;
-                                        System.out.println("******************** player5's turn(green)");
-                                    }else{
-                                        turn = GameView.player1;
-                                        System.out.println("******************** player1's turn(scarlet)");
-                                    }
-                                    break;
-                                case 6:
-                                    if(turn == GameView.player1){
-                                        turn = GameView.player2;
-                                        System.out.println("******************** player2's turn(white)");
-                                    }else if(turn == GameView.player2){
-                                        turn = GameView.player3;
-                                        System.out.println("******************** player3's turn(plum)");
-                                    }else if(turn == GameView.player3){
-                                        turn = GameView.player4;
-                                        System.out.println("******************** player4's turn(mustard)");
-                                    }else if(turn == GameView.player4){
-                                        turn = GameView.player5;
-                                        System.out.println("******************** player5's turn(green)");
-                                    }else if(turn == GameView.player5){
-                                        turn = GameView.player6;
-                                        System.out.println("******************** player6's turn(peacock)");
-                                    }else {
-                                        turn = GameView.player1;
-                                        System.out.println("******************** player1's turn(scarlet)");
-                                    }
-                                    break;
-                                default:
-                                    if(turn == GameView.player1){
-                                        turn = GameView.player2;
-                                        System.out.println("******************** player2's turn(white)");
-                                    }else if(turn == GameView.player2){
-                                        turn = GameView.player3;
-                                        System.out.println("******************** player3's turn(plum)");
-                                    }else{
-                                        turn = GameView.player1;
-                                        System.out.println("******************** player1's turn(scarlet)");
-                                    }
-                            }
-
-                            GameView.n = GameView.rand.nextInt(11) + 1;;
                         }
                     } catch (Exception e) {
                         e.printStackTrace();

@@ -1,6 +1,6 @@
 package com.example.clue_frontend.GamePlay;
 
-import static com.example.clue_frontend.GamePlay.GameView.turn;
+import static com.example.clue_frontend.GamePlay.GameView.player;
 
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -30,6 +30,8 @@ public class RunGame extends AppCompatActivity {
         Constraints.SCREEN_WIDTH = dm.widthPixels;
         Constraints.SCREEN_HEIGHT = dm.heightPixels;
 
+        System.out.println("In RunGame");
+
         relativeLayout = findViewById(R.id.relative_layout);
         swipeListener = new SwipeListener(relativeLayout);
         setContentView(R.layout.activity_main);
@@ -53,19 +55,19 @@ public class RunGame extends AppCompatActivity {
                     float yDiff = e2.getY() - e1.getY();
 
                     try {
-                        if(GameView.n > 0){
+                        if(GameView.moves > 0){
                             if (Math.abs(xDiff) > Math.abs(yDiff)) {
                                 if (Math.abs(xDiff) > threshold && Math.abs(velocityX) > velocity_threshold) {
                                     if (xDiff > 0) {
                                         //Swiped right
-                                        if ((GameView.arrBoard.get(turn.getPlacement() + 1).getBm() != GameView.edge) && (turn.getPlacement() % 23 != 22)) {
+                                        if ((GameView.arrBoard.get(player.getPlacement() + 1).getBm() != GameView.edge) && (player.getPlacement() % 23 != 22)) {
                                             GameView.TurnRight();
                                         }
 
                                     } else {
                                         //Swiped left
                                         try {
-                                            if ((GameView.arrBoard.get(turn.getPlacement() - 1).getBm() != GameView.edge) && (turn.getPlacement() % 23 != 0)) {
+                                            if ((GameView.arrBoard.get(player.getPlacement() - 1).getBm() != GameView.edge) && (player.getPlacement() % 23 != 0)) {
                                                 GameView.TurnLeft();
                                             }
                                         } catch (Exception e) {
@@ -79,7 +81,7 @@ public class RunGame extends AppCompatActivity {
                                     if (yDiff > 0) {
                                         //Swiped down
                                         try {
-                                            if (GameView.arrBoard.get(GameView.turn.getPlacement() + 22).getBm() != GameView.edge && turn.getPlacement() < 462) {
+                                            if (GameView.arrBoard.get(GameView.player.getPlacement() + 22).getBm() != GameView.edge && player.getPlacement() < 462) {
                                                 GameView.MoveDown();
                                             }
                                         } catch (Exception e) {
@@ -88,7 +90,7 @@ public class RunGame extends AppCompatActivity {
                                     } else {
                                         //Swiped up
                                         try {
-                                            if (GameView.arrBoard.get(GameView.turn.getPlacement() - 22).getBm() != GameView.edge && turn.getPlacement() > 22) {
+                                            if (GameView.arrBoard.get(player.getPlacement() - 22).getBm() != GameView.edge && player.getPlacement() > 22) {
                                                 GameView.MoveUp();
                                             }
                                         } catch (Exception e) {
@@ -98,76 +100,6 @@ public class RunGame extends AppCompatActivity {
                                     return true;
                                 }
                             }
-                        }else {
-                            switch (GameView.number_of_players){
-                                case 4:
-                                    if(turn == GameView.player1){
-                                        turn = GameView.player2;
-                                        System.out.println("******************** player2's turn(white)");
-                                    }else if(turn == GameView.player2){
-                                        turn = GameView.player3;
-                                        System.out.println("******************** player3's turn(plum)");
-                                    }else if(turn == GameView.player3){
-                                        turn = GameView.player4;
-                                        System.out.println("******************** player4's turn(mustard)");
-                                    }else{
-                                        turn = GameView.player1;
-                                        System.out.println("******************** player1's turn(scarlet)");
-                                    }
-                                    break;
-                                case 5:
-                                    if(turn == GameView.player1){
-                                        turn = GameView.player2;
-                                        System.out.println("******************** player2's turn(white)");
-                                    }else if(turn == GameView.player2){
-                                        turn = GameView.player3;
-                                        System.out.println("******************** player3's turn(plum)");
-                                    }else if(turn == GameView.player3){
-                                        turn = GameView.player4;
-                                        System.out.println("******************** player4's turn(mustard)");
-                                    }else if(turn == GameView.player4){
-                                        turn = GameView.player5;
-                                        System.out.println("******************** player5's turn(green)");
-                                    }else{
-                                        turn = GameView.player1;
-                                        System.out.println("******************** player1's turn(scarlet)");
-                                    }
-                                    break;
-                                case 6:
-                                    if(turn == GameView.player1){
-                                        turn = GameView.player2;
-                                        System.out.println("******************** player2's turn(white)");
-                                    }else if(turn == GameView.player2){
-                                        turn = GameView.player3;
-                                        System.out.println("******************** player3's turn(plum)");
-                                    }else if(turn == GameView.player3){
-                                        turn = GameView.player4;
-                                        System.out.println("******************** player4's turn(mustard)");
-                                    }else if(turn == GameView.player4){
-                                        turn = GameView.player5;
-                                        System.out.println("******************** player5's turn(green)");
-                                    }else if(turn == GameView.player5){
-                                        turn = GameView.player6;
-                                        System.out.println("******************** player6's turn(peacock)");
-                                    }else {
-                                        turn = GameView.player1;
-                                        System.out.println("******************** player1's turn(scarlet)");
-                                    }
-                                    break;
-                                default:
-                                    if(turn == GameView.player1){
-                                        turn = GameView.player2;
-                                        System.out.println("******************** player2's turn(white)");
-                                    }else if(turn == GameView.player2){
-                                        turn = GameView.player3;
-                                        System.out.println("******************** player3's turn(plum)");
-                                    }else{
-                                        turn = GameView.player1;
-                                        System.out.println("******************** player1's turn(scarlet)");
-                                    }
-                            }
-
-                            GameView.n = GameView.rand.nextInt(11) + 1;;
                         }
                     } catch (Exception e) {
                         e.printStackTrace();

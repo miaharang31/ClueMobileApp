@@ -1,7 +1,5 @@
 package com.example.clue_frontend;
 
-import static com.example.clue_frontend.GamePlay.GameView.turn;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 

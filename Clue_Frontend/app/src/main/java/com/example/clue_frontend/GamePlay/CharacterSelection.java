@@ -115,7 +115,7 @@ public class CharacterSelection extends AppCompatActivity {
                 Intent intent = new Intent(CharacterSelection.this, Game.class);
 //              String url = "http://10.0.2.2:8080/info/" + app.getUserid();
                 String url = "http://coms-309-038.class.las.iastate.edu:8080/info/" + app.getUserid();
-                System.out.println("character url: " + url);
+                System.out.println("In CharacterSelection class, onClick");
                 JSONObject body = new JSONObject();
                 try {
                     body.put("turn", false);
@@ -138,6 +138,7 @@ public class CharacterSelection extends AppCompatActivity {
                                         new Response.Listener<JSONObject>() {
                                             @Override
                                             public void onResponse(JSONObject response) {
+                                                System.out.println("About to start activity");
                                                 startActivity(intent);
                                             }
                                         },
