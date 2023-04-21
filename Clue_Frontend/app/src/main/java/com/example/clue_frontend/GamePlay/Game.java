@@ -43,7 +43,7 @@ public class Game extends AppCompatActivity {
         Constraints.SCREEN_WIDTH = dm.widthPixels;
         Constraints.SCREEN_HEIGHT = dm.heightPixels;
 
-        
+
         RequestQueue queue = Volley.newRequestQueue(Game.this);
         MyApplication app = (MyApplication) getApplication();
         String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/role" + app.getUserid();
