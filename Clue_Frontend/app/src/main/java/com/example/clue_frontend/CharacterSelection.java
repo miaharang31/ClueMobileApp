@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.clue_frontend.GamePlay.Game;
+
 public class CharacterSelection extends AppCompatActivity {
 
     Button mustard;

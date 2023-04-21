@@ -1,14 +1,13 @@
 package tz_7.RoleDatabase;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import tz_7.GamePlay.PlayerInfoDatabase.PlayerInfo;
 
 @Entity
+@Table
 public class Role {
+
     @Id
     String name;
     String color; // use hex

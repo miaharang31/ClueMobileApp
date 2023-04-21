@@ -47,13 +47,18 @@ public class Lobby extends AppCompatActivity {
     JSONObject gameHost;
     JSONArray players;
 
+    MyApplication app = (MyApplication) getApplication();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lobby);
+        app = (MyApplication) getApplication();
 
-       // startGame = (Button)findViewById(R.id.startGame);
+
+        // startGame = (Button)findViewById(R.id.startGame);
 //        host = findViewById(R.id.host);
         startGame = findViewById(R.id.startGame);
         host = findViewById(R.id.hostNameText);
@@ -66,8 +71,9 @@ public class Lobby extends AppCompatActivity {
         player05 = findViewById(R.id.player_05);
         player06 = findViewById(R.id.player_06);
 
+
         RequestQueue queue = Volley.newRequestQueue(Lobby.this);
-        MyApplication app = (MyApplication) getApplication();
+        app = (MyApplication) getApplication();
         String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/" + app.getLobbyid();
 //        String url = "http://10.0.2.2:8080/lobby/" + app.getLobbyid();
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -77,6 +83,7 @@ public class Lobby extends AppCompatActivity {
                         Log.d("Response", response.toString());
                         try {
                             int gameID = response.getInt("id");
+
                             max.setText(response.get("maxPlayers").toString());
 //                            Get the host to display their name
                             String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/host/" + gameID;
@@ -86,7 +93,14 @@ public class Lobby extends AppCompatActivity {
                                         @Override
                                         public void onResponse(JSONObject response) {
                                             try {
-                                                host.setText(response.getString("firstname") + " " + response.getString("lastname"));
+                                                app = (MyApplication) getApplication();
+                                                host.setText("Host: " + response.getString("firstname") + " " + response.getString("lastname"));
+                                                if ((Integer)response.get("id") == app.getUserid()) {
+                                                    startGame.setVisibility(View.VISIBLE);
+                                                }
+                                                else {
+                                                    startGame.setVisibility(View.GONE);
+                                                }
                                             } catch (JSONException e) {
                                                 throw new RuntimeException(e);
                                             }
@@ -171,6 +185,12 @@ public class Lobby extends AppCompatActivity {
             @Override
             public void onClick(View v){
 //                TODO: create game state
+                app = (MyApplication) getApplication();
+
+
+                if (app.getUsersplaying() == 3) {
+
+                }
                 JSONObject game = new JSONObject();
                 try {
                     game.put("versionID", 1);
