@@ -16,7 +16,7 @@
         android:fontFamily="@font/abhaya_libre_extrabold"
         android:text="Congratulations! You solved the murder!"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
