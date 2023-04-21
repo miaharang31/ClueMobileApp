@@ -6,6 +6,7 @@ import tz_7.GamePlay.GameStateDatabase.GameState;
 import tz_7.GamePlay.PlayerInfoDatabase.PlayerInfo;
 
 @Entity
+@Table
 public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

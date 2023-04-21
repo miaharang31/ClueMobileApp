@@ -15,6 +15,7 @@ import tz_7.GamePlay.PlayerInfoDatabase.PlayerInfo;
  */
 
 @Entity
+@Table
 public class Player {
 
     @Id
