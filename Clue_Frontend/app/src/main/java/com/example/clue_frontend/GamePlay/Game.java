@@ -2,13 +2,14 @@ package com.example.clue_frontend.GamePlay;
 
 import static com.example.clue_frontend.GamePlay.GameView.turn;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.RelativeLayout;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,8 +20,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.clue_frontend.Lobbies.Lobby;
 import com.example.clue_frontend.MyApplication;
+
 import com.example.clue_frontend.R;
 
 import org.json.JSONException;
@@ -30,6 +31,9 @@ import org.json.JSONObject;
 public class Game extends AppCompatActivity {
     View relativeLayout = findViewById(R.id.relative_layout);
     SwipeListener swipeListener;
+    ImageView iv;
+
+    ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +73,26 @@ public class Game extends AppCompatActivity {
                     }
                 });
 
+        relativeLayout = findViewById(R.id.relative_layout);
+        swipeListener = new SwipeListener(relativeLayout);
+        iv = findViewById(R.id.open_checklist);
+        iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Game.this, playerGuess.class);
+                startActivity(intent);
+            }
+        });
 
+        imageView = findViewById(R.id.open_cards);
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Game.this, CardLayout.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private class SwipeListener implements View.OnTouchListener {

@@ -8,6 +8,7 @@ import tz_7.GamePlay.PlayerInfoDatabase.PlayerInfo;
 import java.util.Set;
 
 @Entity
+@Table
 public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
