@@ -43,7 +43,7 @@ public class Game extends AppCompatActivity {
         Constraints.SCREEN_HEIGHT = dm.heightPixels;
 
         getCharacter();
-        //System.out.println("In Game, character selected: " + characterSelected);
+        System.out.println("In Game, character selected: " + characterSelected);
 
         relativeLayout = findViewById(R.id.relative_layout);
         swipeListener = new SwipeListener(relativeLayout);
@@ -54,19 +54,16 @@ public class Game extends AppCompatActivity {
     public String getCharacter(){
         RequestQueue queue = Volley.newRequestQueue(Game.this);
         MyApplication app = (MyApplication) getApplication();
-        //String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/" + app.getUserid() + "/role";
-        String url = "http://coms-309-038.class.las.iastate.edu:8080/info/role/" + app.getUserid() + "/role";
-        System.out.println("Game: in getCharacter()");
+        String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/" + app.getUserid() + "/role";
+        System.out.println("Game: in getCharacter");
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
 
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        System.out.println("In onResponse, before try block ");
                         try {
                             characterSelected = response.get("name").toString();
-                            System.out.println("response.get(\"name\") " + response.get("name"));
                             System.out.println("characterSelected: " + characterSelected);
                         } catch (JSONException e) {
                             throw new RuntimeException(e);

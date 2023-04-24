@@ -138,7 +138,6 @@ public class CharacterSelection extends AppCompatActivity {
                                         new Response.Listener<JSONObject>() {
                                             @Override
                                             public void onResponse(JSONObject response) {
-                                                System.out.println("About to start activity");
                                                 startActivity(intent);
                                             }
                                         },
