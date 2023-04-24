@@ -134,7 +134,6 @@ public class CharacterSelection extends AppCompatActivity {
                                 }
 //                              String url = "http://10.0.2.2:8080/info/"+app.getInfoid()+"/character/"+chosenChar;
                                 String url = "http://coms-309-038.class.las.iastate.edu:8080/info/" + app.getInfoid() + "/role/" + chosenChar;
-                                System.out.println("line 137 url:" + url);
                                 JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null,
                                         new Response.Listener<JSONObject>() {
                                             @Override
