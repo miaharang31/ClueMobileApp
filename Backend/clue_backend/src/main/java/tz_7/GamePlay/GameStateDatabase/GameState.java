@@ -38,26 +38,25 @@ public class GameState {
 //    TODO: create version database
     private Integer versionID;
 
-//    @OneToMany(mappedBy = "gameState")
-//    @JsonIgnore
-//    private Set<Card> finalCards;
-//
-//    @OneToMany(mappedBy = "gameState")
-//    @JsonIgnore
-//    private Set<Card> weapons;
-//
-//    @OneToMany(mappedBy = "gameState")
-//    @JsonIgnore
-//    private Set<Card> suspects;
-//
-//    @OneToMany(mappedBy = "gameState")
-//    @JsonIgnore
-//    private Set<Card> rooms;
+    @ManyToMany(mappedBy = "gameState")
+    @JsonIgnore
+    private Set<Card> finalCards;
+
+    @ManyToMany(mappedBy = "gameState")
+    @JsonIgnore
+    private Set<Card> weapons;
+
+    @ManyToMany(mappedBy = "gameState")
+    @JsonIgnore
+    private Set<Card> suspects;
+
+    @ManyToMany(mappedBy = "gameState")
+    @JsonIgnore
+    private Set<Card> rooms;
 
     @OneToMany
     private Set<Player> turnOrder;
 
-//    private Random rand;
     private Integer turnNum;
 
     /**
@@ -65,12 +64,11 @@ public class GameState {
      * necessary variables
      */
     public GameState() {
-//        rand = new Random();
         turnOrder = new HashSet<>();
-//        weapons = new HashSet<>();
-//        suspects = new HashSet<>();
-//        rooms = new HashSet<>();
-//        finalCards = new HashSet<>();
+        weapons = new HashSet<>();
+        suspects = new HashSet<>();
+        rooms = new HashSet<>();
+        finalCards = new HashSet<>();
         turnNum = 0;
     }
 
@@ -94,53 +92,43 @@ public class GameState {
      *  true - if all IDs match
      *  false - if they don't
      */
-//    public Boolean checkFinalGuess(Set<Card> guess) {
-//        for (int i = 0; i < finalCards.size(); i++) {
-//            if(!finalCards.containsAll(guess)) {return false;}
-//        }
-//        return true;
-//    }
-
-    /**
-     * Randomly selects from weapons, suspects, and rooms
-     * to set as the final cards, takes the cards from the
-     * decks
-     */
-//    public Set<Card> setFinalCards() {
-//        int weapon = rand.nextInt(weapons.size());
-//        int suspect = rand.nextInt(suspects.size());
-//        int room = rand.nextInt(rooms.size());
-//
-//        Card[] weaponstmp = weapons.toArray(new Card[0]);
-//        Card[] suspectstmp = suspects.toArray(new Card[0]);
-//        Card[] roomstmp = rooms.toArray(new Card[0]);
-//
-//        finalCards.add(weaponstmp[weapon]);
-//        finalCards.add(suspectstmp[suspect]);
-//        finalCards.add(roomstmp[room]);
-//
-//        weapons.remove(weaponstmp[weapon]);
-//        suspects.remove(suspectstmp[suspect]);
-//        rooms.remove(roomstmp[room]);
-//
-//        return finalCards;
-//    }
+    public Boolean checkFinalGuess(Set<Card> guess) {
+        for (int i = 0; i < finalCards.size(); i++) {
+            if(!finalCards.containsAll(guess)) {return false;}
+        }
+        return true;
+    }
 
     public void setTurnOrder(Set<Player> players) {
         turnOrder = players;
     }
 
-//    public void setWeapons(Set<Card> weapons) {
-//        this.weapons = weapons;
-//    }
-//
-//    public void setRooms(Set<Card> rooms) {
-//        this.rooms = rooms;
-//    }
-//
-//    public void setSuspects(Set<Card> suspects) {
-//        this.suspects = suspects;
-//    }
+    public void setWeapons(Set<Card> weapons) {
+        this.weapons = weapons;
+        Random rand = new Random();
+        int n = rand.nextInt(weapons.size());
+        Card finalWeapon = weapons.toArray(new Card[weapons.size()])[n];
+        finalCards.add(finalWeapon);
+        weapons.remove(finalWeapon);
+    }
+
+    public void setRooms(Set<Card> rooms) {
+        this.rooms = rooms;
+        Random rand = new Random();
+        int n = rand.nextInt(rooms.size());
+        Card finalRoom = rooms.toArray(new Card[rooms.size()])[n];
+        finalCards.add(finalRoom);
+        rooms.remove(finalRoom);
+    }
+
+    public void setSuspects(Set<Card> suspects) {
+        this.suspects = suspects;
+        Random rand = new Random();
+        int n = rand.nextInt(suspects.size());
+        Card finalSuspect = suspects.toArray(new Card[suspects.size()])[n];
+        finalCards.add(finalSuspect);
+        suspects.remove(finalSuspect);
+    }
 
     /**
      * Series of get methods for almost every variable
@@ -149,10 +137,10 @@ public class GameState {
      */
     public Integer getVersionID() {return versionID;}
     public Integer getID() {return ID;}
-//    public Set<Card> getFinalCards() {return finalCards;}
-//    public Set<Card> getWeapons() {return weapons;}
-//    public Set<Card> getSuspects() {return suspects;}
-//    public Set<Card> getRooms() {return rooms;}
+    public Set<Card> getFinalCards() {return finalCards;}
+    public Set<Card> getWeapons() {return weapons;}
+    public Set<Card> getSuspects() {return suspects;}
+    public Set<Card> getRooms() {return rooms;}
 
     public Set<Player> getTurnOrder() {
         return turnOrder;
