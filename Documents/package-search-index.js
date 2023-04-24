@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.example.clue_frontend"},{"l":"com.example.clue_frontend.GamePlay"},{"l":"com.example.clue_frontend.Lobbies"},{"l":"com.example.clue_frontend.NavBar"}]
