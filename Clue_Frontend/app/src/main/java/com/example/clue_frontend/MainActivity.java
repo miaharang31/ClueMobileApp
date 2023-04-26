@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(MainActivity.this, UserSignUp.class);
+                Intent intent = new Intent(MainActivity.this, EndGameWinOrLose.class);
 
                 startActivity(intent);
 
