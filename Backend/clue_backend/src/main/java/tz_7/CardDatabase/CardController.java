@@ -16,7 +16,7 @@ public class CardController {
     @Autowired
     private CardRepository repository;
 
-    @Operation(summary = "Return every card in the database", description = "Return all using a get request")
+    @Operation(summary = "Return every card in the database", description = "Return all users using a get request")
     @ApiResponse(responseCode = "404", description = "not found!")
     @ApiResponse(responseCode = "403", description = "forbidden!")
     @ApiResponse(responseCode = "401", description = "not authorized!")

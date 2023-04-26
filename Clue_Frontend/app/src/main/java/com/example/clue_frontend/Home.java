@@ -23,11 +23,11 @@ import com.example.clue_frontend.NavBar.RulesFragment;
 import com.example.clue_frontend.NavBar.SettingsFragment;
 import com.google.android.material.navigation.NavigationView;
 
-public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Home extends AppCompatActivity /*implements NavigationView.OnNavigationItemSelectedListener*/ {
 
-    private DrawerLayout drawerLayout;
-    NavigationView navigationView;
-    ActionBarDrawerToggle drawerToggle;
+//    private DrawerLayout drawerLayout;
+//    NavigationView navigationView;
+//    ActionBarDrawerToggle drawerToggle;
     Button join;
     Button host;
 
@@ -39,7 +39,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 //        return super.onOptionsItemSelected(item);
 //    }
 
-    @SuppressLint("MissingInflatedId")
+//    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,22 +47,22 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
         join = (Button) findViewById(R.id.join);
         host = (Button) findViewById(R.id.host);
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
- //       setSupportActionBar(toolbar);
-
-        drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+//delete
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+// //       setSupportActionBar(toolbar);
+//
+//        drawerLayout = findViewById(R.id.drawer_layout);
+//        navigationView = findViewById(R.id.nav_view);
+//        navigationView.setNavigationItemSelectedListener(this);
 
       //  drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
       //  drawerLayout.addDrawerListener(drawerToggle);
         //drawerToggle.syncState();
-
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-            navigationView.setCheckedItem(R.id.nav_home);
-        }
+//delete
+//        if (savedInstanceState == null) {
+//            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+//            navigationView.setCheckedItem(R.id.nav_home);
+//        }
         join.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -80,35 +80,35 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
 
     }
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId() == R.id.nav_home){
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-                }
-                if(item.getItemId() == R.id.nav_profile){
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
-                }
-                if(item.getItemId() == R.id.nav_settings){
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SettingsFragment()).commit();
-                }
-                if(item.getItemId() == R.id.nav_howToPlay){
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RulesFragment()).commit();
-                }
-                if(item.getItemId() == R.id.nav_logout){
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new LogoutFragment()).commit();
-
-                    //Toast.makeText(this, "logout", Toast.LENGTH_SHORT).show();
-                }
-                drawerLayout.closeDrawer(GravityCompat.START);
-                return true;
-            }; //}
-
-    @Override
-    public void onBackPressed() {
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
-            drawerLayout.closeDrawer(GravityCompat.START);
-        }else{
-            super.onBackPressed();
-        }
-    }
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                if(item.getItemId() == R.id.nav_home){
+//                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+//                }
+//                if(item.getItemId() == R.id.nav_profile){
+//                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
+//                }
+//                if(item.getItemId() == R.id.nav_settings){
+//                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SettingsFragment()).commit();
+//                }
+//                if(item.getItemId() == R.id.nav_howToPlay){
+//                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RulesFragment()).commit();
+//                }
+//                if(item.getItemId() == R.id.nav_logout){
+//                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new LogoutFragment()).commit();
+//
+//                    //Toast.makeText(this, "logout", Toast.LENGTH_SHORT).show();
+//                }
+//                drawerLayout.closeDrawer(GravityCompat.START);
+//                return true;
+//            }; //}
+//
+//    @Override
+//    public void onBackPressed() {
+//        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+//            drawerLayout.closeDrawer(GravityCompat.START);
+//        }else{
+//            super.onBackPressed();
+//        }
+//    }
 }
