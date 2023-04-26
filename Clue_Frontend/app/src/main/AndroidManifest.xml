@@ -27,6 +27,15 @@
         <activity
             android:name=".GamePlay.Checklist"
             android:label="Clue"/>
+        <activity
+            android:name=".Rules"
+            android:label="Clue"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name=".UserSignUp"
@@ -49,13 +58,7 @@
 
         <activity
             android:name=".Home"
-            android:label="Home"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:label="Home"/>
         <activity
             android:name=".GamePlay.CardButton"
             android:label="CardButton" />

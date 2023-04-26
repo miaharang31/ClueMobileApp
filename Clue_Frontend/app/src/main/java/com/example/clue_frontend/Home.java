@@ -30,6 +30,8 @@ public class Home extends AppCompatActivity /*implements NavigationView.OnNaviga
 //    ActionBarDrawerToggle drawerToggle;
     Button join;
     Button host;
+    Button rules;
+    Button settings;
 
 //    @Override
 //    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -47,6 +49,9 @@ public class Home extends AppCompatActivity /*implements NavigationView.OnNaviga
 
         join = (Button) findViewById(R.id.join);
         host = (Button) findViewById(R.id.host);
+        rules = (Button) findViewById(R.id.rules_button);
+        settings = (Button) findViewById(R.id.setting_btn);
+
 //delete
 //        Toolbar toolbar = findViewById(R.id.toolbar);
 // //       setSupportActionBar(toolbar);
@@ -74,6 +79,13 @@ public class Home extends AppCompatActivity /*implements NavigationView.OnNaviga
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(Home.this, HostLobby.class);
+                startActivity(intent);
+            }
+        });
+        rules.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Home.this, Rules.class);
                 startActivity(intent);
             }
         });
