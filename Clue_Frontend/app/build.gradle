@@ -50,9 +50,11 @@ task javadoc(type: Javadoc, dependsOn: 'myassemble') {
                         include "**/classes.jar"
                         into "$buildDir/tmp/aarsToJars/${aar.name.replace('.aar', '')}/"
                     }
-        } copy {
-            from "$buildDir/generated/data_binding_base_class_source_out/debug/out/com/clue_frontend"
-            into 'src/main/java/com/clue_frontend' }
+                }
+        copy {
+            from "$buildDir/generated/data_binding_base_class_source_out/debug/out/com/example/clue_frontend"
+            into 'src/main/java/com/example/clue_frontend'
+        }
     }
 
     configurations.implementation.setCanBeResolved(true)
@@ -74,7 +76,7 @@ task javadoc(type: Javadoc, dependsOn: 'myassemble') {
     exclude '**/R.java'
 
     doLast{
-        delete 'src/main/java/com/clue_frontend/databinding'
+        delete 'src/main/java/com/example/clue_frontend/databinding'
     }
 }
 
