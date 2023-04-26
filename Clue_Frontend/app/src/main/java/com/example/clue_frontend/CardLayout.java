@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,75 +36,6 @@ public class CardLayout extends AppCompatActivity {
                 Toast.makeText(CardLayout.this,"Do you want to show " + names[position] + " to the person who's turn it is?", Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
-
-//        MyApplication app = (MyApplication) getApplication();
-
-//        Random rand = new Random();
-//        if (app.getUsersplaying() == 3) {
-//            int arr = new int[6];
-//        }
-//        else if (app.getUsersplaying() == 4) {
-//            int arr = new int[6]; //make the extra cards in everyones hands
-//        }
-//        else if (app.getUsersplaying() == 5) {
-//            int arr = new int[7];
-//        }
-//        else if (app.getUsersplaying() == 6) {
-//            int arr = new int[3];
-//        }
-
-
-//        int[] arr = new int[10];
-//        int[] draws = new int[10];
-//        String[] sarr = new String[10];
-//
-//        for (int i = 0; i < arr.length;i++) {
-//            arr[i] = rand.nextInt(22);
-//        }
-//
-//        String url = "http://coms-309-038.class.las.iastate.edu:8080/getCardById";
-//        for (int j = 0; j < sarr.length; j++) {
-//            RequestQueue queue = Volley.newRequestQueue(CardLayout.this);
-//            JSONObject json = null;
-//            try {
-//                json = new JSONObject();
-//                json.put("cardID", arr[j]);
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//            int finalJ = j;
-//            JsonObjectRequest jreq = new JsonObjectRequest(Request.Method.POST, url, json,
-//                    new Response.Listener<JSONObject>() {
-//                        @Override
-//                        public void onResponse(JSONObject response) {
-//                            MyApplication app = (MyApplication) getApplication();
-//                            try {
-//                                String drawableName = (String) response.get("cardID");
-//                                sarr[finalJ] = drawableName;
-//                            } catch (JSONException e) {
-//                                throw new RuntimeException(e);
-//                            }
-//                        }
-//                    },
-//                    new Response.ErrorListener() {
-//                        @Override
-//                        public void onErrorResponse(VolleyError error) {
-//                            Toast.makeText(CardLayout.this, "Error: " + error, Toast.LENGTH_SHORT).show();
-//                            Log.d("ResponseError", error.toString());
-//                        }
-//                    });
-//
-//            queue.add(jreq);
-//        }
-//        for (int k = 0; k < arr.length; k++) {
-//            draws[k] = getResources().getIdentifier(sarr[k],"drawable", getPackageName());
-//        }
-//
-//        GridAdapter gridAdapter = new GridAdapter(CardLayout.this, draws);
-//        binding.gridViewCards.setAdapter(gridAdapter);
 
 
 
