@@ -28,12 +28,10 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Transparent.NoActionBar"/>
         <activity
-            android:name=".GamePlay.Checklist"
-            android:exported="false" />
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:name=".GamePlay.Checklist"/>
+        <activity
+            android:name=".Rules"
+            android:label="Clue"/>
         <activity
             android:name=".UserSignUp"
             android:label="@string/app_name" />
@@ -55,7 +53,7 @@
 
         <activity
             android:name=".Home"
-            android:label="Home" />
+            android:label="Home"/>
         <activity
             android:name=".GamePlay.CardButton"
             android:label="CardButton" />
@@ -69,7 +67,13 @@
             android:name=".GamePlay.CharacterSelection"
             android:label="Clue" />
         <activity
-            android:name=".MainActivity"/>
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
         <meta-data
             android:name="preloaded_fonts"
