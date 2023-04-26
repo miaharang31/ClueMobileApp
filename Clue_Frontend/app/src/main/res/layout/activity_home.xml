@@ -8,14 +8,6 @@
     tools:context=".MainActivity"
     android:id="@+id/relative_layout"
     android:background="#520120">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/letsPlay"
-            android:layout_marginTop="20dp"
-            android:text="Let's Play!"
-            android:textSize="40dp"
-            android:fontFamily="@font/aladin"/>
         <Button
             android:id="@+id/host"
             android:layout_width="300dp"
@@ -27,14 +19,14 @@
             android:text="Host"
             android:textSize="30dp"
             android:layout_marginLeft="50dp"
-            android:layout_alignTop="@+id/letsPlay"
             android:backgroundTint="#962B09"
-            android:layout_marginTop="175dp"/>
+            android:layout_marginTop="100dp"/>
         <Button
             android:id="@+id/join"
             android:layout_width="300dp"
             android:layout_height="100dp"
             android:layout_alignTop="@+id/host"
+            android:layout_marginTop="175dp"
             app:cardCornerRadius="8dp"
             app:strokeColor="#B57114"
             app:strokeWidth="5dp"
@@ -42,8 +34,7 @@
             android:text="Join"
             android:textSize="30dp"
             android:layout_marginLeft="50dp"
-            android:backgroundTint="#962B09"
-            android:layout_marginTop="75dp"/>
+            android:backgroundTint="#962B09"/>
 
         <Button
             android:id="@+id/premium_button"
