@@ -81,6 +81,14 @@ public class PlayerController {
                 .orElseThrow();
         return user.getId();
     }
+    @GetMapping(value = "/getPlayer/{username}", produces = "application/json")
+    public Player getUserByUsername(@PathVariable("username") String username) {
+        //logger.info("Entered");
+        Player user = repository.findByUsername(username)
+                .orElseThrow();
+        return user;
+    }
+
     @Operation(summary = "Changes the users password", description = "Uses a put request to change the users password through the username")
     @ApiResponse(responseCode = "404", description = "not found!")
     @ApiResponse(responseCode = "403", description = "forbidden!")

@@ -141,6 +141,8 @@ public class Player {
         gameLobbyHost = lobby;
     }
 
+    public GameLobby getGameLobbyHost() {return gameLobbyHost;}
+
     public GameState getGameState() {
         return gameState;
     }

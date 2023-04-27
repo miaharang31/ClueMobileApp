@@ -40,27 +40,21 @@ public class JoinLobby extends AppCompatActivity {
                     gameCode.setError("Game Code cannot be empty!");
                 } else {
                     MyApplication app = (MyApplication) getApplication();
-//                    String url = "http://10.0.2.2:8080/lobby/join/" + app.getUserid();
-                    String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/join/" + app.getUserid();
+                    String url = "http://10.0.2.2:8080/lobby/join/" + app.getUserid() + "/code/" + gameCodeData;
+//                    String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/join/" + app.getUserid();
                     RequestQueue queue = Volley.newRequestQueue(JoinLobby.this);
-                    JSONObject body = null;
-                    try {
-                        body = new JSONObject();
-                        body.put("gameCode", gameCodeData);
-                    } catch (JSONException exception) {
-                        exception.printStackTrace();
-                    }
 
-                    JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, body,
+                    JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null,
                             new Response.Listener<JSONObject>() {
                                 @Override
                                 public void onResponse(JSONObject response) {
                                     try {
                                         app.setLobbyid((Integer) response.get("id"));
+                                        app.setHost(false);
+                                        startActivity(intent);
                                     } catch (JSONException e) {
                                         throw new RuntimeException(e);
                                     }
-                                    startActivity(intent);
                                 }
                             },
                             new Response.ErrorListener() {

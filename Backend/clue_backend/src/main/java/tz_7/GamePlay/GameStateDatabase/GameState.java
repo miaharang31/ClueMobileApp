@@ -1,14 +1,9 @@
 package tz_7.GamePlay.GameStateDatabase;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
-import org.springframework.beans.factory.annotation.Autowired;
 import tz_7.CardDatabase.Card;
 import tz_7.GamePlay.GameLobbyDatabase.GameLobby;
-import tz_7.CardDatabase.CardRepository;
 import tz_7.PlayerDatabase.Player;
 
 import java.util.*;
@@ -16,8 +11,8 @@ import java.util.*;
 /**
  * Author: Mia Harang
  * Database that holds the information of all the current games in session
+ *  Deals with turn order and cards
  */
-
 @Entity
 @Table(name = "GameState")
 public class GameState {
@@ -27,16 +22,21 @@ public class GameState {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", unique = true)
-//    ID for the current game state
     private Integer ID;
+
+    @Column(name = "hostID")
+    private Integer hostID;
+
+    @Column(name = "turnNum")
+    private Integer turnNum;
 
     /**
      * JPA Relationships
      */
-    @Column(name = "versionID")
-    @NotFound(action = NotFoundAction.IGNORE)
-//    TODO: create version database
-    private Integer versionID;
+//    @Column(name = "versionID")
+//    @NotFound(action = NotFoundAction.IGNORE)
+////    TODO: create version database
+//    private Integer versionID;
 
     @ManyToMany(mappedBy = "gameState")
     @JsonIgnore
@@ -57,11 +57,11 @@ public class GameState {
     @OneToMany
     private Set<Player> turnOrder;
 
-    private Integer turnNum;
 
     /**
-     * Overrides default constructor to initialize all
-     * necessary variables
+     * Null constructor
+     *  Initializes all sets and sets the turnNum to 0
+     *  this will be used to determine the current player
      */
     public GameState() {
         turnOrder = new HashSet<>();
@@ -72,10 +72,31 @@ public class GameState {
         turnNum = 0;
     }
 
-    public GameState(Integer versionID) {
-        this.versionID = versionID;
+    /**
+     * Argument Constructor
+     *  Initializes all sets and sets the turnNum to 0
+     *  Also sets the hostID and turn order based on the
+     *  information in the GameLobby object provided
+     * @param lobby
+     *  Lobby object to create GameState object from
+     */
+    public GameState(GameLobby lobby) {
+        turnOrder = new HashSet<>();
+        weapons = new HashSet<>();
+        suspects = new HashSet<>();
+        rooms = new HashSet<>();
+        finalCards = new HashSet<>();
+        turnNum = 0;
+
+        hostID = lobby.getHost().getId();
+        turnOrder.addAll(lobby.getPlayers());
+        turnOrder.add(lobby.getHost());
     }
 
+    /**
+     * Gets the next player
+     * @return
+     */
     public Player getNextPlayer() {
         Player[] players = turnOrder.toArray(new Player[0]);
         Player tmp = players[turnNum];
@@ -99,10 +120,21 @@ public class GameState {
         return true;
     }
 
+    /**
+     * Sets the turnOrder
+     * @param players
+     *  Set of players to add to the game
+     */
     public void setTurnOrder(Set<Player> players) {
         turnOrder = players;
     }
 
+    /**
+     * Sets the weapons for the game
+     *  Sets the final weapon card as well
+     * @param weapons
+     *  Set of weapon cards
+     */
     public void setWeapons(Set<Card> weapons) {
         this.weapons = weapons;
         Random rand = new Random();
@@ -112,6 +144,12 @@ public class GameState {
         weapons.remove(finalWeapon);
     }
 
+    /**
+     * Sets the rooms for the game
+     *  Sets the final weapon card as well
+     * @param rooms
+     *  Set of weapon cards
+     */
     public void setRooms(Set<Card> rooms) {
         this.rooms = rooms;
         Random rand = new Random();
@@ -121,6 +159,12 @@ public class GameState {
         rooms.remove(finalRoom);
     }
 
+    /**
+     * Sets the suspects for the game
+     *  Sets the final weapon card as well
+     * @param suspects
+     *  Set of weapon cards
+     */
     public void setSuspects(Set<Card> suspects) {
         this.suspects = suspects;
         Random rand = new Random();
@@ -131,17 +175,27 @@ public class GameState {
     }
 
     /**
+     * Removes all of the players from
+     * the game state
+     */
+    public void removePlayers() {
+        Iterator<Player> players = turnOrder.iterator();
+        while(players.hasNext()) {
+            turnOrder.remove(players.next());
+        }
+    }
+
+    /**
      * Series of get methods for almost every variable
      * @return
      *  Different variables depending on the method
      */
-    public Integer getVersionID() {return versionID;}
     public Integer getID() {return ID;}
     public Set<Card> getFinalCards() {return finalCards;}
     public Set<Card> getWeapons() {return weapons;}
     public Set<Card> getSuspects() {return suspects;}
     public Set<Card> getRooms() {return rooms;}
-
+    public Integer getHostID() {return hostID;}
     public Set<Player> getTurnOrder() {
         return turnOrder;
     }

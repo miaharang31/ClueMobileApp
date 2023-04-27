@@ -2,11 +2,15 @@ package com.example.clue_frontend;
 
 import android.app.Application;
 
+import org.java_websocket.client.WebSocketClient;
+
 public class MyApplication extends Application {
     private int userid;
     private int gameid;
     private int lobbyid;
     private int infoid;
+
+    private boolean isHost;
 
     private int usersplaying;
 
@@ -31,6 +35,16 @@ public class MyApplication extends Application {
     private boolean billiard;
     private boolean library;
     private boolean study;
+
+    private WebSocketClient gameClient;
+    private WebSocketClient lobbyClient;
+
+    public void setGameClient(WebSocketClient gameClient) {
+        this.gameClient = gameClient;
+    }
+    public WebSocketClient getGameClient() {
+        return gameClient;
+    }
 
     public int getLobbyid() {return lobbyid;}
     public int getGameid() {return gameid;}
@@ -221,5 +235,13 @@ public class MyApplication extends Application {
 
     public void setStudy(boolean study) {
         this.study = study;
+    }
+
+    public void setHost(boolean host) {
+        isHost = host;
+    }
+
+    public boolean isHost() {
+        return isHost;
     }
 }
