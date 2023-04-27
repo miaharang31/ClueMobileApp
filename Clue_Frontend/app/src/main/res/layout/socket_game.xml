@@ -7,7 +7,6 @@
     android:id="@+id/relative_layout"
     android:background="@drawable/background">
 
-
     <TextView
         android:id="@+id/chat_box"
         android:layout_width="370dp"
@@ -46,6 +45,9 @@
         android:layout_marginTop="530dp"
         android:text="Send" />
 
+    <com.example.clue_frontend.GamePlay.Sockets.GameView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
     <LinearLayout
         android:id="@+id/layout_cards"
         android:orientation="horizontal"
@@ -59,7 +61,6 @@
             android:layout_marginTop="590dp"
             android:layout_marginLeft="265dp"
             android:adjustViewBounds="true"
-            android:onClick="onClickTest"
             android:src="@drawable/checklist_button" />
 
         <ImageView
