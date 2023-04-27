@@ -24,7 +24,7 @@
         android:paddingBottom="1dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="420dp"
-        android:text="Conversation appears here..." />
+        android:scrollbars = "vertical" />
 
     <EditText
         android:id="@+id/message"

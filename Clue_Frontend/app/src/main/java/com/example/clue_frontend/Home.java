@@ -23,10 +23,10 @@ import com.example.clue_frontend.NavBar.RulesFragment;
 import com.example.clue_frontend.NavBar.SettingsFragment;
 import com.google.android.material.navigation.NavigationView;
 
-public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Home extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
-    NavigationView navigationView;
+//    NavigationView navigationView;
     ActionBarDrawerToggle drawerToggle;
     Button join;
     Button host;
@@ -52,8 +52,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
  //       setSupportActionBar(toolbar);
 
         drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+//        navigationView = findViewById(R.id.nav_view);
+//        navigationView.setNavigationItemSelectedListener(this);
 
       //  drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
       //  drawerLayout.addDrawerListener(drawerToggle);
@@ -61,7 +61,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-            navigationView.setCheckedItem(R.id.nav_home);
+//            navigationView.setCheckedItem(R.id.nav_home);
         }
         join.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -80,28 +80,28 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
 
     }
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId() == R.id.nav_home){
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-                }
-                if(item.getItemId() == R.id.nav_profile){
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
-                }
-                if(item.getItemId() == R.id.nav_settings){
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SettingsFragment()).commit();
-                }
-                if(item.getItemId() == R.id.nav_howToPlay){
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RulesFragment()).commit();
-                }
-                if(item.getItemId() == R.id.nav_logout){
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new LogoutFragment()).commit();
-
-                    //Toast.makeText(this, "logout", Toast.LENGTH_SHORT).show();
-                }
-                drawerLayout.closeDrawer(GravityCompat.START);
-                return true;
-            }; //}
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                if(item.getItemId() == R.id.nav_home){
+//                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+//                }
+//                if(item.getItemId() == R.id.nav_profile){
+//                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
+//                }
+//                if(item.getItemId() == R.id.nav_settings){
+//                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SettingsFragment()).commit();
+//                }
+//                if(item.getItemId() == R.id.nav_howToPlay){
+//                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RulesFragment()).commit();
+//                }
+//                if(item.getItemId() == R.id.nav_logout){
+//                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new LogoutFragment()).commit();
+//
+//                    //Toast.makeText(this, "logout", Toast.LENGTH_SHORT).show();
+//                }
+//                drawerLayout.closeDrawer(GravityCompat.START);
+//                return true;
+//            }; //}
 
     @Override
     public void onBackPressed() {

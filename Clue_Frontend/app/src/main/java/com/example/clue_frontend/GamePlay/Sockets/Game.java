@@ -58,7 +58,13 @@ public class Game extends AppCompatActivity {
                 public void onMessage(String message) {
                     Log.d("", "run() returned: " + message);
                     String s = chatBox.getText().toString();
-                    chatBox.setText(s + "\nServer: " + message);
+                    chatBox.setText(s + message + "\n");
+                    final int scrollAmount = chatBox.getLayout().getLineTop(chatBox.getLineCount()) - (chatBox.getHeight() + 50);
+                    // if there is no need to scroll, scrollAmount will be <=0
+                    if (scrollAmount > 0)
+                        chatBox.scrollTo(0, scrollAmount);
+                    else
+                        chatBox.scrollTo(0, 0);
                 }
                 @Override
                 public void onOpen(ServerHandshake handshake) {
@@ -85,11 +91,11 @@ public class Game extends AppCompatActivity {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                try {
+                try {
                     CLIENT.send(message.getText().toString());
-//                } catch (Exception e) {
-//                    Log.d("ExceptionSendMessage:", e.getMessage().toString());
-//                }
+                } catch (Exception e) {
+                    Log.d("ExceptionSendMessage:", e.getMessage().toString());
+                }
             }
         });
 

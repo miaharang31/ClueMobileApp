@@ -199,6 +199,17 @@ public class GameStateController {
         GameState state = repo.getById(id);
         return state.checkFinalGuess(guess);
     }
+    /**
+     * Get mapping to get a state by ID
+     * @return
+     *  true - if all the ids match
+     *  false - if the ids don't match
+     */
+    @GetMapping(value = "game/{id}")
+    public GameState getGameByID (@PathVariable Integer id) {
+        GameState state = repo.getById(id);
+        return state;
+    }
 
     /**
      * Get mapping to get the next player in rotation

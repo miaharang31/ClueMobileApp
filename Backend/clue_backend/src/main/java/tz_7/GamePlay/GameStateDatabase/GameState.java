@@ -81,16 +81,16 @@ public class GameState {
      *  Lobby object to create GameState object from
      */
     public GameState(GameLobby lobby) {
-        hostID = lobby.getHost().getId();
-        turnOrder.addAll(lobby.getPlayers());
-        turnOrder.add(lobby.getHost());
-
         turnOrder = new HashSet<>();
         weapons = new HashSet<>();
         suspects = new HashSet<>();
         rooms = new HashSet<>();
         finalCards = new HashSet<>();
         turnNum = 0;
+
+        hostID = lobby.getHost().getId();
+        turnOrder.addAll(lobby.getPlayers());
+        turnOrder.add(lobby.getHost());
     }
 
     /**

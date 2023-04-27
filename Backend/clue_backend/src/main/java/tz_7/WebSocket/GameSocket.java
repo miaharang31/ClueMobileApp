@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Map;
 
+import jakarta.transaction.Transactional;
 import jakarta.websocket.OnClose;
 import jakarta.websocket.OnError;
 import jakarta.websocket.OnMessage;
@@ -16,34 +17,44 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import tz_7.GamePlay.GameLobbyDatabase.GameLobby;
+import tz_7.GamePlay.GameLobbyDatabase.GameLobbyController;
 import tz_7.GamePlay.GameLobbyDatabase.GameLobbyRepository;
 import tz_7.PlayerDatabase.Player;
+import tz_7.PlayerDatabase.PlayerController;
 import tz_7.PlayerDatabase.PlayerRepository;
 import tz_7.GamePlay.GameStateDatabase.GameState;
 import tz_7.GamePlay.GameStateDatabase.GameStateRepository;
 import tz_7.GamePlay.GameStateDatabase.GameStateController;
 
 @ServerEndpoint("/websocket/game/{lobbyID}/player/{player}")
-@Component
+@Controller
 public class GameSocket {
     private static Map< Session, Player> sessionPlayerMap = new Hashtable < > ();
     private static Map < Player, Session > playerSessionMap = new Hashtable< >();
     private static Map < Player, GameState > playerGameStateMap = new Hashtable<>();
 
-    private Session session;
+    private static PlayerRepository playerRepository;
+    private static GameStateRepository gameStateRepository;
+    private static GameLobbyRepository gameLobbyRepository;
+//    private static GameStateController gameStateController;
 
     private final Logger logger = LoggerFactory.getLogger(GameSocket.class);
 
     @Autowired
-    PlayerRepository playerRepository;
+    public void setPlayerRepository(PlayerRepository repo) {
+        playerRepository = repo;
+    }
     @Autowired
-    GameStateRepository gameStateRepository;
+    public void setGameStateRepository(GameStateRepository repo) {
+        gameStateRepository = repo;
+    }
     @Autowired
-    GameLobbyRepository gameLobbyRepository;
-
-    @Autowired
-    GameStateController gameStateController;
+    public void setGameLobbyRepository(GameLobbyRepository repo) {
+        gameLobbyRepository = repo;
+    }
 
     @OnOpen
     public void onOpen(Session session, @PathParam("player") Integer playerid, @PathParam("lobbyID") Integer lobbyID)
@@ -52,15 +63,16 @@ public class GameSocket {
 
         Player player = playerRepository.findById(playerid).get();
         GameLobby lobby = gameLobbyRepository.findById(lobbyID).get();
+
 //        GameState state = gameStateRepository.findByHostID(lobby.getHost().getId());
 
-        GameState state = gameStateController.newSocketState(lobby);
+//        GameState state = gameStateController.newSocketState(lobby);
 
         sessionPlayerMap.put(session, player);
         playerSessionMap.put(player, session);
-        playerGameStateMap.put(player, state);
+//        playerGameStateMap.put(player, state);
 
-        String message = player.getUsername() + "had joined the game";
+        String message = player.getUsername() + "has joined the game";
         broadcast(message);
 //        if(lobby.getHost() == player) {
 //
@@ -77,14 +89,14 @@ public class GameSocket {
     @OnMessage
     public void onMessage(Session session, String message) throws IOException {
         logger.info("Entered Message: " + message);
-        Player user = playerRepository.findByUsername(sessionPlayerMap.get(session).getUsername()).get();
+        Player player = playerRepository.findByUsername(sessionPlayerMap.get(session).getUsername()).get();
 
         if(message.startsWith("@")) {
-            Player destUser = playerRepository.findByUsername(message.split(" ")[0].substring(1)).get();
-            sendMessageToPArticularUser(destUser, "[DM] " + user + ": " + message);
-            sendMessageToPArticularUser(user, "[DM] " + user + ": " + message);
+            Player destPlayer = playerRepository.findByUsername(message.split(" ")[0].substring(1)).get();
+            sendMessageToPArticularUser(destPlayer, "[DM] " + player + ": " + message);
+            sendMessageToPArticularUser(player, "[DM] " + player + ": " + message);
         } else {
-            broadcast(user.getUsername() + ": " + message);
+            broadcast(player.getUsername() + ": " + message);
         }
     }
 
@@ -93,7 +105,7 @@ public class GameSocket {
         logger.info("Entered into Close");
 
         Player player = sessionPlayerMap.get(session);
-        GameState state = playerGameStateMap.get(player);
+//        GameState state = playerGameStateMap.get(player);
 
         sessionPlayerMap.remove(session);
         playerSessionMap.remove(player);
