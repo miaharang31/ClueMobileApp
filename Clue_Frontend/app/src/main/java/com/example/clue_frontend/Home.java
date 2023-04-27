@@ -1,35 +1,24 @@
 package com.example.clue_frontend;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import android.annotation.SuppressLint;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.clue_frontend.Lobbies.HostLobby;
 import com.example.clue_frontend.Lobbies.JoinLobby;
-import com.example.clue_frontend.NavBar.HomeFragment;
-import com.example.clue_frontend.NavBar.LogoutFragment;
-import com.example.clue_frontend.NavBar.ProfileFragment;
-import com.example.clue_frontend.NavBar.RulesFragment;
-import com.example.clue_frontend.NavBar.SettingsFragment;
-import com.google.android.material.navigation.NavigationView;
 
-public class Home extends AppCompatActivity {
+public class Home extends AppCompatActivity /*implements NavigationView.OnNavigationItemSelectedListener*/ {
 
-    private DrawerLayout drawerLayout;
+//    private DrawerLayout drawerLayout;
 //    NavigationView navigationView;
-    ActionBarDrawerToggle drawerToggle;
+//    ActionBarDrawerToggle drawerToggle;
     Button join;
     Button host;
+    Button rules;
+    Button settings;
 
 //    @Override
 //    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -39,7 +28,7 @@ public class Home extends AppCompatActivity {
 //        return super.onOptionsItemSelected(item);
 //    }
 
-    @SuppressLint("MissingInflatedId")
+//    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,11 +36,15 @@ public class Home extends AppCompatActivity {
 
         join = (Button) findViewById(R.id.join);
         host = (Button) findViewById(R.id.host);
+        rules = (Button) findViewById(R.id.rules_button);
+        settings = (Button) findViewById(R.id.setting_btn);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
- //       setSupportActionBar(toolbar);
 
-        drawerLayout = findViewById(R.id.drawer_layout);
+//delete
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+// //       setSupportActionBar(toolbar);
+//
+//        drawerLayout = findViewById(R.id.drawer_layout);
 //        navigationView = findViewById(R.id.nav_view);
 //        navigationView.setNavigationItemSelectedListener(this);
 
@@ -59,10 +52,11 @@ public class Home extends AppCompatActivity {
       //  drawerLayout.addDrawerListener(drawerToggle);
         //drawerToggle.syncState();
 
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+//delete
+//        if (savedInstanceState == null) {
+//            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
 //            navigationView.setCheckedItem(R.id.nav_home);
-        }
+//        }
         join.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -74,6 +68,14 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(Home.this, HostLobby.class);
+                startActivity(intent);
+            }
+        });
+
+        rules.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Home.this, Rules.class);
                 startActivity(intent);
             }
         });
@@ -102,13 +104,13 @@ public class Home extends AppCompatActivity {
 //                drawerLayout.closeDrawer(GravityCompat.START);
 //                return true;
 //            }; //}
-
-    @Override
-    public void onBackPressed() {
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
-            drawerLayout.closeDrawer(GravityCompat.START);
-        }else{
-            super.onBackPressed();
-        }
-    }
+//
+//    @Override
+//    public void onBackPressed() {
+//        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+//            drawerLayout.closeDrawer(GravityCompat.START);
+//        }else{
+//            super.onBackPressed();
+//        }
+//    }
 }
