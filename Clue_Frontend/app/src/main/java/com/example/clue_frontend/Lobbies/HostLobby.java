@@ -31,7 +31,7 @@ public class HostLobby extends AppCompatActivity{
     Button createLobby;
     EditText gameCode;
 
-    MyApplication app = (MyApplication) getApplication();
+    private MyApplication app = (MyApplication) getApplication();
 
     /**
      * Overriding the onCreate method to show the layout we need
@@ -94,8 +94,8 @@ public class HostLobby extends AppCompatActivity{
                 } else {
                     app = (MyApplication) getApplication();
                     System.out.println("THIS IS THE USERS ID !!!!!!!!!!!!!!" + app.getUserid());
-//                    String url = "http://10.0.2.2:8080/lobby/new/" + app.getUserid();
-                    String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/new/" + app.getUserid();
+                    String url = "http://10.0.2.2:8080/lobby/new/" + app.getUserid();
+//                    String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/new/" + app.getUserid();
                     RequestQueue queue = Volley.newRequestQueue(HostLobby.this);
                     JSONObject body = null;
                     try {
@@ -115,11 +115,12 @@ public class HostLobby extends AppCompatActivity{
                                     try {
                                         app = (MyApplication) getApplication();
                                         app.setLobbyid((Integer) response.get("id"));
+                                        app.setHost(true);
                                         app.setUsersplaying((Integer) response.get("maxPlayers"));
+                                        startActivity(intent);
                                     } catch (JSONException e) {
                                         throw new RuntimeException(e);
                                     }
-                                    startActivity(intent);
                                 }
                             },
                             new Response.ErrorListener() {

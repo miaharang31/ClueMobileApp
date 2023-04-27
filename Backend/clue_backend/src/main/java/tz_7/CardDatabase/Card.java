@@ -78,6 +78,9 @@ public class Card {
     public void addGameState(GameState gameState) {
         this.gameState.add(gameState);
     }
+    public void removeGameState(GameState gameState) {
+        this.gameState.remove(gameState);
+    }
     public Set<GameState> getGameState() {
         return gameState;
     }

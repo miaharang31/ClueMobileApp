@@ -12,4 +12,5 @@ import java.util.Set;
 
 @Repository
 public interface GameStateRepository extends JpaRepository<GameState, Integer> {
+    <Optional> GameState findByHostID(Integer hostID);
 }

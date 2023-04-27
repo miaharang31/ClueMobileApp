@@ -20,7 +20,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".Settings"
+            android:name=".administrative.Settings"
             android:exported="false" />
         <activity
             android:name=".EndGameOtherPlayers"
@@ -35,6 +35,7 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
         <activity
+
             android:name=".GamePlay.Checklist"
             android:exported="false" />
 
@@ -43,6 +44,11 @@
 
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
+
+
+        <activity
+            android:name=".Rules"
+            android:label="Clue"/>
 
         <activity
             android:name=".UserSignUp"
@@ -57,14 +63,11 @@
             android:name=".Lobbies.Lobby"
             android:label="@string/app_name" />
         <activity
-            android:name=".GamePlay.StartGame"
-            android:label="@string/app_name" />
-        <activity
             android:name=".GamePlay.Game"
             android:label="@string/app_name" />
         <activity
             android:name=".Home"
-            android:label="Home" />
+            android:label="Home"/>
         <activity
             android:name=".GamePlay.CardButton"
             android:label="CardButton" />
@@ -77,7 +80,14 @@
         <activity
             android:name=".GamePlay.CharacterSelection"
             android:label="Clue" />
-        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

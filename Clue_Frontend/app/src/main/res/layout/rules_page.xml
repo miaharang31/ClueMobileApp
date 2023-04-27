@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#520120">
-<Button
-    android:id="@+id/exitbtn"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="EXIT"
-    android:textSize="15dp"
-    />
+<!--<Button-->
+<!--    android:id="@+id/exitbtn"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:text="EXIT"-->
+<!--    android:textSize="15dp"-->
+<!--    />-->
 
     <TextView
         android:id="@+id/rules"
         android:layout_width="100mm"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/exitbtn"
         android:background="#B57114"
         android:fontFamily="@font/abhaya_libre_extrabold"
         android:shadowColor="#520120"
@@ -90,7 +90,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="110dp"
         android:fontFamily="@font/abhaya_libre_extrabold"
         android:shadowColor="@color/white"
         android:shadowRadius="2"
@@ -112,7 +112,48 @@
 \n    3. If the player guesses correctly, the game has finished, and that player has won; else, the player puts the cards back into the center, and the game continues, but that player has lost and is out of the game.
 \n
 \nMAY THE BEST DETECTIVE WIN!"
-        android:textColor="#B57114" />
+        android:textColor="#B57114"/>
+    <Button
+        android:id="@+id/account_button"
+        android:background="@drawable/home_icon"
+        android:layout_width="92dp"
+        android:layout_height="92dp"
+        app:cardCornerRadius="8dp"
+        app:strokeColor="#B57114"
+        app:strokeWidth="5dp"
+        android:layout_marginTop="650dp"
+        android:layout_marginLeft="50dp"
+        android:fontFamily="@font/aladin"
+        android:backgroundTint="#08403E"
+        android:gravity="bottom"/>
+    <Button
+        android:id="@+id/rules_button"
+        android:background="@drawable/howtoplay"
+        android:layout_width="92dp"
+        android:layout_height="92dp"
+        android:layout_alignLeft="@id/account_button"
+        app:cardCornerRadius="8dp"
+        app:strokeColor="#B57114"
+        app:strokeWidth="5dp"
+        android:layout_marginTop="650dp"
+        android:layout_marginLeft="100dp"
+        android:fontFamily="@font/aladin"
+        android:backgroundTint="#08403E"
+        android:gravity="bottom"/>
+    <Button
+        android:id="@+id/setting_btn"
+        android:background="@drawable/settings"
+        android:layout_width="92dp"
+        android:layout_height="92dp"
+        android:layout_alignLeft="@id/rules_button"
+        app:cardCornerRadius="8dp"
+        app:strokeColor="#B57114"
+        app:strokeWidth="5dp"
+        android:layout_marginTop="650dp"
+        android:layout_marginLeft="100dp"
+        android:fontFamily="@font/aladin"
+        android:backgroundTint="#08403E"
+        android:gravity="bottom"/>
 </RelativeLayout>
 <!--android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
