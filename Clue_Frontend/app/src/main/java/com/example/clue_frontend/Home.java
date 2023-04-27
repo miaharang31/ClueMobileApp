@@ -39,6 +39,7 @@ public class Home extends AppCompatActivity /*implements NavigationView.OnNaviga
         rules = (Button) findViewById(R.id.rules_button);
         settings = (Button) findViewById(R.id.setting_btn);
 
+
 //delete
 //        Toolbar toolbar = findViewById(R.id.toolbar);
 // //       setSupportActionBar(toolbar);
@@ -50,6 +51,7 @@ public class Home extends AppCompatActivity /*implements NavigationView.OnNaviga
       //  drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);
       //  drawerLayout.addDrawerListener(drawerToggle);
         //drawerToggle.syncState();
+
 //delete
 //        if (savedInstanceState == null) {
 //            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
@@ -69,6 +71,7 @@ public class Home extends AppCompatActivity /*implements NavigationView.OnNaviga
                 startActivity(intent);
             }
         });
+
         rules.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GamePlay.Game"
+    tools:context=".GamePlay.Sockets.Game"
     android:id="@+id/relative_layout"
     android:background="@drawable/background">
 
@@ -45,7 +45,7 @@
         android:layout_marginTop="530dp"
         android:text="Send" />
 
-    <com.example.clue_frontend.GamePlay.GameView
+    <com.example.clue_frontend.GamePlay.Sockets.GameView
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
     <LinearLayout
@@ -61,7 +61,6 @@
             android:layout_marginTop="590dp"
             android:layout_marginLeft="265dp"
             android:adjustViewBounds="true"
-            android:onClick="onClickTest"
             android:src="@drawable/checklist_button" />
 
         <ImageView

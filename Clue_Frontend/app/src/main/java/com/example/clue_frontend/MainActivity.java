@@ -97,7 +97,8 @@ public class MainActivity extends AppCompatActivity {
 
                     // if all textboxes are correct, all data will be added to the SecondActivity (main page for either regular/premium users) and will start
                     if (checkUsername == true && checkPassword == true){
-                        String url = "http://coms-309-038.class.las.iastate.edu:8080/login";
+//                        String url = "http://coms-309-038.class.las.iastate.edu:8080/login";
+                        String url = "http://10.0.2.2:8080/login";
                         RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
                         JSONObject json = null;
                         try {
