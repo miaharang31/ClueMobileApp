@@ -37,14 +37,7 @@
             android:label="Rules" />
         <activity
             android:name=".Settings"
-            android:label="Settings"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:label="Settings"/>
         <activity
             android:name=".UserSignUp"
             android:label="@string/app_name" />
@@ -76,7 +69,14 @@
             android:name=".GamePlay.CharacterSelection"
             android:label="Clue" />
         <activity
-            android:name=".MainActivity"/>
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -69,7 +69,7 @@ public class PlayerController {
         Optional<Player> user = repository.findById(id);
         return user;
     }
-    @Operation(summary = "Returns the user based off the the ID", description = "Uses a get request to get the user by its id")
+    @Operation(summary = "Returns the username based off the the ID", description = "Uses a get request to get the user by its id")
     @ApiResponse(responseCode = "404", description = "not found!")
     @ApiResponse(responseCode = "403", description = "forbidden!")
     @ApiResponse(responseCode = "401", description = "not authorized!")
@@ -77,9 +77,30 @@ public class PlayerController {
     @GetMapping(value = "/getUser/username/{id}", produces = "application/json")
     public String getUsernameById(@PathVariable("id") Integer id) {
         //logger.info("Entered");
-        String username;
-        Optional<Player> user = repository.findById(id);
-        
+        Player user = repository.findById(id).get();
+        return user.getUsername();
+    }
+    @Operation(summary = "Returns the user password based off the the ID", description = "Uses a get request to get the user by its id")
+    @ApiResponse(responseCode = "404", description = "not found!")
+    @ApiResponse(responseCode = "403", description = "forbidden!")
+    @ApiResponse(responseCode = "401", description = "not authorized!")
+    @ApiResponse(responseCode = "200", description = "Success!")
+    @GetMapping(value = "/getUser/password/{id}", produces = "application/json")
+    public String getPasswordById(@PathVariable("id") Integer id) {
+        //logger.info("Entered");
+        Player user = repository.findById(id).get();
+        return user.getPassword();
+    }
+    @Operation(summary = "Returns the user first name based off the the ID", description = "Uses a get request to get the user by its id")
+    @ApiResponse(responseCode = "404", description = "not found!")
+    @ApiResponse(responseCode = "403", description = "forbidden!")
+    @ApiResponse(responseCode = "401", description = "not authorized!")
+    @ApiResponse(responseCode = "200", description = "Success!")
+    @GetMapping(value = "/getUser/firstname/{id}", produces = "application/json")
+    public String getNameById(@PathVariable("id") Integer id) {
+        //logger.info("Entered");
+        Player user = repository.findById(id).get();
+        return user.getFirstname();
     }
     @Operation(summary = "Gets id from username", description = "Uses a get request to get the id using the username")
     @ApiResponse(responseCode = "404", description = "not found!")

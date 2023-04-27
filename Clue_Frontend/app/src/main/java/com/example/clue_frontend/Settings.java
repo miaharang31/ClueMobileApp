@@ -2,6 +2,7 @@ package com.example.clue_frontend;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,11 +34,31 @@ public class Settings extends AppCompatActivity {
     EditText newpassword;
     Button submitnewun;
     Button submitnewp;
+    Button home;
+    Button rules;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        home = (Button) findViewById(R.id.account_button);
+        rules = (Button) findViewById(R.id.rules_button);
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Settings.this, Home.class);
+                startActivity(intent);
+            }
+        });
+        rules.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Settings.this, Rules.class);
+                startActivity(intent);
+            }
+        });
+
         final boolean[] userclicked = {false};
         final boolean[] passclicked = {false};
         firstname = (TextView) findViewById(R.id.name);
@@ -46,15 +67,15 @@ public class Settings extends AppCompatActivity {
 
 
         MyApplication app = (MyApplication) getApplication();
-        String url = "http://coms-309-038.class.las.iastate.edu:8080///getUser/" + app.getUserid();
+        String url = "http://coms-309-038.class.las.iastate.edu:8080///getUser/username/" + app.getUserid();
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, body,
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     public void onResponse(JSONObject response) {
                         try {
 
-                            response.get("");
-
+                            response.get("username");
+                            uname.setText(response.get("username").toString());
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
@@ -67,7 +88,27 @@ public class Settings extends AppCompatActivity {
                     }
                 }
         );
-        queue.add(request);
+        url = "http://coms-309-038.class.las.iastate.edu:8080///getUser/firstname/" + app.getUserid();
+
+        request = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+                    public void onResponse(JSONObject response) {
+                        try {
+
+                            response.get("firstname");
+                            firstname.setText(response.get("firstname").toString());
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(Settings.this, "ERROR: " + error, Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
 
 
 

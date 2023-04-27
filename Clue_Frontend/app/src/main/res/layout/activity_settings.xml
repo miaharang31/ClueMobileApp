@@ -103,6 +103,47 @@
             android:layout_marginTop="10dp"
             android:background="#B57114"
             android:layout_below="@id/newpassword"/>
+        <Button
+            android:id="@+id/account_button"
+            android:background="@drawable/home_icon"
+            android:layout_width="92dp"
+            android:layout_height="92dp"
+            app:cardCornerRadius="8dp"
+            app:strokeColor="#B57114"
+            app:strokeWidth="5dp"
+            android:layout_marginTop="650dp"
+            android:layout_marginLeft="50dp"
+            android:fontFamily="@font/aladin"
+            android:backgroundTint="#08403E"
+            android:gravity="bottom"/>
+        <Button
+            android:id="@+id/rules_button"
+            android:background="@drawable/howtoplay"
+            android:layout_width="92dp"
+            android:layout_height="92dp"
+            android:layout_alignLeft="@id/account_button"
+            app:cardCornerRadius="8dp"
+            app:strokeColor="#B57114"
+            app:strokeWidth="5dp"
+            android:layout_marginTop="650dp"
+            android:layout_marginLeft="100dp"
+            android:fontFamily="@font/aladin"
+            android:backgroundTint="#08403E"
+            android:gravity="bottom"/>
+        <Button
+            android:id="@+id/setting_btn"
+            android:background="@drawable/settings"
+            android:layout_width="92dp"
+            android:layout_height="92dp"
+            android:layout_alignLeft="@id/rules_button"
+            app:cardCornerRadius="8dp"
+            app:strokeColor="#B57114"
+            app:strokeWidth="5dp"
+            android:layout_marginTop="650dp"
+            android:layout_marginLeft="100dp"
+            android:fontFamily="@font/aladin"
+            android:backgroundTint="#08403E"
+            android:gravity="bottom"/>
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
