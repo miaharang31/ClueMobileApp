@@ -1,7 +1,5 @@
 package tz_7.GamePlay.GameStateDatabase;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import tz_7.CardDatabase.Card;
 import tz_7.CardDatabase.CardRepository;
 import tz_7.GamePlay.GameLobbyDatabase.GameLobby;
-import tz_7.GamePlay.GameLobbyDatabase.GameLobbyRepository;
 import tz_7.PlayerDatabase.Player;
 import tz_7.PlayerDatabase.PlayerRepository;
 
@@ -19,6 +16,8 @@ import java.util.*;
  * Author: Mia Harang
  * This is a controller class that deals with everything
  * and anything to do with the GameState table of our database
+ *  GameState deals with the information of different game sessions
+ *      i.e. instances of games
  */
 
 @RestController
@@ -27,12 +26,8 @@ public class GameStateController {
     GameStateRepository repo;
     @Autowired
     PlayerRepository playerRepository;
-    private final Logger logger = LoggerFactory.getLogger(GameStateRepository.class);
     @Autowired
-    private GameLobbyRepository gameLobbyRepository;
-
-    @Autowired
-    private CardRepository cardRepository;
+    CardRepository cardRepository;
 
     /**
      * Post mapping that creates a new Game State
@@ -52,8 +47,19 @@ public class GameStateController {
         return state;
     }
 
-    public void newSocketState(GameLobby lobby) {
-//        TODO: Make GameState
+    /**
+     * Creates a game based on the lobby
+     * @param lobby
+     *  Lobby to create from
+     */
+    @PostMapping(value = "game/lobby/new")
+    public GameState newSocketState(GameLobby lobby) {
+        GameState state = new GameState(lobby);
+        state = newState(state);
+        state = addCards(state.getID(), "w");
+        state = addCards(state.getID(), "s");
+        state = addCards(state.getID(), "r");
+        return state;
     }
 
     /**
@@ -66,7 +72,7 @@ public class GameStateController {
      *  updated gamestate object
      */
     @PutMapping(value = "/game/{id}/setcards/{type}")
-    public GameState addWeapons(@PathVariable Integer id, @PathVariable String type) {
+    public GameState addCards(@PathVariable Integer id, @PathVariable String type) {
         GameState state = repo.findById(id).get();
         Set<Card> cards = cardRepository.findByType(type);
         switch(type){
@@ -91,10 +97,71 @@ public class GameStateController {
     }
 
     /**
+     * PREPARING FOR STATE DELETION
+     *  Put mapping that removes the cards from the game state
+     *  by type
+     * @param id
+     *  GameState ID
+     * @param type
+     *  type of card (i.e. w, s, r)
+     * @return
+     *  new GameState object
+     */
+    @PutMapping(value = "game/{id}/removeCards/{type}")
+    public GameState removeCards(@PathVariable Integer id, @PathVariable String type) {
+        GameState state = repo.findById(id).get();
+        Set<Card> cards = cardRepository.findByType(type);
+        switch(type){
+            case "w" :
+                state.setWeapons(null);
+                break;
+            case "s" :
+                state.setSuspects(null);
+                break;
+            case "r" :
+                state.setRooms(null);
+                break;
+        }
+
+        Iterator<Card> tmp = cards.iterator();
+        while(tmp.hasNext()) {
+            tmp.next().removeGameState(state);
+        }
+        repo.save(state);
+        cardRepository.saveAll(cards);
+        return state;
+    }
+
+    /**
+     * PREPARING FOR STATE DELETION
+     *  Removes the players from the game state
+     *  and sets those player's game state to null
+     * @param id
+     *  GameState ID
+     * @return
+     *  update state object
+     */
+    @PutMapping(value = "game/{id}/removePlayers")
+    public GameState removePlayers(@PathVariable Integer id) {
+        GameState state = repo.findById(id).get();
+
+        Iterator<Player> players = state.getTurnOrder().iterator();
+        while(players.hasNext()) {
+            players.next().setGameState(null);
+        }
+        state.removePlayers();
+
+        repo.save(state);
+        playerRepository.saveAll(state.getTurnOrder());
+        return state;
+    }
+
+    /**
      * Get mapping that gets all game states in session
      * @return
      *  A list of game state objects
      */
+//    TODO: Not Completely Working
     @GetMapping("game")
     public ResponseEntity<List<GameState>> getAllStates() {
         return new ResponseEntity<List<GameState>>(repo.findAll(), HttpStatus.OK);
@@ -128,10 +195,33 @@ public class GameStateController {
         return state.checkFinalGuess(guess);
     }
 
+    /**
+     * Get mapping to get the next player in rotation
+     * @param id
+     *  GameState ID
+     * @return
+     *  Player object
+     */
     @GetMapping(value = "game/{id}/next")
     public Player getNextPlayer (@PathVariable Integer id) {
         Optional<GameState> state = repo.findById(id);
         return state.get().getNextPlayer();
+    }
+
+    /**
+     * Delete Mapping that removes all relationships then
+     * deletes the object itself
+     * @param id
+     *  GameState ID
+     */
+    @DeleteMapping(value = "game/{id}/delete")
+    public void deleteGame(@PathVariable Integer id) {
+        GameState state = repo.findById(id).get();
+        state = removeCards(state.getID(), "w");
+        state = removeCards(state.getID(), "s");
+        state = removeCards(state.getID(), "r");
+        state = removePlayers(state.getID());
+        repo.delete(state);
     }
 
 }

@@ -52,11 +52,17 @@ public class GameSocket extends GameStateController{
 
         Player player = playerRepository.findById(playerid).get();
         GameLobby lobby = gameLobbyRepository.findById(lobbyID).get();
+        GameState state = gameStateRepository.findByHostID(lobby.getHost().getId());
         if(lobby.getHost() == player) {
-            newSocketState(lobby);
-        } else if (gameStateRepository.findByHostID(lobby.getHost().getId()) != null) {
+            state = newSocketState(lobby);
+
             sessionPlayerMap.put(session, player);
             playerSessionMap.put(player, session);
+            playerGameStateMap.put(player, state);
+        } else if (state != null) {
+            sessionPlayerMap.put(session, player);
+            playerSessionMap.put(player, session);
+            playerGameStateMap.put(player, state);
 
             String message = player.getUsername() + "had joined the game";
             broadcast(message);
@@ -82,6 +88,7 @@ public class GameSocket extends GameStateController{
         logger.info("Entered into Close");
 
         Player player = sessionPlayerMap.get(session);
+        GameState state = playerGameStateMap.get(player);
 
         sessionPlayerMap.remove(session);
         playerSessionMap.remove(player);
