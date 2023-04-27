@@ -19,14 +19,18 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.clue_frontend.GamePlay.CharacterSelection;
 import com.example.clue_frontend.GamePlay.Game;
-import com.example.clue_frontend.GamePlay.StartGame;
 import com.example.clue_frontend.MyApplication;
 import com.example.clue_frontend.R;
 
+import org.java_websocket.client.WebSocketClient;
+import org.java_websocket.handshake.ServerHandshake;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Iterator;
 
 public class Lobby extends AppCompatActivity {
@@ -47,9 +51,8 @@ public class Lobby extends AppCompatActivity {
     JSONObject gameHost;
     JSONArray players;
 
-    MyApplication app = (MyApplication) getApplication();
-
-
+    private MyApplication app = (MyApplication) getApplication();
+    private WebSocketClient CLIENT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -187,29 +190,58 @@ public class Lobby extends AppCompatActivity {
 //                TODO: create game state
                 app = (MyApplication) getApplication();
 
-
-                if (app.getUsersplaying() == 3) {
-
-                }
-                JSONObject game = new JSONObject();
+                URI uri;
                 try {
-                    game.put("versionID", 1);
-                } catch (JSONException e) {
+                    uri = new URI("ws://10.0.2.2:8080/websocket/game/" + app.getLobbyid() + "/player/" + app.getUserid());
+                } catch (URISyntaxException e) {
                     throw new RuntimeException(e);
                 }
-                JSONArray players = new JSONArray();
+                CLIENT = new WebSocketClient() {
+                    @Override
+                    public void onOpen(ServerHandshake handshakedata) {
+
+                    }
+
+                    @Override
+                    public void onMessage(String message) {
+
+                    }
+
+                    @Override
+                    public void onClose(int code, String reason, boolean remote) {
+
+                    }
+
+                    @Override
+                    public void onError(Exception ex) {
+
+                    }
+                }
+
+                /*
+                    If the player is the host:
+                        Create the game state & Join websocket
+                 */
+                if(app.isHost()) {
+                    JSONObject game = new JSONObject();
+                    try {
+                        game.put("versionID", 1);
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+                    JSONArray players = new JSONArray();
 //                String url = "http://10.0.2.2:8080/lobby/players/" + app.getLobbyid();
-                String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/players/" + app.getLobbyid();
-                JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
-                        new Response.Listener<JSONArray>() {
-                            @Override
-                            public void onResponse(JSONArray response) {
-                                try {
-                                    System.out.println("turnOrder: " + response.length());
-                                    for(int i = 0; i < response.length(); i++) {
-                                        players.put(response.getJSONObject(i));
-                                    }
-                                    game.put("turnOrder", players);
+                    String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/players/" + app.getLobbyid();
+                    JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
+                            new Response.Listener<JSONArray>() {
+                                @Override
+                                public void onResponse(JSONArray response) {
+                                    try {
+                                        System.out.println("turnOrder: " + response.length());
+                                        for(int i = 0; i < response.length(); i++) {
+                                            players.put(response.getJSONObject(i));
+                                        }
+                                        game.put("turnOrder", players);
 
 //                                    String url = "http://10.0.2.2:8080/card/weapon";
 //                                    JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
@@ -236,30 +268,30 @@ public class Lobby extends AppCompatActivity {
 //                                                                                            try {
 //                                                                                                System.out.println("rooms: " + response.length());
 //                                                                                                game.put("rooms", response);
-                                                                                                Intent intent = new Intent(Lobby.this, CharacterSelection.class);
+                                        Intent intent = new Intent(Lobby.this, CharacterSelection.class);
 //                                                                                                String url = "http://10.0.2.2:8080/game/new";
-                                                                                                String url = "http://coms-309-038.class.las.iastate.edu:8080/game/new";
-                                                                                                JsonObjectRequest finalRequest = new JsonObjectRequest(Request.Method.POST, url, game,
-                                                                                                        new Response.Listener<JSONObject>() {
-                                                                                                            @Override
-                                                                                                            public void onResponse(JSONObject response) {
-                                                                                                                try {
-                                                                                                                    System.out.println("Made it");
-                                                                                                                    app.setGameid((Integer) response.get("id"));
-                                                                                                                    startActivity(intent);
-                                                                                                                } catch (JSONException e) {
-                                                                                                                    throw new RuntimeException(e);
-                                                                                                                }
-                                                                                                            }
-                                                                                                        },
-                                                                                                        new Response.ErrorListener() {
-                                                                                                            @Override
-                                                                                                            public void onErrorResponse(VolleyError error) {
-                                                                                                                Toast.makeText(Lobby.this, "ERROR: " + error, Toast.LENGTH_SHORT);
-                                                                                                                Log.d("Error.Response", error.toString());
-                                                                                                            }
-                                                                                                        });
-                                                                                                queue.add(finalRequest);
+                                        String url = "http://coms-309-038.class.las.iastate.edu:8080/game/new";
+                                        JsonObjectRequest finalRequest = new JsonObjectRequest(Request.Method.POST, url, game,
+                                                new Response.Listener<JSONObject>() {
+                                                    @Override
+                                                    public void onResponse(JSONObject response) {
+                                                        try {
+                                                            System.out.println("Made it");
+                                                            app.setGameid((Integer) response.get("id"));
+                                                            startActivity(intent);
+                                                        } catch (JSONException e) {
+                                                            throw new RuntimeException(e);
+                                                        }
+                                                    }
+                                                },
+                                                new Response.ErrorListener() {
+                                                    @Override
+                                                    public void onErrorResponse(VolleyError error) {
+                                                        Toast.makeText(Lobby.this, "ERROR: " + error, Toast.LENGTH_SHORT);
+                                                        Log.d("Error.Response", error.toString());
+                                                    }
+                                                });
+                                        queue.add(finalRequest);
 //                                                                                            } catch (JSONException e) {
 //                                                                                                throw new RuntimeException(e);
 //                                                                                            }
@@ -299,19 +331,22 @@ public class Lobby extends AppCompatActivity {
 //                                                }
 //                                            });
 //                                    queue.add(request);
-                                } catch (JSONException e) {
-                                    throw new RuntimeException(e);
+                                    } catch (JSONException e) {
+                                        throw new RuntimeException(e);
+                                    }
                                 }
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(Lobby.this, "ERROR: " + error, Toast.LENGTH_SHORT);
-                                Log.d("Error.Response", error.toString());
-                            }
-                        });
-                queue.add(request);
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Toast.makeText(Lobby.this, "ERROR: " + error, Toast.LENGTH_SHORT);
+                                    Log.d("Error.Response", error.toString());
+                                }
+                            });
+                    queue.add(request);
+                }
+
+
             }
         });
     }

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GamePlay.Sockets.Game"
+    android:id="@+id/relative_layout"
+    android:background="@drawable/background">
+
+    <com.example.clue_frontend.GamePlay.GameView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <LinearLayout
+        android:id="@+id/layout_cards"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/open_cards"
+            android:layout_width="54.75dp"
+            android:layout_height="93.75dp"
+            android:layout_marginLeft=".25in"
+            android:layout_marginTop="3.5in"
+            android:adjustViewBounds="true"
+            android:maxWidth=".25in"
+            android:maxHeight=".3705in"
+            android:src="@drawable/back_of_card" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

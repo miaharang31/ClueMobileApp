@@ -52,6 +52,10 @@ public class GameStateController {
         return state;
     }
 
+    public void newSocketState(GameLobby lobby) {
+//        TODO: Make GameState
+    }
+
     /**
      * Sets the cards based on type for that game state
      * @param id

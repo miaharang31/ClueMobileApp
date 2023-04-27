@@ -57,10 +57,11 @@ public class JoinLobby extends AppCompatActivity {
                                 public void onResponse(JSONObject response) {
                                     try {
                                         app.setLobbyid((Integer) response.get("id"));
+                                        app.setHost(false);
+                                        startActivity(intent);
                                     } catch (JSONException e) {
                                         throw new RuntimeException(e);
                                     }
-                                    startActivity(intent);
                                 }
                             },
                             new Response.ErrorListener() {

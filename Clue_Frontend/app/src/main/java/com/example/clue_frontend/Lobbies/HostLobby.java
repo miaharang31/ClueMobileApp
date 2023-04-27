@@ -31,7 +31,7 @@ public class HostLobby extends AppCompatActivity{
     Button createLobby;
     EditText gameCode;
 
-    MyApplication app = (MyApplication) getApplication();
+    private MyApplication app = (MyApplication) getApplication();
 
     /**
      * Overriding the onCreate method to show the layout we need
@@ -115,11 +115,12 @@ public class HostLobby extends AppCompatActivity{
                                     try {
                                         app = (MyApplication) getApplication();
                                         app.setLobbyid((Integer) response.get("id"));
+                                        app.setHost(true);
                                         app.setUsersplaying((Integer) response.get("maxPlayers"));
+                                        startActivity(intent);
                                     } catch (JSONException e) {
                                         throw new RuntimeException(e);
                                     }
-                                    startActivity(intent);
                                 }
                             },
                             new Response.ErrorListener() {

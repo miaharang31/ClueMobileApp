@@ -30,6 +30,9 @@ public class GameState {
 //    ID for the current game state
     private Integer ID;
 
+    @Column(name = "hostID")
+    private Integer hostID;
+
     /**
      * JPA Relationships
      */
@@ -72,8 +75,8 @@ public class GameState {
         turnNum = 0;
     }
 
-    public GameState(Integer versionID) {
-        this.versionID = versionID;
+    public GameState(GameLobby lobby) {
+
     }
 
     public Player getNextPlayer() {
@@ -141,6 +144,7 @@ public class GameState {
     public Set<Card> getWeapons() {return weapons;}
     public Set<Card> getSuspects() {return suspects;}
     public Set<Card> getRooms() {return rooms;}
+    public Integer getHostID() {return hostID;}
 
     public Set<Player> getTurnOrder() {
         return turnOrder;
