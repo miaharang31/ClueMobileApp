@@ -4,6 +4,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <meta-data
+        android:name="preloaded_fonts"
+        android:resource="@array/preloaded_fonts" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -18,20 +22,29 @@
         <activity
             android:name=".EndGameOtherPlayers"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
         <activity
             android:name=".EndGameWinOrLose"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
         <activity
             android:name=".DiceRoller"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar"/>
-        <activity
-            android:name=".GamePlay.Checklist"/>
+            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
+        <activity android:name=".GamePlay.Checklist" />
         <activity
             android:name=".Rules"
-            android:label="Clue"/>
+            android:label="Rules" />
+        <activity
+            android:name=".Settings"
+            android:label="Settings"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".UserSignUp"
             android:label="@string/app_name" />
@@ -49,17 +62,16 @@
             android:label="@string/app_name" />
         <activity
             android:name=".GamePlay.Game"
-            android:label="@string/app_name"/>
-
+            android:label="@string/app_name" />
         <activity
             android:name=".Home"
-            android:label="Home"/>
+            android:label="Home" />
         <activity
             android:name=".GamePlay.CardButton"
             android:label="CardButton" />
         <activity
             android:name=".GamePlay.CardLayout"
-            android:label="CardLayout" />
+            android:label="Cards" />
         <activity
             android:name=".GamePlay.playerGuess"
             android:label="playerGuess" />
@@ -67,16 +79,7 @@
             android:name=".GamePlay.CharacterSelection"
             android:label="Clue" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:name=".MainActivity"/>
     </application>
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
-</manifest>
 
+</manifest>
