@@ -65,8 +65,9 @@ public class Game extends AppCompatActivity {
 
         RequestQueue queue = Volley.newRequestQueue(Game.this);
         MyApplication app = (MyApplication) getApplication();
-//        String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/role" + app.getUserid();
-        String url = "http://10.0.2.2:8080/info/player/role" + app.getUserid();
+
+//        String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/role/" + app.getUserid();
+        String url = "http://10.0.2.2:8080/info/player/role/" + app.getUserid();
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
 
@@ -134,17 +135,17 @@ public class Game extends AppCompatActivity {
             Log.d("Socket:", "Trying socket");
             client = new WebSocketClient(new URI(w), (Draft) drafts[0]) {
                 @Override
-                public void onMessage(String message) {
-                    Log.d("", "run() returned: " + message);
+                public void onMessage(String m) {
+                    Log.d("", "run() returned: " + m);
+                    message.getText().clear();
                     String s = chatBox.getText().toString();
-                    chatBox.setText(s + message + "\n");
-                    chatBox.scrollTo(0, 0);
-//                    final int scrollAmount = chatBox.getLayout().getLineTop(chatBox.getLineCount()) - (chatBox.getHeight() + 100);
-//                    // if there is no need to scroll, scrollAmount will be <=0
-//                    if (scrollAmount > 0)
-//                        chatBox.scrollTo(0, scrollAmount);
-//                    else
-//
+                    chatBox.setText(s + m + "\n");
+                    final int scrollAmount = chatBox.getLayout().getLineTop(chatBox.getLineCount()) - chatBox.getHeight();
+                    if (scrollAmount > 0)
+                        chatBox.scrollTo(0, scrollAmount);
+                    else {
+                        chatBox.scrollTo(0, 0);
+                    }
                 }
                 @Override
                 public void onOpen(ServerHandshake handshake) {
