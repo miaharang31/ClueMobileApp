@@ -130,7 +130,7 @@ public class GameLobbyController {
     @ApiResponse(responseCode = "403", description = "forbidden!")
     @ApiResponse(responseCode = "401", description = "not authorized!")
     @ApiResponse(responseCode = "200", description = "Success!")
-    @PutMapping(value = "lobby/join/{playerID}", consumes = "application/json")
+    @PutMapping(value = "lobby/join/{playerID}/code/{gamecode}")
     public GameLobby addPlayerByGameCode(@PathVariable String gamecode, @PathVariable Integer playerID) {
     //        System.out.println(lobby.getGameCode());
         Optional<GameLobby> tmp = repo.findByGameCode(gamecode);

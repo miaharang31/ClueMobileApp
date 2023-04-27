@@ -99,9 +99,11 @@ public class Lobby extends AppCompatActivity {
                                                 host.setText("Host: " + response.getString("firstname") + " " + response.getString("lastname"));
                                                 if ((Integer)response.get("id") == app.getUserid()) {
                                                     startGame.setVisibility(View.VISIBLE);
+                                                    startGame.setText("Start Game");
                                                 }
                                                 else {
-                                                    startGame.setVisibility(View.GONE);
+                                                    startGame.setVisibility(View.VISIBLE);
+                                                    startGame.setText("Join Game");
                                                 }
                                             } catch (JSONException e) {
                                                 throw new RuntimeException(e);
