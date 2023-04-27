@@ -50,11 +50,16 @@ public class GameStateController {
     /**
      * Creates a game based on the lobby
      * @param lobby
-     *  Lobby to create from
+     *  Lobby to create from (JSON FORMAT)
      */
-    @PostMapping(value = "game/lobby/new")
-    public GameState newSocketState(GameLobby lobby) {
-        GameState state = new GameState(lobby);
+    @PostMapping(value = "game/lobby/new", consumes = "application/json")
+    public GameState newSocketState(@RequestBody GameLobby lobby) {
+        GameState state = repo.findByHostID(lobby.getHost().getId());
+        if(state != null) {
+            deleteGame(state.getID());
+        }
+
+        state = new GameState(lobby);
         state = newState(state);
         state = addCards(state.getID(), "w");
         state = addCards(state.getID(), "s");

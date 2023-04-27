@@ -38,11 +38,20 @@ public class GameLobbyController {
      */
     @PostMapping(value = "/lobby/new/{hostid}", consumes = "application/json")
     public GameLobby newLobby(@RequestBody GameLobby lobby, @PathVariable Integer hostid) {
-        Optional<Player> host = playerRepo.findById(hostid);
-        lobby.setHost(host.get());
-        host.get().setGameLobbyHost(lobby);
+        Player host = playerRepo.findById(hostid).get();
+        GameLobby tmp = repo.findByHost(host);
+
+//        If there is a lobby created by that player, delete it
+//        then create a new on
+        if(tmp != null) {
+            deleteLobby(host.getGameLobbyHost().getID());
+        }
+
+        lobby.setHost(host);
+        host.setGameLobbyHost(lobby);
+
         repo.save(lobby);
-        playerRepo.save(host.get());
+        playerRepo.save(host);
         return lobby;
     }
 
@@ -105,6 +114,35 @@ public class GameLobbyController {
     }
 
     /**
+     * PREPARING FOR DELETION
+     *  Removes a single player from the lobby
+     * @param playerID
+     *  ID of player to remove
+     * @param lobbyID
+     *  ID of lobby
+     * @return
+     *  Updated lobby object
+     */
+    @PutMapping(value = "lobby/remove/{playerID}/lobby/{lobbyID}")
+    public GameLobby removePlayer(@PathVariable Integer playerID, @PathVariable Integer lobbyID) {
+        GameLobby lobby = repo.findById(lobbyID).get();
+        Player player = playerRepo.findById(playerID).get();
+
+        if(lobby.getHost() == player) {
+            lobby.setHost(null);
+            player.setGameLobbyHost(null);
+        } else {
+            lobby.removePlayer(player);
+            player.setGameLobby(null);
+        }
+
+        repo.save(lobby);
+        playerRepo.save(player);
+
+        return lobby;
+    }
+
+    /**
      * Get Mapping to get all players in a lobby session
      * @param gameLobbyID
      *  GameLobby ID
@@ -153,7 +191,11 @@ public class GameLobbyController {
      */
     @DeleteMapping(value = "lobby/delete/{id}")
     public void deleteLobby(@PathVariable Integer id) {
-        Optional<GameLobby> lobby = repo.findById(id);
-        repo.delete(lobby.get());
+        GameLobby lobby = repo.findById(id).get();
+        lobby = removePlayer(lobby.getHost().getId(), lobby.getID());
+        for (Player player : lobby.getPlayers()) {
+            lobby = removePlayer(player.getId(), lobby.getID());
+        }
+        repo.delete(lobby);
     }
 }

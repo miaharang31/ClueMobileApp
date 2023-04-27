@@ -94,8 +94,8 @@ public class HostLobby extends AppCompatActivity{
                 } else {
                     app = (MyApplication) getApplication();
                     System.out.println("THIS IS THE USERS ID !!!!!!!!!!!!!!" + app.getUserid());
-//                    String url = "http://10.0.2.2:8080/lobby/new/" + app.getUserid();
-                    String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/new/" + app.getUserid();
+                    String url = "http://10.0.2.2:8080/lobby/new/" + app.getUserid();
+//                    String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/new/" + app.getUserid();
                     RequestQueue queue = Volley.newRequestQueue(HostLobby.this);
                     JSONObject body = null;
                     try {

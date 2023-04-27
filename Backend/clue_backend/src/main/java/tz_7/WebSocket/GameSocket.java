@@ -4,19 +4,19 @@ import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Map;
 
-import javax.websocket.OnClose;
-import javax.websocket.OnError;
-import javax.websocket.OnMessage;
-import javax.websocket.OnOpen;
-import javax.websocket.Session;
-import javax.websocket.server.PathParam;
-import javax.websocket.server.ServerEndpoint;
+import jakarta.websocket.OnClose;
+import jakarta.websocket.OnError;
+import jakarta.websocket.OnMessage;
+import jakarta.websocket.OnOpen;
+import jakarta.websocket.Session;
+import jakarta.websocket.server.PathParam;
+import jakarta.websocket.server.ServerEndpoint;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import tz_7.GamePlay.GameLobbyDatabase.GameLobby;
-import tz_7.GamePlay.GameLobbyDatabase.GameLobbyController;
 import tz_7.GamePlay.GameLobbyDatabase.GameLobbyRepository;
 import tz_7.PlayerDatabase.Player;
 import tz_7.PlayerDatabase.PlayerRepository;
@@ -26,47 +26,52 @@ import tz_7.GamePlay.GameStateDatabase.GameStateController;
 
 @ServerEndpoint("/websocket/game/{lobbyID}/player/{player}")
 @Component
-public class GameSocket extends GameStateController{
+public class GameSocket {
     private static Map< Session, Player> sessionPlayerMap = new Hashtable < > ();
     private static Map < Player, Session > playerSessionMap = new Hashtable< >();
     private static Map < Player, GameState > playerGameStateMap = new Hashtable<>();
 
+    private Session session;
+
     private final Logger logger = LoggerFactory.getLogger(GameSocket.class);
 
-    private final PlayerRepository playerRepository;
-    private final GameStateRepository gameStateRepository;
+    @Autowired
+    PlayerRepository playerRepository;
+    @Autowired
+    GameStateRepository gameStateRepository;
+    @Autowired
+    GameLobbyRepository gameLobbyRepository;
 
-    private Session session;
-    private final GameLobbyRepository gameLobbyRepository;
-
-    public GameSocket(PlayerRepository playerRepository, GameStateRepository gameStateRepository,
-                      GameLobbyRepository gameLobbyRepository) {
-        this.playerRepository = playerRepository;
-        this.gameStateRepository = gameStateRepository;
-        this.gameLobbyRepository = gameLobbyRepository;
-    }
+    @Autowired
+    GameStateController gameStateController;
 
     @OnOpen
-    public void onOpen(Session session, @PathParam("player") Integer playerid, @PathParam("lobbyID") Integer lobbyID) throws IOException {
+    public void onOpen(Session session, @PathParam("player") Integer playerid, @PathParam("lobbyID") Integer lobbyID)
+    throws IOException {
         logger.info("Entered into Open");
 
         Player player = playerRepository.findById(playerid).get();
         GameLobby lobby = gameLobbyRepository.findById(lobbyID).get();
-        GameState state = gameStateRepository.findByHostID(lobby.getHost().getId());
-        if(lobby.getHost() == player) {
-            state = newSocketState(lobby);
+//        GameState state = gameStateRepository.findByHostID(lobby.getHost().getId());
 
-            sessionPlayerMap.put(session, player);
-            playerSessionMap.put(player, session);
-            playerGameStateMap.put(player, state);
-        } else if (state != null) {
-            sessionPlayerMap.put(session, player);
-            playerSessionMap.put(player, session);
-            playerGameStateMap.put(player, state);
+        GameState state = gameStateController.newSocketState(lobby);
 
-            String message = player.getUsername() + "had joined the game";
-            broadcast(message);
-        }
+        sessionPlayerMap.put(session, player);
+        playerSessionMap.put(player, session);
+        playerGameStateMap.put(player, state);
+
+        String message = player.getUsername() + "had joined the game";
+        broadcast(message);
+//        if(lobby.getHost() == player) {
+//
+//        } else if (state != null) {
+//            sessionPlayerMap.put(session, player);
+//            playerSessionMap.put(player, session);
+//            playerGameStateMap.put(player, state);
+//
+//            String message = player.getUsername() + "had joined the game";
+//            broadcast(message);
+//        }
     }
 
     @OnMessage
@@ -107,7 +112,7 @@ public class GameSocket extends GameStateController{
     }
 
     private void broadcast(String message) {
-        sessionPlayerMap.forEach((session, username) -> {
+        sessionPlayerMap.forEach((session, player) -> {
             try {
                 session.getBasicRemote().sendText(message);
             } catch (IOException e) {

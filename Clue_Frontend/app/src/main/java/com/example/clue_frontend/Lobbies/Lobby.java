@@ -17,8 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.clue_frontend.GamePlay.CharacterSelection;
-import com.example.clue_frontend.GamePlay.Game;
+import com.example.clue_frontend.GamePlay.Sockets.Game;
 import com.example.clue_frontend.MyApplication;
 import com.example.clue_frontend.R;
 
@@ -77,8 +76,8 @@ public class Lobby extends AppCompatActivity {
 
         RequestQueue queue = Volley.newRequestQueue(Lobby.this);
         app = (MyApplication) getApplication();
-        String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/" + app.getLobbyid();
-//        String url = "http://10.0.2.2:8080/lobby/" + app.getLobbyid();
+//        String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/" + app.getLobbyid();
+        String url = "http://10.0.2.2:8080/lobby/" + app.getLobbyid();
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -89,8 +88,8 @@ public class Lobby extends AppCompatActivity {
 
                             max.setText(response.get("maxPlayers").toString());
 //                            Get the host to display their name
-                            String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/host/" + gameID;
-//                            String url = "http://10.0.2.2:8080/lobby/host/" + gameID;
+//                            String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/host/" + gameID;
+                            String url = "http://10.0.2.2:8080/lobby/host/" + gameID;
                             JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                                     new Response.Listener<JSONObject>() {
                                         @Override
@@ -120,8 +119,8 @@ public class Lobby extends AppCompatActivity {
 //                                    TODO: FIGURE OUT HOW TO DO DYNAMICALLY
                                     cur.setText(response.get("numPlayers").toString());
 //                                    Display names of players in lobby
-                                    url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/nothost/" + gameID;
-//                                    url = "http://10.0.2.2:8080/lobby/nothost/" + gameID;
+//                                    url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/nothost/" + gameID;
+                                    url = "http://10.0.2.2:8080/lobby/nothost/" + gameID;
                                     JsonArrayRequest request1  = new JsonArrayRequest(Request.Method.GET, url, null,
                                             new Response.Listener<JSONArray>() {
                                                 @Override
@@ -188,37 +187,11 @@ public class Lobby extends AppCompatActivity {
             @Override
             public void onClick(View v){
 //                TODO: create game state
-                app = (MyApplication) getApplication();
+                Intent intent = new Intent(Lobby.this, Game.class);
+                startActivity(intent);
+//                app = (MyApplication) getApplication();
 
-                URI uri;
-                try {
-                    uri = new URI("ws://10.0.2.2:8080/websocket/game/" + app.getLobbyid() + "/player/" + app.getUserid());
-                } catch (URISyntaxException e) {
-                    throw new RuntimeException(e);
-                }
-                CLIENT = new WebSocketClient(uri) {
-                    @Override
-                    public void onOpen(ServerHandshake handshakedata) {
 
-                    }
-
-                    @Override
-                    public void onMessage(String message) {
-
-                    }
-
-                    @Override
-                    public void onClose(int code, String reason, boolean remote) {
-
-                    }
-
-                    @Override
-                    public void onError(Exception ex) {
-
-                    }
-                };
-
-                CLIENT.connect();
 
                 /*
                     If the player is the host:
