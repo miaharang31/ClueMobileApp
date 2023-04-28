@@ -43,55 +43,12 @@ public class Settings extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
         home = (Button) findViewById(R.id.account_button);
         rules = (Button) findViewById(R.id.rules_button);
-
+        MyApplication app = (MyApplication) getApplication();
         firstname = (TextView) findViewById(R.id.name);
         uname = (TextView) findViewById(R.id.username);
+        firstname.setText(app.getFirstname() + " " + app.getLastname());
+        uname.setText("@" + app.getUsername());
 
-
-
-        MyApplication app = (MyApplication) getApplication();
-        String url = "http://coms-309-038.class.las.iastate.edu:8080///getUser/username/" + app.getUserid();
-
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-                    public void onResponse(JSONObject response) {
-                        try {
-
-                            response.get("username");
-                            uname.setText(response.get("username").toString());
-                        } catch (JSONException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Settings.this, "ERROR: " + error, Toast.LENGTH_SHORT).show();
-                    }
-                }
-        );
-        url = "http://coms-309-038.class.las.iastate.edu:8080///getUser/firstname/" + app.getUserid();
-
-        request = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-                    public void onResponse(JSONObject response) {
-                        try {
-
-                            response.get("firstname");
-                            firstname.setText(response.get("firstname").toString());
-                        } catch (JSONException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Settings.this, "ERROR: " + error, Toast.LENGTH_SHORT).show();
-                    }
-                }
-        );
 
 
         home.setOnClickListener(new View.OnClickListener() {
@@ -168,7 +125,7 @@ public class Settings extends AppCompatActivity {
                 submitnewun.setVisibility(View.INVISIBLE);
                 if (newu.length() != 0) {
                     MyApplication app = (MyApplication) getApplication();
-                    String url = "http://coms-309-038.class.las.iastate.edu:8080//changePassword/" + app.getUserid();
+                    String url = "http://coms-309-038.class.las.iastate.edu:8080/changeUsername/" + app.getUserid();
                     RequestQueue queue = Volley.newRequestQueue(Settings.this);
                     JSONObject body = null;
                     try {
@@ -181,6 +138,7 @@ public class Settings extends AppCompatActivity {
                             new Response.Listener<JSONObject>() {
                                 @Override
                                 public void onResponse(JSONObject response) {
+                                    app.setUsername(newu);
                                     Toast.makeText(Settings.this, "Your password is changed", Toast.LENGTH_SHORT).show();
                                 }
                             },
@@ -233,7 +191,7 @@ public class Settings extends AppCompatActivity {
                 submitnewp.setVisibility(View.INVISIBLE);
                 if (newp.length() != 0) {
                     MyApplication app = (MyApplication) getApplication();
-                    String url = "http://coms-309-038.class.las.iastate.edu:8080//changePassword/" + app.getUserid();
+                    String url = "http://coms-309-038.class.las.iastate.edu:8080/changePassword/" + app.getUserid();
                     RequestQueue queue = Volley.newRequestQueue(Settings.this);
                     JSONObject body = null;
                     try {

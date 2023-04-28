@@ -127,8 +127,8 @@ public class PlayerController {
     @ApiResponse(responseCode = "403", description = "forbidden!")
     @ApiResponse(responseCode = "401", description = "not authorized!")
     @ApiResponse(responseCode = "200", description = "Success!")
-    @PutMapping("/changePassword/{id}")
-    public Player changePassword(@PathVariable("id") int id, @RequestBody String password) {
+    @PutMapping("/changePassword/{id}/to/{password")
+    public Player changePassword(@PathVariable("id") int id, @PathVariable("password") String password) {
         //logger.info("Entered");
         Player player = repository.findById(id)
                 .orElseThrow();
@@ -140,8 +140,8 @@ public class PlayerController {
     @ApiResponse(responseCode = "403", description = "forbidden!")
     @ApiResponse(responseCode = "401", description = "not authorized!")
     @ApiResponse(responseCode = "200", description = "Success!")
-    @PutMapping("/changeUsername/{id}")
-    public Player changeUsername(@PathVariable("id") int id, @RequestBody String username) {
+    @PutMapping("/changeUsername/{id}/to/{username}")
+    public Player changeUsername(@PathVariable("id") int id, @PathVariable("username") String username) {
         //logger.info("Entered");
         Player player = repository.findById(id)
                 .orElseThrow();

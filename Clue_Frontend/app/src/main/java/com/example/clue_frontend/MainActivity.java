@@ -152,6 +152,9 @@ public class MainActivity extends AppCompatActivity {
                                                 MyApplication app = (MyApplication) getApplication();
                                                 try {
                                                     app.setUserid((Integer) response.get("id"));
+                                                    app.setFirstname(response.get("firstname").toString());
+                                                    app.setLastname(response.get("lastname").toString());
+                                                    app.setUsername(response.get("username").toString());
                                                 } catch (JSONException e) {
                                                     throw new RuntimeException(e);
                                                 }
@@ -183,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(MainActivity.this, EndGameWinOrLose.class);
+                Intent intent = new Intent(MainActivity.this, UserSignUp.class);
 
                 startActivity(intent);
 
