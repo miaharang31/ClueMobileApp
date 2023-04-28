@@ -125,16 +125,10 @@ public class Settings extends AppCompatActivity {
                 submitnewun.setVisibility(View.INVISIBLE);
                 if (newu.length() != 0) {
                     MyApplication app = (MyApplication) getApplication();
-                    String url = "http://coms-309-038.class.las.iastate.edu:8080/changeUsername/" + app.getUserid();
+                    String url = "http://coms-309-038.class.las.iastate.edu:8080/changeUsername/" + app.getUserid() + "/to/" + newu;
                     RequestQueue queue = Volley.newRequestQueue(Settings.this);
-                    JSONObject body = null;
-                    try {
-                        body = new JSONObject();
-                        body.put("username", newu);
-                    } catch (JSONException exception) {
-                        exception.printStackTrace();
-                    }
-                    JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, body,
+
+                    JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null,
                             new Response.Listener<JSONObject>() {
                                 @Override
                                 public void onResponse(JSONObject response) {
@@ -191,7 +185,7 @@ public class Settings extends AppCompatActivity {
                 submitnewp.setVisibility(View.INVISIBLE);
                 if (newp.length() != 0) {
                     MyApplication app = (MyApplication) getApplication();
-                    String url = "http://coms-309-038.class.las.iastate.edu:8080/changePassword/" + app.getUserid();
+                    String url = "http://coms-309-038.class.las.iastate.edu:8080/changePassword/" + app.getUserid() + "/to/" + newp;
                     RequestQueue queue = Volley.newRequestQueue(Settings.this);
                     JSONObject body = null;
                     try {
