@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.premium"
+    package="com.example.clue_frontend"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -8,13 +8,20 @@
         android:minSdkVersion="21"
         android:targetSdkVersion="33" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <meta-data
+        android:name="preloaded_fonts"
+        android:resource="@array/preloaded_fonts" />
+
     <permission
-        android:name="com.example.premium.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:name="com.example.clue_frontend.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.example.premium.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+    <uses-permission android:name="com.example.clue_frontend.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 
     <application
+        android:name="com.example.clue_frontend.MyApplication"
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -23,10 +30,55 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:testOnly="true"
-        android:theme="@style/Theme.Premium" >
+        android:theme="@style/Theme.Clue_Frontend"
+        android:usesCleartextTraffic="true" >
         <activity
-            android:name="com.example.premium.MainActivity"
+            android:name="com.example.clue_frontend.EndGameOtherPlayers"
+            android:exported="false" />
+        <activity
+            android:name="com.example.clue_frontend.EndGameWinOrLose"
+            android:exported="false" />
+        <activity
+            android:name="com.example.clue_frontend.Checklist"
+            android:exported="false" />
+        <activity
+            android:name="com.example.clue_frontend.UserSignUp"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.example.clue_frontend.Lobbies.HostLobby"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.example.clue_frontend.Lobbies.JoinLobby"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.example.clue_frontend.Lobbies.Lobby"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.example.clue_frontend.DiceRoller"
+            android:exported="false" />
+        <activity
+            android:name="com.example.clue_frontend.GamePlay.StartGame"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.example.clue_frontend.GamePlay.Game"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.example.clue_frontend.Home"
+            android:label="Home" />
+        <activity
+            android:name="com.example.clue_frontend.CardButton"
+            android:label="CardButton" />
+        <activity
+            android:name="com.example.clue_frontend.CardLayout"
+            android:label="CardLayout" />
+        <activity
+            android:name="com.example.clue_frontend.GamePlay.playerGuess"
+            android:label="playerGuess" />
+        <activity
+            android:name="com.example.clue_frontend.GamePlay.CharacterSelection"
+            android:label="Clue" />
+        <activity
+            android:name="com.example.clue_frontend.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,7 +89,7 @@
 
         <provider
             android:name="androidx.startup.InitializationProvider"
-            android:authorities="com.example.premium.androidx-startup"
+            android:authorities="com.example.clue_frontend.androidx-startup"
             android:exported="false" >
             <meta-data
                 android:name="androidx.emoji2.text.EmojiCompatInitializer"
