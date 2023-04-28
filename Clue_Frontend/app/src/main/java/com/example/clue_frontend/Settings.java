@@ -44,23 +44,6 @@ public class Settings extends AppCompatActivity {
         home = (Button) findViewById(R.id.account_button);
         rules = (Button) findViewById(R.id.rules_button);
 
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Settings.this, Home.class);
-                startActivity(intent);
-            }
-        });
-        rules.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Settings.this, Rules.class);
-                startActivity(intent);
-            }
-        });
-
-        final boolean[] userclicked = {false};
-        final boolean[] passclicked = {false};
         firstname = (TextView) findViewById(R.id.name);
         uname = (TextView) findViewById(R.id.username);
 
@@ -109,6 +92,26 @@ public class Settings extends AppCompatActivity {
                     }
                 }
         );
+
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Settings.this, Home.class);
+                startActivity(intent);
+            }
+        });
+        rules.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Settings.this, Rules.class);
+                startActivity(intent);
+            }
+        });
+
+        final boolean[] userclicked = {false};
+        final boolean[] passclicked = {false};
+
 
 
 
