@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GamePlay.Sockets.Game"
+    android:id="@+id/relative_layout"
+    android:background="@drawable/background">
+
+    <TextView
+        android:id="@+id/chat_box"
+        android:layout_width="370dp"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        android:background="#E8E8E8"
+        android:backgroundTint="#D5D5D5"
+        android:padding="5dp"
+        android:paddingStart="5dp"
+        android:paddingLeft="1dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="420dp"
+        android:scrollbars = "vertical" />
+
+    <EditText
+        android:id="@+id/message"
+        android:layout_width="270dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="530dp"
+        android:paddingStart="6dp"
+        android:background="#E8E8E8"
+        android:backgroundTint="#D5D5D5"
+        android:hint="message.."
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="530dp"
+        android:text="Send" />
+
+    <com.example.clue_frontend.GamePlay.Sockets.GameView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <LinearLayout
+        android:id="@+id/layout_cards"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/open_checklist"
+            android:layout_width="54.75dp"
+            android:layout_height="93.75dp"
+            android:layout_marginTop="590dp"
+            android:layout_marginLeft="265dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/checklist_button" />
+
+        <ImageView
+            android:id="@+id/open_cards"
+            android:layout_width="54.75dp"
+            android:layout_height="93.75dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="590dp"
+            android:adjustViewBounds="true"
+            android:maxWidth=".25in"
+            android:maxHeight=".3705in"
+            android:src="@drawable/back_of_card" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

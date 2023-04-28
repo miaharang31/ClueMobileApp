@@ -28,6 +28,7 @@ import com.example.clue_frontend.GamePlay.CharacterSelection;
 import com.example.clue_frontend.GamePlay.Constraints;
 import com.example.clue_frontend.GamePlay.Game;
 import com.example.clue_frontend.GamePlay.GameView;
+import com.example.clue_frontend.Lobbies.HostLobby;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 //Intent intent = new Intent(MainActivity.this, Game.class);
                 Intent intent = new Intent(MainActivity.this, CharacterSelection.class);
                 startActivity(intent);
+
                 EditText username = findViewById(R.id.loginUsername);
                 EditText password = findViewById(R.id.loginPassword);
                 String usernameData = username.getText().toString();
@@ -77,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     username.setError(null);
                     checkUsername = true;
-            }
+                }
                 if(usernameData.isEmpty()){
                     username.setError("Username cannot be empty");
                     checkUsername = false;
@@ -85,56 +87,20 @@ public class MainActivity extends AppCompatActivity {
                     username.setError(null);
                     checkUsername = true;
 
-            if(passwordData.isEmpty()){
-                password.setError("Password cannot be empty");
-                checkPassword = false;
-            }else{
-                password.setError(null);
-                checkPassword = true;
-            }
-
-            // if all textboxes are correct, all data will be added to the SecondActivity (main page for either regular/premium users) and will start
-            if (checkUsername == true && checkPassword == true){
-                String url = "http://coms-309-038.class.las.iastate.edu:8080/login";
-                RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
-                JSONObject json = null;
-                try {
-                    json = new JSONObject();
-                    json.put("username", usernameData);
-                    json.put("password", passwordData);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                if (passwordData.isEmpty()) {
-                    password.setError("Password cannot be empty");
-                    checkPassword = false;
-                } else {
-                    password.setError(null);
-                    checkPassword = true;
-                }
-
-                // if all textboxes are correct, all data will be added to the SecondActivity (main page for either regular/premium users) and will start
-                if (checkUsername == true && checkPassword == true) {
-                    try {
-                        json = new JSONObject();
-                        json.put("username", usernameData);
-                        json.put("password", passwordData);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                    if (passwordData.isEmpty()) {
+                    if(passwordData.isEmpty()){
                         password.setError("Password cannot be empty");
                         checkPassword = false;
-                    } else {
+                    }else{
                         password.setError(null);
                         checkPassword = true;
                     }
 
                     // if all textboxes are correct, all data will be added to the SecondActivity (main page for either regular/premium users) and will start
-                    JsonObjectRequest jreq = null;
-                    if (checkUsername == true && checkPassword == true) {
+                    if (checkUsername == true && checkPassword == true){
+                        String url = "http://coms-309-038.class.las.iastate.edu:8080/login";
+//                        String url = "http://10.0.2.2:8080/login";
+                        RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+                        JSONObject json = null;
                         try {
                             json = new JSONObject();
                             json.put("username", usernameData);
@@ -142,38 +108,78 @@ public class MainActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        jreq = new JsonObjectRequest(Request.Method.POST, url, json,
-                                new Response.Listener<JSONObject>() {
-                                    @Override
-                                    public void onResponse(JSONObject response) {
-                                        MyApplication app = (MyApplication) getApplication();
-                                        try {
-                                            app.setUserid((Integer) response.get("id"));
-                                        } catch (JSONException e) {
-                                            throw new RuntimeException(e);
-                                        }
-                                        startActivity(intent);
-                                    }
-                                },
-                                new Response.ErrorListener() {
-                                    @Override
-                                    public void onErrorResponse(VolleyError error) {
-                                        Toast.makeText(MainActivity.this, "Error: " + error, Toast.LENGTH_SHORT).show();
-                                        Log.d("ResponseError", error.toString());
-                                    }
-                                });
 
-                        queue.add(jreq);
+                        if (passwordData.isEmpty()) {
+                            password.setError("Password cannot be empty");
+                            checkPassword = false;
+                        } else {
+                            password.setError(null);
+                            checkPassword = true;
+                        }
+
+                        // if all textboxes are correct, all data will be added to the SecondActivity (main page for either regular/premium users) and will start
+                        if (checkUsername == true && checkPassword == true) {
+                            try {
+                                json = new JSONObject();
+                                json.put("username", usernameData);
+                                json.put("password", passwordData);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                            if (passwordData.isEmpty()) {
+                                password.setError("Password cannot be empty");
+                                checkPassword = false;
+                            } else {
+                                password.setError(null);
+                                checkPassword = true;
+                            }
+
+                            // if all textboxes are correct, all data will be added to the SecondActivity (main page for either regular/premium users) and will start
+                            JsonObjectRequest jreq = null;
+                            if (checkUsername == true && checkPassword == true) {
+                                try {
+                                    json = new JSONObject();
+                                    json.put("username", usernameData);
+                                    json.put("password", passwordData);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                jreq = new JsonObjectRequest(Request.Method.POST, url, json,
+                                        new Response.Listener<JSONObject>() {
+                                            @Override
+                                            public void onResponse(JSONObject response) {
+                                                MyApplication app = (MyApplication) getApplication();
+                                                try {
+                                                    app.setUserid((Integer) response.get("id"));
+                                                    app.setFirstname(response.get("firstname").toString());
+                                                    app.setLastname(response.get("lastname").toString());
+                                                    app.setUsername(response.get("username").toString());
+                                                } catch (JSONException e) {
+                                                    throw new RuntimeException(e);
+                                                }
+                                                startActivity(intent);
+                                            }
+                                        },
+                                        new Response.ErrorListener() {
+                                            @Override
+                                            public void onErrorResponse(VolleyError error) {
+                                                Toast.makeText(MainActivity.this, "Error: " + error, Toast.LENGTH_SHORT).show();
+                                                Log.d("ResponseError", error.toString());
+                                            }
+                                        });
+
+                                queue.add(jreq);
+                            }
+
+
+                            queue.add(jreq);
+                        }
+
                     }
-
-
-                    queue.add(jreq);
-                }
-
-        }
-    };
-        }
-    });
+                };
+            }
+        });
 
         //when the new player link is clicked, go to th SignUpActivity
         newPlayerLink.setOnClickListener(new View.OnClickListener() {
@@ -188,9 +194,5 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-                }
-            }
-
-
-
-
+    }
+}

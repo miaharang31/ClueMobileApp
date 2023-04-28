@@ -20,4 +20,6 @@ public interface GameLobbyRepository extends JpaRepository<GameLobby, Integer> {
     List<GameLobby> findAll();
 
     List<GameLobby> findByIsPremium(Boolean isPremium);
+
+    Player findHostByID(int lobbyid);
 }

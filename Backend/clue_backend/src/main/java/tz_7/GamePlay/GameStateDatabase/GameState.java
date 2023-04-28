@@ -1,14 +1,9 @@
 package tz_7.GamePlay.GameStateDatabase;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
-import org.springframework.beans.factory.annotation.Autowired;
 import tz_7.CardDatabase.Card;
 import tz_7.GamePlay.GameLobbyDatabase.GameLobby;
-import tz_7.CardDatabase.CardRepository;
 import tz_7.PlayerDatabase.Player;
 
 import java.util.*;
@@ -16,8 +11,8 @@ import java.util.*;
 /**
  * Author: Mia Harang
  * Database that holds the information of all the current games in session
+ *  Deals with turn order and cards
  */
-
 @Entity
 @Table(name = "GameState")
 public class GameState {
@@ -27,57 +22,81 @@ public class GameState {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", unique = true)
-//    ID for the current game state
     private Integer ID;
+
+    @Column(name = "hostID")
+    private Integer hostID;
+
+    @Column(name = "turnNum")
+    private Integer turnNum;
 
     /**
      * JPA Relationships
      */
-    @Column(name = "versionID")
-    @NotFound(action = NotFoundAction.IGNORE)
-//    TODO: create version database
-    private Integer versionID;
+//    @Column(name = "versionID")
+//    @NotFound(action = NotFoundAction.IGNORE)
+////    TODO: create version database
+//    private Integer versionID;
 
-//    @OneToMany(mappedBy = "gameState")
-//    @JsonIgnore
-//    private Set<Card> finalCards;
-//
-//    @OneToMany(mappedBy = "gameState")
-//    @JsonIgnore
-//    private Set<Card> weapons;
-//
-//    @OneToMany(mappedBy = "gameState")
-//    @JsonIgnore
-//    private Set<Card> suspects;
-//
-//    @OneToMany(mappedBy = "gameState")
-//    @JsonIgnore
-//    private Set<Card> rooms;
+    @ManyToMany(mappedBy = "gameState")
+    @JsonIgnore
+    private Set<Card> finalCards;
+
+    @ManyToMany(mappedBy = "gameState")
+    @JsonIgnore
+    private Set<Card> weapons;
+
+    @ManyToMany(mappedBy = "gameState")
+    @JsonIgnore
+    private Set<Card> suspects;
+
+    @ManyToMany(mappedBy = "gameState")
+    @JsonIgnore
+    private Set<Card> rooms;
 
     @OneToMany
     private Set<Player> turnOrder;
 
-//    private Random rand;
-    private Integer turnNum;
 
     /**
-     * Overrides default constructor to initialize all
-     * necessary variables
+     * Null constructor
+     *  Initializes all sets and sets the turnNum to 0
+     *  this will be used to determine the current player
      */
     public GameState() {
-//        rand = new Random();
         turnOrder = new HashSet<>();
-//        weapons = new HashSet<>();
-//        suspects = new HashSet<>();
-//        rooms = new HashSet<>();
-//        finalCards = new HashSet<>();
+        weapons = new HashSet<>();
+        suspects = new HashSet<>();
+        rooms = new HashSet<>();
+        finalCards = new HashSet<>();
         turnNum = 0;
     }
 
-    public GameState(Integer versionID) {
-        this.versionID = versionID;
+    /**
+     * Argument Constructor
+     *  Initializes all sets and sets the turnNum to 0
+     *  Also sets the hostID and turn order based on the
+     *  information in the GameLobby object provided
+     * @param lobby
+     *  Lobby object to create GameState object from
+     */
+    public GameState(GameLobby lobby) {
+        turnOrder = new HashSet<>();
+        weapons = new HashSet<>();
+        suspects = new HashSet<>();
+        rooms = new HashSet<>();
+        finalCards = new HashSet<>();
+        turnNum = 0;
+
+        hostID = lobby.getHost().getId();
+        turnOrder.addAll(lobby.getPlayers());
+        turnOrder.add(lobby.getHost());
     }
 
+    /**
+     * Gets the next player
+     * @return
+     */
     public Player getNextPlayer() {
         Player[] players = turnOrder.toArray(new Player[0]);
         Player tmp = players[turnNum];
@@ -94,66 +113,89 @@ public class GameState {
      *  true - if all IDs match
      *  false - if they don't
      */
-//    public Boolean checkFinalGuess(Set<Card> guess) {
-//        for (int i = 0; i < finalCards.size(); i++) {
-//            if(!finalCards.containsAll(guess)) {return false;}
-//        }
-//        return true;
-//    }
+    public Boolean checkFinalGuess(Set<Card> guess) {
+        for (int i = 0; i < finalCards.size(); i++) {
+            if(!finalCards.containsAll(guess)) {return false;}
+        }
+        return true;
+    }
 
     /**
-     * Randomly selects from weapons, suspects, and rooms
-     * to set as the final cards, takes the cards from the
-     * decks
+     * Sets the turnOrder
+     * @param players
+     *  Set of players to add to the game
      */
-//    public Set<Card> setFinalCards() {
-//        int weapon = rand.nextInt(weapons.size());
-//        int suspect = rand.nextInt(suspects.size());
-//        int room = rand.nextInt(rooms.size());
-//
-//        Card[] weaponstmp = weapons.toArray(new Card[0]);
-//        Card[] suspectstmp = suspects.toArray(new Card[0]);
-//        Card[] roomstmp = rooms.toArray(new Card[0]);
-//
-//        finalCards.add(weaponstmp[weapon]);
-//        finalCards.add(suspectstmp[suspect]);
-//        finalCards.add(roomstmp[room]);
-//
-//        weapons.remove(weaponstmp[weapon]);
-//        suspects.remove(suspectstmp[suspect]);
-//        rooms.remove(roomstmp[room]);
-//
-//        return finalCards;
-//    }
-
     public void setTurnOrder(Set<Player> players) {
         turnOrder = players;
     }
 
-//    public void setWeapons(Set<Card> weapons) {
-//        this.weapons = weapons;
-//    }
-//
-//    public void setRooms(Set<Card> rooms) {
-//        this.rooms = rooms;
-//    }
-//
-//    public void setSuspects(Set<Card> suspects) {
-//        this.suspects = suspects;
-//    }
+    /**
+     * Sets the weapons for the game
+     *  Sets the final weapon card as well
+     * @param weapons
+     *  Set of weapon cards
+     */
+    public void setWeapons(Set<Card> weapons) {
+        this.weapons = weapons;
+        Random rand = new Random();
+        int n = rand.nextInt(weapons.size());
+        Card finalWeapon = weapons.toArray(new Card[weapons.size()])[n];
+        finalCards.add(finalWeapon);
+        weapons.remove(finalWeapon);
+    }
+
+    /**
+     * Sets the rooms for the game
+     *  Sets the final weapon card as well
+     * @param rooms
+     *  Set of weapon cards
+     */
+    public void setRooms(Set<Card> rooms) {
+        this.rooms = rooms;
+        Random rand = new Random();
+        int n = rand.nextInt(rooms.size());
+        Card finalRoom = rooms.toArray(new Card[rooms.size()])[n];
+        finalCards.add(finalRoom);
+        rooms.remove(finalRoom);
+    }
+
+    /**
+     * Sets the suspects for the game
+     *  Sets the final weapon card as well
+     * @param suspects
+     *  Set of weapon cards
+     */
+    public void setSuspects(Set<Card> suspects) {
+        this.suspects = suspects;
+        Random rand = new Random();
+        int n = rand.nextInt(suspects.size());
+        Card finalSuspect = suspects.toArray(new Card[suspects.size()])[n];
+        finalCards.add(finalSuspect);
+        suspects.remove(finalSuspect);
+    }
+
+    /**
+     * Removes all of the players from
+     * the game state
+     */
+    public void removePlayers() {
+        Iterator<Player> players = turnOrder.iterator();
+        while(players.hasNext()) {
+            turnOrder.remove(players.next());
+        }
+    }
 
     /**
      * Series of get methods for almost every variable
      * @return
      *  Different variables depending on the method
      */
-    public Integer getVersionID() {return versionID;}
     public Integer getID() {return ID;}
-//    public Set<Card> getFinalCards() {return finalCards;}
-//    public Set<Card> getWeapons() {return weapons;}
-//    public Set<Card> getSuspects() {return suspects;}
-//    public Set<Card> getRooms() {return rooms;}
-
+    public Set<Card> getFinalCards() {return finalCards;}
+    public Set<Card> getWeapons() {return weapons;}
+    public Set<Card> getSuspects() {return suspects;}
+    public Set<Card> getRooms() {return rooms;}
+    public Integer getHostID() {return hostID;}
     public Set<Player> getTurnOrder() {
         return turnOrder;
     }

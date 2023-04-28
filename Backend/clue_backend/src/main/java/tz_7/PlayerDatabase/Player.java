@@ -15,6 +15,7 @@ import tz_7.GamePlay.PlayerInfoDatabase.PlayerInfo;
  */
 
 @Entity
+@Table
 public class Player {
 
     @Id
@@ -139,6 +140,8 @@ public class Player {
     public void setGameLobbyHost(GameLobby lobby) {
         gameLobbyHost = lobby;
     }
+
+    public GameLobby getGameLobbyHost() {return gameLobbyHost;}
 
     public GameState getGameState() {
         return gameState;

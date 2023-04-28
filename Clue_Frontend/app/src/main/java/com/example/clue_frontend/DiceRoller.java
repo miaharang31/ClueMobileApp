@@ -50,7 +50,7 @@ public class DiceRoller extends AppCompatActivity {
                 timer.schedule(new TimerTask(){
                     @Override
                     public void run() {
-                        Intent intent = new Intent(DiceRoller.this, MainActivity.class);
+                        Intent intent = new Intent(DiceRoller.this, EndGameWinOrLose.class);
                         startActivity(intent);
                     }
                 }, 2000);
