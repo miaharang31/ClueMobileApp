@@ -34,7 +34,7 @@ public class Game extends AppCompatActivity {
     static String characterSelected;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("In Game");
+        System.out.println("Line 37, In Game class");
         super.onCreate(savedInstanceState);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAGS_CHANGED, WindowManager.LayoutParams.FLAGS_CHANGED);
         DisplayMetrics dm = new DisplayMetrics();
@@ -42,8 +42,8 @@ public class Game extends AppCompatActivity {
         Constraints.SCREEN_WIDTH = dm.widthPixels;
         Constraints.SCREEN_HEIGHT = dm.heightPixels;
 
-        getCharacter();
-        System.out.println("In Game, character selected: " + characterSelected);
+        characterSelected = getCharacter();
+        System.out.println("Line 46, In Game class, character selected: " + characterSelected);
 
         relativeLayout = findViewById(R.id.relative_layout);
         swipeListener = new SwipeListener(relativeLayout);
@@ -55,7 +55,7 @@ public class Game extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(Game.this);
         MyApplication app = (MyApplication) getApplication();
         String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/" + app.getUserid() + "/role";
-        System.out.println("Game: in getCharacter");
+        System.out.println("Line 58, In Game class, in getCharacter method");
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
 
@@ -64,7 +64,7 @@ public class Game extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         try {
                             characterSelected = response.get("name").toString();
-                            System.out.println("characterSelected: " + characterSelected);
+                            System.out.println("Line 67, In Game class, characterSelected: " + characterSelected);
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
@@ -98,7 +98,7 @@ public class Game extends AppCompatActivity {
                     float yDiff = e2.getY() - e1.getY();
 
                     try {
-                        System.out.println("Game: in try block");
+                        System.out.println("Line 101, In Game class, in try block");
                         if(GameView.moves > 0){
                             if (Math.abs(xDiff) > Math.abs(yDiff)) {
                                 if (Math.abs(xDiff) > threshold && Math.abs(velocityX) > velocity_threshold) {

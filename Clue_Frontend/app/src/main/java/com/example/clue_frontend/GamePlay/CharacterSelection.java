@@ -123,18 +123,22 @@ public class CharacterSelection extends AppCompatActivity {
                     throw new RuntimeException(e);
                 }
 
+                System.out.println("Line 126 In CharacterSelection class, going into request");
                 JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, body,
                         new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject response) {
                                 try {
+                                    System.out.println("Line 132 In CharacterSelection class, in onResponse");
                                     app.setInfoid(response.getInt("id"));
                                 } catch (JSONException e) {
                                     throw new RuntimeException(e);
                                 }
 //                              String url = "http://10.0.2.2:8080/info/"+app.getInfoid()+"/character/"+chosenChar;
                                 String url = "http://coms-309-038.class.las.iastate.edu:8080/info/" + app.getInfoid() + "/role/" + chosenChar;
-                                System.out.println("line 137 url:" + url);
+                                System.out.println("line 137 url test:" + url);
+
+
                                 JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null,
                                         new Response.Listener<JSONObject>() {
                                             @Override

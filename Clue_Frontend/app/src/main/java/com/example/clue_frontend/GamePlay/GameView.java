@@ -96,7 +96,7 @@ public class GameView extends View {
     public GameView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
 
-        System.out.println("In GameView");
+        System.out.println("Line 99, In GameView");
         //create rooms
         study_room = new Room(study_room_info);
         library_room = new Room(library_room_info);
@@ -164,7 +164,7 @@ public class GameView extends View {
         kitchen = BitmapFactory.decodeResource(this.getResources(), R.drawable.kitchen);
         kitchen = Bitmap.createScaledBitmap(kitchen, 206, 208, true);
 
-        System.out.println("In GameView, character selected: " + Game.characterSelected);
+        System.out.println("Line 167, In GameView class, character selected: " + Game.characterSelected);
         //assigns color based on what player chose
         if(Objects.equals(Game.characterSelected, "scarlet")){
             scarlet = BitmapFactory.decodeResource(this.getResources(), R.drawable.scarlet);
