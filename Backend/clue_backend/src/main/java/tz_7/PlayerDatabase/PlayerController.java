@@ -127,7 +127,7 @@ public class PlayerController {
     @ApiResponse(responseCode = "403", description = "forbidden!")
     @ApiResponse(responseCode = "401", description = "not authorized!")
     @ApiResponse(responseCode = "200", description = "Success!")
-    @PutMapping("/changePassword/{id}/to/{password")
+    @PutMapping("/changePassword/{id}/to/{password}")
     public Player changePassword(@PathVariable("id") int id, @PathVariable("password") String password) {
         //logger.info("Entered");
         Player player = repository.findById(id)
