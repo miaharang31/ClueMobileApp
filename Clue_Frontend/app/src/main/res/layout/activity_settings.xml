@@ -104,6 +104,14 @@
             android:background="#B57114"
             android:layout_below="@id/newpassword"/>
         <Button
+            android:id="@+id/logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:background="#B57114"
+            android:layout_below="@id/changePassword"
+            android:layout_marginTop="30dp"/>
+        <Button
             android:id="@+id/account_button"
             android:background="@drawable/home_icon"
             android:layout_width="92dp"

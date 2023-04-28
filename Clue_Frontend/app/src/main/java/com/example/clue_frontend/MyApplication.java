@@ -49,6 +49,42 @@ public class MyApplication extends Application {
     public WebSocketClient getGameClient() {
         return gameClient;
     }
+    public void resetCards() {
+        mustard = false;
+        plum = false;
+        green = false;
+        peacock = false;
+        white = false;
+        scarlet = false;
+        knife = false;
+        candlestick = false;
+        leadpipe = false;
+        rope = false;
+        revolver = false;
+        wrench = false;
+        hall = false;
+        library = false;
+        lounge = false;
+        kitchen = false;
+        dining = false;
+        billiard = false;
+        ballroom = false;
+        conservatory = false;
+        study = false;
+    }
+    public void endGame() {
+        lobbyid = 0;
+        gameid = 0;
+        infoid = 0;
+        isHost = false;
+        usersplaying = 0;
+        resetCards();
+    }
+    public void clear() {
+        userid = 0;
+        endGame();
+    }
+
 
     public int getLobbyid() {return lobbyid;}
     public int getGameid() {return gameid;}
