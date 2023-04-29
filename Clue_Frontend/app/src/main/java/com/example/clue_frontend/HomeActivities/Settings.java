@@ -50,8 +50,6 @@ public class Settings extends AppCompatActivity {
         firstname.setText(app.getFirstname() + " " + app.getLastname());
         uname.setText("@" + app.getUsername());
 
-
-
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

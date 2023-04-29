@@ -164,6 +164,21 @@ public class PlayerController {
         }
         return player;
     }
+    @Operation(summary = "Changes the type of account a user has", description = "Uses a put request to change the type of the user")
+    @ApiResponse(responseCode = "404", description = "not found!")
+    @ApiResponse(responseCode = "403", description = "forbidden!")
+    @ApiResponse(responseCode = "401", description = "not authorized!")
+    @ApiResponse(responseCode = "200", description = "Success!")
+    @PutMapping("/degradeType/{id}")
+    public Player degrade(@PathVariable("id") int id) {
+        //logger.info("Entered");
+        Player player = repository.findById(id)
+                .orElseThrow();
+        if (player.getType().equals("p")) {
+            player.setType("b");
+        }
+        return player;
+    }
 
     @GetMapping(value = "/getUserType/{id}")
     public String returnType(@PathVariable int id) {

@@ -17,6 +17,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.clue_frontend.Lobbies.HostLobby;
 import com.example.clue_frontend.Lobbies.JoinLobby;
 import com.example.clue_frontend.MainActivity;
+import com.example.clue_frontend.MyApplication;
 import com.example.clue_frontend.R;
 
 import org.json.JSONObject;
@@ -28,6 +29,7 @@ public class Home extends AppCompatActivity /*implements NavigationView.OnNaviga
     Button buypremium;
     Button rules;
     Button settings;
+    Button degrade;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,8 +38,21 @@ public class Home extends AppCompatActivity /*implements NavigationView.OnNaviga
         join = (Button) findViewById(R.id.join);
         host = (Button) findViewById(R.id.host);
         buypremium = (Button) findViewById(R.id.premium_button);
+        degrade = (Button) findViewById(R.id.downgrade);
         rules = (Button) findViewById(R.id.rules_button);
         settings = (Button) findViewById(R.id.setting_btn);
+
+        MyApplication app = (MyApplication) getApplication();
+        System.out.println(app.getType());
+
+        if (app.getType().equals("b")) {
+            buypremium.setVisibility(View.VISIBLE);
+            degrade.setVisibility(View.INVISIBLE);
+        }
+        else {
+            buypremium.setVisibility(View.INVISIBLE);
+            degrade.setVisibility(View.VISIBLE);
+        }
 
         join.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -56,27 +71,58 @@ public class Home extends AppCompatActivity /*implements NavigationView.OnNaviga
         buypremium.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = "http://coms-309-038.class.las.iastate.edu:8080/changeUsername/" + app.getUserid() + "/to/" + newu;
-                RequestQueue queue = Volley.newRequestQueue(Settings.this);
+
+                Intent intent = new Intent(Home.this, MainActivity.class);
+                MyApplication app = (MyApplication) getApplication();
+                String url = "http://coms-309-038.class.las.iastate.edu:8080/updateType/" + app.getUserid();
+//                String url = "http://10.0.2.2:8080/updateType/" + app.getUserid();
+                RequestQueue queue = Volley.newRequestQueue(Home.this);
 
                 JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null,
                         new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject response) {
-                                app.setUsername(newu);
-                                Toast.makeText(Settings.this, "Your password is changed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Home.this, "You have updated your account", Toast.LENGTH_SHORT).show();
                             }
                         },
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(Settings.this, "ERROR: " + error, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Home.this, "ERROR: " + error, Toast.LENGTH_SHORT).show();
                             }
                         }
                 );
-                queue.add(request);ew Intent(Home.this, MainActivity.class);
-                //TODO:put volleyrequest
+                queue.add(request);
+                app.clear();
+                startActivity(intent);
+            }
+        });
+        degrade.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
 
+                Intent intent = new Intent(Home.this, MainActivity.class);
+                MyApplication app = (MyApplication) getApplication();
+                String url = "http://coms-309-038.class.las.iastate.edu:8080/degradeType/" + app.getUserid();
+//                String url = "http://10.0.2.2:8080/degradeType/" + app.getUserid();
+                RequestQueue queue = Volley.newRequestQueue(Home.this);
+
+                JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                Toast.makeText(Home.this, "You have degraded your account", Toast.LENGTH_SHORT).show();
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(Home.this, "ERROR: " + error, Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                );
+                queue.add(request);
+                app.clear();
                 startActivity(intent);
             }
         });

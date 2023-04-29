@@ -131,8 +131,8 @@ public class GameStateController {
 //  TODO: Make iterator (for infos) and get the weapons, rooms and suspects
 //        Iterate through the infos and and set the cards for each player
 
-        repo.save(state);
-        playerInfoRepository.saveAll(//TODO: put info iterator here);
+//        repo.save(state);
+//        playerInfoRepository.saveAll(//TODO: put info iterator here);
         return state;
     }
 

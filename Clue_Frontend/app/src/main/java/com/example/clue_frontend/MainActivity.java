@@ -146,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
                                                     app.setFirstname(response.get("firstname").toString());
                                                     app.setLastname(response.get("lastname").toString());
                                                     app.setUsername(response.get("username").toString());
+                                                    app.setType(response.get("type").toString());
                                                 } catch (JSONException e) {
                                                     throw new RuntimeException(e);
                                                 }
