@@ -108,6 +108,7 @@ public class Lobby extends AppCompatActivity {
                                             } catch (JSONException e) {
                                                 throw new RuntimeException(e);
                                             }
+
                                         }
                                     },
                                     new Response.ErrorListener() {

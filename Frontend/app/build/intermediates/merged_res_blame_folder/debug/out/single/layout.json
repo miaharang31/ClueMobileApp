@@ -1,0 +1,86 @@
+[
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-mergeDebugResources-28:\\layout\\activity_hostlobby.xml",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\activity_hostlobby.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-mergeDebugResources-28:\\layout\\activity_home.xml",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\activity_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-mergeDebugResources-28:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-mergeDebugResources-28:\\layout\\activity_dice_roller.xml",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\activity_dice_roller.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-mergeDebugResources-28:\\layout\\activity_character_selection.xml",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\activity_character_selection.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-mergeDebugResources-28:\\layout\\board.xml",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\board.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-mergeDebugResources-28:/layout/activity_end_game_win_or_lose.xml",
+        "source": "com.example.clue_frontend.app-main-31:/layout/activity_end_game_win_or_lose.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-mergeDebugResources-28:\\layout\\open_cards_layout.xml",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\open_cards_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-mergeDebugResources-28:\\layout\\activity_user_sign_up.xml",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\activity_user_sign_up.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-mergeDebugResources-28:\\layout\\activity_checklist.xml",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\activity_checklist.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-mergeDebugResources-28:\\layout\\card_look.xml",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\card_look.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-mergeDebugResources-28:/layout/cards.xml",
+        "source": "com.example.clue_frontend.app-main-31:/layout/cards.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-mergeDebugResources-28:\\layout\\card_layout.xml",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\card_layout.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-mergeDebugResources-28:/layout/six_cards.xml",
+        "source": "com.example.clue_frontend.app-main-31:/layout/six_cards.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-mergeDebugResources-28:\\layout\\activity_joinlobby.xml",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\activity_joinlobby.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-mergeDebugResources-28:\\layout\\activity_account_status.xml",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\activity_account_status.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-mergeDebugResources-28:\\layout\\activity_player_guess.xml",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\activity_player_guess.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-mergeDebugResources-28:/layout/activity_end_game_other_players.xml",
+        "source": "com.example.clue_frontend.app-main-31:/layout/activity_end_game_other_players.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-mergeDebugResources-28:\\layout\\activity_lobby.xml",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\activity_lobby.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-mergeDebugResources-28:\\layout\\rules_page.xml",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\rules_page.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-mergeDebugResources-28:\\layout\\navigation_header.xml",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\navigation_header.xml"
+    }
+]
