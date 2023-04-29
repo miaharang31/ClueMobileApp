@@ -1,4 +1,4 @@
-package com.example.clue_frontend;
+package com.example.clue_frontend.HomeActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,9 +16,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.clue_frontend.GamePlay.CardLayout;
-import com.example.clue_frontend.GamePlay.Game;
-import com.example.clue_frontend.Lobbies.JoinLobby;
+import com.example.clue_frontend.MainActivity;
+import com.example.clue_frontend.MyApplication;
+import com.example.clue_frontend.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;

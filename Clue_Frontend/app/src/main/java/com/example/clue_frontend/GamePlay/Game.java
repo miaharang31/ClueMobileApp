@@ -66,8 +66,8 @@ public class Game extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(Game.this);
         MyApplication app = (MyApplication) getApplication();
 
-//        String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/role/" + app.getUserid();
-        String url = "http://10.0.2.2:8080/info/player/role/" + app.getUserid();
+        String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/role/" + app.getUserid();
+//        String url = "http://10.0.2.2:8080/info/player/role/" + app.getUserid();
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
 

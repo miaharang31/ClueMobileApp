@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import tz_7.CardDatabase.Card;
 import tz_7.CardDatabase.CardRepository;
 import tz_7.GamePlay.GameLobbyDatabase.GameLobby;
+import tz_7.GamePlay.PlayerInfoDatabase.PlayerInfo;
+import tz_7.GamePlay.PlayerInfoDatabase.PlayerInfoRepository;
 import tz_7.PlayerDatabase.Player;
 import tz_7.PlayerDatabase.PlayerRepository;
 
@@ -29,6 +31,8 @@ public class GameStateController {
     GameStateRepository repo;
     @Autowired
     PlayerRepository playerRepository;
+    @Autowired
+    PlayerInfoRepository playerInfoRepository;
     @Autowired
     CardRepository cardRepository;
 
@@ -111,6 +115,24 @@ public class GameStateController {
         }
         repo.save(state);
         cardRepository.saveAll(cards);
+        return state;
+    }
+
+    @PutMapping(value = "game/{id}/distributeCards")
+    public GameState distributeCards(@PathVariable Integer id) {
+        GameState state = repo.findById(id).get();
+        Set<Player> players = state.getTurnOrder();
+        Set<PlayerInfo> infos = new HashSet<>();
+        Iterator<Player> tmp = players.iterator();
+        while (tmp.hasNext()) {
+            infos.add(playerInfoRepository.findByPlayer(tmp.next()));
+        }
+
+//  TODO: Make iterator (for infos) and get the weapons, rooms and suspects
+//        Iterate through the infos and and set the cards for each player
+
+        repo.save(state);
+        playerInfoRepository.saveAll(//TODO: put info iterator here);
         return state;
     }
 

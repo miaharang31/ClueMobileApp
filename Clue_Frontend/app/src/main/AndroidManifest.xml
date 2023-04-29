@@ -33,10 +33,10 @@
             android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
         <activity android:name=".GamePlay.Checklist" />
         <activity
-            android:name=".Rules"
+            android:name=".HomeActivities.Rules"
             android:label="Rules" />
         <activity
-            android:name=".Settings"
+            android:name=".HomeActivities.Settings"
             android:label="Settings"/>
         <activity
             android:name=".UserSignUp"
@@ -54,7 +54,7 @@
             android:name=".GamePlay.Game"
             android:label="@string/app_name" />
         <activity
-            android:name=".Home"
+            android:name=".HomeActivities.Home"
             android:label="Home" />
         <activity
             android:name=".GamePlay.CardButton"
