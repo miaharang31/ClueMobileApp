@@ -55,11 +55,10 @@ public class JoinLobby extends AppCompatActivity {
                                     } catch (JSONException e) {
                                         throw new RuntimeException(e);
                                     }
-<<<<<<< HEAD
+
                                     startActivity(intent);
 
-=======
->>>>>>> main
+
                                 }
                             },
                             new Response.ErrorListener() {
