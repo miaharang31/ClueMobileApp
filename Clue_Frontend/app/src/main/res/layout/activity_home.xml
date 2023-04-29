@@ -51,6 +51,20 @@
             android:textSize="30dp"
             android:text="Buy Premium" />
         <Button
+            android:id="@+id/downgrade"
+            android:layout_width="375dp"
+            android:layout_height="100dp"
+            android:layout_alignTop="@+id/join"
+            app:cardCornerRadius="8dp"
+            app:strokeColor="#B57114"
+            app:strokeWidth="5dp"
+            android:layout_marginTop="175dp"
+            android:layout_marginLeft="15dp"
+            android:fontFamily="@font/aladin"
+            android:backgroundTint="#08403E"
+            android:textSize="30dp"
+            android:text="Downgrade Premium" />
+        <Button
             android:id="@+id/account_button"
             android:background="@drawable/home_icon"
             android:layout_width="92dp"

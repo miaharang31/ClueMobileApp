@@ -154,16 +154,39 @@ public class PlayerController {
     @ApiResponse(responseCode = "403", description = "forbidden!")
     @ApiResponse(responseCode = "401", description = "not authorized!")
     @ApiResponse(responseCode = "200", description = "Success!")
-    @PutMapping("/updateType/{username}")
-    public Player upgradeToPremium(@PathVariable("username") String username, @RequestBody String account) {
+    @PutMapping("/updateType/{id}")
+    public Player upgradeToPremium(@PathVariable("id") int id) {
         //logger.info("Entered");
-        Player player = repository.findByUsername(username)
+        Player player = repository.findById(id)
                 .orElseThrow();
-        if (player.getType().equals("Basic")) {
-            player.setType("Premium");
+        if (player.getType().equals("b")) {
+            player.setType("p");
         }
         return player;
     }
+    @Operation(summary = "Changes the type of account a user has", description = "Uses a put request to change the type of the user")
+    @ApiResponse(responseCode = "404", description = "not found!")
+    @ApiResponse(responseCode = "403", description = "forbidden!")
+    @ApiResponse(responseCode = "401", description = "not authorized!")
+    @ApiResponse(responseCode = "200", description = "Success!")
+    @PutMapping("/degradeType/{id}")
+    public Player degrade(@PathVariable("id") int id) {
+        //logger.info("Entered");
+        Player player = repository.findById(id)
+                .orElseThrow();
+        if (player.getType().equals("p")) {
+            player.setType("b");
+        }
+        return player;
+    }
+
+    @GetMapping(value = "/getUserType/{id}")
+    public String returnType(@PathVariable int id) {
+        Player player = repository.findById(id)
+                .orElseThrow();
+        return player.getType();
+    }
+
 
 //    @GetMapping("/getUserByType/{type}")
 //    public List<User> getUserByType(@PathVariable String type) {

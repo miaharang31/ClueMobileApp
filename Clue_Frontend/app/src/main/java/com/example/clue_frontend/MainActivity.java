@@ -7,14 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,12 +21,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.clue_frontend.GamePlay.CharacterSelection;
 import com.example.clue_frontend.GamePlay.Constraints;
+
 import com.example.clue_frontend.GamePlay.Game;
 import com.example.clue_frontend.GamePlay.GameView;
 import com.example.clue_frontend.Lobbies.HostLobby;
 import com.example.clue_frontend.administrative.UpgradeUser;
+
+import com.example.clue_frontend.HomeActivities.Home;
+
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -156,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
                                                     app.setFirstname(response.get("firstname").toString());
                                                     app.setLastname(response.get("lastname").toString());
                                                     app.setUsername(response.get("username").toString());
+                                                    app.setType(response.get("type").toString());
                                                 } catch (JSONException e) {
                                                     throw new RuntimeException(e);
                                                 }
@@ -187,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(MainActivity.this, UpgradeUser.class);
+                Intent intent = new Intent(MainActivity.this, UserSignUp.class);
 
                 startActivity(intent);
 

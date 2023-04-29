@@ -64,6 +64,9 @@ public class PlayerInfo {
             turn = false;
         } else {turn = true;}
     }
+    public void setCards(Set<Card> cards) {
+//        TODO: Set the cards
+    }
 
     /**
      * All the get arguments for every variable
