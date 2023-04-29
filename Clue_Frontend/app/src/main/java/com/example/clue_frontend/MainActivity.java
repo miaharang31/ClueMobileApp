@@ -29,6 +29,7 @@ import com.example.clue_frontend.GamePlay.Constraints;
 import com.example.clue_frontend.GamePlay.Game;
 import com.example.clue_frontend.GamePlay.GameView;
 import com.example.clue_frontend.Lobbies.HostLobby;
+import com.example.clue_frontend.administrative.UpgradeUser;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -186,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(MainActivity.this, UserSignUp.class);
+                Intent intent = new Intent(MainActivity.this, UpgradeUser.class);
 
                 startActivity(intent);
 

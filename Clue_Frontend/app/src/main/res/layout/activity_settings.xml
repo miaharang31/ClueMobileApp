@@ -5,74 +5,153 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#520120"
-    tools:context=".administrative.Settings">
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="380dp"
-        android:layout_height="650dp"
-        android:backgroundTint="#B57114"
-        app:cardCornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="@color/white"
-        app:strokeWidth="20dp">
+    tools:context=".Settings">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/name"
+            android:text="first name"
+            android:textColor="@color/white"
+            android:shadowColor="#520120"
+            android:shadowDx="4"
+            android:shadowDy="4"
+            android:shadowRadius="5"
+            android:fontFamily="@font/abhaya_libre_extrabold"
+            android:textSize="35dp"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            tools:ignore="MissingConstraints" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/username"
+            android:layout_below="@id/name"
+            android:text="username"
+            android:textColor="@color/white"
+            android:shadowColor="#520120"
+            android:shadowDx="4"
+            android:shadowDy="4"
+            android:shadowRadius="5"
+            android:fontFamily="@font/abhaya_libre_extrabold"
+            android:layout_centerHorizontal="true"
+            android:textSize="25dp"/>
+        <Button
+            android:id="@+id/changeUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Change Username"
+            android:background="#B57114"
+            android:layout_below="@id/username"
+            android:layout_marginTop="30dp"/>
+        <TextView
+            android:id="@+id/enteru"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter new username"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            android:background="#08403E"
+            android:layout_below="@id/changeUsername"/>
+        <EditText
+            android:id="@+id/newusername"
+            android:layout_below="@id/enteru"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/white"/>
+        <Button
+            android:id="@+id/submitnewun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="submit"
+            android:background="#B57114"
+            android:layout_below="@id/newusername"/>
 
         <Button
-            android:id="@+id/showUsers"
-            android:layout_width="350dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="25dp"
-            android:backgroundTint="#08403E"
-            android:fontFamily="@font/abhaya_libre"
-            android:text="Show Users"
-            android:textSize="40sp" />
-
+            android:id="@+id/changePassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Change password"
+            android:background="#B57114"
+            android:layout_below="@id/changeUsername"
+            android:layout_marginTop="30dp"/>
+        <TextView
+            android:id="@+id/enterp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter new password"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
+            android:background="#08403E"
+            android:layout_below="@id/changePassword"/>
+        <EditText
+            android:id="@+id/newpassword"
+            android:layout_below="@id/enterp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@android:color/white"/>
         <Button
-            android:id="@+id/showLobbies"
-            android:layout_width="350dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="145dp"
-            android:backgroundTint="#08403E"
-            android:fontFamily="@font/abhaya_libre"
-            android:textSize="40sp"
-            android:text="Show Lobbies" />
-
+            android:id="@+id/submitnewp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="submit"
+            android:layout_marginTop="10dp"
+            android:background="#B57114"
+            android:layout_below="@id/newpassword"/>
         <Button
-            android:id="@+id/deleteUser"
-            android:layout_width="350dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="265dp"
-            android:backgroundTint="#08403E"
-            android:fontFamily="@font/abhaya_libre"
-            android:textSize="40sp"
-            android:text="Delete User" />
-
+            android:id="@+id/logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:background="#B57114"
+            android:layout_below="@id/changePassword"
+            android:layout_marginTop="30dp"/>
         <Button
-            android:id="@+id/upgradeUser"
-            android:layout_width="350dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="38dp"
+            android:id="@+id/account_button"
+            android:background="@drawable/home_icon"
+            android:layout_width="92dp"
+            android:layout_height="92dp"
+            app:cardCornerRadius="8dp"
+            app:strokeColor="#B57114"
+            app:strokeWidth="5dp"
+            android:layout_marginTop="650dp"
+            android:layout_marginLeft="50dp"
+            android:fontFamily="@font/aladin"
             android:backgroundTint="#08403E"
-            android:fontFamily="@font/abhaya_libre"
-            android:textSize="40sp"
-            android:text="Uprgade User" />
-
+            android:gravity="bottom"/>
         <Button
-            android:id="@+id/showCards"
-            android:layout_width="350dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="500dp"
+            android:id="@+id/rules_button"
+            android:background="@drawable/howtoplay"
+            android:layout_width="92dp"
+            android:layout_height="92dp"
+            android:layout_alignLeft="@id/account_button"
+            app:cardCornerRadius="8dp"
+            app:strokeColor="#B57114"
+            app:strokeWidth="5dp"
+            android:layout_marginTop="650dp"
+            android:layout_marginLeft="100dp"
+            android:fontFamily="@font/aladin"
             android:backgroundTint="#08403E"
-            android:fontFamily="@font/abhaya_libre"
-            android:textSize="40sp"
-            android:text="Show Cards" />
+            android:gravity="bottom"/>
+        <Button
+            android:id="@+id/setting_btn"
+            android:background="@drawable/settings"
+            android:layout_width="92dp"
+            android:layout_height="92dp"
+            android:layout_alignLeft="@id/rules_button"
+            app:cardCornerRadius="8dp"
+            app:strokeColor="#B57114"
+            app:strokeWidth="5dp"
+            android:layout_marginTop="650dp"
+            android:layout_marginLeft="100dp"
+            android:fontFamily="@font/aladin"
+            android:backgroundTint="#08403E"
+            android:gravity="bottom"/>
+    </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

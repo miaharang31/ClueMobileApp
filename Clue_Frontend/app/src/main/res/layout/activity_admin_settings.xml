@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     android:background="#520120"
 
-    tools:context=".administrative.Settings">
+    tools:context=".administrative.AdminSettings">
 
     <androidx.cardview.widget.CardView
         android:layout_width="380dp"
-        android:layout_height="650dp"
+        android:layout_height="550dp"
         android:backgroundTint="#B57114"
         app:cardCornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,10 +23,10 @@
         <Button
             android:id="@+id/showUsers"
             android:layout_width="350dp"
-            android:layout_height="100dp"
+            android:layout_height="90dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="30dp"
-            android:backgroundTint="#08403E"
+            android:backgroundTint="#962B09"
             android:fontFamily="@font/abhaya_libre"
             android:text="Show Users"
             android:textSize="40sp" />
@@ -34,9 +34,9 @@
         <Button
             android:id="@+id/showLobbies"
             android:layout_width="350dp"
-            android:layout_height="100dp"
+            android:layout_height="90dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="130dp"
             android:backgroundTint="#08403E"
             android:fontFamily="@font/abhaya_libre"
             android:textSize="40sp"
@@ -45,10 +45,10 @@
         <Button
             android:id="@+id/deleteUser"
             android:layout_width="350dp"
-            android:layout_height="100dp"
+            android:layout_height="90dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="270dp"
-            android:backgroundTint="#08403E"
+            android:layout_marginTop="230dp"
+            android:backgroundTint="#962B09"
             android:fontFamily="@font/abhaya_libre"
             android:textSize="40sp"
             android:text="Delete User" />
@@ -56,9 +56,9 @@
         <Button
             android:id="@+id/upgradeUser"
             android:layout_width="350dp"
-            android:layout_height="100dp"
+            android:layout_height="90dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="390dp"
+            android:layout_marginTop="330dp"
             android:backgroundTint="#08403E"
             android:fontFamily="@font/abhaya_libre"
             android:textSize="40sp"
@@ -67,13 +67,34 @@
         <Button
             android:id="@+id/viewCards"
             android:layout_width="350dp"
-            android:layout_height="100dp"
+            android:layout_height="90dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="510dp"
-            android:backgroundTint="#08403E"
+            android:layout_marginTop="430dp"
+            android:backgroundTint="#962B09"
             android:fontFamily="@font/abhaya_libre"
             android:textSize="40sp"
             android:text="View Cards" />
 
     </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/exitCards"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="550dp"
+        android:layout_marginBottom="5dp"
+        android:backgroundTint="#520120"
+        android:buttonTint="#08403E"
+        android:fontFamily="@font/abhaya_libre"
+        android:paddingBottom="5dp"
+        android:text="Logout"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.924" />
 </androidx.constraintlayout.widget.ConstraintLayout>

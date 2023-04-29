@@ -9,7 +9,7 @@ import android.widget.Button;
 
 import com.example.clue_frontend.R;
 
-public class Settings extends AppCompatActivity {
+public class AdminSettings extends AppCompatActivity {
 
     Button showUsers;
     Button showLobbies;
@@ -31,7 +31,7 @@ public class Settings extends AppCompatActivity {
         showUsers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(Settings.this, ShowUsers.class);
+                Intent intent = new Intent(AdminSettings.this, ShowUsers.class);
                 startActivity(intent);
             }
         });
@@ -39,7 +39,7 @@ public class Settings extends AppCompatActivity {
         showLobbies.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(Settings.this, ShowLobbies.class);
+                Intent intent = new Intent(AdminSettings.this, ShowLobbies.class);
                 startActivity(intent);
             }
         });
@@ -47,7 +47,7 @@ public class Settings extends AppCompatActivity {
         upgradeUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(Settings.this, UpgradeUser.class);
+                Intent intent = new Intent(AdminSettings.this, UpgradeUser.class);
                 startActivity(intent);
             }
         });
@@ -55,7 +55,7 @@ public class Settings extends AppCompatActivity {
         deleteUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(Settings.this, DeleteUser.class);
+                Intent intent = new Intent(AdminSettings.this, DeleteUser.class);
                 startActivity(intent);
             }
         });
@@ -63,7 +63,7 @@ public class Settings extends AppCompatActivity {
         viewCards.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(Settings.this, ViewCards.class);
+                Intent intent = new Intent(AdminSettings.this, ViewCards.class);
                 startActivity(intent);
             }
         });

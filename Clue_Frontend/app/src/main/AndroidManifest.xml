@@ -35,7 +35,7 @@
             android:name=".administrative.ShowUsers"
             android:exported="false" />
         <activity
-            android:name=".administrative.Settings"
+            android:name=".administrative.AdminSettings"
             android:exported="false" />
         <activity
             android:name=".EndGameOtherPlayers"
