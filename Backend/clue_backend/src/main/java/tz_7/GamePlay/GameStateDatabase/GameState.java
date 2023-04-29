@@ -42,6 +42,7 @@ public class GameState {
     @JsonIgnore
     private Set<Card> finalCards;
 
+//    TODO: Combine weapons, rooms and suspects
     @ManyToMany(mappedBy = "gameState")
     @JsonIgnore
     private Set<Card> weapons;
@@ -135,6 +136,7 @@ public class GameState {
      * @param weapons
      *  Set of weapon cards
      */
+//    TODO: could probably make this one method
     public void setWeapons(Set<Card> weapons) {
         this.weapons = weapons;
         Random rand = new Random();

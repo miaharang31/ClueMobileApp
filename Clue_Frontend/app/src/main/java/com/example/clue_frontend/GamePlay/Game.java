@@ -72,6 +72,7 @@ public class Game extends AppCompatActivity {
         swipeListener = new SwipeListener(relativeLayout);
 
         setContentView(R.layout.board);
+
         send = (Button) findViewById(R.id.button);
         message = (EditText) findViewById(R.id.message);
         chatBox = (TextView) findViewById(R.id.chat_box);
