@@ -20,19 +20,19 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".UpgradeUser"
+            android:name=".administrative.UpgradeUser"
             android:exported="false" />
         <activity
-            android:name=".viewCards"
+            android:name=".administrative.ViewCards"
             android:exported="false" />
         <activity
-            android:name=".ShowLobbies"
+            android:name=".administrative.ShowLobbies"
             android:exported="false" />
         <activity
-            android:name=".DeleteUser"
+            android:name=".administrative.DeleteUser"
             android:exported="false" />
         <activity
-            android:name=".ListAllUsers"
+            android:name=".administrative.ShowUsers"
             android:exported="false" />
         <activity
             android:name=".administrative.Settings"
@@ -52,16 +52,17 @@
         <activity
             android:name=".GamePlay.Checklist"
             android:exported="false" />
-
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
-
         <activity
             android:name=".Rules"
             android:label="Clue" />
+        <activity
+            android:name=".Settings"
+            android:label="Settings"/>
         <activity
             android:name=".UserSignUp"
             android:label="@string/app_name" />
@@ -85,7 +86,7 @@
             android:label="CardButton" />
         <activity
             android:name=".GamePlay.CardLayout"
-            android:label="CardLayout" />
+            android:label="Cards" />
         <activity
             android:name=".GamePlay.playerGuess"
             android:label="playerGuess" />

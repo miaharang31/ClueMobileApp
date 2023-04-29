@@ -10,17 +10,17 @@ import android.os.Handler;
 
 import androidx.annotation.Nullable;
 
+import com.example.clue_frontend.DiceRoller;
 import com.example.clue_frontend.R;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 
 
 public class GameView extends View {
-    public static Random rand = new Random();
 
-    //put dice number here:
-    public static int n = rand.nextInt(11) + 1;
+    public static int moves = DiceRoller.numSpaces;
 
     public static int number_of_players = 6;
     public static Bitmap edge;
@@ -42,6 +42,7 @@ public class GameView extends View {
     private static Bitmap mustard_start;
     private static Bitmap green_start;
     private static Bitmap peacock_start;
+
     private static Bitmap scarlet;
     private static Bitmap white;
     private static Bitmap plum;
@@ -87,9 +88,7 @@ public class GameView extends View {
     //This array stores all the rooms and their information
     public static ArrayList<Room> total_rooms = new ArrayList<>();
 
-    public static Player player1, player2, player3, player4, player5, player6;
-
-    public static Player turn = player1;
+    public static Player player;
     Handler handler;
     Runnable r;
 
@@ -97,6 +96,7 @@ public class GameView extends View {
     public GameView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
 
+        System.out.println("Line 99, In GameView");
         //create rooms
         study_room = new Room(study_room_info);
         library_room = new Room(library_room_info);
@@ -118,7 +118,7 @@ public class GameView extends View {
         total_rooms.add(dinning_room);
         total_rooms.add(kitchen_room);
 
-        System.out.println("************* n:" + n + "\n");
+        System.out.println("************* moves:" + moves + "\n");
 
         //creates tiles for the boards
         edge = BitmapFactory.decodeResource(this.getResources(), R.drawable.empty);
@@ -164,6 +164,59 @@ public class GameView extends View {
         kitchen = BitmapFactory.decodeResource(this.getResources(), R.drawable.kitchen);
         kitchen = Bitmap.createScaledBitmap(kitchen, 206, 208, true);
 
+        System.out.println("Line 167, In GameView class, character selected: " + Game.characterSelected);
+        //assigns color based on what player chose
+        if(Objects.equals(Game.characterSelected, "scarlet")){
+            scarlet = BitmapFactory.decodeResource(this.getResources(), R.drawable.scarlet);
+            scarlet = Bitmap.createScaledBitmap(scarlet, 31, 30, true);
+
+            player = new Player(scarlet, 468, 0, 0);
+            player.setX(arrBoard.get(player.getPlacement()).getTileX() + 3);
+            player.setY(arrBoard.get(player.getPlacement()).getTileY() + 3);
+
+            System.out.println("Chose scarlet");
+        } else if (Objects.equals(Game.characterSelected, "white")) {
+            white = BitmapFactory.decodeResource(this.getResources(), R.drawable.white);
+            white = Bitmap.createScaledBitmap(white, 30, 30, true);
+
+            player = new Player(white, 476, 0, 0);
+            player.setX(arrBoard.get(player.getPlacement()).getTileX() + 5);
+            player.setY(arrBoard.get(player.getPlacement()).getTileY() + 3);
+            System.out.println("Chose white");
+        } else if (Objects.equals(Game.characterSelected, "plum")) {
+            plum = BitmapFactory.decodeResource(this.getResources(), R.drawable.plum);
+            plum = Bitmap.createScaledBitmap(plum, 30, 30, true);
+
+            player = new Player(plum, 330, 0, 0);
+            player.setX(arrBoard.get(player.getPlacement()).getTileX() + 4);
+            player.setY(arrBoard.get(player.getPlacement()).getTileY() + 6);
+            System.out.println("Chose plum");
+        }else if (Objects.equals(Game.characterSelected, "mustard")) {
+            mustard = BitmapFactory.decodeResource(this.getResources(), R.drawable.mustard);
+            mustard = Bitmap.createScaledBitmap(mustard, 34, 30, true);
+
+            player = new Player(mustard, 351, 0, 0);
+            player.setX(arrBoard.get(player.getPlacement()).getTileX() + 1);
+            player.setY(arrBoard.get(player.getPlacement()).getTileY() + 3);
+            System.out.println("Chose mustard");
+        }else if (Objects.equals(Game.characterSelected, "green")) {
+            green = BitmapFactory.decodeResource(this.getResources(), R.drawable.green);
+            green = Bitmap.createScaledBitmap(green, 30, 30, true);
+
+            player = new Player(green, 14, 0, 0);
+            player.setX(arrBoard.get(player.getPlacement()).getTileX() + 3);
+            player.setY(arrBoard.get(player.getPlacement()).getTileY() + 3);
+            System.out.println("Chose green");
+        }else if (Objects.equals(Game.characterSelected, "peacock")) {
+            peacock = BitmapFactory.decodeResource(this.getResources(), R.drawable.peacock);
+            peacock = Bitmap.createScaledBitmap(peacock, 30, 30, true);
+
+            player = new Player(peacock, 7, 0, 0);
+            player.setX(arrBoard.get(player.getPlacement()).getTileX() + 3);
+            player.setY(arrBoard.get(player.getPlacement()).getTileY() + 5);
+            System.out.println("Chose peacock");
+        }
+
         //creates board
         for (int i = 0; i < h; i++) {
             for (int j = 0; j < w; j++) {
@@ -179,136 +232,6 @@ public class GameView extends View {
                 }
             }
         }
-
-        //set up players and player pieces based on how many players
-        switch (number_of_players) {
-            case 4:
-                scarlet = BitmapFactory.decodeResource(this.getResources(), R.drawable.scarlet);
-                scarlet = Bitmap.createScaledBitmap(scarlet, 33, 30, true);
-                white = BitmapFactory.decodeResource(this.getResources(), R.drawable.white);
-                white = Bitmap.createScaledBitmap(white, 30, 30, true);
-                plum = BitmapFactory.decodeResource(this.getResources(), R.drawable.plum);
-                plum = Bitmap.createScaledBitmap(plum, 30, 30, true);
-                mustard = BitmapFactory.decodeResource(this.getResources(), R.drawable.mustard);
-                mustard = Bitmap.createScaledBitmap(mustard, 34, 30, true);
-
-                player1 = new Player(scarlet, 468, 0, 0);
-                player1.setX(arrBoard.get(player1.getPlacement()).getTileX() + 3);
-                player1.setY(arrBoard.get(player1.getPlacement()).getTileY() + 3);
-
-                turn = player1;
-
-                player2 = new Player(white, 476, 0, 0);
-                player2.setX(arrBoard.get(player2.getPlacement()).getTileX() + 5);
-                player2.setY(arrBoard.get(player2.getPlacement()).getTileY() + 3);
-
-                player3 = new Player(plum, 330, 0, 0);
-                player3.setX(arrBoard.get(player3.getPlacement()).getTileX() + 4);
-                player3.setY(arrBoard.get(player3.getPlacement()).getTileY() + 6);
-
-                player4 = new Player(mustard, 351, 0, 0);
-                player4.setX(arrBoard.get(player4.getPlacement()).getTileX() + 1);
-                player4.setY(arrBoard.get(player4.getPlacement()).getTileY() + 3);
-                break;
-            case 5:
-                scarlet = BitmapFactory.decodeResource(this.getResources(), R.drawable.scarlet);
-                scarlet = Bitmap.createScaledBitmap(scarlet, 30, 30, true);
-                white = BitmapFactory.decodeResource(this.getResources(), R.drawable.white);
-                white = Bitmap.createScaledBitmap(white, 30, 30, true);
-                plum = BitmapFactory.decodeResource(this.getResources(), R.drawable.plum);
-                plum = Bitmap.createScaledBitmap(plum, 30, 30, true);
-                mustard = BitmapFactory.decodeResource(this.getResources(), R.drawable.mustard);
-                mustard = Bitmap.createScaledBitmap(mustard, 34, 30, true);
-                green = BitmapFactory.decodeResource(this.getResources(), R.drawable.green);
-                green = Bitmap.createScaledBitmap(green, 30, 30, true);
-
-                player1 = new Player(scarlet, 468, 0, 0);
-                player1.setX(arrBoard.get(player1.getPlacement()).getTileX() + 3);
-                player1.setY(arrBoard.get(player1.getPlacement()).getTileY() + 3);
-
-                turn = player1;
-
-                player2 = new Player(white, 476, 0, 0);
-                player2.setX(arrBoard.get(player2.getPlacement()).getTileX() + 5);
-                player2.setY(arrBoard.get(player2.getPlacement()).getTileY() + 3);
-
-                player3 = new Player(plum, 330, 0, 0);
-                player3.setX(arrBoard.get(player3.getPlacement()).getTileX() + 4);
-                player3.setY(arrBoard.get(player3.getPlacement()).getTileY() + 6);
-
-                player4 = new Player(mustard, 351, 0, 0);
-                player4.setX(arrBoard.get(player4.getPlacement()).getTileX() + 1);
-                player4.setY(arrBoard.get(player4.getPlacement()).getTileY() + 3);
-
-                player5 = new Player(green, 14, 0, 0);
-                player5.setX(arrBoard.get(player5.getPlacement()).getTileX() + 3);
-                player5.setY(arrBoard.get(player5.getPlacement()).getTileY() + 3);
-
-                break;
-            case 6:
-                scarlet = BitmapFactory.decodeResource(this.getResources(), R.drawable.scarlet);
-                scarlet = Bitmap.createScaledBitmap(scarlet, 31, 30, true);
-                white = BitmapFactory.decodeResource(this.getResources(), R.drawable.white);
-                white = Bitmap.createScaledBitmap(white, 30, 30, true);
-                plum = BitmapFactory.decodeResource(this.getResources(), R.drawable.plum);
-                plum = Bitmap.createScaledBitmap(plum, 30, 30, true);
-                mustard = BitmapFactory.decodeResource(this.getResources(), R.drawable.mustard);
-                mustard = Bitmap.createScaledBitmap(mustard, 34, 30, true);
-                green = BitmapFactory.decodeResource(this.getResources(), R.drawable.green);
-                green = Bitmap.createScaledBitmap(green, 30, 30, true);
-                peacock = BitmapFactory.decodeResource(this.getResources(), R.drawable.peacock);
-                peacock = Bitmap.createScaledBitmap(peacock, 30, 30, true);
-
-                player1 = new Player(scarlet, 468, 0, 0);
-                player1.setX(arrBoard.get(player1.getPlacement()).getTileX() + 3);
-                player1.setY(arrBoard.get(player1.getPlacement()).getTileY() + 3);
-
-                turn = player1;
-
-                player2 = new Player(white, 476, 0, 0);
-                player2.setX(arrBoard.get(player2.getPlacement()).getTileX() + 5);
-                player2.setY(arrBoard.get(player2.getPlacement()).getTileY() + 3);
-
-                player3 = new Player(plum, 330, 0, 0);
-                player3.setX(arrBoard.get(player3.getPlacement()).getTileX() + 4);
-                player3.setY(arrBoard.get(player3.getPlacement()).getTileY() + 6);
-
-                player4 = new Player(mustard, 351, 0, 0);
-                player4.setX(arrBoard.get(player4.getPlacement()).getTileX() + 1);
-                player4.setY(arrBoard.get(player4.getPlacement()).getTileY() + 3);
-
-                player5 = new Player(green, 14, 0, 0);
-                player5.setX(arrBoard.get(player5.getPlacement()).getTileX() + 3);
-                player5.setY(arrBoard.get(player5.getPlacement()).getTileY() + 3);
-
-                player6 = new Player(peacock, 7, 0, 0);
-                player6.setX(arrBoard.get(player6.getPlacement()).getTileX() + 3);
-                player6.setY(arrBoard.get(player6.getPlacement()).getTileY() + 5);
-                break;
-            default:
-                scarlet = BitmapFactory.decodeResource(this.getResources(), R.drawable.scarlet);
-                scarlet = Bitmap.createScaledBitmap(scarlet, 30, 30, true);
-                white = BitmapFactory.decodeResource(this.getResources(), R.drawable.white);
-                white = Bitmap.createScaledBitmap(white, 30, 30, true);
-                plum = BitmapFactory.decodeResource(this.getResources(), R.drawable.plum);
-                plum = Bitmap.createScaledBitmap(plum, 30, 30, true);
-
-                player1 = new Player(scarlet, 468, 0, 0);
-                player1.setX(arrBoard.get(player1.getPlacement()).getTileX() + 3);
-                player1.setY(arrBoard.get(player1.getPlacement()).getTileY() + 3);
-
-                turn = player1;
-
-                player2 = new Player(white, 476, 0, 0);
-                player2.setX(arrBoard.get(player2.getPlacement()).getTileX() + 3);
-                player2.setY(arrBoard.get(player2.getPlacement()).getTileY() + 3);
-
-                player3 = new Player(plum, 330, 0, 0);
-                player3.setX(arrBoard.get(player3.getPlacement()).getTileX() + 4);
-                player3.setY(arrBoard.get(player3.getPlacement()).getTileY() + 6);
-
-        }
-
 
         handler = new Handler();
         r = new Runnable() {
@@ -349,36 +272,9 @@ public class GameView extends View {
         canvas.drawBitmap(kitchen, 715, 1135, null);
 
 
-        //draws player pieces based on how many players
-        switch (number_of_players) {
-            case 4:
-                canvas.drawBitmap(player1.getBm(), player1.getX(), player1.getY(), null);
-                canvas.drawBitmap(player2.getBm(), player2.getX(), player2.getY(), null);
-                canvas.drawBitmap(player3.getBm(), player3.getX(), player3.getY(), null);
-                canvas.drawBitmap(player4.getBm(), player4.getX(), player4.getY(), null);
-                break;
-            case 5:
-                canvas.drawBitmap(player1.getBm(), player1.getX(), player1.getY(), null);
-                canvas.drawBitmap(player2.getBm(), player2.getX(), player2.getY(), null);
-                canvas.drawBitmap(player3.getBm(), player3.getX(), player3.getY(), null);
-                canvas.drawBitmap(player4.getBm(), player4.getX(), player4.getY(), null);
-                canvas.drawBitmap(player5.getBm(), player5.getX(), player5.getY(), null);
-                break;
-            case 6:
-                canvas.drawBitmap(player1.getBm(), player1.getX(), player1.getY(), null);
-                canvas.drawBitmap(player2.getBm(), player2.getX(), player2.getY(), null);
-                canvas.drawBitmap(player3.getBm(), player3.getX(), player3.getY(), null);
-                canvas.drawBitmap(player4.getBm(), player4.getX(), player4.getY(), null);
-                canvas.drawBitmap(player5.getBm(), player5.getX(), player5.getY(), null);
-                canvas.drawBitmap(player6.getBm(), player6.getX(), player6.getY(), null);
-                break;
-            default:
-                canvas.drawBitmap(player1.getBm(), player1.getX(), player1.getY(), null);
-                canvas.drawBitmap(player2.getBm(), player2.getX(), player2.getY(), null);
-                canvas.drawBitmap(player3.getBm(), player3.getX(), player3.getY(), null);
-        }
+        //draws player pieces
+        canvas.drawBitmap(player.getBm(), player.getX(), player.getY(), null);
         handler.postDelayed(r, 100);
-
     }
 
     public static void TurnLeft() {
@@ -390,7 +286,7 @@ public class GameView extends View {
             for (int i = 0; i <= element.getRoom().length-1; i++) {
 
                 //If the next move placement matches any of the border placement
-                if (String.valueOf(turn.getPlacement() - 1).equals(element.getRoom()[i][0])) {
+                if (String.valueOf(player.getPlacement() - 1).equals(element.getRoom()[i][0])) {
                     //If there's a border moving right
                     if(element.getRoom()[i][element.getRoom()[i].length - 1].equals("right")){
                         //There is a border there that the player can't move through
@@ -407,10 +303,10 @@ public class GameView extends View {
         //After the scan of all the room's border's, if there was no border detected, then
         //it's ok to move there
         if(!border){
-            n--;
-            turn.setPlacement(turn.getPlacement() - 1);
-            turn.setX(GameView.arrBoard.get(turn.getPlacement()).getTileX() + 3);
-            turn.setY(GameView.arrBoard.get(turn.getPlacement()).getTileY() + 3);
+            moves--;
+            player.setPlacement(player.getPlacement() - 1);
+            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
+            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
         }
         System.out.println("---------------------------------------- \n\n");
     }
@@ -424,7 +320,7 @@ public class GameView extends View {
             for (int i = 0; i <= element.getRoom().length-1; i++) {
 
                 //If the next move placement matches any of the border placement
-                if (String.valueOf(turn.getPlacement() + 1).equals(element.getRoom()[i][0])) {
+                if (String.valueOf(player.getPlacement() + 1).equals(element.getRoom()[i][0])) {
                     //If there's a border moving left
                     if(element.getRoom()[i][element.getRoom()[i].length-1]=="left"){
                         //There is a border there that the player can't move through
@@ -440,10 +336,10 @@ public class GameView extends View {
         //After the scan of all the room's border's, if there was no border detected, then
         //it's ok to move there
         if (!border){
-            n--;
-            turn.setPlacement(turn.getPlacement() + 1);
-            turn.setX(GameView.arrBoard.get(turn.getPlacement()).getTileX() + 3);
-            turn.setY(GameView.arrBoard.get(turn.getPlacement()).getTileY() + 3);
+            moves--;
+            player.setPlacement(player.getPlacement() + 1);
+            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
+            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
 
         }
         System.out.println("---------------------------------------- \n\n");
@@ -456,7 +352,7 @@ public class GameView extends View {
         for (Room element : total_rooms) {
             for (int i = 0; i <= element.getRoom().length-1; i++) {
                 //If the next move placement matches any of the border placement
-                if (String.valueOf(turn.getPlacement() - 22).equals(element.getRoom()[i][0])) {
+                if (String.valueOf(player.getPlacement() - 22).equals(element.getRoom()[i][0])) {
                     //If there's a border moving down
                     if(element.getRoom()[i][1]=="down"){
                         //There is a border there that the player can't move through
@@ -473,10 +369,10 @@ public class GameView extends View {
         //After the scan of all the room's border's, if there was no border detected, then
         //it's ok to move there
         if(!border){
-            n--;
-            turn.setPlacement(turn.getPlacement() - 22);
-            turn.setX(GameView.arrBoard.get(turn.getPlacement()).getTileX() + 3);
-            turn.setY(GameView.arrBoard.get(turn.getPlacement()).getTileY() + 3);
+            moves--;
+            player.setPlacement(player.getPlacement() - 22);
+            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
+            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
         }
         System.out.println("---------------------------------------- \n\n");
 
@@ -489,7 +385,7 @@ public class GameView extends View {
         for (Room element : total_rooms) {
             for (int i = 0; i <= element.getRoom().length-1; i++) {
                 //If the next move placement matches any of the border placement
-                if (String.valueOf(turn.getPlacement() + 22).equals(element.getRoom()[i][0])) {
+                if (String.valueOf(player.getPlacement() + 22).equals(element.getRoom()[i][0])) {
                     //If there's a border moving up
                     if(element.getRoom()[i][1]=="up"){
                         //There is a border there that the player can't move through
@@ -505,10 +401,10 @@ public class GameView extends View {
         //After the scan of all the room's border's, if there was no border detected, then
         //it's ok to move there
         if(!border){
-            n--;
-            turn.setPlacement(turn.getPlacement() + 22);
-            turn.setX(GameView.arrBoard.get(turn.getPlacement()).getTileX() + 3);
-            turn.setY(GameView.arrBoard.get(turn.getPlacement()).getTileY() + 3);
+            moves--;
+            player.setPlacement(player.getPlacement() + 22);
+            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
+            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
         }
         System.out.println("---------------------------------------- \n\n");
     }

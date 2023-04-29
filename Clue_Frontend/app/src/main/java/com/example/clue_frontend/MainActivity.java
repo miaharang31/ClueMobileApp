@@ -1,7 +1,5 @@
 package com.example.clue_frontend;
 
-import static com.example.clue_frontend.GamePlay.GameView.turn;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -61,9 +59,11 @@ public class MainActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//            Intent intent = new Intent(MainActivity.this, Home.class);
-                Intent intent = new Intent(MainActivity.this, Home.class);
-//            startActivity(intent);
+                //Intent intent = new Intent(MainActivity.this, Home.class);
+                //Intent intent = new Intent(MainActivity.this, Game.class);
+                Intent intent = new Intent(MainActivity.this, CharacterSelection.class);
+                startActivity(intent);
+
                 EditText username = findViewById(R.id.loginUsername);
                 EditText password = findViewById(R.id.loginPassword);
                 String usernameData = username.getText().toString();
@@ -97,8 +97,8 @@ public class MainActivity extends AppCompatActivity {
 
                     // if all textboxes are correct, all data will be added to the SecondActivity (main page for either regular/premium users) and will start
                     if (checkUsername == true && checkPassword == true){
-//                        String url = "http://coms-309-038.class.las.iastate.edu:8080/login";
-                        String url = "http://10.0.2.2:8080/login";
+                        String url = "http://coms-309-038.class.las.iastate.edu:8080/login";
+//                        String url = "http://10.0.2.2:8080/login";
                         RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
                         JSONObject json = null;
                         try {
@@ -152,6 +152,9 @@ public class MainActivity extends AppCompatActivity {
                                                 MyApplication app = (MyApplication) getApplication();
                                                 try {
                                                     app.setUserid((Integer) response.get("id"));
+                                                    app.setFirstname(response.get("firstname").toString());
+                                                    app.setLastname(response.get("lastname").toString());
+                                                    app.setUsername(response.get("username").toString());
                                                 } catch (JSONException e) {
                                                     throw new RuntimeException(e);
                                                 }
@@ -183,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(MainActivity.this, EndGameWinOrLose.class);
+                Intent intent = new Intent(MainActivity.this, UserSignUp.class);
 
                 startActivity(intent);
 

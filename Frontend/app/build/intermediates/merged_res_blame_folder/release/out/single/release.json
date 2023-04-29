@@ -1,0 +1,434 @@
+[
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.clue_frontend.app-main-30:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/layout_activity_dice_roller.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/layout/activity_dice_roller.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_logout.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/logout.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_rope_card.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/rope_card.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_peacock_start.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/peacock_start.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_kitchen.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/kitchen.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/font_aladin.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/font/aladin.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.clue_frontend.app-main-30:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_mustard.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/mustard.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.clue_frontend.app-main-30:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_empty.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/empty.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_dice5.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/dice5.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/xml_backup_rules.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_study.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/study.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_white_start.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/white_start.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_personsymbol.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/personsymbol.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_weaponsymbol.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/weaponsymbol.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.clue_frontend.app-main-30:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_settings.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/settings.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_billiard_card.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/billiard_card.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_library_card.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/library_card.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_dice6.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/dice6.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_roomsymbol.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/roomsymbol.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_lounge_card.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/lounge_card.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_account_circle.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/account_circle.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_green.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/green.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/layout_board.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/layout/board.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_scarlet_card.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/scarlet_card.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/layout_navigation_header.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/layout/navigation_header.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_hall_card.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/hall_card.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_dining_card.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/dining_card.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_conservatory_card.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/conservatory_card.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/layout_activity_checklist.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/layout/activity_checklist.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_white.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/white.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.clue_frontend.app-main-30:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/layout_card_layout.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/layout/card_layout.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/font_abhaya_libre.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/font/abhaya_libre.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/layout_rules_page.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/layout/rules_page.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_plum_start.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/plum_start.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_ballroom_card.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/ballroom_card.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_wrench_card.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/wrench_card.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/menu_nav_menu.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/menu/nav_menu.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_background.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/background.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/layout_activity_home.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/layout/activity_home.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/layout_activity_character_selection.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/layout/activity_character_selection.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/layout_activity_joinlobby.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/layout/activity_joinlobby.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_mustard_start.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/mustard_start.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_dinning_room.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/dinning_room.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_dark.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/dark.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_clue.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/clue.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.clue_frontend.app-main-30:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_light.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/light.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_peacock.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/peacock.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_billiard_room.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/billiard_room.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_up_icon.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/up_icon.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_mustard_card.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/mustard_card.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_lounge.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/lounge.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_conservatory.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/conservatory.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_ball_room.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/ball_room.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_hall.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/hall.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/layout_activity_end_game_win_or_lose.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/layout/activity_end_game_win_or_lose.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_dice2.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/dice2.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.clue_frontend.app-main-30:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/layout_six_cards.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/layout/six_cards.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_revolver_card.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/revolver_card.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_study_card.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/study_card.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/layout_card_look.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/layout/card_look.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_candlestick_card.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/candlestick_card.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/layout_activity_main.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_rounded_behind_text.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/rounded_behind_text.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/layout_activity_account_status.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/layout/activity_account_status.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_question_mark.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/question_mark.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.clue_frontend.app-main-30:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_dice3.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/dice3.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/font_abhaya_libre_bold.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/font/abhaya_libre_bold.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.clue_frontend.app-main-30:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/font_abhaya_libre_extrabold.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/font/abhaya_libre_extrabold.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/layout_activity_end_game_other_players.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/layout/activity_end_game_other_players.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/layout_open_cards_layout.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/layout/open_cards_layout.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_green_start.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/green_start.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_name_on_card.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/name_on_card.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_back_of_card.jpg.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/back_of_card.jpg"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/font_abhaya_libre_medium.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/font/abhaya_libre_medium.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_scarlet.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/scarlet.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/layout_cards.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/layout/cards.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_checklist_button.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/checklist_button.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_dice4.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/dice4.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_card_layout.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/card_layout.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/layout_activity_player_guess.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/layout/activity_player_guess.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_library.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/library.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_kitchen_card.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/kitchen_card.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_lead_pipe_card.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/lead_pipe_card.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "com.example.clue_frontend.app-pngs-24:/drawable-anydpi-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/layout_activity_hostlobby.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/layout/activity_hostlobby.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_dice1.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/dice1.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/mipmap-anydpi-v33_ic_launcher.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/mipmap-anydpi-v33/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.clue_frontend.app-main-30:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/layout_activity_lobby.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/layout/activity_lobby.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_exit_x.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/exit_x.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_plum.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/plum.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_knife_card.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/knife_card.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/layout_activity_user_sign_up.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/layout/activity_user_sign_up.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_rounded_corner_view.xml.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/rounded_corner_view.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/drawable_scarlet_start.png.flat",
+        "source": "com.example.clue_frontend.app-main-30:/drawable/scarlet_start.png"
+    }
+]

@@ -19,16 +19,6 @@ public class Home extends AppCompatActivity /*implements NavigationView.OnNaviga
     Button host;
     Button rules;
     Button settings;
-
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        if(drawerToggle.onOptionsItemSelected(item)){
-//            return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
-
-//    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +66,13 @@ public class Home extends AppCompatActivity /*implements NavigationView.OnNaviga
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Home.this, Rules.class);
+                startActivity(intent);
+            }
+        });
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Home.this, Settings.class);
                 startActivity(intent);
             }
         });

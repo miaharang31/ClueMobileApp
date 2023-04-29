@@ -10,6 +10,10 @@ public class MyApplication extends Application {
     private int lobbyid;
     private int infoid;
 
+    private String username;
+    private String firstname;
+    private String lastname;
+
     private boolean isHost;
 
     private int usersplaying;
@@ -45,6 +49,42 @@ public class MyApplication extends Application {
     public WebSocketClient getGameClient() {
         return gameClient;
     }
+    public void resetCards() {
+        mustard = false;
+        plum = false;
+        green = false;
+        peacock = false;
+        white = false;
+        scarlet = false;
+        knife = false;
+        candlestick = false;
+        leadpipe = false;
+        rope = false;
+        revolver = false;
+        wrench = false;
+        hall = false;
+        library = false;
+        lounge = false;
+        kitchen = false;
+        dining = false;
+        billiard = false;
+        ballroom = false;
+        conservatory = false;
+        study = false;
+    }
+    public void endGame() {
+        lobbyid = 0;
+        gameid = 0;
+        infoid = 0;
+        isHost = false;
+        usersplaying = 0;
+        resetCards();
+    }
+    public void clear() {
+        userid = 0;
+        endGame();
+    }
+
 
     public int getLobbyid() {return lobbyid;}
     public int getGameid() {return gameid;}
@@ -243,5 +283,29 @@ public class MyApplication extends Application {
 
     public boolean isHost() {
         return isHost;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 }

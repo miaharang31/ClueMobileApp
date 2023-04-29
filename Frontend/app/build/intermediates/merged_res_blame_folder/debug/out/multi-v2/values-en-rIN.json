@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rIN\\values-en-rIN.xml",
+            "outputFile": "com.example.clue_frontend.app-mergeDebugResources-27:/values-en-rIN/values-en-rIN.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\emily\\.gradle\\caches\\transforms-3\\76e9d6a6a7fc78f4e49badf73a9a9a66\\transformed\\core-1.9.0\\res\\values-en-rIN\\values-en-rIN.xml",
+                    "source": "C:\\Users\\piper\\.gradle\\caches\\transforms-3\\48da4d468f697fb0fb5d56e4c7c822b9\\transformed\\core-1.9.0\\res\\values-en-rIN\\values-en-rIN.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\emily\\.gradle\\caches\\transforms-3\\19ba0ca1d79fa4c69fb11c37762c3d01\\transformed\\appcompat-1.6.0\\res\\values-en-rIN\\values-en-rIN.xml",
+                    "source": "C:\\Users\\piper\\.gradle\\caches\\transforms-3\\901bd1e79ca3a5e2188025eed5ecc80d\\transformed\\appcompat-1.6.1\\res\\values-en-rIN\\values-en-rIN.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

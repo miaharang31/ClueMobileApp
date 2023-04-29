@@ -35,8 +35,54 @@ android {
     }
 }
 
-dependencies {
 
+task myassemble(type: GradleBuild) {
+    tasks = ['assemble']
+}
+
+task javadoc(type: Javadoc, dependsOn: 'myassemble') {
+    doFirst {
+        configurations.implementation
+                .filter { it.name.endsWith('.aar') }
+                .each { aar ->
+                    copy {
+                        from zipTree(aar)
+                        include "**/classes.jar"
+                        into "$buildDir/tmp/aarsToJars/${aar.name.replace('.aar', '')}/"
+                    }
+                }
+        copy {
+            from "$buildDir/generated/data_binding_base_class_source_out/debug/out/com/example/clue_frontend"
+            into 'src/main/java/com/example/clue_frontend'
+        }
+    }
+
+    configurations.implementation.setCanBeResolved(true)
+    classpath = files(new File("${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"))
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    classpath += configurations.implementation
+    classpath += fileTree(dir: "$buildDir/tmp/aarsToJars/")
+    //classpath += fileTree(dir: "$buildDir/generated/")
+
+    android.applicationVariants.all { variant ->
+        if (variant.name == 'release') {
+            owner.classpath += variant.javaCompileProvider.get().classpath
+        }
+    }
+    source = android.sourceSets.main.java.srcDirs
+    destinationDir = file("${project.buildDir}/outputs/javadoc/")
+    options.memberLevel = JavadocMemberLevel.PRIVATE
+    failOnError false
+    exclude '**/R.java'
+
+    doLast{
+        delete 'src/main/java/com/example/clue_frontend/databinding'
+    }
+}
+
+
+
+dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'

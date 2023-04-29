@@ -19,6 +19,7 @@ import com.example.clue_frontend.Lobbies.HostLobby;
 public class Rules extends AppCompatActivity {
 
     Button home;
+    Button settings;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,12 +27,20 @@ public class Rules extends AppCompatActivity {
         TextView objective = (TextView) findViewById(R.id.rulesText);
         TextView goal = (TextView) findViewById(R.id.objectives);
         home = (Button) findViewById(R.id.account_button);
+        settings = (Button) findViewById(R.id.setting_btn);
         goal.setMovementMethod(new ScrollingMovementMethod());
         objective.setMovementMethod(new ScrollingMovementMethod());
         home.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(Rules.this, Home.class);
+                startActivity(intent);
+            }
+        });
+        settings.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(Rules.this, Settings.class);
                 startActivity(intent);
             }
         });
