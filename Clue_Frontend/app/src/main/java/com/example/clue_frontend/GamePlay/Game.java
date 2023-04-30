@@ -56,7 +56,7 @@ public class Game extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("Line 37, In Game class");
+        System.out.println("Line 59, In Game class");
         super.onCreate(savedInstanceState);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAGS_CHANGED, WindowManager.LayoutParams.FLAGS_CHANGED);
         DisplayMetrics dm = new DisplayMetrics();
@@ -64,12 +64,12 @@ public class Game extends AppCompatActivity {
         Constraints.SCREEN_WIDTH = dm.widthPixels;
         Constraints.SCREEN_HEIGHT = dm.heightPixels;
 
-        characterSelected = getCharacter();
-        System.out.println("Line 46, In Game class, character selected: " + characterSelected);
-
 
         relativeLayout = findViewById(R.id.relative_layout);
         swipeListener = new SwipeListener(relativeLayout);
+
+        characterSelected = getCharacter();
+        System.out.println("Line 72, In Game class, character selected: " + characterSelected);
 
         setContentView(R.layout.board);
         send = (Button) findViewById(R.id.button);
@@ -102,9 +102,10 @@ public class Game extends AppCompatActivity {
     public String getCharacter(){
         RequestQueue queue = Volley.newRequestQueue(Game.this);
         MyApplication app = (MyApplication) getApplication();
+        System.out.println("Line 105, In Game class, in characterSelected method ");
 
-//        String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/role/" + app.getUserid();
-        String url = "http://10.0.2.2:8080/info/player/role/" + app.getUserid();
+        String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/role/" + app.getUserid();
+//        String url = "http://10.0.2.2:8080/info/player/role/" + app.getUserid();
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
 
@@ -113,7 +114,7 @@ public class Game extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         try {
                             characterSelected = response.get("name").toString();
-                            System.out.println("Line 67, In Game class, characterSelected: " + characterSelected);
+                            System.out.println("Line 117, In Game class, characterSelected: " + characterSelected);
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
@@ -128,6 +129,14 @@ public class Game extends AppCompatActivity {
         queue.add(request);
         return characterSelected;
     }
+
+
+
+
+
+
+
+
 
     private void connectWebSocket() {
         app = (MyApplication) getApplication();

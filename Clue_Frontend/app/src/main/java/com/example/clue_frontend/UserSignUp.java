@@ -22,8 +22,23 @@ import com.example.clue_frontend.MainActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+//import org.testng.annotations.Test;
+
+
 
 public class UserSignUp extends AppCompatActivity {
+
+//    public static String firstNameData;
+//    public static String lastNameData;
+//    public static String emailData;
+//    public static String usernameData;
+//    public static String passwordData;
+
+    public static String firstNameData = "firstNameTest";
+    public static String lastNameData = "lastNameTest";
+    public static String emailData = "emailTest";
+    public static String usernameData = "usernameTest";
+    public static String passwordData = "passwordTest";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +64,14 @@ public class UserSignUp extends AppCompatActivity {
 
 
                 // Turns textbox data into a string without whitespace
-                String firstNameData = firstName.getText().toString().trim();
-                String lastNameData = lastName.getText().toString().trim();
-                String emailData = email.getText().toString().trim();
-                String usernameData = username.getText().toString().trim();
-                String passwordData = password.getText().toString().trim();
+//                firstNameData = firstName.getText().toString().trim();
+//                lastNameData = lastName.getText().toString().trim();
+//                emailData = email.getText().toString().trim();
+//                usernameData = username.getText().toString().trim();
+//                passwordData = password.getText().toString().trim();
+
+
+
 
                 //checks if the first name textbox is empty and if so, it'll put following error on that textbox.
                 //if not empty, the text is correct and the correctFirstName boolean is true.
@@ -116,6 +134,8 @@ public class UserSignUp extends AppCompatActivity {
                     correctPassword = true;
                 }
 
+
+
                 // if all textboxes are correct, all data will be added to the SecondActivity (main page for either regular/premium users) and will start
                 if (correctFirstName == true && correctLastName == true && correctUsername == true && correctPassword == true && correctEmail == true){
                     //      Pipers code
@@ -124,6 +144,10 @@ public class UserSignUp extends AppCompatActivity {
 //                    intent.putExtra("emailData",emailData);
 //                    intent.putExtra("usernameData",usernameData);
 //                    intent.putExtra("passwordData",passwordData);
+
+
+
+
 
 //                    String url = "http://10.0.2.2:8080/register";
                     String url = "http://coms-309-038.class.las.iastate.edu:8080/register";
