@@ -30,7 +30,9 @@ public class ShowUsers extends AppCompatActivity {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        // TODO: display all users
+                        for(int i = 0; i < response.length(); i++){
+                            
+                        }
                     }
                 },
                 new Response.ErrorListener() {
