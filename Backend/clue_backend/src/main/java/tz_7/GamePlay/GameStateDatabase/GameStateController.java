@@ -126,7 +126,7 @@ public class GameStateController {
         return state;
     }
 
-    @PutMapping(value = "game/{id}/distributeCards")
+    @PutMapping(value = "/{id}/distributeCards")
     public GameState distributeCards(@PathVariable Integer id) {
         GameState state = repo.findById(id).get();
         Set<Player> players = state.getTurnOrder();
@@ -251,7 +251,7 @@ public class GameStateController {
     @ApiResponse(responseCode = "403", description = "forbidden!")
     @ApiResponse(responseCode = "401", description = "not authorized!")
     @ApiResponse(responseCode = "200", description = "Success!")
-    @GetMapping(value = "/checkGuess/{id}", consumes = "application/json")
+    @GetMapping(value = "/{id}/checkGuess", consumes = "application/json")
     public Boolean checkGuess (@RequestBody Set<Card> guess, @PathVariable Integer id) {
         GameState state = repo.getById(id);
         return state.checkFinalGuess(guess);

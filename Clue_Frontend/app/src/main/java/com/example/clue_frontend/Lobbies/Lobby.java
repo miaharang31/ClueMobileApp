@@ -217,7 +217,8 @@ public class Lobby extends AppCompatActivity {
                             new Response.ErrorListener() {
                                 @Override
                                 public void onErrorResponse(VolleyError error) {
-//                                    TODO: Handle error
+                                    Toast.makeText(Lobby.this, "Error: " + error, Toast.LENGTH_SHORT).show();
+                                    Log.d("ResponseError", error.toString());
                                 }
                             });
                 }
