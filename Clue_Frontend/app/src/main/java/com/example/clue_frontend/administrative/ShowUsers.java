@@ -3,6 +3,7 @@ package com.example.clue_frontend.administrative;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -35,7 +36,7 @@ public class ShowUsers extends AppCompatActivity {
                 new Response.ErrorListener() {
 
                     public void onErrorResponse(VolleyError error) {
-                        //TODO: toast
+                        Toast.makeText(ShowUsers.this, "Error: " + error, Toast.LENGTH_SHORT).show();
                     }
                 });
         queue.add(request);

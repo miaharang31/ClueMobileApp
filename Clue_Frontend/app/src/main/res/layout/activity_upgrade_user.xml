@@ -8,7 +8,7 @@
     tools:context=".administrative.UpgradeUser">
 
     <TextView
-        android:id="@+id/firstNameText"
+        android:id="@+id/usernameText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
