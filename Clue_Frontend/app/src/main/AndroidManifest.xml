@@ -20,6 +20,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+
             android:name=".administrative.UpgradeUser"
             android:exported="false" />
         <activity
@@ -38,19 +39,21 @@
             android:name=".administrative.AdminSettings"
             android:exported="false" />
         <activity
-            android:name=".EndGameOtherPlayers"
+            android:name=".GamePlay.Player.EndGameOtherPlayers"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
         <activity
-            android:name=".EndGameWinOrLose"
+            android:name=".GamePlay.Player.EndGameWinOrLose"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
         <activity
-            android:name=".DiceRoller"
+            android:name=".GamePlay.DiceRoller"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
+
+
         <activity
-            android:name=".GamePlay.Checklist"
+            android:name=".GamePlay.Player.Checklist"/>
             android:exported="false" />
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -90,10 +93,10 @@
             android:name=".GamePlay.CardLayout"
             android:label="Cards" />
         <activity
-            android:name=".GamePlay.playerGuess"
+            android:name=".GamePlay.Player.playerGuess"
             android:label="playerGuess" />
         <activity
-            android:name=".GamePlay.CharacterSelection"
+            android:name=".GamePlay.Player.CharacterSelection"
             android:label="Clue" />
         <activity
             android:name=".MainActivity"

@@ -7,6 +7,7 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.clue_frontend.GamePlay.Player.Checklist;
 import com.example.clue_frontend.R;
 
 public class CardButton extends AppCompatActivity {

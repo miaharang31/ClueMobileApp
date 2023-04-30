@@ -19,7 +19,7 @@
         android:scrollbarStyle="insideOverlay"
         android:scrollbars="vertical"
         app:layout_constraintCircleRadius="10dp"
-        tools:context=".GamePlay.playerGuess">
+        tools:context=".GamePlay.Player.playerGuess">
         <Button
             android:id="@+id/exit_checklist_btn"
             android:layout_width="25dp"

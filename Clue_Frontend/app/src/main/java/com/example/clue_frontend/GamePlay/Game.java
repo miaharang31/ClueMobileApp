@@ -24,6 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.clue_frontend.GamePlay.Player.playerGuess;
 import com.example.clue_frontend.MyApplication;
 
 import com.example.clue_frontend.R;
@@ -158,6 +159,7 @@ public class Game extends AppCompatActivity {
                 @Override
                 public void onOpen(ServerHandshake handshake) {
                     Log.d("OPEN", "run() returned: " + "is connecting");
+
                 }
 
                 @Override
