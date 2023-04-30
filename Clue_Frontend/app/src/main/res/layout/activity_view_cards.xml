@@ -72,28 +72,28 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="#520120"
                     android:paddingLeft="5dp"
-                    android:src="@drawable/mustard_card" />
+                    android:src="@drawable/scarlet_card" />
 
                 <ImageView
                     android:id="@+id/plumCard"
                     android:layout_width="295dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="5dp"
-                    android:src="@drawable/plum" />
+                    android:src="@drawable/scarlet_card" />
 
                 <ImageView
                     android:id="@+id/greenCard"
                     android:layout_width="295dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="10dp"
-                    android:src="@drawable/green" />
+                    android:src="@drawable/scarlet_card" />
 
                 <ImageView
                     android:id="@+id/peacockCard"
                     android:layout_width="295dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="10dp"
-                    android:src="@drawable/peacock" />
+                    android:src="@drawable/scarlet_card" />
 
                 <ImageView
                     android:id="@+id/scarletCard"
@@ -108,7 +108,7 @@
                     android:layout_height="match_parent"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:src="@drawable/white" />
+                    android:src="@drawable/scarlet_card" />
 
             </LinearLayout>
         </HorizontalScrollView>
@@ -165,7 +165,7 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="#520120"
                     android:paddingLeft="5dp"
-                    android:src="@drawable/knife_card" />
+                    android:src="@drawable/candlestick_card" />
 
                 <ImageView
                     android:id="@+id/candlestickCard"
@@ -179,21 +179,21 @@
                     android:layout_width="295dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="10dp"
-                    android:src="@drawable/revolver_card" />
+                    android:src="@drawable/candlestick_card" />
 
                 <ImageView
                     android:id="@+id/ropeCard"
                     android:layout_width="295dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="10dp"
-                    android:src="@drawable/rope_card" />
+                    android:src="@drawable/candlestick_card" />
 
                 <ImageView
                     android:id="@+id/pipeCard"
                     android:layout_width="295dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="10dp"
-                    android:src="@drawable/lead_pipe_card" />
+                    android:src="@drawable/candlestick_card" />
 
                 <ImageView
                     android:id="@+id/wrenchCard"
@@ -201,7 +201,7 @@
                     android:layout_height="match_parent"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:src="@drawable/wrench_card" />
+                    android:src="@drawable/candlestick_card" />
             </LinearLayout>
         </HorizontalScrollView>
 
@@ -257,35 +257,35 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="#520120"
                     android:paddingLeft="5dp"
-                    android:src="@drawable/hall_card" />
+                    android:src="@drawable/conservatory_card" />
 
                 <ImageView
                     android:id="@+id/loungeCard"
                     android:layout_width="295dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="5dp"
-                    android:src="@drawable/lounge_card" />
+                    android:src="@drawable/conservatory_card" />
 
                 <ImageView
                     android:id="@+id/diningRoomCard"
                     android:layout_width="295dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="10dp"
-                    android:src="@drawable/dining_card" />
+                    android:src="@drawable/conservatory_card" />
 
                 <ImageView
                     android:id="@+id/kitchenCard"
                     android:layout_width="295dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="10dp"
-                    android:src="@drawable/kitchen_card" />
+                    android:src="@drawable/conservatory_card" />
 
                 <ImageView
                     android:id="@+id/ballroomCard"
                     android:layout_width="295dp"
                     android:layout_height="match_parent"
                     android:paddingLeft="10dp"
-                    android:src="@drawable/ballroom_card" />
+                    android:src="@drawable/conservatory_card" />
 
                 <ImageView
                     android:id="@+id/conservatoryCard"
@@ -301,7 +301,7 @@
                     android:layout_height="match_parent"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:src="@drawable/billiard_card" />
+                    android:src="@drawable/conservatory_card" />
 
                 <ImageView
                     android:id="@+id/libraryCard"
@@ -309,7 +309,7 @@
                     android:layout_height="match_parent"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:src="@drawable/library_card" />
+                    android:src="@drawable/conservatory_card" />
 
                 <ImageView
                     android:id="@+id/studyCard"
@@ -317,7 +317,7 @@
                     android:layout_height="match_parent"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:src="@drawable/study_card" />
+                    android:src="@drawable/conservatory_card" />
 
             </LinearLayout>
 
