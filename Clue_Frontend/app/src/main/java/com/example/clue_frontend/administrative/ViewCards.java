@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -69,8 +70,8 @@ public class ViewCards extends AppCompatActivity {
                             try {
                                 JSONObject card = response.getJSONObject(i);
                                 Resources res = context.getResources();
-//                                System.out.println(card.getString("cardImage"));
-                                int id = res.getIdentifier(card.getString("cardImage"), "drawable", null);
+                                Log.d("Suspect", card.getString("cardImage"));
+                                int id = res.getIdentifier(card.getString("cardImage"), "drawable", getPackageName());
 //                                Drawable d = ResourcesCompat.getDrawable(res, R.drawable.mustard, null);
                                 suspects[i].setImageDrawable(res.getDrawable(id));
 //                                        (response.getJSONObject(i).getInt("Mustard"));
