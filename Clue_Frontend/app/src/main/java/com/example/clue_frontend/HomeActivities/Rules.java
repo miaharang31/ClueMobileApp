@@ -1,20 +1,15 @@
-package com.example.clue_frontend;
+package com.example.clue_frontend.HomeActivities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
-import android.util.DisplayMetrics;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.clue_frontend.Lobbies.HostLobby;
+import com.example.clue_frontend.R;
 
 public class Rules extends AppCompatActivity {
 

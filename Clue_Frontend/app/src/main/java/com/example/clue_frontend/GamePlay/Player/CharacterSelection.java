@@ -1,4 +1,4 @@
-package com.example.clue_frontend.GamePlay;
+package com.example.clue_frontend.GamePlay.Player;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,7 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.clue_frontend.Lobbies.Lobby;
+import com.example.clue_frontend.GamePlay.Game;
 import com.example.clue_frontend.MyApplication;
 
 import com.example.clue_frontend.R;

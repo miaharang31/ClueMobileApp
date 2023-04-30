@@ -10,7 +10,8 @@ import android.os.Handler;
 
 import androidx.annotation.Nullable;
 
-import com.example.clue_frontend.DiceRoller;
+import com.example.clue_frontend.GamePlay.Player.Player;
+import com.example.clue_frontend.GamePlay.DiceRoller;
 import com.example.clue_frontend.R;
 
 import java.util.ArrayList;

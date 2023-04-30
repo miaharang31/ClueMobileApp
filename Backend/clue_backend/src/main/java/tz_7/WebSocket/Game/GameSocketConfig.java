@@ -1,4 +1,4 @@
-package tz_7.WebSocket;
+package tz_7.WebSocket.Game;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

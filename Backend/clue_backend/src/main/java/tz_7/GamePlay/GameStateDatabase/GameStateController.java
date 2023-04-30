@@ -3,6 +3,8 @@ package tz_7.GamePlay.GameStateDatabase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import tz_7.CardDatabase.Card;
 import tz_7.CardDatabase.CardRepository;
 import tz_7.GamePlay.GameLobbyDatabase.GameLobby;
+import tz_7.GamePlay.GameLobbyDatabase.GameLobbyRepository;
+import tz_7.GamePlay.PlayerInfoDatabase.PlayerInfo;
+import tz_7.GamePlay.PlayerInfoDatabase.PlayerInfoRepository;
 import tz_7.PlayerDatabase.Player;
 import tz_7.PlayerDatabase.PlayerRepository;
 
@@ -24,11 +29,17 @@ import java.util.*;
  */
 @Tag(name = "GameStateController", description = "Mia Harang - related to the GameState entity. This is used for the game and how to know whose turn it is and the kind of game we are playing")
 @RestController
+@AllArgsConstructor
+@Slf4j
+@RequestMapping("/game")
 public class GameStateController {
+    private final GameLobbyRepository gameLobbyRepository;
     @Autowired
     GameStateRepository repo;
     @Autowired
     PlayerRepository playerRepository;
+    @Autowired
+    PlayerInfoRepository playerInfoRepository;
     @Autowired
     CardRepository cardRepository;
 
@@ -44,7 +55,7 @@ public class GameStateController {
     @ApiResponse(responseCode = "403", description = "forbidden!")
     @ApiResponse(responseCode = "401", description = "not authorized!")
     @ApiResponse(responseCode = "200", description = "Success!")
-    @PostMapping(value = "game/new", consumes = "application/json")
+    @PostMapping(value = "/new", consumes = "application/json")
     public GameState newState(@RequestBody GameState state) {
         Iterator<Player> players = state.getTurnOrder().iterator();
         while(players.hasNext()) {
@@ -57,11 +68,12 @@ public class GameStateController {
 
     /**
      * Creates a game based on the lobby
-     * @param lobby
-     *  Lobby to create from (JSON FORMAT)
+     * @param lobbyid
+     *  id of Lobby to create from
      */
-    @PostMapping(value = "game/lobby/new", consumes = "application/json")
-    public GameState newSocketState(@RequestBody GameLobby lobby) {
+    @PostMapping(value = "/new/lobby/{id}")
+    public GameState newSocketState(@PathVariable Integer lobbyid) {
+        GameLobby lobby = gameLobbyRepository.findById(lobbyid).get();
         GameState state = repo.findByHostID(lobby.getHost().getId());
         if(state != null) {
             deleteGame(state.getID());
@@ -89,7 +101,7 @@ public class GameStateController {
     @ApiResponse(responseCode = "403", description = "forbidden!")
     @ApiResponse(responseCode = "401", description = "not authorized!")
     @ApiResponse(responseCode = "200", description = "Success!")
-    @PutMapping(value = "/game/{id}/setcards/{type}")
+    @PutMapping(value = "/{id}/setcards/{type}")
     public GameState addCards(@PathVariable Integer id, @PathVariable String type) {
         GameState state = repo.findById(id).get();
         Set<Card> cards = cardRepository.findByType(type);
@@ -114,6 +126,24 @@ public class GameStateController {
         return state;
     }
 
+    @PutMapping(value = "/{id}/distributeCards")
+    public GameState distributeCards(@PathVariable Integer id) {
+        GameState state = repo.findById(id).get();
+        Set<Player> players = state.getTurnOrder();
+        Set<PlayerInfo> infos = new HashSet<>();
+        Iterator<Player> tmp = players.iterator();
+        while (tmp.hasNext()) {
+            infos.add(playerInfoRepository.findByPlayer(tmp.next()));
+        }
+
+//  TODO: Make iterator (for infos) and get the weapons, rooms and suspects
+//        Iterate through the infos and and set the cards for each player
+
+//        repo.save(state);
+//        playerInfoRepository.saveAll(//TODO: put info iterator here);
+        return state;
+    }
+
     /**
      * PREPARING FOR STATE DELETION
      *  Put mapping that removes the cards from the game state
@@ -125,7 +155,7 @@ public class GameStateController {
      * @return
      *  new GameState object
      */
-    @PutMapping(value = "game/{id}/removeCards/{type}")
+    @PutMapping(value = "/{id}/removeCards/{type}")
     public GameState removeCards(@PathVariable Integer id, @PathVariable String type) {
         GameState state = repo.findById(id).get();
         Set<Card> cards = cardRepository.findByType(type);
@@ -159,7 +189,7 @@ public class GameStateController {
      * @return
      *  update state object
      */
-    @PutMapping(value = "game/{id}/removePlayers")
+    @PutMapping(value = "/{id}/removePlayers")
     public GameState removePlayers(@PathVariable Integer id) {
         GameState state = repo.findById(id).get();
 
@@ -179,13 +209,12 @@ public class GameStateController {
      * @return
      *  A list of game state objects
      */
-//    TODO: Not Completely Working
     @Operation(summary = "Returns all the games", description = "Using a get request this returns all the current games being played and the games that have been played")
     @ApiResponse(responseCode = "404", description = "not found!")
     @ApiResponse(responseCode = "403", description = "forbidden!")
     @ApiResponse(responseCode = "401", description = "not authorized!")
     @ApiResponse(responseCode = "200", description = "Success!")
-    @GetMapping("game")
+    @GetMapping("/all")
     public ResponseEntity<List<GameState>> getAllStates() {
         return new ResponseEntity<List<GameState>>(repo.findAll(), HttpStatus.OK);
     }
@@ -202,7 +231,7 @@ public class GameStateController {
     @ApiResponse(responseCode = "403", description = "forbidden!")
     @ApiResponse(responseCode = "401", description = "not authorized!")
     @ApiResponse(responseCode = "200", description = "Success!")
-    @GetMapping("game/{id}/players")
+    @GetMapping("/{id}/players")
     public Set<Player> getPlayers(@PathVariable Integer id) {
         GameState state = repo.findById(id).get();
         return state.getTurnOrder();
@@ -222,7 +251,7 @@ public class GameStateController {
     @ApiResponse(responseCode = "403", description = "forbidden!")
     @ApiResponse(responseCode = "401", description = "not authorized!")
     @ApiResponse(responseCode = "200", description = "Success!")
-    @GetMapping(value = "game/checkGuess/{id}", consumes = "application/json")
+    @GetMapping(value = "/{id}/checkGuess", consumes = "application/json")
     public Boolean checkGuess (@RequestBody Set<Card> guess, @PathVariable Integer id) {
         GameState state = repo.getById(id);
         return state.checkFinalGuess(guess);
@@ -233,7 +262,7 @@ public class GameStateController {
      *  true - if all the ids match
      *  false - if the ids don't match
      */
-    @GetMapping(value = "game/{id}")
+    @GetMapping(value = "/{id}")
     public GameState getGameByID (@PathVariable Integer id) {
         GameState state = repo.getById(id);
         return state;
@@ -251,7 +280,7 @@ public class GameStateController {
     @ApiResponse(responseCode = "403", description = "forbidden!")
     @ApiResponse(responseCode = "401", description = "not authorized!")
     @ApiResponse(responseCode = "200", description = "Success!")
-    @GetMapping(value = "game/{id}/next")
+    @GetMapping(value = "/{id}/next")
     public Player getNextPlayer (@PathVariable Integer id) {
         Optional<GameState> state = repo.findById(id);
         return state.get().getNextPlayer();
@@ -263,7 +292,7 @@ public class GameStateController {
      * @param id
      *  GameState ID
      */
-    @DeleteMapping(value = "game/{id}/delete")
+    @DeleteMapping(value = "/{id}/delete")
     public void deleteGame(@PathVariable Integer id) {
         GameState state = repo.findById(id).get();
         state = removeCards(state.getID(), "w");

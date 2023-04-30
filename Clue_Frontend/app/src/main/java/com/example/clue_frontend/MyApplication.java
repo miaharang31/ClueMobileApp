@@ -13,6 +13,7 @@ public class MyApplication extends Application {
     private String username;
     private String firstname;
     private String lastname;
+    private String type;
 
     private boolean isHost;
 
@@ -94,6 +95,15 @@ public class MyApplication extends Application {
     public int getInfoid() {
         return infoid;
     }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public void setInfoid(int infoid) {
         this.infoid = infoid;
     }
