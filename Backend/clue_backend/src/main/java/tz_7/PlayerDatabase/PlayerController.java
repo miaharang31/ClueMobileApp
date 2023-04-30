@@ -69,6 +69,39 @@ public class PlayerController {
         Optional<Player> user = repository.findById(id);
         return user;
     }
+    @Operation(summary = "Returns the username based off the the ID", description = "Uses a get request to get the user by its id")
+    @ApiResponse(responseCode = "404", description = "not found!")
+    @ApiResponse(responseCode = "403", description = "forbidden!")
+    @ApiResponse(responseCode = "401", description = "not authorized!")
+    @ApiResponse(responseCode = "200", description = "Success!")
+    @GetMapping(value = "/getUser/username/{id}", produces = "application/json")
+    public String getUsernameById(@PathVariable("id") Integer id) {
+        //logger.info("Entered");
+        Player user = repository.findById(id).get();
+        return user.getUsername();
+    }
+    @Operation(summary = "Returns the user password based off the the ID", description = "Uses a get request to get the user by its id")
+    @ApiResponse(responseCode = "404", description = "not found!")
+    @ApiResponse(responseCode = "403", description = "forbidden!")
+    @ApiResponse(responseCode = "401", description = "not authorized!")
+    @ApiResponse(responseCode = "200", description = "Success!")
+    @GetMapping(value = "/getUser/password/{id}", produces = "application/json")
+    public String getPasswordById(@PathVariable("id") Integer id) {
+        //logger.info("Entered");
+        Player user = repository.findById(id).get();
+        return user.getPassword();
+    }
+    @Operation(summary = "Returns the user first name based off the the ID", description = "Uses a get request to get the user by its id")
+    @ApiResponse(responseCode = "404", description = "not found!")
+    @ApiResponse(responseCode = "403", description = "forbidden!")
+    @ApiResponse(responseCode = "401", description = "not authorized!")
+    @ApiResponse(responseCode = "200", description = "Success!")
+    @GetMapping(value = "/getUser/firstname/{id}", produces = "application/json")
+    public String getNameById(@PathVariable("id") Integer id) {
+        //logger.info("Entered");
+        Player user = repository.findById(id).get();
+        return user.getFirstname();
+    }
     @Operation(summary = "Gets id from username", description = "Uses a get request to get the id using the username")
     @ApiResponse(responseCode = "404", description = "not found!")
     @ApiResponse(responseCode = "403", description = "forbidden!")
@@ -94,12 +127,25 @@ public class PlayerController {
     @ApiResponse(responseCode = "403", description = "forbidden!")
     @ApiResponse(responseCode = "401", description = "not authorized!")
     @ApiResponse(responseCode = "200", description = "Success!")
-    @PutMapping("/changePassword/{username}")
-    public Player changePassword(@PathVariable("username") String username, @RequestBody String password) {
+    @PutMapping("/changePassword/{id}/to/{password}")
+    public Player changePassword(@PathVariable("id") int id, @PathVariable("password") String password) {
         //logger.info("Entered");
-        Player player = repository.findByUsername(username)
+        Player player = repository.findById(id)
                 .orElseThrow();
         player.setPassword(password);
+        return player;
+    }
+    @Operation(summary = "Changes the users username", description = "Uses a put request to change the users password through the username")
+    @ApiResponse(responseCode = "404", description = "not found!")
+    @ApiResponse(responseCode = "403", description = "forbidden!")
+    @ApiResponse(responseCode = "401", description = "not authorized!")
+    @ApiResponse(responseCode = "200", description = "Success!")
+    @PutMapping("/changeUsername/{id}/to/{username}")
+    public Player changeUsername(@PathVariable("id") int id, @PathVariable("username") String username) {
+        //logger.info("Entered");
+        Player player = repository.findById(id)
+                .orElseThrow();
+        player.setUsername(username);
         return player;
     }
 
@@ -108,16 +154,39 @@ public class PlayerController {
     @ApiResponse(responseCode = "403", description = "forbidden!")
     @ApiResponse(responseCode = "401", description = "not authorized!")
     @ApiResponse(responseCode = "200", description = "Success!")
-    @PutMapping("/updateType/{username}")
-    public Player upgradeToPremium(@PathVariable("username") String username, @RequestBody String account) {
+    @PutMapping("/updateType/{id}")
+    public Player upgradeToPremium(@PathVariable("id") int id) {
         //logger.info("Entered");
-        Player player = repository.findByUsername(username)
+        Player player = repository.findById(id)
                 .orElseThrow();
-        if (player.getType().equals("Basic")) {
-            player.setType("Premium");
+        if (player.getType().equals("b")) {
+            player.setType("p");
         }
         return player;
     }
+    @Operation(summary = "Changes the type of account a user has", description = "Uses a put request to change the type of the user")
+    @ApiResponse(responseCode = "404", description = "not found!")
+    @ApiResponse(responseCode = "403", description = "forbidden!")
+    @ApiResponse(responseCode = "401", description = "not authorized!")
+    @ApiResponse(responseCode = "200", description = "Success!")
+    @PutMapping("/degradeType/{id}")
+    public Player degrade(@PathVariable("id") int id) {
+        //logger.info("Entered");
+        Player player = repository.findById(id)
+                .orElseThrow();
+        if (player.getType().equals("p")) {
+            player.setType("b");
+        }
+        return player;
+    }
+
+    @GetMapping(value = "/getUserType/{id}")
+    public String returnType(@PathVariable int id) {
+        Player player = repository.findById(id)
+                .orElseThrow();
+        return player.getType();
+    }
+
 
 //    @GetMapping("/getUserByType/{type}")
 //    public List<User> getUserByType(@PathVariable String type) {

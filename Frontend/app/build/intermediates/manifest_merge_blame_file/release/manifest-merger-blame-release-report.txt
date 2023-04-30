@@ -1,0 +1,188 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.clue_frontend"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="33" />
+9-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:5:5-67
+11-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:5:22-64
+12
+13    <meta-data
+13-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:73:9-75:57
+14        android:name="preloaded_fonts"
+14-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:74:13-43
+15        android:resource="@array/preloaded_fonts" />
+15-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:75:13-54
+16
+17    <permission
+17-->[androidx.core:core:1.9.0] C:\Users\piper\.gradle\caches\transforms-3\48da4d468f697fb0fb5d56e4c7c822b9\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+18        android:name="com.example.clue_frontend.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+18-->[androidx.core:core:1.9.0] C:\Users\piper\.gradle\caches\transforms-3\48da4d468f697fb0fb5d56e4c7c822b9\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+19        android:protectionLevel="signature" />
+19-->[androidx.core:core:1.9.0] C:\Users\piper\.gradle\caches\transforms-3\48da4d468f697fb0fb5d56e4c7c822b9\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+20
+21    <uses-permission android:name="com.example.clue_frontend.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+21-->[androidx.core:core:1.9.0] C:\Users\piper\.gradle\caches\transforms-3\48da4d468f697fb0fb5d56e4c7c822b9\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+21-->[androidx.core:core:1.9.0] C:\Users\piper\.gradle\caches\transforms-3\48da4d468f697fb0fb5d56e4c7c822b9\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+22
+23    <application
+23-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:7:5-72:19
+24        android:name="com.example.clue_frontend.MyApplication"
+24-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:8:9-38
+25        android:allowBackup="true"
+25-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:9:9-35
+26        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+26-->[androidx.core:core:1.9.0] C:\Users\piper\.gradle\caches\transforms-3\48da4d468f697fb0fb5d56e4c7c822b9\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+27        android:dataExtractionRules="@xml/data_extraction_rules"
+27-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:10:9-65
+28        android:fullBackupContent="@xml/backup_rules"
+28-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:11:9-54
+29        android:icon="@mipmap/ic_launcher"
+29-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:12:9-43
+30        android:label="@string/app_name"
+30-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:13:9-41
+31        android:supportsRtl="true"
+31-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:14:9-35
+32        android:theme="@style/Theme.Clue_Frontend"
+32-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:15:9-51
+33        android:usesCleartextTraffic="true" >
+33-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:16:9-44
+34        <activity
+34-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:18:9-20:40
+35            android:name="com.example.clue_frontend.EndGameOtherPlayers"
+35-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:19:13-48
+36            android:exported="false" />
+36-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:20:13-37
+37        <activity
+37-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:21:9-23:40
+38            android:name="com.example.clue_frontend.EndGameWinOrLose"
+38-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:22:13-45
+39            android:exported="false" />
+39-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:23:13-37
+40        <activity
+40-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:24:9-26:40
+41            android:name="com.example.clue_frontend.Checklist"
+41-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:25:13-38
+42            android:exported="false" />
+42-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:26:13-37
+43        <activity
+43-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:27:9-29:48
+44            android:name="com.example.clue_frontend.UserSignUp"
+44-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:28:13-39
+45            android:label="@string/app_name" />
+45-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:29:13-45
+46        <activity
+46-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:30:9-32:48
+47            android:name="com.example.clue_frontend.Lobbies.HostLobby"
+47-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:31:13-46
+48            android:label="@string/app_name" />
+48-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:32:13-45
+49        <activity
+49-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:33:9-35:48
+50            android:name="com.example.clue_frontend.Lobbies.JoinLobby"
+50-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:34:13-46
+51            android:label="@string/app_name" />
+51-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:35:13-45
+52        <activity
+52-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:36:9-38:48
+53            android:name="com.example.clue_frontend.Lobbies.Lobby"
+53-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:37:13-42
+54            android:label="@string/app_name" />
+54-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:38:13-45
+55        <activity
+55-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:39:9-41:40
+56            android:name="com.example.clue_frontend.DiceRoller"
+56-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:40:13-39
+57            android:exported="false" />
+57-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:41:13-37
+58        <activity
+58-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:42:9-44:48
+59            android:name="com.example.clue_frontend.GamePlay.StartGame"
+59-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:43:13-47
+60            android:label="@string/app_name" />
+60-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:44:13-45
+61        <activity
+61-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:45:9-47:48
+62            android:name="com.example.clue_frontend.GamePlay.Game"
+62-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:46:13-42
+63            android:label="@string/app_name" />
+63-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:47:13-45
+64        <activity
+64-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:48:9-50:36
+65            android:name="com.example.clue_frontend.Home"
+65-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:49:13-33
+66            android:label="Home" />
+66-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:50:13-33
+67        <activity
+67-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:51:9-53:42
+68            android:name="com.example.clue_frontend.CardButton"
+68-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:52:13-39
+69            android:label="CardButton" />
+69-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:53:13-39
+70        <activity
+70-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:54:9-56:42
+71            android:name="com.example.clue_frontend.CardLayout"
+71-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:55:13-39
+72            android:label="CardLayout" />
+72-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:56:13-39
+73        <activity
+73-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:57:9-59:43
+74            android:name="com.example.clue_frontend.GamePlay.playerGuess"
+74-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:58:13-49
+75            android:label="playerGuess" />
+75-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:59:13-40
+76        <activity
+76-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:60:9-62:36
+77            android:name="com.example.clue_frontend.GamePlay.CharacterSelection"
+77-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:61:13-56
+78            android:label="Clue" />
+78-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:62:13-33
+79        <activity
+79-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:63:9-71:20
+80            android:name="com.example.clue_frontend.MainActivity"
+80-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:64:13-41
+81            android:exported="true" >
+81-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:65:13-36
+82            <intent-filter>
+82-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:66:13-70:29
+83                <action android:name="android.intent.action.MAIN" />
+83-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:67:17-69
+83-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:67:25-66
+84
+85                <category android:name="android.intent.category.LAUNCHER" />
+85-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:69:17-77
+85-->C:\Users\piper\2_tz_7\Clue_Frontend\app\src\main\AndroidManifest.xml:69:27-74
+86            </intent-filter>
+87        </activity>
+88
+89        <provider
+89-->[androidx.emoji2:emoji2:1.2.0] C:\Users\piper\.gradle\caches\transforms-3\b534eca45ae0368be30899d5007a440e\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+90            android:name="androidx.startup.InitializationProvider"
+90-->[androidx.emoji2:emoji2:1.2.0] C:\Users\piper\.gradle\caches\transforms-3\b534eca45ae0368be30899d5007a440e\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
+91            android:authorities="com.example.clue_frontend.androidx-startup"
+91-->[androidx.emoji2:emoji2:1.2.0] C:\Users\piper\.gradle\caches\transforms-3\b534eca45ae0368be30899d5007a440e\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
+92            android:exported="false" >
+92-->[androidx.emoji2:emoji2:1.2.0] C:\Users\piper\.gradle\caches\transforms-3\b534eca45ae0368be30899d5007a440e\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
+93            <meta-data
+93-->[androidx.emoji2:emoji2:1.2.0] C:\Users\piper\.gradle\caches\transforms-3\b534eca45ae0368be30899d5007a440e\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+94                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+94-->[androidx.emoji2:emoji2:1.2.0] C:\Users\piper\.gradle\caches\transforms-3\b534eca45ae0368be30899d5007a440e\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
+95                android:value="androidx.startup" />
+95-->[androidx.emoji2:emoji2:1.2.0] C:\Users\piper\.gradle\caches\transforms-3\b534eca45ae0368be30899d5007a440e\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
+96            <meta-data
+96-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\piper\.gradle\caches\transforms-3\b0761d22b5c86c7f873b7a426ffce717\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+97                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+97-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\piper\.gradle\caches\transforms-3\b0761d22b5c86c7f873b7a426ffce717\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+98                android:value="androidx.startup" />
+98-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\piper\.gradle\caches\transforms-3\b0761d22b5c86c7f873b7a426ffce717\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+99        </provider>
+100    </application>
+101
+102</manifest>

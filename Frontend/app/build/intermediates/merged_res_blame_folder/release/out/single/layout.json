@@ -1,0 +1,86 @@
+[
+    {
+        "merged": "com.example.clue_frontend.app-mergeReleaseResources-28:/layout/card_look.xml",
+        "source": "com.example.clue_frontend.app-main-30:/layout/card_look.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-mergeReleaseResources-28:/layout/activity_end_game_other_players.xml",
+        "source": "com.example.clue_frontend.app-main-30:/layout/activity_end_game_other_players.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-mergeReleaseResources-28:/layout/activity_lobby.xml",
+        "source": "com.example.clue_frontend.app-main-30:/layout/activity_lobby.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-mergeReleaseResources-28:/layout/open_cards_layout.xml",
+        "source": "com.example.clue_frontend.app-main-30:/layout/open_cards_layout.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-mergeReleaseResources-28:/layout/activity_end_game_win_or_lose.xml",
+        "source": "com.example.clue_frontend.app-main-30:/layout/activity_end_game_win_or_lose.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-mergeReleaseResources-28:/layout/activity_joinlobby.xml",
+        "source": "com.example.clue_frontend.app-main-30:/layout/activity_joinlobby.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-mergeReleaseResources-28:/layout/activity_user_sign_up.xml",
+        "source": "com.example.clue_frontend.app-main-30:/layout/activity_user_sign_up.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-mergeReleaseResources-28:/layout/activity_dice_roller.xml",
+        "source": "com.example.clue_frontend.app-main-30:/layout/activity_dice_roller.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-mergeReleaseResources-28:/layout/navigation_header.xml",
+        "source": "com.example.clue_frontend.app-main-30:/layout/navigation_header.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-mergeReleaseResources-28:/layout/activity_main.xml",
+        "source": "com.example.clue_frontend.app-main-30:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-mergeReleaseResources-28:/layout/activity_checklist.xml",
+        "source": "com.example.clue_frontend.app-main-30:/layout/activity_checklist.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-mergeReleaseResources-28:/layout/activity_home.xml",
+        "source": "com.example.clue_frontend.app-main-30:/layout/activity_home.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-mergeReleaseResources-28:/layout/activity_hostlobby.xml",
+        "source": "com.example.clue_frontend.app-main-30:/layout/activity_hostlobby.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-mergeReleaseResources-28:/layout/activity_account_status.xml",
+        "source": "com.example.clue_frontend.app-main-30:/layout/activity_account_status.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-mergeReleaseResources-28:/layout/activity_character_selection.xml",
+        "source": "com.example.clue_frontend.app-main-30:/layout/activity_character_selection.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-mergeReleaseResources-28:/layout/rules_page.xml",
+        "source": "com.example.clue_frontend.app-main-30:/layout/rules_page.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-mergeReleaseResources-28:/layout/board.xml",
+        "source": "com.example.clue_frontend.app-main-30:/layout/board.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-mergeReleaseResources-28:/layout/activity_player_guess.xml",
+        "source": "com.example.clue_frontend.app-main-30:/layout/activity_player_guess.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-mergeReleaseResources-28:/layout/card_layout.xml",
+        "source": "com.example.clue_frontend.app-main-30:/layout/card_layout.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-mergeReleaseResources-28:/layout/cards.xml",
+        "source": "com.example.clue_frontend.app-main-30:/layout/cards.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-mergeReleaseResources-28:/layout/six_cards.xml",
+        "source": "com.example.clue_frontend.app-main-30:/layout/six_cards.xml"
+    }
+]

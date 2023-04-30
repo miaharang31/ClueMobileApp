@@ -1,90 +1,434 @@
 [
     {
-        "merged": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_peacock.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\peacock.png"
     },
     {
-        "merged": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\layout_activity_checklist.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\activity_checklist.xml"
     },
     {
-        "merged": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\build\\intermediates\\merged_res\\debug\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
-        "source": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_candlestick_card.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\candlestick_card.png"
     },
     {
-        "merged": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_lobby.xml.flat",
-        "source": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\src\\main\\res\\layout\\activity_lobby.xml"
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_mustard.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\mustard.png"
     },
     {
-        "merged": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_green_start.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\green_start.png"
     },
     {
-        "merged": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_premium.xml.flat",
-        "source": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\src\\main\\res\\layout\\activity_premium.xml"
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\layout_board.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\board.xml"
     },
     {
-        "merged": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_standard.xml.flat",
-        "source": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\src\\main\\res\\layout\\activity_standard.xml"
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\build\\intermediates\\merged_res\\debug\\drawable_ic_launcher_background.xml.flat",
-        "source": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\src\\main\\res\\drawable\\ic_launcher_background.xml"
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_dice6.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\dice6.png"
     },
     {
-        "merged": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\build\\intermediates\\merged_res\\debug\\xml_backup_rules.xml.flat",
-        "source": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\src\\main\\res\\xml\\backup_rules.xml"
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_kitchen.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\kitchen.png"
     },
     {
-        "merged": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\build\\intermediates\\merged_res\\debug\\xml_data_extraction_rules.xml.flat",
-        "source": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\src\\main\\res\\xml\\data_extraction_rules.xml"
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\xml\\backup_rules.xml"
     },
     {
-        "merged": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v33_ic_launcher.xml.flat",
-        "source": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\src\\main\\res\\mipmap-anydpi-v33\\ic_launcher.xml"
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_question_mark.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\question_mark.xml"
     },
     {
-        "merged": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_library.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\library.png"
     },
     {
-        "merged": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\layout_navigation_header.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\navigation_header.xml"
     },
     {
-        "merged": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_premiumlobby.xml.flat",
-        "source": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\src\\main\\res\\layout\\activity_premiumlobby.xml"
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_kitchen_card.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\kitchen_card.png"
     },
     {
-        "merged": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\mipmap-mdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\build\\intermediates\\merged_res\\debug\\mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_scarlet.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\scarlet.png"
     },
     {
-        "merged": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\build\\intermediates\\merged_res\\debug\\layout_activity_main.xml.flat",
-        "source": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\src\\main\\res\\layout\\activity_main.xml"
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_dice5.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\dice5.png"
     },
     {
-        "merged": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\emily\\OneDrive\\cs309\\2_tz_7\\Frontend\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_library_card.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\library_card.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\layout_open_cards_layout.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\open_cards_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\layout_activity_user_sign_up.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\activity_user_sign_up.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_name_on_card.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\name_on_card.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_dark.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\dark.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_clue.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\clue.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_dice1.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\dice1.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\font_abhaya_libre_bold.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\font\\abhaya_libre_bold.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_dice4.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\dice4.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\layout_activity_account_status.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\activity_account_status.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_revolver_card.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\revolver_card.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_study.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\study.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\font_aladin.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\font\\aladin.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_rounded_behind_text.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\rounded_behind_text.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_empty.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\empty.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_study_card.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\study_card.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\layout_activity_joinlobby.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\activity_joinlobby.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_card_layout.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\card_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_personsymbol.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\personsymbol.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_rope_card.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\rope_card.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_plum_start.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\plum_start.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-pngs-24:\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_back_of_card.jpg.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\back_of_card.jpg"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_dining_card.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\dining_card.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\font_abhaya_libre_medium.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\font\\abhaya_libre_medium.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\font_abhaya_libre_extrabold.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\font\\abhaya_libre_extrabold.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\menu_nav_menu.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\menu\\nav_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_lead_pipe_card.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\lead_pipe_card.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\layout_activity_lobby.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\activity_lobby.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_plum.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\plum.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_settings.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\settings.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_account_circle.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\account_circle.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_roomsymbol.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\roomsymbol.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_hall.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\hall.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_peacock_start.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\peacock_start.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_scarlet_start.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\scarlet_start.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_scarlet_card.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\scarlet_card.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_dice2.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\dice2.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/layout_activity_end_game_win_or_lose.xml.flat",
+        "source": "com.example.clue_frontend.app-main-31:/layout/activity_end_game_win_or_lose.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\mipmap-anydpi-v33_ic_launcher.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\mipmap-anydpi-v33\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_mustard_start.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\mustard_start.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_ball_room.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\ball_room.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/layout_six_cards.xml.flat",
+        "source": "com.example.clue_frontend.app-main-31:/layout/six_cards.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\layout_activity_character_selection.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\activity_character_selection.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_rounded_corner_view.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\rounded_corner_view.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_light.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\light.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_conservatory.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\conservatory.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_up_icon.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\up_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\layout_rules_page.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\rules_page.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_conservatory_card.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\conservatory_card.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\font_abhaya_libre.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\font\\abhaya_libre.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_billiard_card.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\billiard_card.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_mustard_card.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\mustard_card.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_checklist_button.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\checklist_button.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_background.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\background.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_exit_x.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\exit_x.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/layout_activity_end_game_other_players.xml.flat",
+        "source": "com.example.clue_frontend.app-main-31:/layout/activity_end_game_other_players.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_hall_card.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\hall_card.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_weaponsymbol.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\weaponsymbol.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_green.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\green.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_knife_card.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\knife_card.png"
+    },
+    {
+        "merged": "com.example.clue_frontend.app-merged_res-29:/layout_cards.xml.flat",
+        "source": "com.example.clue_frontend.app-main-31:/layout/cards.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\layout_activity_dice_roller.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\activity_dice_roller.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\layout_activity_player_guess.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\activity_player_guess.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_billiard_room.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\billiard_room.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_wrench_card.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\wrench_card.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_white.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\white.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\layout_activity_home.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\activity_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\layout_card_layout.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\card_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\layout_card_look.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\card_look.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_white_start.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\white_start.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_logout.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\logout.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_lounge_card.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\lounge_card.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\layout_activity_hostlobby.xml.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\layout\\activity_hostlobby.xml"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_dinning_room.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\dinning_room.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_lounge.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\lounge.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_dice3.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\dice3.png"
+    },
+    {
+        "merged": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-merged_res-29:\\drawable_ballroom_card.png.flat",
+        "source": "C:\\Users\\piper\\.gradle\\daemon\\7.5\\com.example.clue_frontend.app-main-31:\\drawable\\ballroom_card.png"
     }
 ]

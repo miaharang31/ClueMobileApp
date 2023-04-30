@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="rectangle">
+
+            <solid android:color="#FFFAE3"/>
+            <size
+                android:width=".75in"
+                android:height="1in"/>
+        </shape>
+    </item>
+    <item>
+        <TextView
+            android:layout_width=".15in"
+            android:layout_height="1in"
+           />
+    </item>
+</layer-list>

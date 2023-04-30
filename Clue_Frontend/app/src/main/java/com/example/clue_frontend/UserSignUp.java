@@ -136,7 +136,7 @@ public class UserSignUp extends AppCompatActivity {
                         json.put("email", emailData);
                         json.put("username", usernameData);
                         json.put("password", passwordData);
-                        json.put("type", "Basic");
+                        json.put("type", "b");
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -145,6 +145,7 @@ public class UserSignUp extends AppCompatActivity {
                                 @Override
                                 public void onResponse(JSONObject response) {
                                     startActivity(intent);
+
                                 }
                             },
                             new Response.ErrorListener() {
