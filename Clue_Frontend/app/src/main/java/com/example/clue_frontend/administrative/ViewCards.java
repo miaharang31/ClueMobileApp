@@ -96,11 +96,17 @@ public class ViewCards extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONArray response) {
                         for(int i = 0; i < weapons.length; i++){
-//                            try {
-//                               // weapons[i].setImageResource(response.getJSONObject(i).getInt("Mustard"));
-//                            } catch (JSONException e) {
-//                                throw new RuntimeException(e);
-//                            }
+                            try {
+                                JSONObject card = response.getJSONObject(i);
+                                Resources res = context.getResources();
+//                                System.out.println(card.getString("cardImage"));
+                                int id = res.getIdentifier(card.getString("cardImage"), "drawable", null);
+//                                Drawable d = ResourcesCompat.getDrawable(res, R.drawable.mustard, null);
+                                suspects[i].setImageDrawable(res.getDrawable(id));
+//                                        (response.getJSONObject(i).getInt("Mustard"));
+                            } catch (JSONException e) {
+                                throw new RuntimeException(e);
+                            }
                         }
                     }
                 },
