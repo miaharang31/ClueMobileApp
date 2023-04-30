@@ -5,7 +5,7 @@
     android:id="@+id/roll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/transparent"
+    android:background="#520120"
     tools:context=".GamePlay.DiceRoller">
 
     <ImageView
@@ -45,7 +45,7 @@
         android:layout_marginTop="85dp"
         android:fontFamily="@font/abhaya_libre_bold"
         android:text="Tap the dice to roll"
-        android:textColor="#08403E"
+        android:textColor="@color/white"
         android:textSize="38sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
