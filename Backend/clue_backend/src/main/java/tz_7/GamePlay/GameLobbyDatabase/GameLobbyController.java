@@ -53,7 +53,7 @@ public class GameLobbyController {
         GameLobby tmp = repo.findByHost(host);
 
 //        If there is a lobby created by that player, delete it
-//        then create a new on
+//        then create a new one
         if(tmp != null) {
             deleteLobby(host.getGameLobbyHost().getID());
         }

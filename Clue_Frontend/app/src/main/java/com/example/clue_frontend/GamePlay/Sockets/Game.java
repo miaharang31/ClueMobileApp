@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.clue_frontend.GamePlay.CardLayout;
 import com.example.clue_frontend.GamePlay.Constraints;
-import com.example.clue_frontend.GamePlay.playerGuess;
+import com.example.clue_frontend.GamePlay.Player.playerGuess;
 import com.example.clue_frontend.MyApplication;
 import com.example.clue_frontend.R;
 
@@ -99,17 +99,20 @@ public class Game extends AppCompatActivity {
                     Log.d("", "run() returned: " + message);
                     String s = chatBox.getText().toString();
                     chatBox.setText(s + message + "\n");
-                    chatBox.scrollTo(0, 0);
-//                    final int scrollAmount = chatBox.getLayout().getLineTop(chatBox.getLineCount()) - (chatBox.getHeight() + 100);
-//                    // if there is no need to scroll, scrollAmount will be <=0
-//                    if (scrollAmount > 0)
-//                        chatBox.scrollTo(0, scrollAmount);
-//                    else
-//
+
+                    final int scrollAmount = chatBox.getLayout().getLineTop(chatBox.getLineCount()) - (chatBox.getHeight() + 100);
+                    // if there is no need to scroll, scrollAmount will be <=0
+                    if (scrollAmount > 0)
+                        chatBox.scrollTo(0, scrollAmount);
+                    else
+                        chatBox.scrollTo(0, 0);
                 }
                 @Override
                 public void onOpen(ServerHandshake handshake) {
                     Log.d("OPEN", "run() returned: " + "is connecting");
+                    if(APP.isHost()) {
+
+                    }
                 }
 
                 @Override
@@ -142,4 +145,31 @@ public class Game extends AppCompatActivity {
 
     }
 }
+
+//class Test extends AppCompatActivity{
+//    public Test() {
+//        MyApplication app = (MyApplication) getApplication();
+////        String url = "http://10.0.2.2:8080/";
+//        String url = "http://coms-309-038.class.las.iastate.edu:8080/allUsers";
+//
+//        RequestQueue queue = Volley.newRequestQueue(Test.this);
+//
+//        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
+//                new Response.Listener<JSONArray>() {
+//                    @Override
+//                    public void onResponse(JSONArray response) {
+////                        TODO: displaying all user
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+////                        TODO: TOAST
+//                    }
+//                });
+//
+//        queue.add(request);
+//
+//    }
+//}
 

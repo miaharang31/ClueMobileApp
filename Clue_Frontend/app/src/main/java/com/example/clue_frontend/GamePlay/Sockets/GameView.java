@@ -11,7 +11,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 import com.example.clue_frontend.GamePlay.Constraints;
-import com.example.clue_frontend.GamePlay.Player;
+import com.example.clue_frontend.GamePlay.Player.Player;
 import com.example.clue_frontend.GamePlay.Room;
 import com.example.clue_frontend.GamePlay.Tile;
 import com.example.clue_frontend.R;

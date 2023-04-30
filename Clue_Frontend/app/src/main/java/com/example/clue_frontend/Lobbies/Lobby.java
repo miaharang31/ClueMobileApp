@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -43,6 +44,7 @@ public class Lobby extends AppCompatActivity {
     TextView player04;
     TextView player05;
     TextView player06;
+    CardView player01_box, player02_box, player03_box, player04_box, player05_box, player06_box;
     TextView max;
     TextView cur;
 
@@ -72,6 +74,12 @@ public class Lobby extends AppCompatActivity {
         player04 = findViewById(R.id.player_04);
         player05 = findViewById(R.id.player_05);
         player06 = findViewById(R.id.player_06);
+        player01_box = findViewById(R.id.Player01);
+        player02_box = findViewById(R.id.Player02);
+        player03_box = findViewById(R.id.Player03);
+        player04_box = findViewById(R.id.Player04);
+        player05_box = findViewById(R.id.Player05);
+        player06_box = findViewById(R.id.Player06);
 
 
         RequestQueue queue = Volley.newRequestQueue(Lobby.this);
@@ -131,27 +139,27 @@ public class Lobby extends AppCompatActivity {
                                                         try {
                                                             switch (i) {
                                                                 case 0:
-                                                                    player01.setVisibility(View.VISIBLE);
+                                                                    player01_box.setVisibility(View.VISIBLE);
                                                                     player01.setText(response.getJSONObject(i).get("firstname") + " " + response.getJSONObject(i).get("lastname"));
                                                                     break;
                                                                 case 1:
-                                                                    player02.setVisibility(View.VISIBLE);
+                                                                    player02_box.setVisibility(View.VISIBLE);
                                                                     player02.setText(response.getJSONObject(i).get("firstname") + " " + response.getJSONObject(i).get("lastname"));
                                                                     break;
                                                                 case 2:
-                                                                    player03.setVisibility(View.VISIBLE);
+                                                                    player03_box.setVisibility(View.VISIBLE);
                                                                     player03.setText(response.getJSONObject(i).get("firstname") + " " + response.getJSONObject(i).get("lastname"));
                                                                     break;
                                                                 case 3:
-                                                                    player04.setVisibility(View.VISIBLE);
+                                                                    player04_box.setVisibility(View.VISIBLE);
                                                                     player04.setText(response.getJSONObject(i).get("firstname") + " " + response.getJSONObject(i).get("lastname"));
                                                                     break;
                                                                 case 4:
-                                                                    player05.setVisibility(View.VISIBLE);
+                                                                    player05_box.setVisibility(View.VISIBLE);
                                                                     player05.setText(response.getJSONObject(i).get("firstname") + " " + response.getJSONObject(i).get("lastname"));
                                                                     break;
                                                                 case 5:
-                                                                    player01.setVisibility(View.VISIBLE);
+                                                                    player06_box.setVisibility(View.VISIBLE);
                                                                     player06.setText(response.getJSONObject(i).get("firstname") + " " + response.getJSONObject(i).get("lastname"));
                                                                     break;
 
@@ -191,6 +199,27 @@ public class Lobby extends AppCompatActivity {
 //                TODO: create game state
                 Intent intent = new Intent(Lobby.this, Game.class);
                 startActivity(intent);
+
+                if(app.isHost()) {
+                    String url = "http://10.0.2.2:8080/game/new/lobby/" + app.getLobbyid();
+                    JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, null,
+                            new Response.Listener<JSONObject>() {
+                                @Override
+                                public void onResponse(JSONObject response) {
+                                    try {
+                                        app.setGameid((int) response.get("id"));
+                                    } catch (JSONException e) {
+                                        throw new RuntimeException(e);
+                                    }
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+//                                    TODO: Handle error
+                                }
+                            });
+                }
 //                app = (MyApplication) getApplication();
 
 

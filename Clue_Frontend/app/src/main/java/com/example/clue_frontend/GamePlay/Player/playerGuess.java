@@ -1,4 +1,4 @@
-package com.example.clue_frontend.GamePlay;
+package com.example.clue_frontend.GamePlay.Player;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.clue_frontend.GamePlay.Game;
 import com.example.clue_frontend.R;
 
 public class playerGuess extends AppCompatActivity {

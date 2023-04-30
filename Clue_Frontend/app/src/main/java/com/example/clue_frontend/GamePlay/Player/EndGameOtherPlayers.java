@@ -1,10 +1,12 @@
-package com.example.clue_frontend;
+package com.example.clue_frontend.GamePlay.Player;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.clue_frontend.R;
 
 public class EndGameOtherPlayers extends AppCompatActivity {
 
