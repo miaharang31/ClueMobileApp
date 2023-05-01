@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                Intent intent = new Intent(MainActivity.this, Home.class);
 //                Intent intent = new Intent(MainActivity.this, Game.class);
-                Intent intent = new Intent(MainActivity.this, HostLobby.class);
+                Intent intent = new Intent(MainActivity.this, Home.class);
 
 
                 EditText username = findViewById(R.id.loginUsername);

@@ -1,4 +1,4 @@
-package tz_7.GamePlay.PlayerDatabase;
+package tz_7.PlayerDatabase;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -65,7 +65,7 @@ public class TestingPlayerController {
 
     @Test
     public void b_createPlayerTest() {
-        Player player = new Player("test", "test", "test@test.test", "test", "test", "b");
+        Player player = new Player("t", "t", "t@t.test", "tt", "tt", "b");
         Response response = RestAssured.given().
                 header("Content-Type", "application/json").
                 header("charset","utf-8").
@@ -80,7 +80,7 @@ public class TestingPlayerController {
         try {
             JSONObject object = new JSONObject(returnPlayer);
             String username = object.get("username").toString();
-            assertEquals("test", username);
+            assertEquals("tt", username);
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
@@ -91,7 +91,7 @@ public class TestingPlayerController {
         Response response = RestAssured.given().
                 header("charset","utf-8").
                 when().
-                put("/changePassword/{id}/to/{password}", 1, "test1");
+                put("/changePassword/{id}/to/{password}", 4, "test");
 
         int statusCode = response.getStatusCode();
         assertEquals(200, statusCode);
@@ -100,7 +100,7 @@ public class TestingPlayerController {
         try {
             JSONObject object = new JSONObject(returnPlayer);
             String password = object.get("password").toString();
-            assertEquals("test1", password);
+            assertEquals("test", password);
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
@@ -110,7 +110,7 @@ public class TestingPlayerController {
         Response response = RestAssured.given().
                 header("charset","utf-8").
                 when().
-                put("/changeUsername/{id}/to/{password}", 1, "test1");
+                put("/changeUsername/{id}/to/{password}", 4, "gbrickey");
 
         int statusCode = response.getStatusCode();
         assertEquals(200, statusCode);
@@ -119,7 +119,7 @@ public class TestingPlayerController {
         try {
             JSONObject object = new JSONObject(returnPlayer);
             String username = object.get("username").toString();
-            assertEquals("test1", username);
+            assertEquals("gbrickey", username);
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
@@ -178,7 +178,7 @@ public class TestingPlayerController {
         Response response = RestAssured.given().
                 header("charset","utf-8").
                 when().
-                get("/getUser/{id}", 1);
+                get("/getUser/{id}", 4);
 
         String s = response.getBody().asString();
         int statusCode = response.getStatusCode();
@@ -188,7 +188,7 @@ public class TestingPlayerController {
         try {
             JSONObject object = new JSONObject(returnPlayer);
             String username = object.get("username").toString();
-            assertEquals("test", username);
+            assertEquals("gbrickey", username);
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }

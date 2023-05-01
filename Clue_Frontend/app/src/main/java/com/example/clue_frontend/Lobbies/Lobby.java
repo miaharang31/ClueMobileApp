@@ -265,20 +265,21 @@ public class Lobby extends AppCompatActivity {
 
                     RequestQueue queue = Volley.newRequestQueue(Lobby.this);
                     app = (MyApplication) getApplication();
-//                    String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/" + app.getLobbyid();
-                    String url = "http://10.0.2.2:8080/lobby/" + app.getLobbyid();
+                    String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/" + app.getLobbyid();
+//                    String url = "http://10.0.2.2:8080/lobby/" + app.getLobbyid();
                     JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                             new Response.Listener<JSONObject>() {
                                 @Override
                                 public void onResponse(JSONObject response) {
                                     Log.d("Response", response.toString());
                                     try {
-                                        int gameID = response.getInt("id");
 
+                                        int gameID = (int) response.get("id");
                                         max.setText(response.get("maxPlayers").toString());
+
 //                            Get the host to display their name
-//                                        String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/host/" + gameID;
-                                        String url = "http://10.0.2.2:8080/lobby/host/" + gameID;
+                                        String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/host/" + gameID;
+//                                        String url = "http://10.0.2.2:8080/lobby/host/" + gameID;
                                         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                                                 new Response.Listener<JSONObject>() {
                                                     @Override
@@ -329,7 +330,7 @@ public class Lobby extends AppCompatActivity {
 //                    if (!app.isHost()) {
                         //if player joins lobby
                         lobbyClient.send("Joined: " + app.getLobbyid() + " " + app.getUserid());
-
+Log.d("OnOpen", "Joined: " + app.getLobbyid() + " " + app.getUserid());
 //                    }
 
                 }  // end of OnOpen

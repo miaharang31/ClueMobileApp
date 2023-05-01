@@ -1,0 +1,317 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > PlayerController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">tz_7.PlayerDatabase</a>
+</div>
+
+<h1>Coverage Summary for Class: PlayerController (tz_7.PlayerDatabase)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PlayerController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    46.7%
+  </span>
+  <span class="absValue">
+    (7/15)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    47.7%
+  </span>
+  <span class="absValue">
+    (21/44)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package tz_7.PlayerDatabase;
+&nbsp;
+&nbsp;import io.swagger.v3.oas.annotations.Operation;
+&nbsp;import io.swagger.v3.oas.annotations.responses.ApiResponse;
+&nbsp;import io.swagger.v3.oas.annotations.tags.Tag;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.http.HttpStatus;
+&nbsp;import org.springframework.http.ResponseEntity;
+&nbsp;import org.springframework.web.bind.annotation.*;
+&nbsp;import tz_7.GamePlay.GameLobbyDatabase.GameLobby;
+&nbsp;import tz_7.GamePlay.GameStateDatabase.GameStateRepository;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;import java.util.Optional;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author Grace Brickey
+&nbsp; */
+&nbsp;
+&nbsp;@Tag(name = &quot;PlayerController&quot;, description = &quot;Grace Brickey - rellated to player entity which is used for the player to log in to an account they have already created OR create a new account&quot;)
+&nbsp;@RestController
+<b class="fc">&nbsp;public class PlayerController {</b>
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    private PlayerRepository repository;
+&nbsp;
+&nbsp;    @Autowired
+&nbsp;    private GameStateRepository gameStateRepository;
+&nbsp;
+&nbsp;    //private final Logger logger = LoggerFactory.getLogger(UserController.class);
+&nbsp;
+&nbsp;//    @GetMapping(&quot;/enter/{hey}&quot;)
+&nbsp;//    public String openpage(@PathVariable(&quot;hey&quot;) String hey) {
+&nbsp;//        return &quot;Hey girlie&quot;;
+&nbsp;//    }
+&nbsp;@Operation(summary = &quot;Returns every player&quot;, description = &quot;Using a get request it returns every player which will be used for the administer account&quot;)
+&nbsp;@ApiResponse(responseCode = &quot;404&quot;, description = &quot;not found!&quot;)
+&nbsp;@ApiResponse(responseCode = &quot;403&quot;, description = &quot;forbidden!&quot;)
+&nbsp;@ApiResponse(responseCode = &quot;401&quot;, description = &quot;not authorized!&quot;)
+&nbsp;@ApiResponse(responseCode = &quot;200&quot;, description = &quot;Success!&quot;)
+&nbsp;@GetMapping(&quot;allUsers&quot;)
+&nbsp;    public List&lt;Player&gt; returnPlayers() {
+<b class="fc">&nbsp;        List&lt;Player&gt; list = repository.findAll();</b>
+<b class="fc">&nbsp;        return list;</b>
+&nbsp;    }
+&nbsp;//    public ResponseEntity&lt;List&lt;Player&gt;&gt; returnPlayers() {
+&nbsp;//        return new ResponseEntity&lt;List&lt;Player&gt;&gt;(repository.findAll(), HttpStatus.OK);
+&nbsp;//    }
+&nbsp;    @Operation(summary = &quot;Creates a new player&quot;, description = &quot;Uses a post request this creates a new player when the user goes to the create new player page and logs information in&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;404&quot;, description = &quot;not found!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;403&quot;, description = &quot;forbidden!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;401&quot;, description = &quot;not authorized!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;200&quot;, description = &quot;Success!&quot;)
+&nbsp;    @PostMapping(value = &quot;/register&quot;, consumes = &quot;application/json&quot;) //was save user
+&nbsp;    public Player saveUser(@RequestBody Player player) {
+&nbsp;//        repository.save(player);
+&nbsp;//        return &quot;User saved:&quot; + player.getUsername();
+<b class="fc">&nbsp;        return repository.save(player);</b>
+&nbsp;    }
+&nbsp;    @Operation(summary = &quot;Logs into a account&quot;, description = &quot;Using a post request this checks if the username and password match any user in the database and if it does it will return the user&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;404&quot;, description = &quot;not found!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;403&quot;, description = &quot;forbidden!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;401&quot;, description = &quot;not authorized!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;200&quot;, description = &quot;Success!&quot;)
+&nbsp;    @PostMapping(value = &quot;/login&quot;, consumes = &quot;application/json&quot;)
+&nbsp;    public Optional&lt;Player&gt; getUserByUsernameAndPassword(@RequestBody Player player) {
+&nbsp;//        Optional&lt;Player&gt; user = repository.findByUsernameAndPassword(username, password);
+&nbsp;//        return user;
+<b class="nc">&nbsp;        return repository.findByUsernameAndPassword(player.getUsername(), player.getPassword());</b>
+&nbsp;    }
+&nbsp;    @Operation(summary = &quot;Returns the user based off the the ID&quot;, description = &quot;Uses a get request to get the user by its id&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;404&quot;, description = &quot;not found!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;403&quot;, description = &quot;forbidden!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;401&quot;, description = &quot;not authorized!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;200&quot;, description = &quot;Success!&quot;)
+&nbsp;    @GetMapping(value = &quot;/getUser/{id}&quot;, produces = &quot;application/json&quot;)
+&nbsp;    public Optional&lt;Player&gt; getUserById(@PathVariable(&quot;id&quot;) Integer id) {
+&nbsp;        //logger.info(&quot;Entered&quot;);
+<b class="fc">&nbsp;        Optional&lt;Player&gt; user = repository.findById(id);</b>
+<b class="fc">&nbsp;        return user;</b>
+&nbsp;    }
+&nbsp;    @Operation(summary = &quot;Returns the username based off the the ID&quot;, description = &quot;Uses a get request to get the user by its id&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;404&quot;, description = &quot;not found!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;403&quot;, description = &quot;forbidden!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;401&quot;, description = &quot;not authorized!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;200&quot;, description = &quot;Success!&quot;)
+&nbsp;    @GetMapping(value = &quot;/getUser/username/{id}&quot;, produces = &quot;application/json&quot;)
+&nbsp;    public String getUsernameById(@PathVariable(&quot;id&quot;) Integer id) {
+&nbsp;        //logger.info(&quot;Entered&quot;);
+<b class="nc">&nbsp;        Player user = repository.findById(id).get();</b>
+<b class="nc">&nbsp;        return user.getUsername();</b>
+&nbsp;    }
+&nbsp;    @Operation(summary = &quot;Returns the user password based off the the ID&quot;, description = &quot;Uses a get request to get the user by its id&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;404&quot;, description = &quot;not found!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;403&quot;, description = &quot;forbidden!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;401&quot;, description = &quot;not authorized!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;200&quot;, description = &quot;Success!&quot;)
+&nbsp;    @GetMapping(value = &quot;/getUser/password/{id}&quot;, produces = &quot;application/json&quot;)
+&nbsp;    public String getPasswordById(@PathVariable(&quot;id&quot;) Integer id) {
+&nbsp;        //logger.info(&quot;Entered&quot;);
+<b class="nc">&nbsp;        Player user = repository.findById(id).get();</b>
+<b class="nc">&nbsp;        return user.getPassword();</b>
+&nbsp;    }
+&nbsp;    @Operation(summary = &quot;Returns the user first name based off the the ID&quot;, description = &quot;Uses a get request to get the user by its id&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;404&quot;, description = &quot;not found!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;403&quot;, description = &quot;forbidden!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;401&quot;, description = &quot;not authorized!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;200&quot;, description = &quot;Success!&quot;)
+&nbsp;    @GetMapping(value = &quot;/getUser/firstname/{id}&quot;, produces = &quot;application/json&quot;)
+&nbsp;    public String getNameById(@PathVariable(&quot;id&quot;) Integer id) {
+&nbsp;        //logger.info(&quot;Entered&quot;);
+<b class="nc">&nbsp;        Player user = repository.findById(id).get();</b>
+<b class="nc">&nbsp;        return user.getFirstname();</b>
+&nbsp;    }
+&nbsp;    @Operation(summary = &quot;Gets id from username&quot;, description = &quot;Uses a get request to get the id using the username&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;404&quot;, description = &quot;not found!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;403&quot;, description = &quot;forbidden!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;401&quot;, description = &quot;not authorized!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;200&quot;, description = &quot;Success!&quot;)
+&nbsp;    @GetMapping(value = &quot;/getUserid/{username}&quot;, produces = &quot;application/json&quot;)
+&nbsp;    public int getUseridByUsername(@PathVariable(&quot;username&quot;) String username) {
+&nbsp;        //logger.info(&quot;Entered&quot;);
+<b class="nc">&nbsp;        Player user = repository.findByUsername(username)</b>
+<b class="nc">&nbsp;                .orElseThrow();</b>
+<b class="nc">&nbsp;        return user.getId();</b>
+&nbsp;    }
+&nbsp;    @GetMapping(value = &quot;/getPlayer/{username}&quot;, produces = &quot;application/json&quot;)
+&nbsp;    public Player getUserByUsername(@PathVariable(&quot;username&quot;) String username) {
+&nbsp;        //logger.info(&quot;Entered&quot;);
+<b class="nc">&nbsp;        Player user = repository.findByUsername(username)</b>
+<b class="nc">&nbsp;                .orElseThrow();</b>
+<b class="nc">&nbsp;        return user;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Operation(summary = &quot;Changes the users password&quot;, description = &quot;Uses a put request to change the users password through the username&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;404&quot;, description = &quot;not found!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;403&quot;, description = &quot;forbidden!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;401&quot;, description = &quot;not authorized!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;200&quot;, description = &quot;Success!&quot;)
+&nbsp;    @PutMapping(&quot;/changePassword/{id}/to/{password}&quot;)
+&nbsp;    public Player changePassword(@PathVariable(&quot;id&quot;) int id, @PathVariable(&quot;password&quot;) String password) {
+&nbsp;        //logger.info(&quot;Entered&quot;);
+<b class="fc">&nbsp;        Player player = repository.findById(id)</b>
+<b class="fc">&nbsp;                .orElseThrow();</b>
+<b class="fc">&nbsp;        player.setPassword(password);</b>
+<b class="fc">&nbsp;        repository.save(player);</b>
+<b class="fc">&nbsp;        return player;</b>
+&nbsp;    }
+&nbsp;    @Operation(summary = &quot;Changes the users username&quot;, description = &quot;Uses a put request to change the users password through the username&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;404&quot;, description = &quot;not found!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;403&quot;, description = &quot;forbidden!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;401&quot;, description = &quot;not authorized!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;200&quot;, description = &quot;Success!&quot;)
+&nbsp;    @PutMapping(&quot;/changeUsername/{id}/to/{username}&quot;)
+&nbsp;    public Player changeUsername(@PathVariable(&quot;id&quot;) int id, @PathVariable(&quot;username&quot;) String username) {
+&nbsp;        //logger.info(&quot;Entered&quot;);
+<b class="fc">&nbsp;        Player player = repository.findById(id)</b>
+<b class="fc">&nbsp;                .orElseThrow();</b>
+<b class="fc">&nbsp;        player.setUsername(username);</b>
+<b class="fc">&nbsp;        repository.save(player);</b>
+<b class="fc">&nbsp;        return player;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Operation(summary = &quot;Changes the type of account a user has&quot;, description = &quot;Uses a put request to change the type of the user&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;404&quot;, description = &quot;not found!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;403&quot;, description = &quot;forbidden!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;401&quot;, description = &quot;not authorized!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;200&quot;, description = &quot;Success!&quot;)
+&nbsp;    @PutMapping(&quot;/updateType/{id}&quot;)
+&nbsp;    public Player upgradeToPremium(@PathVariable(&quot;id&quot;) int id) {
+&nbsp;        //logger.info(&quot;Entered&quot;);
+<b class="fc">&nbsp;        Player player = repository.findById(id)</b>
+<b class="fc">&nbsp;                .orElseThrow();</b>
+<b class="fc">&nbsp;        if (player.getType().equals(&quot;b&quot;)) {</b>
+<b class="nc">&nbsp;            player.setType(&quot;p&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        repository.save(player);</b>
+<b class="fc">&nbsp;        return player;</b>
+&nbsp;    }
+&nbsp;    @Operation(summary = &quot;Changes the type of account a user has&quot;, description = &quot;Uses a put request to change the type of the user&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;404&quot;, description = &quot;not found!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;403&quot;, description = &quot;forbidden!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;401&quot;, description = &quot;not authorized!&quot;)
+&nbsp;    @ApiResponse(responseCode = &quot;200&quot;, description = &quot;Success!&quot;)
+&nbsp;    @PutMapping(&quot;/degradeType/{id}&quot;)
+&nbsp;    public Player degrade(@PathVariable(&quot;id&quot;) int id) {
+&nbsp;        //logger.info(&quot;Entered&quot;);
+<b class="nc">&nbsp;        Player player = repository.findById(id)</b>
+<b class="nc">&nbsp;                .orElseThrow();</b>
+<b class="nc">&nbsp;        if (player.getType().equals(&quot;p&quot;)) {</b>
+<b class="nc">&nbsp;            player.setType(&quot;b&quot;);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        repository.save(player);</b>
+<b class="nc">&nbsp;        return player;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping(value = &quot;/getUserType/{id}&quot;)
+&nbsp;    public String returnType(@PathVariable int id) {
+<b class="nc">&nbsp;        Player player = repository.findById(id)</b>
+<b class="nc">&nbsp;                .orElseThrow();</b>
+<b class="nc">&nbsp;        return player.getType();</b>
+&nbsp;    }
+&nbsp;//    @DeleteMapping(value = &quot;/deleteUser/{id}&quot;)
+&nbsp;//    public void deleteUser(@PathVariable Integer id) {
+&nbsp;//        Player player = repository.findById(id).get();
+&nbsp;//        repository.delete(player);
+&nbsp;//    }
+&nbsp;
+&nbsp;
+&nbsp;//    @GetMapping(&quot;/getUserByType/{type}&quot;)
+&nbsp;//    public List&lt;User&gt; getUserByType(@PathVariable String type) {
+&nbsp;//        return repository.findByType(type);
+&nbsp;//    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-05-01 16:10</div>
+</div>
+</body>
+</html>
