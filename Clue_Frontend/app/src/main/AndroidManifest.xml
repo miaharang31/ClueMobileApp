@@ -55,6 +55,9 @@
             android:name=".GamePlay.Game"
             android:label="@string/app_name" />
         <activity
+            android:name=".CharacterSelection"
+            android:label="Clue" />
+        <activity
             android:name=".HomeActivities.Home"
             android:label="Home" />
         <activity
@@ -66,9 +69,6 @@
         <activity
             android:name=".GamePlay.Player.playerGuess"
             android:label="playerGuess" />
-        <activity
-            android:name=".GamePlay.Player.CharacterSelection"
-            android:label="Clue" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

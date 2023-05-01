@@ -22,6 +22,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.clue_frontend.GamePlay.Constraints;
+import com.example.clue_frontend.GamePlay.Game;
 import com.example.clue_frontend.GamePlay.Player.EndGameWinOrLose;
 import com.example.clue_frontend.HomeActivities.Home;
 
@@ -50,14 +51,19 @@ public class MainActivity extends AppCompatActivity {
 
         Button submitButton = (Button) findViewById(R.id.submitButton);
         TextView newPlayerLink = findViewById(R.id.NewPlayerLink);
+
+        Intent intent = new Intent(MainActivity.this, Game.class);
+        startActivity(intent);
         //When the sign in button is clicked and data is entered for usename and password
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Intent intent = new Intent(MainActivity.this, Home.class);
+
                 //Intent intent = new Intent(MainActivity.this, Game.class);
-                Intent intent = new Intent(MainActivity.this, CharacterSelection.class);
-                startActivity(intent);
+
+                //Intent intent = new Intent(MainActivity.this, CharacterSelection.class);
+                //startActivity(intent);
 
                 EditText username = findViewById(R.id.loginUsername);
                 EditText password = findViewById(R.id.loginPassword);
@@ -68,13 +74,6 @@ public class MainActivity extends AppCompatActivity {
                 String emailData = " ";
                 boolean checkUsername, checkPassword;
 
-                if (usernameData.isEmpty()) {
-                    username.setError("Username cannot be empty");
-                    checkUsername = false;
-                } else {
-                    username.setError(null);
-                    checkUsername = true;
-                }
                 if(usernameData.isEmpty()){
                     username.setError("Username cannot be empty");
                     checkUsername = false;
@@ -92,6 +91,9 @@ public class MainActivity extends AppCompatActivity {
 
                     // if all textboxes are correct, all data will be added to the SecondActivity (main page for either regular/premium users) and will start
                     if (checkUsername == true && checkPassword == true){
+
+
+
                         String url = "http://coms-309-038.class.las.iastate.edu:8080/login";
 //                        String url = "http://10.0.2.2:8080/login";
                         RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
@@ -133,6 +135,8 @@ public class MainActivity extends AppCompatActivity {
                             // if all textboxes are correct, all data will be added to the SecondActivity (main page for either regular/premium users) and will start
                             JsonObjectRequest jreq = null;
                             if (checkUsername == true && checkPassword == true) {
+
+
                                 try {
                                     json = new JSONObject();
                                     json.put("username", usernameData);
@@ -154,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
                                                 } catch (JSONException e) {
                                                     throw new RuntimeException(e);
                                                 }
+                                                System.out.println("Starting activity");
                                                 startActivity(intent);
                                             }
                                         },
