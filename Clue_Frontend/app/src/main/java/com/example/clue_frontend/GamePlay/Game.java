@@ -370,7 +370,7 @@ public class Game extends AppCompatActivity {
 //        TODO: do whatever needs to be done turn wise
         GameView.rand = new Random();
         GameView.moves = GameView.rand.nextInt(23) + 1;
-//              - Move character
+//              - Move character:  Already moves with swipeListener
 //              - If in room: make guess
 //              - else: end turn
 
