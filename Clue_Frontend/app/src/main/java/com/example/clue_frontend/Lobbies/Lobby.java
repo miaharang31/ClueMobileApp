@@ -23,6 +23,8 @@ import com.example.clue_frontend.MyApplication;
 import com.example.clue_frontend.R;
 
 import org.java_websocket.client.WebSocketClient;
+import org.java_websocket.drafts.Draft;
+import org.java_websocket.drafts.Draft_6455;
 import org.java_websocket.handshake.ServerHandshake;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -357,5 +359,56 @@ public class Lobby extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void connectChat() {
+        app = (MyApplication) getApplication();
+        Draft[] drafts = {
+                new Draft_6455()
+        };
+
+//        String w = "ws://echo.websocket.org";
+        //String w = "ws://10.0.2.2:8080/websocket/chat/"+app.getUserid();
+        String w = "http://coms-309-038.class.las.iastate.edu:8080/websocket/chat/"+app.getUserid();
+        Log.d("Socket", w);
+        try {
+            Log.d("Socket:", "Trying socket");
+            chatClient = new WebSocketClient(new URI(w), (Draft) drafts[0]) {
+                @Override
+                public void onMessage(String m) {
+                    Log.d("", "run() returned: " + m);
+                    message.getText().clear();
+                    String s = chatBox.getText().toString();
+                    chatBox.setText(s + m + "\n");
+                    final int scrollAmount = chatBox.getLayout().getLineTop(chatBox.getLineCount()) - chatBox.getHeight();
+                    if (scrollAmount > 0)
+                        chatBox.scrollTo(0, scrollAmount);
+                    else {
+                        chatBox.scrollTo(0, 0);
+                    }
+                }
+                @Override
+                public void onOpen(ServerHandshake handshake) {
+                    Log.d("OPEN", "run() returned: " + "is connecting");
+
+                }
+
+                @Override
+                public void onClose(int code, String reason, boolean remote) {
+                    Log.d("CLOSE", "onClose() returned: " + reason);
+                }
+
+                @Override
+                public void onError(Exception ex) {
+                    Log.d("Exception:", ex.toString());
+                }
+            };
+        } catch (URISyntaxException e) {
+            Log.d("Exception:", e.getMessage().toString());
+            e.printStackTrace();
+        }
+
+        chatClient.connect();
+
     }
 }
