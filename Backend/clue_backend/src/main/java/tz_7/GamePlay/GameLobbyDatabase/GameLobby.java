@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
+import org.springframework.data.repository.cdi.Eager;
 import tz_7.GamePlay.GameStateDatabase.GameState;
 import tz_7.PlayerDatabase.Player;
 
@@ -52,7 +53,7 @@ public class GameLobby {
     /**
      * JPA Relationships
      */
-        @OneToMany(mappedBy = "gameLobby")
+        @OneToMany(mappedBy = "gameLobby", fetch = FetchType.EAGER)
     //    Players in the lobby (not including the host)
         private Set<Player> players;
 

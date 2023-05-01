@@ -57,6 +57,8 @@ public class LobbySocket {
 
             Player destPlayer = playerRepository.findById(Integer.valueOf(message.split(" ")[2])).get();
             lobby = lobbyRepository.findById(Integer.valueOf(message.split(" ")[1])).get();
+            player.setGameLobby(lobby);
+            playerRepository.save(player);
             lobby.addPlayer(player);
             broadcast("Display: " + player.getUsername());
         }

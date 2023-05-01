@@ -218,8 +218,8 @@ public class Lobby extends AppCompatActivity {
                 Intent intent = new Intent(Lobby.this, CharacterSelection.class);
 
                 if(app.isHost()) {
-//                    String url = "http://10.0.2.2:8080/game/new/lobby/" + app.getLobbyid();
-                    String url = "http://coms-309-038.class.las.iastate.edu:8080/game/new/lobby/" + app.getLobbyid();
+                    String url = "http://10.0.2.2:8080/game/new/lobby/" + app.getLobbyid();
+//                    String url = "http://coms-309-038.class.las.iastate.edu:8080/game/new/lobby/" + app.getLobbyid();
                     JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, null,
                             new Response.Listener<JSONObject>() {
                                 @Override
@@ -340,12 +340,12 @@ public class Lobby extends AppCompatActivity {
                     app = (MyApplication) getApplication();
 
                     if(message.startsWith("Display: ")) {
+
                         int num = app.getUsersplaying();
                         app.setUsersplaying(num + 1);
                         cur.setText(app.getUsersplaying());
                         String userN = message.split(" ")[1];
                         System.out.println(userN);
-
                         if (player01.getText().equals(null)) {
                             player01_box.setVisibility(View.VISIBLE);
                             player01.setText(userN);

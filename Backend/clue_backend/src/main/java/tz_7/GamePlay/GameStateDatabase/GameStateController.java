@@ -194,7 +194,7 @@ public class GameStateController {
 //    }
     //DO NOT NEED BECAUSE WE WILL DO ALL IN DISTRIBUTE CARDS
 
-    @PutMapping(value = "/{id}/distributeCards")
+    @PutMapping(value = "game/{id}/distributeCards")
     public GameState distributeCards(@PathVariable Integer id) {
 
         GameState state = repo.findById(id).get();
