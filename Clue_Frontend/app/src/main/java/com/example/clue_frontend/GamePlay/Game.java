@@ -219,7 +219,7 @@ public class Game extends AppCompatActivity {
 
         String w = "ws://10.0.2.2:8080/websocket/game/"+app.getGameid()+"/player/"+app.getUserid();
 //        String w = "ws://coms-309-038.class.las.iastate.edu:8081/websocket/game/"+app.getGameid()+"/player/"+app.getUserid()+"";
-        Log.d("Game Socket", w);
+
         try {
             Log.d("Game Socket:", "Trying socket");
             gameClient = new WebSocketClient(new URI(w), (Draft) drafts[0]) {
