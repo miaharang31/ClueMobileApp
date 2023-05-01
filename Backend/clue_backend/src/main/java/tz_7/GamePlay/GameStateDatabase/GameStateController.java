@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tz_7.CardDatabase.Card;
+import tz_7.CardDatabase.CardController;
 import tz_7.CardDatabase.CardRepository;
 import tz_7.GamePlay.GameLobbyDatabase.GameLobby;
 import tz_7.GamePlay.GameLobbyDatabase.GameLobbyRepository;
@@ -17,6 +18,7 @@ import tz_7.GamePlay.PlayerInfoDatabase.PlayerInfo;
 import tz_7.GamePlay.PlayerInfoDatabase.PlayerInfoRepository;
 import tz_7.PlayerDatabase.Player;
 import tz_7.PlayerDatabase.PlayerRepository;
+
 
 import java.util.*;
 
@@ -73,6 +75,68 @@ public class GameStateController {
         return state;
     }
 
+//    /**
+//     * Creates a game based on the lobby
+//     * @param lobby
+//     *  Lobby to create from (JSON FORMAT)
+//     */
+//    @PostMapping(value = "game/lobby/new", consumes = "application/json")
+//    public GameState newSocketState(@RequestBody GameLobby lobby) {
+//        GameState state = repo.findByHostID(lobby.getHost().getId());
+//        if(state != null) {
+//            deleteGame(state.getID());
+//        }
+//
+//        state = new GameState(lobby);
+//        state = newState(state);
+//        state = addCards(state.getID(), "w");
+//        state = addCards(state.getID(), "s");
+//        state = addCards(state.getID(), "r");
+//        return state;
+//    }
+
+//    /**
+//     * Sets the cards based on type for that game state
+//     * @param id
+//     *  ID of the game state
+//     * @param type
+//     *  Type of cards to add (i.e. w, s, r)
+//     * @return
+//     *  updated gamestate object
+//     */
+//    @Operation(summary = "Places the cards in the game", description = "Using a put request it places the cards we are playing with in the game")
+//    @ApiResponse(responseCode = "404", description = "not found!")
+//    @ApiResponse(responseCode = "403", description = "forbidden!")
+//    @ApiResponse(responseCode = "401", description = "not authorized!")
+//    @ApiResponse(responseCode = "200", description = "Success!")
+//    @PutMapping(value = "/game/{id}/setcards/{type}")
+//    public GameState addCards(@PathVariable Integer id, @PathVariable String type) {
+//        GameState state = repo.findById(id).get();
+//        Set<Card> cards = cardRepository.findByType(type);
+//        switch(type){
+//            case "w" :
+//                state.setWeapons(cards);
+//                break;
+//            case "s" :
+//                state.setSuspects(cards);
+//                break;
+//            case "r" :
+//                state.setRooms(cards);
+//                break;
+//        }
+//
+//        Iterator<Card> tmp = cards.iterator();
+//        while(tmp.hasNext()) {
+//            tmp.next().addGameState(state);
+//        }
+//        repo.save(state);
+//        cardRepository.saveAll(cards);
+//        return state;
+//    }
+
+//    @PutMapping(value = "game/{id}/distributeCards")
+//    public Set<PlayerInfo> distributeCards(@PathVariable Integer id) {
+
     /**
      * Creates a game based on the lobby
      * @param id
@@ -91,94 +155,153 @@ public class GameStateController {
         GameState saved = new GameState(lobby);
         saved = repo.save(saved);
         saved = newState(saved);
-        saved = addCards(saved.getID(), "w");
-        saved = addCards(saved.getID(), "s");
-        saved = addCards(saved.getID(), "r");
+//        saved = addCards(saved.getID(), "w");
+//        saved = addCards(saved.getID(), "s");
+//        saved = addCards(saved.getID(), "r");
         return saved;
     }
 
-    /**
-     * Sets the cards based on type for that game state
-     * @param id
-     *  ID of the game state
-     * @param type
-     *  Type of cards to add (i.e. w, s, r)
-     * @return
-     *  updated gamestate object
-     */
-    @Operation(summary = "Places the cards in the game", description = "Using a put request it places the cards we are playing with in the game")
-    @ApiResponse(responseCode = "404", description = "not found!")
-    @ApiResponse(responseCode = "403", description = "forbidden!")
-    @ApiResponse(responseCode = "401", description = "not authorized!")
-    @ApiResponse(responseCode = "200", description = "Success!")
-    @PutMapping(value = "/{id}/setcards/{type}")
-    public GameState addCards(@PathVariable Integer id, @PathVariable String type) {
-        GameState state = repo.findById(id).get();
-        Set<Card> cards = cardRepository.findByType(type);
-        switch(type){
-            case "w" :
-                state.setWeapons(cards);
-                break;
-            case "s" :
-                state.setSuspects(cards);
-                break;
-            case "r" :
-                state.setRooms(cards);
-                break;
-        }
-
-        Iterator<Card> tmp = cards.iterator();
-        while(tmp.hasNext()) {
-            tmp.next().addGameState(state);
-        }
-        repo.save(state);
-        cardRepository.saveAll(cards);
-        return state;
-    }
-
-    @PutMapping(value = "/{id}/distributeCards")
-    public GameState distributeCards(@PathVariable Integer id) {
-        GameState state = repo.findById(id).get();
-        Set<Player> players = state.getTurnOrder();
-        Set<PlayerInfo> infos = new HashSet<>();
-        Iterator<Player> tmp = players.iterator();
-        while (tmp.hasNext()) {
-            infos.add(playerInfoRepository.findByPlayer(tmp.next()));
-        }
-
-//  TODO: Make iterator (for infos) and get the weapons, rooms and suspects
-//        Iterate through the infos and and set the cards for each player
-
+//    /**
+//     * Sets the cards based on type for that game state
+//     * @param id
+//     *  ID of the game state
+//     * @param type
+//     *  Type of cards to add (i.e. w, s, r)
+//     * @return
+//     *  updated gamestate object
+//     */
+//    @Operation(summary = "Places the cards in the game", description = "Using a put request it places the cards we are playing with in the game")
+//    @ApiResponse(responseCode = "404", description = "not found!")
+//    @ApiResponse(responseCode = "403", description = "forbidden!")
+//    @ApiResponse(responseCode = "401", description = "not authorized!")
+//    @ApiResponse(responseCode = "200", description = "Success!")
+//    @PutMapping(value = "/{id}/setcards/{type}") //type is basic or premium
+//    public GameState addCards(@PathVariable Integer id, @PathVariable String type) {
+//        GameState state = repo.findById(id).get();
+//        Set<Card> cards = cardRepository.findByType(type);
+//        switch(type){
+//            case "w" :
+//                state.setWeapons(cards);
+//                break;
+//            case "s" :
+//                state.setSuspects(cards);
+//                break;
+//            case "r" :
+//                state.setRooms(cards);
+//                break;
+//        }
+//
+//        Iterator<Card> tmp = cards.iterator();
+//        while(tmp.hasNext()) {
+//            tmp.next().addGameState(state);
+//        }
 //        repo.save(state);
-//        playerInfoRepository.saveAll(//TODO: put info iterator here);
-        return state;
-    }
+//        cardRepository.saveAll(cards);
+//        return state;
+//    }
+    //DO NOT NEED BECAUSE WE WILL DO ALL IN DISTRIBUTE CARDS
 
-    /**
-     * PREPARING FOR STATE DELETION
-     *  Put mapping that removes the cards from the game state
-     *  by type
-     * @param id
-     *  GameState ID
-     * @param type
-     *  type of card (i.e. w, s, r)
-     * @return
-     *  new GameState object
-     */
-    @PutMapping(value = "/{id}/removeCards/{type}")
-    public GameState removeCards(@PathVariable Integer id, @PathVariable String type) {
+    @PutMapping(value = "game/{id}/distributeCards")
+    public GameState distributeCards(@PathVariable Integer id) {
+
         GameState state = repo.findById(id).get();
-        Set<Card> cards = cardRepository.findByType(type);
-        state.deleteCards(type);
-
-        Iterator<Card> tmp = cards.iterator();
-        while(tmp.hasNext()) {
-            tmp.next().removeGameState(state);
+        CardController cardController = new CardController();
+        state.setAllCards(state.getGameType()); //sets either basic or premium cards
+        Set<Player> players = state.getTurnOrder(); //sets all the players
+        Set<PlayerInfo> infos = new HashSet<>(); //creating a set of player infos
+        Iterator<Player> tmp = players.iterator(); //iterator for all the players in the game
+        int counter = 0;
+        while (tmp.hasNext()) {
+            counter++; //added to delte lines commented below
+            infos.add(playerInfoRepository.findByPlayer(tmp.next())); //creates a playerinfo
         }
+        Iterator<PlayerInfo> infotmp = infos.iterator(); //iterator to go through each player info
+//        int counter = 0;
+//        while (infotmp.hasNext()) { //creates a counter so we can create an array of player infos
+//            infotmp.next();
+//            counter++;
+//        }
+        PlayerInfo[] playerArr = (PlayerInfo[]) infos.toArray()[infos.size()];
+//        infotmp = infos.iterator();
+//        int i = 0;
+//        while (infotmp.hasNext()) { //creates array of player infos
+//            playerArr[i] = infotmp.next();
+//            i++;
+//        }
+//        playerArr = infos.toArray();
+        Set<Card> allCards;
+        if (state.getGameType().equals("b")) { //chooses basic cards
+            allCards = cardController.getBasicCards();
+        }
+        else { //chooses premium cards
+            allCards = cardController.getPremiumCards();
+        }
+        Card[] finalCardsArr = (Card[]) state.getFinalCards().toArray()[state.getFinalCards().size()]; //converts the final cards to an array
+        allCards.remove(finalCardsArr[0]); //removes final cards from the set of all the cards
+        allCards.remove(finalCardsArr[1]);
+        allCards.remove(finalCardsArr[2]);
+        Card[] allCardsArr = (Card[]) allCards.toArray();
+        ArrayList<Card> cardArrayList = new ArrayList<Card>();
+        for (int p = 0; p < allCardsArr.length; p++) {
+            cardArrayList.add(allCardsArr[p]);
+        }
+        int playerNum = 0; //used to add card to certain player cards
+        while (cardArrayList.size() > 0) {
+            Random randNum = new Random();
+            if (playerNum >= playerArr.length) {
+                playerNum = 0;
+            }
+            int num = randNum.nextInt(cardArrayList.size());
+            playerArr[playerNum].addCard(cardArrayList.get(num));
+            cardArrayList.remove(cardArrayList.get(num));
+            playerNum++;
+        }
+        playerNum = 0;
+        for (PlayerInfo info : infos) {
+            info.setCardHand(playerArr[playerNum].getCards());
+            playerNum++;
+        }
+
         repo.save(state);
-        cardRepository.saveAll(cards);
+        playerInfoRepository.saveAll(infos);
         return state;
     }
+
+//    /**
+//     * PREPARING FOR STATE DELETION
+//     *  Put mapping that removes the cards from the game state
+//     *  by type
+//     * @param id
+//     *  GameState ID
+//     * @param type
+//     *  type of card (i.e. w, s, r)
+//     * @return
+//     *  new GameState object
+//     */
+//    @PutMapping(value = "game/{id}/removeCards/{type}")
+//    public GameState removeCards(@PathVariable Integer id, @PathVariable String type) {
+//        GameState state = repo.findById(id).get();
+//        Set<Card> cards = cardRepository.findByType(type);
+//        switch(type){
+//            case "w" :
+//                state.setWeapons(null);
+//                break;
+//            case "s" :
+//                state.setSuspects(null);
+//                break;
+//            case "r" :
+//                state.setRooms(null);
+//                break;
+//        }
+//
+//        Iterator<Card> tmp = cards.iterator();
+//        while(tmp.hasNext()) {
+//            tmp.next().removeGameState(state);
+//        }
+//        repo.save(state);
+//        cardRepository.saveAll(cards);
+//        return state;
+//    }
 
     /**
      * PREPARING FOR STATE DELETION
@@ -323,10 +446,11 @@ public class GameStateController {
     @DeleteMapping(value = "/{id}/delete")
     public void deleteGame(@PathVariable Integer id) {
         GameState state = repo.findById(id).get();
-        state = removeCards(state.getID(), "w");
-        state = removeCards(state.getID(), "s");
-        state = removeCards(state.getID(), "r");
-        state = removePlayers(state.getID());
+//        state = removeCards(state.getID(), "w");
+//        state = removeCards(state.getID(), "s");
+//        state = removeCards(state.getID(), "r");
+        state.removeCards();
+        state.removePlayers();
         repo.delete(state);
     }
 

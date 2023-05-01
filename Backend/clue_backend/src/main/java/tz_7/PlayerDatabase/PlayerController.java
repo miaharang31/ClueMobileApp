@@ -4,7 +4,11 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tz_7.GamePlay.GameLobbyDatabase.GameLobby;
+import tz_7.GamePlay.GameStateDatabase.GameStateRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +24,9 @@ public class PlayerController {
     @Autowired
     private PlayerRepository repository;
 
+    @Autowired
+    private GameStateRepository gameStateRepository;
+
     //private final Logger logger = LoggerFactory.getLogger(UserController.class);
 
 //    @GetMapping("/enter/{hey}")
@@ -31,11 +38,14 @@ public class PlayerController {
 @ApiResponse(responseCode = "403", description = "forbidden!")
 @ApiResponse(responseCode = "401", description = "not authorized!")
 @ApiResponse(responseCode = "200", description = "Success!")
-@GetMapping("/allUsers")
+@GetMapping("allUsers")
     public List<Player> returnPlayers() {
         List<Player> list = repository.findAll();
         return list;
     }
+//    public ResponseEntity<List<Player>> returnPlayers() {
+//        return new ResponseEntity<List<Player>>(repository.findAll(), HttpStatus.OK);
+//    }
     @Operation(summary = "Creates a new player", description = "Uses a post request this creates a new player when the user goes to the create new player page and logs information in")
     @ApiResponse(responseCode = "404", description = "not found!")
     @ApiResponse(responseCode = "403", description = "forbidden!")
@@ -133,6 +143,7 @@ public class PlayerController {
         Player player = repository.findById(id)
                 .orElseThrow();
         player.setPassword(password);
+        repository.save(player);
         return player;
     }
     @Operation(summary = "Changes the users username", description = "Uses a put request to change the users password through the username")
@@ -146,6 +157,7 @@ public class PlayerController {
         Player player = repository.findById(id)
                 .orElseThrow();
         player.setUsername(username);
+        repository.save(player);
         return player;
     }
 
@@ -162,6 +174,7 @@ public class PlayerController {
         if (player.getType().equals("b")) {
             player.setType("p");
         }
+        repository.save(player);
         return player;
     }
     @Operation(summary = "Changes the type of account a user has", description = "Uses a put request to change the type of the user")
@@ -177,6 +190,7 @@ public class PlayerController {
         if (player.getType().equals("p")) {
             player.setType("b");
         }
+        repository.save(player);
         return player;
     }
 
@@ -186,6 +200,11 @@ public class PlayerController {
                 .orElseThrow();
         return player.getType();
     }
+//    @DeleteMapping(value = "/deleteUser/{id}")
+//    public void deleteUser(@PathVariable Integer id) {
+//        Player player = repository.findById(id).get();
+//        repository.delete(player);
+//    }
 
 
 //    @GetMapping("/getUserByType/{type}")

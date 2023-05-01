@@ -42,6 +42,7 @@ public class GameLobbyController {
      */
     private final Logger logger = LoggerFactory.getLogger(GameLobbyRepository.class);
 
+    //TODO: add the new lobby using a lobby request body
     @Operation(summary = "Returns the GameLobby using the host id", description = "Using a post request a game lobby is returned from the id of the host")
     @ApiResponse(responseCode = "404", description = "not found!")
     @ApiResponse(responseCode = "403", description = "forbidden!")

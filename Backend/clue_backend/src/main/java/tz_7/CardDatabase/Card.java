@@ -14,6 +14,7 @@ public class Card {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cardID")
     private int cardID;
+    private String cardType;
     private String name;
     private String type; //weapon, room, person
     private String cardImage; 
@@ -29,8 +30,9 @@ public class Card {
     private Set<GameState> gameState;
 
     public Card() {}
-    public Card(int cardID, String name, String type, String cardImage) {
+    public Card(int cardID, String cardType, String name, String type, String cardImage) {
         this.cardID = cardID;
+        this.cardType = cardType;
         this.name = name;
         this.type = type;
         this.cardImage = cardImage;
@@ -38,6 +40,18 @@ public class Card {
 
     public int getCardID() {
         return cardID;
+    }
+
+    public String getCardType() {
+        return cardType;
+    }
+
+    public void setCardType(String cardType) {
+        this.cardType = cardType;
+    }
+
+    public void setGameState(Set<GameState> gameState) {
+        this.gameState = gameState;
     }
 
     public void setCardID(int cardID) {
