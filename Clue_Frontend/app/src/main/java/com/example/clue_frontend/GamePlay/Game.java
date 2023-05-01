@@ -83,7 +83,7 @@ public class Game extends AppCompatActivity {
         chatBox = (TextView) findViewById(R.id.chat_box);
         connectChat();
 
-        connectGame();
+//        connectGame();
 
         relativeLayout = findViewById(R.id.relative_layout);
         swipeListener = new SwipeListener(relativeLayout);
@@ -212,6 +212,7 @@ public class Game extends AppCompatActivity {
             gameClient = new WebSocketClient(new URI(w), (Draft) drafts[0]) {
                 @Override
                 public void onMessage(String m) {
+                    RequestQueue queue = Volley.newRequestQueue(Game.this);
                     String url;
                     JsonObjectRequest objectRequest;
                     JsonArrayRequest arrayRequest;

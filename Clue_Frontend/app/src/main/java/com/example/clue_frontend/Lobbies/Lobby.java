@@ -18,7 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.clue_frontend.CharacterSelection;
+import com.example.clue_frontend.GamePlay.Player.CharacterSelection;
 import com.example.clue_frontend.GamePlay.Game;
 import com.example.clue_frontend.MyApplication;
 import com.example.clue_frontend.R;
@@ -198,9 +198,7 @@ public class Lobby extends AppCompatActivity {
         startGame.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-//                TODO: create game state
                 Intent intent = new Intent(Lobby.this, CharacterSelection.class);
-                startActivity(intent);
 
                 if(app.isHost()) {
                     String url = "http://10.0.2.2:8080/game/new/lobby/" + app.getLobbyid();
@@ -222,141 +220,11 @@ public class Lobby extends AppCompatActivity {
                                     Log.d("ResponseError", error.toString());
                                 }
                             });
+                    queue.add(request);
                 }
-//                app = (MyApplication) getApplication();
-
-
-
-                /*
-                    If the player is the host:
-                        Create the game state & Join websocket
-                 */
-//                if(app.isHost()) {
-//                    JSONObject game = new JSONObject();
-//                    try {
-//                        game.put("versionID", 1);
-//                    } catch (JSONException e) {
-//                        throw new RuntimeException(e);
-//                    }
-//                    JSONArray players = new JSONArray();
-////                String url = "http://10.0.2.2:8080/lobby/players/" + app.getLobbyid();
-//                    String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/players/" + app.getLobbyid();
-//                    JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
-//                            new Response.Listener<JSONArray>() {
-//                                @Override
-//                                public void onResponse(JSONArray response) {
-//                                    try {
-//                                        System.out.println("turnOrder: " + response.length());
-//                                        for(int i = 0; i < response.length(); i++) {
-//                                            players.put(response.getJSONObject(i));
-//                                        }
-//                                        game.put("turnOrder", players);
-//
-////                                    String url = "http://10.0.2.2:8080/card/weapon";
-////                                    JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
-////                                            new Response.Listener<JSONArray>() {
-////                                                @Override
-////                                                public void onResponse(JSONArray response) {
-////                                                    try {
-////                                                        System.out.println("weapons: " + response.length());
-////                                                        game.put("weapons", response);
-////
-////                                                        String url = "http://10.0.2.2:8080/card/suspect";
-////                                                        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
-////                                                                new Response.Listener<JSONArray>() {
-////                                                                    @Override
-////                                                                    public void onResponse(JSONArray response) {
-////                                                                        try {
-////                                                                            System.out.println("suspects: " + response.length());
-////                                                                            game.put("suspects", response);
-////                                                                            String url = "http://10.0.2.2:8080/card/room";
-////                                                                            JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
-////                                                                                    new Response.Listener<JSONArray>() {
-////                                                                                        @Override
-////                                                                                        public void onResponse(JSONArray response) {
-////                                                                                            try {
-////                                                                                                System.out.println("rooms: " + response.length());
-////                                                                                                game.put("rooms", response);
-//                                        Intent intent = new Intent(Lobby.this, CharacterSelection.class);
-////                                                                                                String url = "http://10.0.2.2:8080/game/new";
-//                                        String url = "http://coms-309-038.class.las.iastate.edu:8080/game/new";
-//                                        JsonObjectRequest finalRequest = new JsonObjectRequest(Request.Method.POST, url, game,
-//                                                new Response.Listener<JSONObject>() {
-//                                                    @Override
-//                                                    public void onResponse(JSONObject response) {
-//                                                        try {
-//                                                            System.out.println("Made it");
-//                                                            app.setGameid((Integer) response.get("id"));
-//                                                            startActivity(intent);
-//                                                        } catch (JSONException e) {
-//                                                            throw new RuntimeException(e);
-//                                                        }
-//                                                    }
-//                                                },
-//                                                new Response.ErrorListener() {
-//                                                    @Override
-//                                                    public void onErrorResponse(VolleyError error) {
-//                                                        Toast.makeText(Lobby.this, "ERROR: " + error, Toast.LENGTH_SHORT);
-//                                                        Log.d("Error.Response", error.toString());
-//                                                    }
-//                                                });
-//                                        queue.add(finalRequest);
-////                                                                                            } catch (JSONException e) {
-////                                                                                                throw new RuntimeException(e);
-////                                                                                            }
-////                                                                                        }
-////                                                                                    },
-////                                                                                    new Response.ErrorListener() {
-////                                                                                        @Override
-////                                                                                        public void onErrorResponse(VolleyError error) {
-////                                                                                            Toast.makeText(Lobby.this, "ERROR: " + error, Toast.LENGTH_SHORT);
-////                                                                                            Log.d("Error.Response", error.toString());
-////                                                                                        }
-////                                                                                    });
-////                                                                            queue.add(request);
-////                                                                        } catch (JSONException e) {
-////                                                                            throw new RuntimeException(e);
-////                                                                        }
-////                                                                    }
-////                                                                },
-////                                                                new Response.ErrorListener() {
-////                                                                    @Override
-////                                                                    public void onErrorResponse(VolleyError error) {
-////                                                                        Toast.makeText(Lobby.this, "ERROR: " + error, Toast.LENGTH_SHORT);
-////                                                                        Log.d("Error.Response", error.toString());
-////                                                                    }
-////                                                                });
-////                                                        queue.add(request);
-////                                                    } catch (JSONException e) {
-////                                                        throw new RuntimeException(e);
-////                                                    }
-////                                                }
-////                                            },
-////                                            new Response.ErrorListener() {
-////                                                @Override
-////                                                public void onErrorResponse(VolleyError error) {
-////                                                    Toast.makeText(Lobby.this, "ERROR: " + error, Toast.LENGTH_SHORT);
-////                                                    Log.d("Error.Response", error.toString());
-////                                                }
-////                                            });
-////                                    queue.add(request);
-//                                    } catch (JSONException e) {
-//                                        throw new RuntimeException(e);
-//                                    }
-//                                }
-//                            },
-//                            new Response.ErrorListener() {
-//                                @Override
-//                                public void onErrorResponse(VolleyError error) {
-//                                    Toast.makeText(Lobby.this, "ERROR: " + error, Toast.LENGTH_SHORT);
-//                                    Log.d("Error.Response", error.toString());
-//                                }
-//                            });
-//                    queue.add(request);
-//                }
-
-
+                startActivity(intent);
             }
+
         });
     }
 }
