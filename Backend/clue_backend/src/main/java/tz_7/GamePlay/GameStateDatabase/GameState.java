@@ -115,6 +115,28 @@ public class GameState {
     }
 
     /**
+     * Gets the next player
+     * @return
+     */
+    public Player getCurrentPlayer() {
+        Player[] players = turnOrder.toArray(new Player[0]);
+        int tmp = turnNum - 1;
+        if(tmp < 0) {tmp = turnOrder.size() - 1;}
+        Player cur = players[tmp];
+        return cur;
+    }
+
+    /**
+     * Gets the next player
+     * @return
+     */
+    public Player getPlayerAtIndex(int index) {
+        Player[] players = turnOrder.toArray(new Player[0]);
+        Player cur = players[index];
+        return cur;
+    }
+
+    /**
      * Checks the final guess that a player makes
      * @param guess
      *  List of card IDs

@@ -26,8 +26,10 @@ public class PlayerInfo {
     //    ID for the player info
         private Integer ID;
 
+        @Column(name = "roll")
         private Integer roll;
 
+        @Column(name = "turn")
         private Boolean turn;
 
     /**
@@ -71,10 +73,8 @@ public class PlayerInfo {
     public void setRoll(Integer roll) {
         this.roll = roll;
     }
-    public void changeTurn() {
-        if(turn) {
-            turn = false;
-        } else {turn = true;}
+    public void setTurn(Boolean turn) {
+        this.turn = turn;
     }
     public void setCardHand(Set<Card> cards) {
         cardHand = cards;

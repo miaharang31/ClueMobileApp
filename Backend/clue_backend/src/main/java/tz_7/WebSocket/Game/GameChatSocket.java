@@ -57,7 +57,7 @@ public class GameChatSocket {
         sessionPlayerMap.put(session, player);
         playerSessionMap.put(player, session);
 
-        String message = player.getUsername() + "has joined the game";
+        String message = player.getUsername() + " has joined the game";
         broadcast(message);
     }
 
