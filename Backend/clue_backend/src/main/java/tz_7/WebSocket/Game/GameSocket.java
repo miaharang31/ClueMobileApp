@@ -3,6 +3,7 @@ package tz_7.WebSocket.Game;
 import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Map;
+import java.util.Set;
 
 import jakarta.websocket.OnClose;
 import jakarta.websocket.OnMessage;
@@ -15,8 +16,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import tz_7.CardDatabase.Card;
+import tz_7.CardDatabase.CardRepository;
 import tz_7.GamePlay.GameLobbyDatabase.GameLobby;
 import tz_7.GamePlay.GameLobbyDatabase.GameLobbyRepository;
+import tz_7.GamePlay.PlayerInfoDatabase.PlayerInfo;
+import tz_7.GamePlay.PlayerInfoDatabase.PlayerInfoRepository;
 import tz_7.PlayerDatabase.Player;
 import tz_7.PlayerDatabase.PlayerRepository;
 import tz_7.GamePlay.GameStateDatabase.GameState;
@@ -32,8 +37,14 @@ public class GameSocket {
     private static PlayerRepository playerRepository;
     private static GameStateRepository gameStateRepository;
     private static GameLobbyRepository gameLobbyRepository;
+    private static PlayerInfoRepository playerInfoRepository;
 
     private final Logger logger = LoggerFactory.getLogger(GameChatSocket.class);
+    private final CardRepository cardRepository;
+
+    public GameSocket(CardRepository cardRepository) {
+        this.cardRepository = cardRepository;
+    }
 
     @Autowired
     public void setPlayerRepository(PlayerRepository repo) {
@@ -47,6 +58,8 @@ public class GameSocket {
     public void setGameLobbyRepository(GameLobbyRepository repo) {
         gameLobbyRepository = repo;
     }
+    @Autowired
+    public void setPlayerInfoRepository(PlayerInfoRepository repo) {playerInfoRepository = repo;}
 
     @OnOpen
     public void onOpen(Session session, @PathParam("playerid") Integer playerid, @PathParam("gameid") Integer gameid)
@@ -78,19 +91,56 @@ public class GameSocket {
                 break;
             case "Turn Ended":
                 logger.info("Enter Turn Ending");
+                Player curPlayer = sessionPlayerMap.get(session);
+                GameState state = playerGameStateMap.get(curPlayer);
 
+//                Switching the db information on if it is their turn or not
+                PlayerInfo info = playerInfoRepository.findByPlayer(curPlayer);
+                info.changeTurn();
+                playerInfoRepository.save(info);
+
+                Player nextPlayer = state.getNextPlayer();
+                info = playerInfoRepository.findByPlayer(nextPlayer);
+                info.changeTurn();
+                playerInfoRepository.save(info);
+
+//                Telling everyone but the current player that a turn has ended
+                Set<Player> players = state.getTurnOrder();
+                for(Player player : players) {
+                    if(player != curPlayer) {
+                        sendMessageToPArticularUser(player, "Turn Ended");
+                    }
+                }
                 break;
             case "Show Card":
                 logger.info("Entered into Close");
                 break;
+            case "Game Ended":
+                break;
+            case "Guess":
+                break;
             default:
 //                TODO: Deal with Card stuff
                 if(message.startsWith(">")) {
-//                    Giving a card
+//                    Giving a card [message formated : ">test 2" i.e ">username cardId"
+                    String username = message.split(" ")[0].substring(1);
+                    Player destPlayer = playerRepository.findByUsername(username).get();
+                    Player cur = sessionPlayerMap.get(session);
+
+                    int cardId = Integer.parseInt(message.split(" ")[1]);
+                    if(cardId == 0) {
+//                        Player couldn't give card
+                        sendMessageToPArticularUser(cur, "-" + username);
+                    } else {
+//                          Sending card id to player
+                        sendMessageToPArticularUser(destPlayer, "<" + message.split(" ")[1]);
+                    }
                 } else if (message.startsWith("<")) {
-//                    Recieving a card
+//                    Recieving a card [message formated : ">2" i.e "<cardId"
+
                 } else if (message.startsWith("-")) {
-//                    Player
+//                    Player had no card to give
+
                 }
 //                TODO: Maybe another one for like if the player doesn't have a card to show
         }

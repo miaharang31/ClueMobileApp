@@ -204,8 +204,8 @@ public class Game extends AppCompatActivity {
                 new Draft_6455()
         };
 
-        //String w = "ws://10.0.2.2:8080/websocket/game/"+app.getGameid()+"/player/"+app.getUserid()+"";
-        String w = "ws://coms-309-038.class.las.iastate.edu:8080/websocket/game/"+app.getGameid()+"/player/"+app.getUserid()+"";
+        String w = "ws://10.0.2.2:8080/websocket/game/"+app.getGameid()+"/player/"+app.getUserid()+"";
+//        String w = "ws://coms-309-038.class.las.iastate.edu:8080/websocket/game/"+app.getGameid()+"/player/"+app.getUserid()+"";
         Log.d("Socket", w);
         try {
             Log.d("Socket:", "Trying socket");
@@ -225,19 +225,19 @@ public class Game extends AppCompatActivity {
                             Intent intent = new Intent(Game.this, Home.class);
                             startActivity(intent);
                             break;
-                        case "Turn Ended" :
+                        case "Turn Ended":
 //                            A player has ended their turn, start turn if its their turn
 //                            url = "http://10.0.2.2:8080/info/player/"+app.getUserid();
-                            url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/"+app.getUserid();
+                            url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/" + app.getUserid();
                             objectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                                     new Response.Listener<JSONObject>() {
                                         @Override
                                         public void onResponse(JSONObject response) {
                                             try {
                                                 Boolean isTurn = response.getBoolean("turn");
-                                                if(isTurn) {
+                                                if (isTurn) {
 //                                                    String url = "http://10.0.2.2:8080/info/player/"+app.getUserid()+"/role";
-                                                    String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/"+app.getUserid()+"/role";
+                                                    String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/" + app.getUserid() + "/role";
                                                     JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                                                             new Response.Listener<JSONObject>() {
                                                                 @Override
@@ -278,6 +278,11 @@ public class Game extends AppCompatActivity {
 //                             figure out how its getting back to other user
 //                                IS DIFFERENT ON SERVER DON'T MESS WITH IT
                             break;
+                        case "Recieve Card":
+//                            TODO: Show the card the player chose
+//                             figure out how its getting back to other user
+//                                IS DIFFERENT ON SERVER DON'T MESS WITH IT
+                            break;
                         case "Game Ended":
 //                            TODO: Handle ending screens
                             app.setGameid(0);
@@ -293,9 +298,14 @@ public class Game extends AppCompatActivity {
 //                                      - End Game
                             JSONArray finalCards = null;
 //                            url = "http://10.0.2.2:8080/game/"+app.getGameid()+"/checkGuess";
-                            url = "http://coms-309-038.class.las.iastate.edu:8080/game/"+app.getGameid()+"/checkGuess";
+                            url = "http://coms-309-038.class.las.iastate.edu:8080/game/" + app.getGameid() + "/checkGuess";
                             break;
                         default:
+                            if(m.startsWith(">")) {
+//                                Sending a card
+                            } else if(m.startsWith("<")) {
+//                                Recieving card
+                            }
 //                            TODO: idk what to put here ngl
 //                      TODO: Think of other things happening in the game
                     }

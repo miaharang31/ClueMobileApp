@@ -25,8 +25,10 @@ public class PlayerInfo {
     //    ID for the player info
         private Integer ID;
 
+        @Column(name = "roll")
         private Integer roll;
 
+        @Column(name = "turn")
         private Boolean turn;
 
     /**
