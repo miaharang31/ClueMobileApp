@@ -201,7 +201,7 @@ public class GameStateController {
 //    }
     //DO NOT NEED BECAUSE WE WILL DO ALL IN DISTRIBUTE CARDS
 
-    @PutMapping(value = "game/{id}/distributeCards")
+    @PutMapping(value = "/{id}/distributeCards")
     public GameState distributeCards(@PathVariable Integer id) {
 
         GameState state = repo.findById(id).get();
@@ -340,11 +340,6 @@ public class GameStateController {
     @GetMapping("/all")
     public ResponseEntity<List<GameState>> getAllStates() {
         return new ResponseEntity<List<GameState>>(repo.findAll(), HttpStatus.OK);
-    }
-
-    @GetMapping("/host/{id}")
-    public GameState getAllStates(@PathVariable Integer id) {
-        return repo.findByHostID(id).get(0);
     }
 
     /**
