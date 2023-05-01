@@ -53,7 +53,7 @@ public class GameLobbyController {
         GameLobby tmp = repo.findByHost(host);
 
 //        If there is a lobby created by that player, delete it
-//        then create a new on
+//        then create a new one
         if(tmp != null) {
             deleteLobby(host.getGameLobbyHost().getID());
         }
@@ -112,6 +112,13 @@ public class GameLobbyController {
     @GetMapping(value = "lobby/{id}", produces = "application/json")
     public GameLobby getLobbyById(@PathVariable int id) {
         return repo.findById(id).get();
+    }
+
+
+    @GetMapping(value = "lobby/find/host/{id}", produces = "application/json")
+    public GameLobby getLobbyByHost(@PathVariable int id) {
+        Player host = playerRepo.findById(id).get();
+        return repo.findByHost(host);
     }
 
     /**
@@ -243,11 +250,14 @@ public class GameLobbyController {
     @ApiResponse(responseCode = "200", description = "Success!")
     @DeleteMapping(value = "lobby/delete/{id}")
     public void deleteLobby(@PathVariable Integer id) {
+        System.out.println(id);
         GameLobby lobby = repo.findById(id).get();
         lobby = removePlayer(lobby.getHost().getId(), lobby.getID());
+        Set<Player> players = lobby.getPlayers();
         for (Player player : lobby.getPlayers()) {
             lobby = removePlayer(player.getId(), lobby.getID());
         }
         repo.delete(lobby);
+        playerRepo.saveAll(players);
     }
 }

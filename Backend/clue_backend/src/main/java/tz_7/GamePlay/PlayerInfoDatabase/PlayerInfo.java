@@ -6,6 +6,7 @@ import tz_7.PlayerDatabase.Player;
 import tz_7.RoleDatabase.Role;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -49,6 +50,17 @@ public class PlayerInfo {
     public PlayerInfo() {
         cardHand = new HashSet<>();
     }
+
+    public PlayerInfo(boolean turn) {
+        this.turn = turn;
+        cardHand = new HashSet<>();
+    }
+    public PlayerInfo(Player player) {
+        this.player = player;
+        cardHand = new HashSet<>();
+    }
+
+
 
     public void setPlayer(Player player) {
         this.player = player;

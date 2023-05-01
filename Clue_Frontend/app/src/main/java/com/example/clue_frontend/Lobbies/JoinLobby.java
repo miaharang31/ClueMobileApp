@@ -41,7 +41,7 @@ public class JoinLobby extends AppCompatActivity {
                 } else {
                     MyApplication app = (MyApplication) getApplication();
 //                    String url = "http://10.0.2.2:8080/lobby/join/" + app.getUserid() + "/code/" + gameCodeData;
-                    String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/join/" + app.getUserid();
+                    String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/join/" + app.getUserid() + "/code/" + gameCodeData;
                     RequestQueue queue = Volley.newRequestQueue(JoinLobby.this);
 
                     JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, null,
@@ -57,6 +57,7 @@ public class JoinLobby extends AppCompatActivity {
                                     }
 
                                     startActivity(intent);
+
 
                                 }
                             },

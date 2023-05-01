@@ -1,12 +1,10 @@
-package tz_7.WebSocket;
+package tz_7.WebSocket.Game;
 
 import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Map;
 
-import jakarta.transaction.Transactional;
 import jakarta.websocket.OnClose;
-import jakarta.websocket.OnError;
 import jakarta.websocket.OnMessage;
 import jakarta.websocket.OnOpen;
 import jakarta.websocket.Session;
@@ -16,20 +14,15 @@ import jakarta.websocket.server.ServerEndpoint;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import tz_7.GamePlay.GameLobbyDatabase.GameLobby;
-import tz_7.GamePlay.GameLobbyDatabase.GameLobbyController;
 import tz_7.GamePlay.GameLobbyDatabase.GameLobbyRepository;
 import tz_7.PlayerDatabase.Player;
-import tz_7.PlayerDatabase.PlayerController;
 import tz_7.PlayerDatabase.PlayerRepository;
 import tz_7.GamePlay.GameStateDatabase.GameState;
 import tz_7.GamePlay.GameStateDatabase.GameStateRepository;
-import tz_7.GamePlay.GameStateDatabase.GameStateController;
 
-@ServerEndpoint("/websocket/game/{lobbyID}/player/{player}")
+@ServerEndpoint("/websocket/game/{gameid}/player/{playerid}")
 @Controller
 public class GameSocket {
     private static Map< Session, Player> sessionPlayerMap = new Hashtable < > ();
@@ -39,9 +32,8 @@ public class GameSocket {
     private static PlayerRepository playerRepository;
     private static GameStateRepository gameStateRepository;
     private static GameLobbyRepository gameLobbyRepository;
-//    private static GameStateController gameStateController;
 
-    private final Logger logger = LoggerFactory.getLogger(GameSocket.class);
+    private final Logger logger = LoggerFactory.getLogger(GameChatSocket.class);
 
     @Autowired
     public void setPlayerRepository(PlayerRepository repo) {
@@ -57,46 +49,50 @@ public class GameSocket {
     }
 
     @OnOpen
-    public void onOpen(Session session, @PathParam("player") Integer playerid, @PathParam("lobbyID") Integer lobbyID)
-    throws IOException {
+    public void onOpen(Session session, @PathParam("playerid") Integer playerid, @PathParam("gameid") Integer gameid)
+            throws IOException {
         logger.info("Entered into Open");
 
         Player player = playerRepository.findById(playerid).get();
-        GameLobby lobby = gameLobbyRepository.findById(lobbyID).get();
-
-//        GameState state = gameStateRepository.findByHostID(lobby.getHost().getId());
-
-//        GameState state = gameStateController.newSocketState(lobby);
+        GameState state = gameStateRepository.findById(gameid).get();
 
         sessionPlayerMap.put(session, player);
         playerSessionMap.put(player, session);
-//        playerGameStateMap.put(player, state);
-
-        String message = player.getUsername() + "has joined the game";
-        broadcast(message);
-//        if(lobby.getHost() == player) {
-//
-//        } else if (state != null) {
-//            sessionPlayerMap.put(session, player);
-//            playerSessionMap.put(player, session);
-//            playerGameStateMap.put(player, state);
-//
-//            String message = player.getUsername() + "had joined the game";
-//            broadcast(message);
-//        }
+        playerGameStateMap.put(player, state);
     }
 
+    /**
+     * Handles where to send the
+     * @param session
+     * @param message
+     * @throws IOException
+     */
     @OnMessage
     public void onMessage(Session session, String message) throws IOException {
         logger.info("Entered Message: " + message);
-        Player player = playerRepository.findByUsername(sessionPlayerMap.get(session).getUsername()).get();
+        switch (message) {
+//            TODO: Handle different game mechanics
+            case "Game Deleted":
+                logger.info("Entered Game Deletion");
+                broadcast("Game Deleted");
+                break;
+            case "Turn Ended":
+                logger.info("Enter Turn Ending");
 
-        if(message.startsWith("@")) {
-            Player destPlayer = playerRepository.findByUsername(message.split(" ")[0].substring(1)).get();
-            sendMessageToPArticularUser(destPlayer, "[DM] " + player + ": " + message);
-            sendMessageToPArticularUser(player, "[DM] " + player + ": " + message);
-        } else {
-            broadcast(player.getUsername() + ": " + message);
+                break;
+            case "Show Card":
+                logger.info("Entered into Close");
+                break;
+            default:
+//                TODO: Deal with Card stuff
+                if(message.startsWith(">")) {
+//                    Giving a card
+                } else if (message.startsWith("<")) {
+//                    Recieving a card
+                } else if (message.startsWith("-")) {
+//                    Player
+                }
+//                TODO: Maybe another one for like if the player doesn't have a card to show
         }
     }
 
@@ -105,16 +101,19 @@ public class GameSocket {
         logger.info("Entered into Close");
 
         Player player = sessionPlayerMap.get(session);
-//        GameState state = playerGameStateMap.get(player);
 
         sessionPlayerMap.remove(session);
         playerSessionMap.remove(player);
         playerGameStateMap.remove(player);
-
-        String message = player.getUsername() + " disconnected";
-        broadcast(message);
     }
 
+    /**
+     * Sends message to specific user in server
+     * @param player
+     *  Player to send message to
+     * @param message
+     *  message to send
+     */
     private void sendMessageToPArticularUser(Player player, String message) {
         try {
             playerSessionMap.get(player).getBasicRemote().sendText(message);
@@ -123,6 +122,11 @@ public class GameSocket {
         }
     }
 
+    /**
+     * Sends message to all players in server
+     * @param message
+     *  message to send
+     */
     private void broadcast(String message) {
         sessionPlayerMap.forEach((session, player) -> {
             try {

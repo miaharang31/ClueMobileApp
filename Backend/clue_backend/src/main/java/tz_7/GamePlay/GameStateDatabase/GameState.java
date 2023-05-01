@@ -162,6 +162,7 @@ public class GameState {
 //        weapons.remove(finalWeapon);
 //    }
 
+//<<<<<<< HEAD
     public void setAllCards(String s) {
         CardController cardController = new CardController();
         if (s.equals("b")) {
@@ -170,6 +171,35 @@ public class GameState {
         else {
             cards = cardController.getPremiumCards();
         }
+//=======
+//    public void deleteCards(String type) {
+//        switch (type) {
+//            case "w":
+//                weapons = null;
+//                break;
+//            case "s":
+//                suspects = null;
+//                break;
+//            case "r":
+//                rooms = null;
+//                break;
+//        }
+//    }
+//
+//    /**
+//     * Sets the rooms for the game
+//     *  Sets the final weapon card as well
+//     * @param rooms
+//     *  Set of weapon cards
+//     */
+//    public void setRooms(Set<Card> rooms) {
+//        this.rooms = rooms;
+//        Random rand = new Random();
+//        int n = rand.nextInt(rooms.size());
+//        Card finalRoom = rooms.toArray(new Card[rooms.size()])[n];
+//        finalCards.add(finalRoom);
+//        rooms.remove(finalRoom);
+//>>>>>>> main
     }
     public void setFinalCards(String s) {
         Random rand = new Random();

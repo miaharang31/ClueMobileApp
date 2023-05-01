@@ -1,4 +1,4 @@
-package com.example.clue_frontend.GamePlay;
+package com.example.clue_frontend.GamePlay.Player;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.clue_frontend.GamePlay.CardLayout;
 import com.example.clue_frontend.MyApplication;
 import com.example.clue_frontend.R;
 

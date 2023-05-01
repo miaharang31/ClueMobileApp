@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.clue_frontend.GamePlay.Player.Checklist;
 import com.example.clue_frontend.GridAdapter;
 import com.example.clue_frontend.R;
 import com.example.clue_frontend.databinding.CardLayoutBinding;

@@ -1,4 +1,4 @@
-package com.example.clue_frontend.GamePlay;
+package com.example.clue_frontend.GamePlay.Player;
 
 
 import android.graphics.Bitmap;
