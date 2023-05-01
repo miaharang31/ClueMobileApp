@@ -64,8 +64,14 @@ public class PlayerInfo {
             turn = false;
         } else {turn = true;}
     }
-    public void setCards(Set<Card> cards) {
-//        TODO: Set the cards
+    public void setCardHand(Set<Card> cards) {
+        cardHand = cards;
+    }
+    public void addCard(Card card) {
+        cardHand.add(card);
+    }
+    public Set<Card> getCards() {
+        return cardHand;
     }
 
     /**

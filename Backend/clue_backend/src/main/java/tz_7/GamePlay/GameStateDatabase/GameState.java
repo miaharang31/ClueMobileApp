@@ -3,6 +3,7 @@ package tz_7.GamePlay.GameStateDatabase;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import tz_7.CardDatabase.Card;
+import tz_7.CardDatabase.CardController;
 import tz_7.GamePlay.GameLobbyDatabase.GameLobby;
 import tz_7.PlayerDatabase.Player;
 
@@ -30,6 +31,9 @@ public class GameState {
     @Column(name = "turnNum")
     private Integer turnNum;
 
+    @Column(name = "gameType")
+    private String gameType;
+
     /**
      * JPA Relationships
      */
@@ -41,6 +45,10 @@ public class GameState {
     @ManyToMany(mappedBy = "gameState")
     @JsonIgnore
     private Set<Card> finalCards;
+
+    @ManyToMany(mappedBy = "gameState")
+    @JsonIgnore
+    private Set<Card> cards;
 
 //    TODO: Combine weapons, rooms and suspects
     @ManyToMany(mappedBy = "gameState")
@@ -88,7 +96,7 @@ public class GameState {
         rooms = new HashSet<>();
         finalCards = new HashSet<>();
         turnNum = 0;
-
+        gameType = lobby.getHost().getType();
         hostID = lobby.getHost().getId();
         turnOrder.addAll(lobby.getPlayers());
         turnOrder.add(lobby.getHost());
@@ -121,6 +129,14 @@ public class GameState {
         return true;
     }
 
+    public String getGameType() {
+        return gameType;
+    }
+
+    public void setGameType(String gameType) {
+        this.gameType = gameType;
+    }
+
     /**
      * Sets the turnOrder
      * @param players
@@ -130,51 +146,80 @@ public class GameState {
         turnOrder = players;
     }
 
-    /**
-     * Sets the weapons for the game
-     *  Sets the final weapon card as well
-     * @param weapons
-     *  Set of weapon cards
-     */
+//    /**
+//     * Sets the weapons for the game
+//     *  Sets the final weapon card as well
+//     * @param weapons
+//     *  Set of weapon cards
+//     */
 //    TODO: could probably make this one method
-    public void setWeapons(Set<Card> weapons) {
-        this.weapons = weapons;
-        Random rand = new Random();
-        int n = rand.nextInt(weapons.size());
-        Card finalWeapon = weapons.toArray(new Card[weapons.size()])[n];
-        finalCards.add(finalWeapon);
-        weapons.remove(finalWeapon);
-    }
+//    public void setWeapons(Set<Card> weapons) {
+//        this.weapons = weapons;
+//        Random rand = new Random();
+//        int n = rand.nextInt(weapons.size());
+//        Card finalWeapon = weapons.toArray(new Card[weapons.size()])[n];
+//        finalCards.add(finalWeapon);
+//        weapons.remove(finalWeapon);
+//    }
 
-    /**
-     * Sets the rooms for the game
-     *  Sets the final weapon card as well
-     * @param rooms
-     *  Set of weapon cards
-     */
-    public void setRooms(Set<Card> rooms) {
-        this.rooms = rooms;
-        Random rand = new Random();
-        int n = rand.nextInt(rooms.size());
-        Card finalRoom = rooms.toArray(new Card[rooms.size()])[n];
-        finalCards.add(finalRoom);
-        rooms.remove(finalRoom);
+    public void setAllCards(String s) {
+        CardController cardController = new CardController();
+        if (s.equals("b")) {
+            cards = cardController.getBasicCards();
+        }
+        else {
+            cards = cardController.getPremiumCards();
+        }
     }
-
-    /**
-     * Sets the suspects for the game
-     *  Sets the final weapon card as well
-     * @param suspects
-     *  Set of weapon cards
-     */
-    public void setSuspects(Set<Card> suspects) {
-        this.suspects = suspects;
+    public void setFinalCards(String s) {
         Random rand = new Random();
-        int n = rand.nextInt(suspects.size());
-        Card finalSuspect = suspects.toArray(new Card[suspects.size()])[n];
-        finalCards.add(finalSuspect);
-        suspects.remove(finalSuspect);
+        Card[] cards1 = (Card[]) cards.toArray();
+        int num = rand.nextInt(cards1.length);
+        while (!cards1[num].getCardType().equals("s")) {
+            num = rand.nextInt(cards1.length);
+        }
+        finalCards.add(cards1[num]);
+        num = rand.nextInt(cards1.length);
+        while (!cards1[num].getCardType().equals("w")) {
+            num = rand.nextInt(cards1.length);
+        }
+        finalCards.add(cards1[num]);
+        num = rand.nextInt(cards1.length);
+        while (!cards1[num].getCardType().equals("r")) {
+            num = rand.nextInt(cards1.length);
+        }
+        finalCards.add(cards1[num]);
     }
+//
+//    /**
+//     * Sets the rooms for the game
+//     *  Sets the final weapon card as well
+//     * @param rooms
+//     *  Set of weapon cards
+//     */
+//    public void setRooms(Set<Card> rooms) {
+//        this.rooms = rooms;
+//        Random rand = new Random();
+//        int n = rand.nextInt(rooms.size());
+//        Card finalRoom = rooms.toArray(new Card[rooms.size()])[n];
+//        finalCards.add(finalRoom);
+//        rooms.remove(finalRoom);
+//    }
+//
+//    /**
+//     * Sets the suspects for the game
+//     *  Sets the final weapon card as well
+//     * @param suspects
+//     *  Set of weapon cards
+//     */
+//    public void setSuspects(Set<Card> suspects) {
+//        this.suspects = suspects;
+//        Random rand = new Random();
+//        int n = rand.nextInt(suspects.size());
+//        Card finalSuspect = suspects.toArray(new Card[suspects.size()])[n];
+//        finalCards.add(finalSuspect);
+//        suspects.remove(finalSuspect);
+//    }
 
     /**
      * Removes all of the players from
@@ -184,6 +229,12 @@ public class GameState {
         Iterator<Player> players = turnOrder.iterator();
         while(players.hasNext()) {
             turnOrder.remove(players.next());
+        }
+    }
+    public void removeCards() {
+        Iterator<Card> cards1 = cards.iterator();
+        while(cards1.hasNext()) {
+            cards.remove(cards1.next());
         }
     }
 
