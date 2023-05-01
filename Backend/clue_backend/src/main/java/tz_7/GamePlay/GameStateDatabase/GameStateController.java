@@ -206,7 +206,7 @@ public class GameStateController {
         int counter = 0;
         while (tmp.hasNext()) {
             counter++; //added to delte lines commented below
-            infos.add(new PlayerInfo(tmp.next())); //creates a playerinfo
+            infos.add(playerInfoRepository.findByPlayer(tmp.next())); //creates a playerinfo
         }
         Iterator<PlayerInfo> infotmp = infos.iterator(); //iterator to go through each player info
 //        int counter = 0;
