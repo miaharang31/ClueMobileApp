@@ -156,11 +156,6 @@ public class UserSignUp extends AppCompatActivity {
                             });
 
                     queue.add(jreq);
-
-
-
-
-
                 }
             }
         });

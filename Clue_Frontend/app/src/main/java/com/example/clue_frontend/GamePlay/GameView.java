@@ -280,7 +280,7 @@ public class GameView extends View {
                         break;
                     }
                     //if going into the center
-                    Game.checkInRoom(i,element);
+                    GiveRoom(i,element);
                 }
 
             }
@@ -318,7 +318,7 @@ public class GameView extends View {
                         border = true;
                         break;
                     }
-                    Game.checkInRoom(i,element);
+                    GiveRoom(i,element);
                 }
             }
             if(border){
@@ -355,7 +355,7 @@ public class GameView extends View {
                         border = true;
                         break;
                     }
-                    Game.checkInRoom(i,element);
+                    GiveRoom(i,element);
                 }
             }
             if(border){
@@ -392,7 +392,7 @@ public class GameView extends View {
                         border = true;
                         break;
                     }
-                    Game.checkInRoom(i,element);
+                    GiveRoom(i,element);
                 }
             }
             if(border){
@@ -410,7 +410,37 @@ public class GameView extends View {
 //        System.out.println("---------------------------------------- \n\n");
     }
 
-
-
-
+    public static String GiveRoom(int i, Room element){
+        if(element.getRoom()[i][1] == "clue"){
+            Game.makeFinalGuess("clue");
+        }else if (element.getRoom()[i][1] == "study") {
+            Game.makeAGuess("study");
+            return "study";
+        }else if (element.getRoom()[i][1] == "library") {
+            Game.makeAGuess("library");
+            return "library";
+        }else if (element.getRoom()[i][1] == "billiard") {
+            Game.makeAGuess("billiard");
+            return "billiard";
+        }else if (element.getRoom()[i][1] == "conservatory") {
+            Game.makeAGuess("conservatory");
+            return "conservatory";
+        }else if (element.getRoom()[i][1] == "hall") {
+            Game.makeAGuess("hall");
+            return "hall";
+        }else if (element.getRoom()[i][1] == "ball") {
+            Game.makeAGuess("ball");
+            return "ball";
+        }else if (element.getRoom()[i][1] == "lounge") {
+            Game.makeAGuess("lounge");
+            return "lounge";
+        }else if (element.getRoom()[i][1] == "dinning") {
+            Game.makeAGuess("dinning");
+            return "dinning";
+        }else if (element.getRoom()[i][1] == "kitchen") {
+            Game.makeAGuess("kitchen");
+            return "kitchen";
+        }
+        return "no room";
+    }
 }

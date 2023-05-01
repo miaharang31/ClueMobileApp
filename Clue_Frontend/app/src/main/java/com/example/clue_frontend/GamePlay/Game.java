@@ -1,13 +1,9 @@
 package com.example.clue_frontend.GamePlay;
 
 import static com.example.clue_frontend.GamePlay.GameView.player;
-import static com.example.clue_frontend.GamePlay.GameView.scarlet;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -33,7 +29,6 @@ import com.android.volley.toolbox.Volley;
 import com.example.clue_frontend.GamePlay.Player.Player;
 import com.example.clue_frontend.GamePlay.Player.playerGuess;
 import com.example.clue_frontend.HomeActivities.Home;
-import com.example.clue_frontend.MainActivity;
 import com.example.clue_frontend.MyApplication;
 
 import com.example.clue_frontend.R;
@@ -59,8 +54,9 @@ public class Game extends AppCompatActivity {
     static String characterSelected;
 
     ImageView iv, imageView;
-    MyApplication app;
-    WebSocketClient chatClient, gameClient;
+    static MyApplication app;
+    WebSocketClient chatClient;
+    static WebSocketClient gameClient;
 
     Button send;
     EditText message;
@@ -79,12 +75,9 @@ public class Game extends AppCompatActivity {
 
         //this.getWindow().setFlags(WindowManager.LayoutParams.FLAGS_CHANGED, WindowManager.LayoutParams.FLAGS_CHANGED);
 
-        System.out.println("line 82 in game, About to start game");
-        startGame();
-        System.out.println("line 84 in game, passed start game");
 
-        setContentView(R.layout.board);
-
+        //setContentView(R.layout.board);
+        System.out.println("!!!!!!!!!!!!! line 80, app.getUserid(): " + app.getUserid());
         String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/" + app.getUserid();
         System.out.println("line 389, in startGame(), about to do request, url: " + url);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -94,6 +87,8 @@ public class Game extends AppCompatActivity {
                         try {
                             System.out.println("line 252, about to do playTurn, response.get(\"turn\"): " + response.get("turn"));
                             if(true) {
+                                System.out.println("!!!!response.getJSONObject(\"role\").getString(\"name\"): " + response.getJSONObject("role").getString("name"));
+                                startGame(response.getJSONObject("role").getString("name"));
                                 playTurn(response.getJSONObject("role").getString("name"));
                             }
                         } catch (JSONException e) {
@@ -377,7 +372,7 @@ public class Game extends AppCompatActivity {
     }
 
 
-    private void startGame(){
+    private void startGame(String color){
         app = (MyApplication) getApplication();
         queue = Volley.newRequestQueue(Game.this);
         String url2 = "http://coms-309-038.class.las.iastate.edu:8080/game/"+ app.getGameid() + "/next" ;
@@ -402,80 +397,57 @@ public class Game extends AppCompatActivity {
                 });
         queue.add(request2);
 
-//        System.out.println("line 392, in playturn, role: " + role);
-//        if(Objects.equals(role, "scarlet")){
-//            player = new Player(GameView.scarlet, 468, 0, 0);
-//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
-//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
-//        } else if (Objects.equals(role, "white")) {
-//            player = new Player(GameView.white, 476, 0, 0);
-//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 5);
-//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
-//        }else if (Objects.equals(role, "plum")) {
-//            player = new Player(GameView.plum, 330, 0, 0);
-//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 4);
-//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 6);
-//        }else if (Objects.equals(role, "mustard")) {
-//            player = new Player(GameView.white, 476, 0, 0);
-//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 5);
-//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
-//        }else if (Objects.equals(role, "green")) {
-//            player = new Player(GameView.green, 14, 0, 0);
-//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
-//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
-//        }else if (Objects.equals(role, "peacock")) {
-//            player = new Player(GameView.peacock, 7, 0, 0);
-//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
-//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 5);
-//        }
-
+        if(Objects.equals(color, "scarlet")){
+            player = new Player(GameView.scarlet, 468, 0, 0);
+            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
+            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
+        } else if (Objects.equals(color, "white")) {
+            player = new Player(GameView.white, 476, 0, 0);
+            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 5);
+            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
+        }else if (Objects.equals(color, "plum")) {
+            player = new Player(GameView.plum, 330, 0, 0);
+            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 4);
+            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 6);
+        }else if (Objects.equals(color, "mustard")) {
+            player = new Player(GameView.white, 476, 0, 0);
+            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 5);
+            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
+        }else if (Objects.equals(color, "green")) {
+            player = new Player(GameView.green, 14, 0, 0);
+            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
+            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
+        }else if (Objects.equals(color, "peacock")) {
+            player = new Player(GameView.peacock, 7, 0, 0);
+            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
+            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 5);
+        }
+        setContentView(R.layout.board);
     }
 
-    private void playTurn(String role) {
-        Log.d("Game", "Entered into player turn. Player: " + role);
+    private void playTurn(String room) {
 
-        gameClient.send("Turn Ended");
+
 //        TODO: do whatever needs to be done turn wise
 //              - Move character:  Already done with the SwipeListener and MoveUp/Down/Left/Right functions in GameView
-//              - If in room, make guess: Is this already going to be handled in the guess case, line 285???
+//              - If in room, make guess: CheckRoom method
 //              - else, end turn: Handled below
-        
-//        System.out.println("line 392, in playturn, role: " + role);
-//        if(Objects.equals(role, "scarlet")){
-//            player = new Player(GameView.scarlet, 468, 0, 0);
-//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
-//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
-//        } else if (Objects.equals(role, "white")) {
-//            player = new Player(GameView.white, 476, 0, 0);
-//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 5);
-//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
-//        }else if (Objects.equals(role, "plum")) {
-//            player = new Player(GameView.plum, 330, 0, 0);
-//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 4);
-//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 6);
-//        }else if (Objects.equals(role, "mustard")) {
-//            player = new Player(GameView.white, 476, 0, 0);
-//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 5);
-//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
-//        }else if (Objects.equals(role, "green")) {
-//            player = new Player(GameView.green, 14, 0, 0);
-//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
-//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
-//        }else if (Objects.equals(role, "peacock")) {
-//            player = new Player(GameView.peacock, 7, 0, 0);
-//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
-//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 5);
-//        }
-//
-////      ending turn
-//        if (GameView.moves == 0){
-//            GameView.rand = new Random();
-//            GameView.moves = GameView.rand.nextInt(23) + 1;
-//            //        Tells the server a player has finished their turn
-//            gameClient.send("Turn Ended");
-//        }
+
+
+        //player... do something
+
+//      ending turn
+        if (GameView.moves == 0){
+            GameView.rand = new Random();
+            GameView.moves = GameView.rand.nextInt(23) + 1;
+            //        Tells the server a player has finished their turn
+            gameClient.send("Turn Ended");
+        } else if (Objects.equals(room, "no room")) {
+            gameClient.send("Turn Ended");
+        }
+
     }
-    private void makeFinalGuess() {
+    static void makeFinalGuess(String clue) {
         Log.d("Game", "Entered in Final Guess");
 //        TODO: Display final cards checklist, set the chosen cards in an array, check if guess is correct, end the game
         JSONArray finalCards = null;
@@ -491,7 +463,7 @@ public class Game extends AppCompatActivity {
      *  User will then choose which suspect and weapon to guess
      *  A message will be sent to the server with the names of the three guesses and
      */
-    private void makeAGuess(String room) {
+    static void makeAGuess(String room) {
         String weapon = null, suspect = null;
 
 //        TODO: Pull up guess checklist
@@ -616,43 +588,5 @@ public class Game extends AppCompatActivity {
             return gestureDetector.onTouchEvent(event);
         }
     }
-
-    public static void checkInRoom(int i, Room element) {
-        if(element.getRoom()[i][1] == "clue"){
-            //TODO: Add the final guess here and store location as center
-            System.out.println("Do the final guess");
-        }else if (element.getRoom()[i][1] == "study") {
-            //TODO: Add guess here and store location as study
-            System.out.println("Do normal guess in study");
-        }else if (element.getRoom()[i][1] == "library") {
-            //TODO: Add guess here and store location as library
-            System.out.println("Do normal guess in library");
-        }else if (element.getRoom()[i][1] == "billiard") {
-            //TODO: Add guess here and store location as billiard
-            System.out.println("Do normal guess in billiard");
-        }else if (element.getRoom()[i][1] == "conservatory") {
-            //TODO: Add guess here and store location as conservatory
-            System.out.println("Do normal guess in conservatory");
-        }else if (element.getRoom()[i][1] == "billiard") {
-            //TODO: Add guess here and store location as billiard
-            System.out.println("Do normal guess in billiard");
-        }else if (element.getRoom()[i][1] == "hall") {
-            //TODO: Add guess here and store location as hall
-            System.out.println("Do normal guess in hall");
-        }else if (element.getRoom()[i][1] == "ball") {
-            //TODO: Add guess here and store location as ball
-            System.out.println("Do normal guess in ball");
-        }else if (element.getRoom()[i][1] == "lounge") {
-            //TODO: Add guess here:
-            System.out.println("Do normal guess in lounge");
-        }else if (element.getRoom()[i][1] == "dinning") {
-            //TODO: Add guess here:
-            System.out.println("Do normal guess in dinning");
-        }else if (element.getRoom()[i][1] == "kitchen") {
-            //TODO: Add guess here:
-            System.out.println("Do normal guess in kitchen");
-        }
-    }
-
 }
 
