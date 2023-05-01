@@ -27,9 +27,13 @@ public class LobbySocket {
 
     private static GameLobbyRepository lobbyRepository;
     @Autowired
-    public void setGameLobby(GameLobbyRepository lobbyRepository) {
+    public void setLobbyRepository(GameLobbyRepository lobbyRepository) {
 
         this.lobbyRepository = lobbyRepository;
+    }
+    @Autowired
+    public void setPlayerRepository(PlayerRepository playerRepository) {
+        this.playerRepository = playerRepository;
     }
 
     @OnOpen
@@ -38,7 +42,7 @@ public class LobbySocket {
         sessionPlayerMap.put(session, player);
         playerSessionMap.put(player, session);
 
-        String message = player.getUsername();
+        String message = player.getUsername() + " has joined";
         broadcast(message);
 
     }
@@ -50,6 +54,7 @@ public class LobbySocket {
 
         GameLobby lobby = null;
         if (message.startsWith("Joined: ")) {
+
             Player destPlayer = playerRepository.findById(Integer.valueOf(message.split(" ")[2])).get();
             lobby = lobbyRepository.findById(Integer.valueOf(message.split(" ")[1])).get();
             lobby.addPlayer(player);
