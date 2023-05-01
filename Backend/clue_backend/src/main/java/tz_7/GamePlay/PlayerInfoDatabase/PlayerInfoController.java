@@ -119,7 +119,7 @@ public class PlayerInfoController {
     @ApiResponse(responseCode = "403", description = "forbidden!")
     @ApiResponse(responseCode = "401", description = "not authorized!")
     @ApiResponse(responseCode = "200", description = "Success!")
-    @GetMapping(value = "info/player/{id}")
+    @GetMapping(value = "/info/player/{id}")
     public PlayerInfo getInfoByPlayerID(@PathVariable Integer id) {
         Player player = playerRepo.findById(id).get();
         PlayerInfo playerInfo = repo.findByPlayer(player);
@@ -140,7 +140,7 @@ public class PlayerInfoController {
     @ApiResponse(responseCode = "403", description = "forbidden!")
     @ApiResponse(responseCode = "401", description = "not authorized!")
     @ApiResponse(responseCode = "200", description = "Success!")
-    @GetMapping(value = "info/player/{id}/role")
+    @GetMapping(value = "/info/player/{id}/role")
     public Role getRoleByPlayer(@PathVariable Integer id) {
         Player player = playerRepo.findById(id).get();
         PlayerInfo playerInfo = repo.findByPlayer(player);
@@ -161,7 +161,7 @@ public class PlayerInfoController {
     @ApiResponse(responseCode = "403", description = "forbidden!")
     @ApiResponse(responseCode = "401", description = "not authorized!")
     @ApiResponse(responseCode = "200", description = "Success!")
-    @DeleteMapping(value = "info/{id}/delete")
+    @DeleteMapping(value = "/info/{id}/delete")
     public String deleteInfo(@PathVariable Integer id) {
         repo.deleteById(id);
         return "info deleted";
