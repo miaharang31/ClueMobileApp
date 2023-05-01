@@ -83,6 +83,32 @@ public class Game extends AppCompatActivity {
         startGame();
         System.out.println("line 84 in game, passed start game");
 
+        setContentView(R.layout.board);
+
+        String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/" + app.getUserid();
+        System.out.println("line 389, in startGame(), about to do request, url: " + url);
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            System.out.println("line 252, about to do playTurn, response.get(\"turn\"): " + response.get("turn"));
+                            if(true) {
+                                playTurn(response.getJSONObject("role").getString("name"));
+                            }
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(Game.this, "ERROR [get role]: " + error, Toast.LENGTH_SHORT).show();
+                        Log.d("ResponseError", error.toString());
+                    }
+                });
+        queue.add(request);
 
 //        Dealing with chat
         send = (Button) findViewById(R.id.button);
@@ -208,59 +234,61 @@ public class Game extends AppCompatActivity {
                             break;
                         case "Turn Ended":
                             Log.d("Websocket", "Entered Turn Completion");
-//                            A player has ended their turn, start turn if its their turn
-//                            url = "http://10.0.2.2:8080/info/player/"+app.getUserid();
-                            url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/" + app.getUserid();
-                            objectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
-                                    new Response.Listener<JSONObject>() {
-                                        @Override
-                                        public void onResponse(JSONObject response) {
-                                            try {
-                                                Boolean isTurn = response.getBoolean("turn");
-                                                if (isTurn) {
-//                                                    String url = "http://10.0.2.2:8080/info/player/"+app.getUserid()+"/role";
-                                                    String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/"+app.getUserid()+"/role";
-                                                    System.out.println("line 246, about to do request, url: " + url);
-                                                    JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                                                            new Response.Listener<JSONObject>() {
-                                                                @Override
-                                                                public void onResponse(JSONObject response) {
-                                                                    try {
-                                                                        System.out.println("line 252, about to do playTurn, response.getString(\"name\"): "
-                                                                                + response.getString("name"));
-                                                                        playTurn(response.getString("name"));
-                                                                    } catch (JSONException e) {
-                                                                        throw new RuntimeException(e);
-                                                                    }
-                                                                }
-                                                            },
-                                                            new Response.ErrorListener() {
-                                                                @Override
-                                                                public void onErrorResponse(VolleyError error) {
-                                                                    Toast.makeText(Game.this, "ERROR [get role]: " + error, Toast.LENGTH_SHORT).show();
-                                                                    Log.d("ResponseError", error.toString());
-                                                                }
-                                                            });
-                                                    queue.add(request);
-                                                }
-                                            } catch (JSONException e) {
-                                                throw new RuntimeException(e);
-                                            }
-                                        }
-                                    },
-                                    new Response.ErrorListener() {
-                                        @Override
-                                        public void onErrorResponse(VolleyError error) {
-                                            Toast.makeText(Game.this, "ERROR [get info]: " + error, Toast.LENGTH_SHORT).show();
-                                            Log.d("ResponseError", error.toString());
-                                        }
-                                    });
-                            queue.add(objectRequest);
+
+                            gameClient.send("Final");
+////                            A player has ended their turn, start turn if its their turn
+////                            url = "http://10.0.2.2:8080/info/player/"+app.getUserid();
+//                            url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/" + app.getUserid();
+//                            objectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+//                                    new Response.Listener<JSONObject>() {
+//                                        @Override
+//                                        public void onResponse(JSONObject response) {
+//                                            try {
+//                                                Boolean isTurn = response.getBoolean("turn");
+//                                                if (isTurn) {
+////                                                    String url = "http://10.0.2.2:8080/info/player/"+app.getUserid()+"/role";
+//                                                    String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/"+app.getUserid()+"/role";
+//                                                    System.out.println("line 246, about to do request, url: " + url);
+//                                                    JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+//                                                            new Response.Listener<JSONObject>() {
+//                                                                @Override
+//                                                                public void onResponse(JSONObject response) {
+//                                                                    try {
+//                                                                        System.out.println("line 252, about to do playTurn, response.getString(\"name\"): "
+//                                                                                + response.getString("name"));
+//                                                                        playTurn(response.getString("name"));
+//                                                                    } catch (JSONException e) {
+//                                                                        throw new RuntimeException(e);
+//                                                                    }
+//                                                                }
+//                                                            },
+//                                                            new Response.ErrorListener() {
+//                                                                @Override
+//                                                                public void onErrorResponse(VolleyError error) {
+//                                                                    Toast.makeText(Game.this, "ERROR [get role]: " + error, Toast.LENGTH_SHORT).show();
+//                                                                    Log.d("ResponseError", error.toString());
+//                                                                }
+//                                                            });
+//                                                    queue.add(request);
+//                                                }
+//                                            } catch (JSONException e) {
+//                                                throw new RuntimeException(e);
+//                                            }
+//                                        }
+//                                    },
+//                                    new Response.ErrorListener() {
+//                                        @Override
+//                                        public void onErrorResponse(VolleyError error) {
+//                                            Toast.makeText(Game.this, "ERROR [get info]: " + error, Toast.LENGTH_SHORT).show();
+//                                            Log.d("ResponseError", error.toString());
+//                                        }
+//                                    });
+//                            queue.add(objectRequest);
 //                            TODO: move piece of player that just ended the game (might need to add to default) "turnended: x, y"
                             break;
                         case "Game Ended":
 //                            TODO: Handle ending screens
-                            app.setGameid(0);
+                            gameClient.close();
                             break;
                         case "Guess":
 //                            TODO: Get room player is in
@@ -271,7 +299,8 @@ public class Game extends AppCompatActivity {
 //                            TODO: When player enters center room
 //                                --NOTE: Moving into the center room is
 //                                    taken care of. IDK how to end the game
-//                                      - Prompt final checklist
+//                                      - Prompt final
+//                                      checklist
 //                                      - Store chosen cards in array
 //                                      - Send request to check if correct
 //                                      - End Game
@@ -298,26 +327,7 @@ public class Game extends AppCompatActivity {
                  */
                 @Override
                 public void onOpen(ServerHandshake handshake) {
-                    Log.d("GAME OPEN", "run() returned: " + "is connecting");
-//                    String url = "http://10.0.2.2:8080/game/" + app.getGameid();
-                    String url = "http://coms-309-038.class.las.iastate.edu:8080/game/" + app.getGameid();
-                    JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                            new Response.Listener<JSONObject>() {
-                                @Override
-                                public void onResponse(JSONObject response) {
-                                    gameState = response;
-                                }
-                            },
-                            new Response.ErrorListener() {
-                                @Override
-                                public void onErrorResponse(VolleyError error) {
-                                    Toast.makeText(Game.this, "Error: " + error, Toast.LENGTH_SHORT).show();
-                                    Log.d("ResponseError", error.toString());
-                                }
-                            });
-                    queue.add(request);
-
-                    startGame();
+                    Log.d("GAME OPEN: ", "()loading");
                 }
 
                 /**
@@ -339,6 +349,7 @@ public class Game extends AppCompatActivity {
                                     @Override
                                     public void onResponse(JSONObject response) {
                                         gameClient.send("Game Deleted");
+                                        app.setGameid(0);
                                     }
                                 },
                                 new Response.ErrorListener() {
@@ -369,14 +380,14 @@ public class Game extends AppCompatActivity {
     private void startGame(){
         app = (MyApplication) getApplication();
         queue = Volley.newRequestQueue(Game.this);
-        String url2 = "http://coms-309-038.class.las.iastate.edu:8080/game/"+ app.getGameid() + "/next/" ;
+        String url2 = "http://coms-309-038.class.las.iastate.edu:8080/game/"+ app.getGameid() + "/next" ;
         System.out.println("url2: " + url2);
         JsonObjectRequest request2 = new JsonObjectRequest(Request.Method.GET, url2, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            System.out.println("Next character" + response.get("firstname"));
+                            System.out.println("Next character " + response.get("firstname"));
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
@@ -390,37 +401,6 @@ public class Game extends AppCompatActivity {
                     }
                 });
         queue.add(request2);
-
-
-
-        String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/"+app.getGameid()+"/role";
-        System.out.println("line 389, in startGame(), about to do request, url: " + url);
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            System.out.println("line 252, about to do playTurn, response.get(\"turn\"): " + response.get("turn"));
-                            if((boolean)response.get("turn")){
-                                playTurn(response.getString("name"));
-                                setContentView(R.layout.board);
-                            }
-                        } catch (JSONException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Game.this, "ERROR [get role]: " + error, Toast.LENGTH_SHORT).show();
-                        Log.d("ResponseError", error.toString());
-                    }
-                });
-        queue.add(request);
-
-
-
 
 //        System.out.println("line 392, in playturn, role: " + role);
 //        if(Objects.equals(role, "scarlet")){

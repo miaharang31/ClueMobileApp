@@ -61,8 +61,13 @@ public class GameStateController {
         while(players.hasNext()) {
             players.next().setGameState(state);
         }
-        repo.save(state);
+        state = repo.save(state);
         playerRepository.saveAll(state.getTurnOrder());
+
+        PlayerInfo info = playerInfoRepository.findByPlayer(state.getCurrentPlayer());
+        info.setTurn(true);
+        playerInfoRepository.save(info);
+
         return state;
     }
 
@@ -276,7 +281,18 @@ public class GameStateController {
     @GetMapping(value = "/{id}/next")
     public Player getNextPlayer (@PathVariable Integer id) {
         Optional<GameState> state = repo.findById(id);
-        return state.get().getNextPlayer();
+//
+//        PlayerInfo info = playerInfoRepository.findByPlayer(state.get().getCurrentPlayer());
+//        info.setTurn(false);
+//        playerInfoRepository.save(info);
+//
+        Player player = state.get().getNextPlayer();
+//
+//        info = playerInfoRepository.findByPlayer(player);
+//        info.setTurn(true);
+//        playerInfoRepository.save(info);
+
+        return player;
     }
 
     /**
