@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +22,9 @@ import com.example.clue_frontend.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class HostLobby extends AppCompatActivity{
     Integer numPlayers = 0;
@@ -41,6 +45,7 @@ public class HostLobby extends AppCompatActivity{
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_hostlobby);
+
 
         three = (Button) findViewById(R.id.button3);
         four = (Button) findViewById(R.id.button4);
@@ -84,6 +89,7 @@ public class HostLobby extends AppCompatActivity{
         createLobby.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(HostLobby.this, Lobby.class);
                 gameCode = findViewById(R.id.gameCode);
                 String gameCodeData = gameCode.getText().toString();
@@ -135,6 +141,7 @@ public class HostLobby extends AppCompatActivity{
             }
         });
     }
+
 
     /**
      * Method that clears the colors of the buttons

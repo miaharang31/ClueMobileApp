@@ -133,6 +133,7 @@ public class PlayerController {
         Player player = repository.findById(id)
                 .orElseThrow();
         player.setPassword(password);
+        repository.save(player);
         return player;
     }
     @Operation(summary = "Changes the users username", description = "Uses a put request to change the users password through the username")
@@ -146,6 +147,7 @@ public class PlayerController {
         Player player = repository.findById(id)
                 .orElseThrow();
         player.setUsername(username);
+        repository.save(player);
         return player;
     }
 
@@ -162,6 +164,7 @@ public class PlayerController {
         if (player.getType().equals("b")) {
             player.setType("p");
         }
+        repository.save(player);
         return player;
     }
     @Operation(summary = "Changes the type of account a user has", description = "Uses a put request to change the type of the user")
@@ -177,6 +180,7 @@ public class PlayerController {
         if (player.getType().equals("p")) {
             player.setType("b");
         }
+        repository.save(player);
         return player;
     }
 
