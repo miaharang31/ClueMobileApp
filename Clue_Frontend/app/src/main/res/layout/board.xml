@@ -35,7 +35,9 @@
         android:background="#E8E8E8"
         android:backgroundTint="#D5D5D5"
         android:hint="message.."
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        android:autofillHints="Enter Text Here:"
+        android:inputType="textAutoComplete" />
 
     <Button
         android:id="@+id/button"
@@ -73,7 +75,8 @@
             android:adjustViewBounds="true"
             android:maxWidth=".25in"
             android:maxHeight=".3705in"
-            android:src="@drawable/back_of_card" />
+            android:src="@drawable/back_of_card"
+            android:contentDescription="Image" />
 
 
     </LinearLayout>
