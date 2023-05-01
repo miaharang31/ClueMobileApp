@@ -98,33 +98,33 @@ public class Game extends AppCompatActivity {
         roll.setVisibility(View.GONE);
 
         //Uncomment soon
-        //connectChat();
+        connectChat();
 
-        connectGame();
-
-        if (turn_order.size() > 0 ) {
-            if (turn_order.get(turn) == app.getUserid()) {
-                String url = "http://10.0.2.2:8080info/player/" + app.getUserid() + "/role";
-                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                        new Response.Listener<JSONObject>() {
-                            @Override
-                            public void onResponse(JSONObject response) {
-                                try {
-                                    playTurn(response.getString("name"));
-                                } catch (JSONException e) {
-                                    throw new RuntimeException(e);
-                                }
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-
-                            }
-                        });
-                queue.add(request);
-            }
-        }
+//        connectGame();
+//
+//        if (turn_order.size() > 0 ) {
+//            if (turn_order.get(turn) == app.getUserid()) {
+//                String url = "http://10.0.2.2:8080info/player/" + app.getUserid() + "/role";
+//                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+//                        new Response.Listener<JSONObject>() {
+//                            @Override
+//                            public void onResponse(JSONObject response) {
+//                                try {
+//                                    playTurn(response.getString("name"));
+//                                } catch (JSONException e) {
+//                                    throw new RuntimeException(e);
+//                                }
+//                            }
+//                        },
+//                        new Response.ErrorListener() {
+//                            @Override
+//                            public void onErrorResponse(VolleyError error) {
+//
+//                            }
+//                        });
+//                queue.add(request);
+//            }
+//        }
 
         relativeLayout = findViewById(R.id.relative_layout);
         swipeListener = new SwipeListener(relativeLayout);
@@ -198,16 +198,16 @@ public class Game extends AppCompatActivity {
         chatClient.connect();
 //      Uncomment soon
 
-//        send.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                try {
-//                    chatClient.send(message.getText().toString());
-//                } catch (Exception e) {
-//                    Log.d("ExceptionSendMessage:", e.getMessage().toString());
-//                }
-//            }
-//        });
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    chatClient.send(message.getText().toString());
+                } catch (Exception e) {
+                    Log.d("ExceptionSendMessage:", e.getMessage().toString());
+                }
+            }
+        });
     }
 
     private void connectGame() {
@@ -447,7 +447,7 @@ public class Game extends AppCompatActivity {
 
     private void playTurn(String role) {
         Log.d("Game", "Entered into player turn. Player: " + role);
-        System.out.println(turn_order.get(turnz));
+        System.out.println(turn_order.get(turn));
         roll.setVisibility(View.VISIBLE);
         roll.setOnClickListener(new View.OnClickListener() {
             @Override
