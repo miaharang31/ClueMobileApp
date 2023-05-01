@@ -22,6 +22,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.clue_frontend.GamePlay.Constraints;
+import com.example.clue_frontend.GamePlay.Game;
 import com.example.clue_frontend.GamePlay.Player.EndGameWinOrLose;
 import com.example.clue_frontend.HomeActivities.Home;
 
@@ -38,13 +39,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
         DisplayMetrics dm = new DisplayMetrics();
         this.getWindowManager().getDefaultDisplay().getMetrics(dm);
         Constraints.SCREEN_WIDTH = dm.widthPixels;
         Constraints.SCREEN_HEIGHT = dm.heightPixels;
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_main); //activity_main
 
 
@@ -54,8 +56,13 @@ public class MainActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //Intent intent = new Intent(MainActivity.this, Home.class);
+                //Intent intent = new Intent(MainActivity.this, Game.class);
+
                 Intent intent = new Intent(MainActivity.this, Home.class);
                 //Intent intent = new Intent(MainActivity.this, Game.class);
+
 //                Intent intent = new Intent(MainActivity.this, CharacterSelection.class);
 //                startActivity(intent);
 
