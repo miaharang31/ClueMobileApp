@@ -1,6 +1,5 @@
 package com.example.clue_frontend.GamePlay;
 
-import static com.example.clue_frontend.GamePlay.GameView.moves;
 import static com.example.clue_frontend.GamePlay.GameView.player;
 
 import android.content.Intent;
@@ -406,8 +405,8 @@ public class Game extends AppCompatActivity {
                     float yDiff = e2.getY() - e1.getY();
 
                     try {
+                        System.out.println("Line 101, In Game class, in try block");
                         if(GameView.moves > 0){
-                            System.out.println("Line 409, in Game, moves: " + GameView.moves);
                             if (Math.abs(xDiff) > Math.abs(yDiff)) {
                                 if (Math.abs(xDiff) > threshold && Math.abs(velocityX) > velocity_threshold) {
                                     if (xDiff > 0) {
@@ -475,5 +474,4 @@ public class Game extends AppCompatActivity {
     }
 
 }
-
 

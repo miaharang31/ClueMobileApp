@@ -25,12 +25,6 @@ import org.json.JSONObject;
 
 public class UserSignUp extends AppCompatActivity {
 
-    public static String firstNameData = "test1";
-    public static String lastNameData = "test2";
-    public static String emailData = "test@3";
-    public static String usernameData = "test4";
-    public static String passwordData = "test5";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,11 +49,11 @@ public class UserSignUp extends AppCompatActivity {
 
 
                 // Turns textbox data into a string without whitespace
-//                firstNameData = firstName.getText().toString().trim();
-//                lastNameData = lastName.getText().toString().trim();
-//                emailData = email.getText().toString().trim();
-//                usernameData = username.getText().toString().trim();
-//                passwordData = password.getText().toString().trim();
+                String firstNameData = firstName.getText().toString().trim();
+                String lastNameData = lastName.getText().toString().trim();
+                String emailData = email.getText().toString().trim();
+                String usernameData = username.getText().toString().trim();
+                String passwordData = password.getText().toString().trim();
 
                 //checks if the first name textbox is empty and if so, it'll put following error on that textbox.
                 //if not empty, the text is correct and the correctFirstName boolean is true.
