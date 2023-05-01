@@ -37,7 +37,7 @@ public class ExampleInstrumentedTest {
 
 
     @Test
-    public void capitalizeString() {
+    public void stringTest() {
         String testString = "name";
         String resultString = "name";
         // Type in testString and send request

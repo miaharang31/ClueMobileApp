@@ -184,8 +184,8 @@ public class Game extends AppCompatActivity {
                 new Draft_6455()
         };
 
-        //String w = "ws://10.0.2.2:8080/websocket/game/"+app.getGameid()+"/player/"+app.getUserid()+"";
-        String w = "ws://coms-309-038.class.las.iastate.edu:8080/websocket/game/"+app.getGameid()+"/player/"+app.getUserid()+"";
+        String w = "ws://10.0.2.2:8080/websocket/game/"+app.getGameid()+"/player/"+app.getUserid()+"";
+        //String w = "ws://coms-309-038.class.las.iastate.edu:8080/websocket/game/"+app.getGameid()+"/player/"+app.getUserid()+"";
         Log.d("Socket", w);
         try {
             Log.d("Socket:", "Trying socket");
