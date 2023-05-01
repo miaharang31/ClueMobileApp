@@ -61,8 +61,6 @@ public class Game extends AppCompatActivity {
 
     JSONObject gameState = new JSONObject();
 
-    RequestQueue queue;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         System.out.println("Line 37, In Game class");
@@ -77,7 +75,6 @@ public class Game extends AppCompatActivity {
         swipeListener = new SwipeListener(relativeLayout);
 
         setContentView(R.layout.board);
-        queue = Volley.newRequestQueue(Game.this);
 
 //        Dealing with chat
         send = (Button) findViewById(R.id.button);
@@ -182,6 +179,7 @@ public class Game extends AppCompatActivity {
             chatClient = new WebSocketClient(new URI(w), (Draft) drafts[0]) {
                 @Override
                 public void onMessage(String m) {
+                    RequestQueue queue = Volley.newRequestQueue(Game.this);
                     String url;
                     JsonObjectRequest objectRequest;
                     JsonArrayRequest arrayRequest;
