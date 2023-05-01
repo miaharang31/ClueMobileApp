@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import static org.hamcrest.core.StringEndsWith.endsWith;
 import static org.junit.Assert.*;
 
+//NOTE: Make a test branch
 
 
 /**
@@ -14,10 +15,12 @@ import static org.junit.Assert.*;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-
+@RunWith(AndroidJUnit4ClassRunner.class)
+@LargeTest   // large execution time
 public class ExampleUnitTest {
 
-
+    @Rule   // needed to launch the activity
+    public ActivityTestRule<MainActivity> activityRule = new ActivityTestRule<>(MainActivity.class);
     @Test
     public void checkLoginData() {
 
@@ -54,25 +57,25 @@ public class ExampleUnitTest {
 
     }
 
-    @Test
-    public void reverseDefaultString(){
-        String testString = "defaultstring";
-        String resultString = "gnirtstluafed";
-
-        activityScenarioRule.getScenario().onActivity(activity -> {
-            activity.defaultString = testString;
-            activity.aSwitch.setChecked(true);
-        });
-
-        onView(withId(R.id.submit)).perform(click());
-        // Put thread to sleep to allow volley to handle the request
-        try {
-            Thread.sleep(SIMULATED_DELAY_MS);
-        } catch (InterruptedException e) {}
-
-        // Verify that volley returned the correct value
-        onView(withId(R.id.myTextView)).check(matches(withText(endsWith(resultString))));
-    }
+//    @Test
+//    public void reverseDefaultString(){
+//        String testString = "defaultstring";
+//        String resultString = "gnirtstluafed";
+//
+//        activityScenarioRule.getScenario().onActivity(activity -> {
+//            activity.defaultString = testString;
+//            activity.aSwitch.setChecked(true);
+//        });
+//
+//        onView(withId(R.id.submit)).perform(click());
+//        // Put thread to sleep to allow volley to handle the request
+//        try {
+//            Thread.sleep(SIMULATED_DELAY_MS);
+//        } catch (InterruptedException e) {}
+//
+//        // Verify that volley returned the correct value
+//        onView(withId(R.id.myTextView)).check(matches(withText(endsWith(resultString))));
+//    }
 
 
 }

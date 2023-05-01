@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,6 +44,7 @@ import org.json.JSONObject;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Random;
 
 
 public class Game extends AppCompatActivity {
@@ -61,24 +63,22 @@ public class Game extends AppCompatActivity {
 
     JSONObject gameState = new JSONObject();
 
-    RequestQueue queue = Volley.newRequestQueue(Game.this);
+    RequestQueue queue; // = Volley.newRequestQueue(Game.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("Line 59, In Game class");
         super.onCreate(savedInstanceState);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAGS_CHANGED, WindowManager.LayoutParams.FLAGS_CHANGED);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
+        //this.getWindow().setFlags(WindowManager.LayoutParams.FLAGS_CHANGED, WindowManager.LayoutParams.FLAGS_CHANGED);
         DisplayMetrics dm = new DisplayMetrics();
         this.getWindowManager().getDefaultDisplay().getMetrics(dm);
         Constraints.SCREEN_WIDTH = dm.widthPixels;
         Constraints.SCREEN_HEIGHT = dm.heightPixels;
 
 
-        relativeLayout = findViewById(R.id.relative_layout);
-        swipeListener = new SwipeListener(relativeLayout);
-
-        characterSelected = getCharacter();
-        System.out.println("Line 72, In Game class, character selected: " + characterSelected);
+        //characterSelected = getCharacter();
 
         setContentView(R.layout.board);
 
@@ -149,7 +149,8 @@ public class Game extends AppCompatActivity {
         };
 
 //        String w = "ws://echo.websocket.org";
-        String w = "ws://10.0.2.2:8080/websocket/chat/"+app.getUserid();
+        //String w = "ws://10.0.2.2:8080/websocket/chat/"+app.getUserid();
+        String w = "http://coms-309-038.class.las.iastate.edu:8080/websocket/chat/"+app.getUserid();
         Log.d("Socket", w);
         try {
             Log.d("Socket:", "Trying socket");
@@ -208,11 +209,12 @@ public class Game extends AppCompatActivity {
                 new Draft_6455()
         };
 
+        //String w = "ws://10.0.2.2:8080/websocket/game/"+app.getGameid()+"/player/"+app.getUserid()+"";
         String w = "ws://10.0.2.2:8080/websocket/game/"+app.getGameid()+"/player/"+app.getUserid()+"";
         Log.d("Socket", w);
         try {
             Log.d("Socket:", "Trying socket");
-            chatClient = new WebSocketClient(new URI(w), (Draft) drafts[0]) {
+            gameClient = new WebSocketClient(new URI(w), (Draft) drafts[0]) {
                 @Override
                 public void onMessage(String m) {
                     String url;
@@ -371,6 +373,11 @@ public class Game extends AppCompatActivity {
 
     private void playTurn(String role) {
 //        TODO: do whatever needs to be done turn wise
+        GameView.rand = new Random();
+        GameView.moves = GameView.rand.nextInt(23) + 1;
+//              - Move character
+//              - If in room: make guess
+//              - else: end turn
 
 //        Tells the server a player has finished their turn
         sendMessage(gameClient, "Turn Ended");

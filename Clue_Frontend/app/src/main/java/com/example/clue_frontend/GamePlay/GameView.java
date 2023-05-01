@@ -20,8 +20,9 @@ import java.util.Random;
 
 
 public class GameView extends View {
-
-    public static int moves = DiceRoller.numSpaces;
+    static Random rand = new Random();
+    public static int moves = rand.nextInt(23) + 1;
+    //public static int moves = DiceRoller.numSpaces;
 
     public static int number_of_players = 6;
     public static Bitmap edge;
@@ -149,7 +150,7 @@ public class GameView extends View {
         library = BitmapFactory.decodeResource(this.getResources(), R.drawable.library);
         library = Bitmap.createScaledBitmap(library, 266, 230, true);
         billiard = BitmapFactory.decodeResource(this.getResources(), R.drawable.billiard_room);
-        billiard = Bitmap.createScaledBitmap(billiard, 282, 174, true);
+        billiard = Bitmap.createScaledBitmap(billiard, 282, 172, true);
         conservatory = BitmapFactory.decodeResource(this.getResources(), R.drawable.conservatory);
         conservatory = Bitmap.createScaledBitmap(conservatory, 165, 205, true);
         hall = BitmapFactory.decodeResource(this.getResources(), R.drawable.hall);
@@ -165,7 +166,14 @@ public class GameView extends View {
         kitchen = BitmapFactory.decodeResource(this.getResources(), R.drawable.kitchen);
         kitchen = Bitmap.createScaledBitmap(kitchen, 206, 208, true);
 
-        System.out.println("Line 167, In GameView class, character selected: " + Game.characterSelected);
+        white = BitmapFactory.decodeResource(this.getResources(), R.drawable.white_player);
+        white = Bitmap.createScaledBitmap(white, 30, 30, true);
+
+        player = new Player(white, 476, 0, 0);
+        player.setX(arrBoard.get(player.getPlacement()).getTileX() + 5);
+        player.setY(arrBoard.get(player.getPlacement()).getTileY() + 3);
+
+
         //assigns color based on what player chose
         if(Objects.equals(Game.characterSelected, "scarlet")){
             scarlet = BitmapFactory.decodeResource(this.getResources(), R.drawable.scarlet);
@@ -177,7 +185,7 @@ public class GameView extends View {
 
             System.out.println("Chose scarlet");
         } else if (Objects.equals(Game.characterSelected, "white")) {
-            white = BitmapFactory.decodeResource(this.getResources(), R.drawable.white);
+            white = BitmapFactory.decodeResource(this.getResources(), R.drawable.white_player);
             white = Bitmap.createScaledBitmap(white, 30, 30, true);
 
             player = new Player(white, 476, 0, 0);
@@ -218,18 +226,19 @@ public class GameView extends View {
             System.out.println("Chose peacock");
         }
 
+
         //creates board
         for (int i = 0; i < h; i++) {
             for (int j = 0; j < w; j++) {
                 if (j == 0 | i == 0 | i == (h - 1) | j == (w - 1)) {
                     arrBoard.add(new Tile(edge, j * sizeOfMap + Constraints.SCREEN_WIDTH / 2 - (w / 2) * sizeOfMap,
-                            i * sizeOfMap + 500 * Constraints.SCREEN_HEIGHT / 1920, sizeOfMap, sizeOfMap));
+                            i * sizeOfMap + 200 * Constraints.SCREEN_HEIGHT / 1920, sizeOfMap, sizeOfMap));
                 } else if ((i + j) % 2 == 0) {
                     arrBoard.add(new Tile(tile1, j * sizeOfMap + Constraints.SCREEN_WIDTH / 2 - (w / 2) * sizeOfMap,
-                            i * sizeOfMap + 500 * Constraints.SCREEN_HEIGHT / 1920, sizeOfMap, sizeOfMap));
+                            i * sizeOfMap + 200 * Constraints.SCREEN_HEIGHT / 1920, sizeOfMap, sizeOfMap));
                 } else {
                     arrBoard.add(new Tile(tile2, j * sizeOfMap + Constraints.SCREEN_WIDTH / 2 - (w / 2) * sizeOfMap,
-                            i * sizeOfMap + 500 * Constraints.SCREEN_HEIGHT / 1920, sizeOfMap, sizeOfMap));
+                            i * sizeOfMap + 200 * Constraints.SCREEN_HEIGHT / 1920, sizeOfMap, sizeOfMap));
                 }
             }
         }
@@ -253,28 +262,31 @@ public class GameView extends View {
         }
 
         //draws starting places
-        canvas.drawBitmap(scarlet_start, 345, 1330, null);
-        canvas.drawBitmap(white_start, 646, 1328, null);
-        canvas.drawBitmap(plum_start, 130, 1112, null);
-        canvas.drawBitmap(mustard_start, 907, 1107, null);
-        canvas.drawBitmap(green_start, 646, 552, null);
-        canvas.drawBitmap(peacock_start, 387, 554, null);
+        canvas.drawBitmap(scarlet_start, 345, 996, null);
+        canvas.drawBitmap(white_start, 645, 993, null);
+        canvas.drawBitmap(plum_start, 130, 777, null);
+        canvas.drawBitmap(mustard_start, 907, 773, null);
+        canvas.drawBitmap(green_start, 646, 218, null);
+        canvas.drawBitmap(peacock_start, 387, 220, null);
 
         //draws rooms
-        canvas.drawBitmap(study, 156, 583, null);
-        canvas.drawBitmap(library, 149, 715, null);
-        canvas.drawBitmap(billiard, 158, 950, null);
-        canvas.drawBitmap(conservatory, 160, 1138, null);
-        canvas.drawBitmap(hall, 411, 580, null);
-        canvas.drawBitmap(clue, 461, 807, null);
-        canvas.drawBitmap(ball, 297, 1055, null);
-        canvas.drawBitmap(lounge, 676, 582, null);
-        canvas.drawBitmap(dinning, 627, 829, null);
-        canvas.drawBitmap(kitchen, 715, 1135, null);
+        canvas.drawBitmap(study, 156, 249, null);
+        canvas.drawBitmap(library, 149, 381, null);
+        canvas.drawBitmap(billiard, 158, 616, null);
+        canvas.drawBitmap(conservatory, 160, 804, null);
+        canvas.drawBitmap(hall, 411, 245, null);
+        canvas.drawBitmap(clue, 461, 473, null);
+        canvas.drawBitmap(ball, 297, 721, null);
+        canvas.drawBitmap(lounge, 676, 248, null);
+        canvas.drawBitmap(dinning, 627, 458, null);
+        canvas.drawBitmap(kitchen, 715, 801, null);
+
+// TODO: Set up chacter stuff.
 
 
         //draws player pieces
         canvas.drawBitmap(player.getBm(), player.getX(), player.getY(), null);
+
         handler.postDelayed(r, 100);
     }
 
@@ -347,6 +359,8 @@ public class GameView extends View {
     }
 
     public static void MoveUp() {
+        System.out.println("Line 358, In Game class, in moveup");
+
         //Boolean if the player is going into a wall
         boolean border = false;
         //Check each room
@@ -371,7 +385,10 @@ public class GameView extends View {
         //it's ok to move there
         if(!border){
             moves--;
+            System.out.println("new_moves: " + moves);
+            System.out.println("before player placement: " + player.getPlacement());
             player.setPlacement(player.getPlacement() - 22);
+            System.out.println("after player placement: " + player.getPlacement());
             player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
             player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
         }
