@@ -1,8 +1,11 @@
 package com.example.clue_frontend.GamePlay;
 
 import static com.example.clue_frontend.GamePlay.GameView.player;
+import static com.example.clue_frontend.GamePlay.GameView.scarlet;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -27,6 +30,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.clue_frontend.GamePlay.Player.Player;
 import com.example.clue_frontend.GamePlay.Player.playerGuess;
 import com.example.clue_frontend.HomeActivities.Home;
 import com.example.clue_frontend.MainActivity;
@@ -44,6 +48,7 @@ import org.json.JSONObject;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Objects;
 import java.util.Random;
 
 
@@ -238,11 +243,14 @@ public class Game extends AppCompatActivity {
                                                 if(isTurn) {
 //                                                    String url = "http://10.0.2.2:8080/info/player/"+app.getUserid()+"/role";
                                                     String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/"+app.getUserid()+"/role";
+                                                    System.out.println("line 246, about to do request, url: " + url);
                                                     JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                                                             new Response.Listener<JSONObject>() {
                                                                 @Override
                                                                 public void onResponse(JSONObject response) {
                                                                     try {
+                                                                        System.out.println("line 252, about to do playTurn, response.getString(\"name\"): "
+                                                                                + response.getString("name"));
                                                                         playTurn(response.getString("name"));
                                                                     } catch (JSONException e) {
                                                                         throw new RuntimeException(e);
@@ -284,9 +292,12 @@ public class Game extends AppCompatActivity {
                             break;
                         case "Guess":
 //                            TODO: When player enters room, make guess
+
                             break;
                         case "Final Guess":
 //                            TODO: When player enters center room
+//                                --NOTE: Moving into the center room is
+//                                    taken care of. IDK how to end the game
 //                                      - Prompt final checklist
 //                                      - Store chosen cards in array
 //                                      - Send request to check if correct
@@ -372,16 +383,74 @@ public class Game extends AppCompatActivity {
         gameClient.connect();
     }
 
+
+    private void startGame(){
+        String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/"+app.getGameid()+"/role";
+        System.out.println("line 246, about to do request, url: " + url);
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            System.out.println("line 252, about to do playTurn, response.getString(\"name\"): "
+                                    + response.getString("name"));
+                            playTurn(response.getString("name"));
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(Game.this, "ERROR [get role]: " + error, Toast.LENGTH_SHORT).show();
+                        Log.d("ResponseError", error.toString());
+                    }
+                });
+        queue.add(request);
+    }
+
     private void playTurn(String role) {
 //        TODO: do whatever needs to be done turn wise
-        GameView.rand = new Random();
-        GameView.moves = GameView.rand.nextInt(23) + 1;
-//              - Move character:  Already moves with swipeListener
-//              - If in room: make guess
-//              - else: end turn
+//              - Move character:  Already done with the SwipeListener and MoveUp/Down/Left/Right functions in GameView
+//              - If in room, make guess: Is this already going to be handled in the guess case, line 285???
+//              - else, end turn: Handled below
 
-//        Tells the server a player has finished their turn
-        sendMessage(gameClient, "Turn Ended");
+
+        System.out.println("line 392, in playturn, role: " + role);
+        if(Objects.equals(role, "scarlet")){
+            player = new Player(GameView.scarlet, 468, 0, 0);
+            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
+            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
+        } else if (Objects.equals(role, "white")) {
+            player = new Player(GameView.white, 476, 0, 0);
+            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 5);
+            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
+        }else if (Objects.equals(role, "plum")) {
+            player = new Player(GameView.plum, 330, 0, 0);
+            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 4);
+            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 6);
+        }else if (Objects.equals(role, "mustard")) {
+            player = new Player(GameView.white, 476, 0, 0);
+            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 5);
+            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
+        }else if (Objects.equals(role, "green")) {
+            player = new Player(GameView.green, 14, 0, 0);
+            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
+            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
+        }else if (Objects.equals(role, "peacock")) {
+            player = new Player(GameView.peacock, 7, 0, 0);
+            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
+            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 5);
+        }
+
+//      ending turn
+        if (GameView.moves == 0){
+            GameView.rand = new Random();
+            GameView.moves = GameView.rand.nextInt(23) + 1;
+            //        Tells the server a player has finished their turn
+            sendMessage(gameClient, "Turn Ended");
+        }
     }
 
     private void sendMessage(WebSocketClient client, String message) {
@@ -470,6 +539,43 @@ public class Game extends AppCompatActivity {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             return gestureDetector.onTouchEvent(event);
+        }
+    }
+
+    public static void checkInRoom(int i, Room element) {
+        if(element.getRoom()[i][1] == "clue"){
+            //TODO: Add the final guess here and store location as center
+            System.out.println("Do the final guess");
+        }else if (element.getRoom()[i][1] == "study") {
+            //TODO: Add guess here and store location as study
+            System.out.println("Do normal guess in study");
+        }else if (element.getRoom()[i][1] == "library") {
+            //TODO: Add guess here and store location as library
+            System.out.println("Do normal guess in library");
+        }else if (element.getRoom()[i][1] == "billiard") {
+            //TODO: Add guess here and store location as billiard
+            System.out.println("Do normal guess in billiard");
+        }else if (element.getRoom()[i][1] == "conservatory") {
+            //TODO: Add guess here and store location as conservatory
+            System.out.println("Do normal guess in conservatory");
+        }else if (element.getRoom()[i][1] == "billiard") {
+            //TODO: Add guess here and store location as billiard
+            System.out.println("Do normal guess in billiard");
+        }else if (element.getRoom()[i][1] == "hall") {
+            //TODO: Add guess here and store location as hall
+            System.out.println("Do normal guess in hall");
+        }else if (element.getRoom()[i][1] == "ball") {
+            //TODO: Add guess here and store location as ball
+            System.out.println("Do normal guess in ball");
+        }else if (element.getRoom()[i][1] == "lounge") {
+            //TODO: Add guess here:
+            System.out.println("Do normal guess in lounge");
+        }else if (element.getRoom()[i][1] == "dinning") {
+            //TODO: Add guess here:
+            System.out.println("Do normal guess in dinning");
+        }else if (element.getRoom()[i][1] == "kitchen") {
+            //TODO: Add guess here:
+            System.out.println("Do normal guess in kitchen");
         }
     }
 

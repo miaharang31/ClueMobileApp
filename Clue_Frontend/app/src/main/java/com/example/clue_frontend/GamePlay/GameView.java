@@ -18,6 +18,7 @@ import com.example.clue_frontend.GamePlay.DiceRoller;
 import com.example.clue_frontend.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.Random;
 
@@ -48,47 +49,54 @@ public class GameView extends View {
     private static Bitmap green_start;
     private static Bitmap peacock_start;
 
-    private static Bitmap scarlet;
-    private static Bitmap white;
-    private static Bitmap plum;
-    private static Bitmap mustard;
-    private static Bitmap green;
-    private static Bitmap peacock;
+    static Bitmap scarlet;
+    static Bitmap white;
+    static Bitmap plum;
+    static Bitmap mustard;
+    static Bitmap green;
+    static Bitmap peacock;
 
     public static int sizeOfMap = (35 * Constraints.SCREEN_WIDTH) / 1000;
     private int h = 22, w = 22;
     public static ArrayList<Tile> arrBoard = new ArrayList<>();
 
     //This is the boundary and door information for each room. Each tile is ordered as: Tile placement on board, up, down, left, right, door
-    public static String[][] study_room_info = {{"28","right"}, {"45", "door"}, {"46", "down"}, {"47", "down"}, {"48", "down"}, {"50", "right"}, {"71", "left"}, {"72", "right"},
-            {"120", "left", "door"}, {"121", "down", "right"}};
-    public static String[][] library_room_info = {{"111", "up"},{"112", "door"},{"113", "up", "right"},{"135","right"},
-            {"158", "up"},{"159", "up"},{"160", "up","right"},{"182", "door"},{"199", "down"},
-            {"200", "down"},{"201", "down"},{"202", "down"},{"203", "down"},{"204", "down", "right"}};
-    public static String[][] billiard_room_info = {{"243","door"},{"244", "up"},{"245", "up"},{"246", "up"}, {"247", "up"},
-            {"248", "up"},{"249", "up","right"},{"268", "down"},{"269", "down"},{"270", "down"},{"271", "down","right"},{"289", "door"},
-            {"309", "down"},{"310", "down"},{"311", "down","right"}};
-    public static String[][] conservatory_room_info = {{"353","up"},{"354","up"},{"355","up","door"},{"378","up","right"},
-            {"400","right"},{"422","right"},{"444","right"}};
-    public static String[][] hall_room_info = {{"30","left"},{"35","right"},{"52","door"},{"57","door"},{"74","left"},{"79","right"},
-            {"96","left"},{"101","right"},{"118","left","down"},{"119","down"},{"120","door"},{"121","door"},{"122","down"},{"123","down","right"}};
+    public static String[][] study_room_info = {{"28","right","study"}, {"45", "door","study"}, {"46", "down","study"}, {"47", "down","study"}, {"48", "down","study"},
+            {"50", "right","study"}, {"71", "left","study"}, {"72", "right","study"}, {"120", "left", "door","study"}, {"121", "down", "right","study"}};
+    public static String[][] library_room_info = {{"111", "up","library"},{"112", "door","library"},{"113", "up", "right","library"},{"135","right","library"},
+            {"158", "up","library"},{"159", "up","library"},{"160", "up","right","library"},{"182", "door","library"},{"199", "down","library"},
+            {"200", "down","library"},{"201", "down","library"},{"202", "down","library"},{"203", "down","library"},{"204", "down", "right","library"}};
+    public static String[][] billiard_room_info = {{"243","door","billiard"},{"244", "up","billiard"},{"245", "up","billiard"},{"246", "up","billiard"}, {"247", "up","billiard"},
+            {"248", "up","billiard"},{"249", "up","right","billiard"},{"268", "down","billiard"},{"269", "down","billiard"},{"270", "down","billiard"},
+            {"271", "down","right","billiard"}, {"289", "door","billiard"}, {"309", "down","billiard"},{"310", "down","billiard"},{"311", "down","right","billiard"}};
+    public static String[][] conservatory_room_info = {{"353","up","conservatory"},{"354","up","conservatory"},{"355","up","door","conservatory"},
+            {"378","up","right","conservatory"}, {"400","right","conservatory"},{"422","right","conservatory"},{"444","right","conservatory"}};
+    public static String[][] hall_room_info = {{"30","left","hall"},{"35","right","hall"},{"52","door","hall"},{"57","door","hall"},{"74","left","hall"},{"79","right","hall"},
+            {"96","left","hall"},{"101","right","hall"},{"118","left","down","hall"},{"119","down","hall"},{"120","door","hall"},{"121","door","hall"},{"122","down","hall"},
+            {"123","down","right","hall"}};
 
-    public static String[][] ball_room_info = {{"313","up","left"},{"314","up"},{"315","up"},{"316","up"},{"317","up"},{"318","door"},
-            {"319","door"},{"320","up"},{"321","up"},{"322","up","right"},{"335","down","left"},{"336","down"},{"344","door"},{"359","left"},{"366","right"},
-            {"381","door"},{"388","right"},{"403","left"},{"410","right"},{"425","down","left"},{"426","down"},{"427","door"},{"430","door"},{"431","down"},
-            {"432","down","right"},{"450","down","left"},{"451","down","right"}};
+    public static String[][] ball_room_info = {{"313","up","left","ball"},{"314","up","ball"},{"315","up","ball"},{"316","up","ball"},{"317","up","ball"},
+            {"318","door","ball"}, {"319","door","ball"},{"320","up","ball"},{"321","up","ball"},{"322","up","right","ball"},{"335","down","left","ball"},
+            {"336","down"},{"344","door"},{"359","left"},{"366","right"}, {"381","door","ball"},{"388","right","ball"}, {"403","left","ball"}, {"410","right","ball"},
+            {"425","down","left","ball"},{"426","down","ball"},{"427","door","ball"},{"430","door","ball"},{"431","down","ball"},
+            {"432","down","right","ball"},{"450","down","left","ball"},{"451","down","right","ball"}};
 
-    public static String[][] lounge_room_info = {{"37","door"},{"59","left"},{"81","down","left"},{"104","left"},{"126","left","down"},{"127","door"},{"128","down"},
-            {"129","down"},{"130","down"}};
+    public static String[][] lounge_room_info = {{"37","door","lounge"},{"59","left","lounge"},{"81","down","left","lounge"}, {"104","left","lounge"},
+            {"126","left","down","lounge"}, {"127","door","lounge"},{"128","down","lounge"}, {"129","down","lounge"},{"130","down","lounge"}};
 
-    public static String[][] dinning_room_info = {{"190","up","left"},{"191","up"},{"192","up"},{"193","up"},{"194","up"},{"195","down"},{"196","up"},{"212","left"},
-            {"234","left"},{"256","left"},{"278","down","left"},{"279","down"},{"280","down"},{"303","down","door"},{"304","down"},{"305","down"},{"306","down"}};
-    public static String[][] kitchen_room_info = {{"368","up","left"},{"369","down"},{"370","up"},{"371","up"},{"372","up"},{"390","left"},{"412","left"},
-            {"434","left"},{"456","left"}};
+    public static String[][] dinning_room_info = {{"190","up","dinning"},{"191","up","dinning"},{"192","up","dinning"},{"193","up","dinning"},{"194","up","dinning"},
+            {"195","down","dinning"},{"196","up","dinning"},{"212","left","dinning"}, {"234","left","dinning"},{"256","left","dinning"},{"278","down","left","dinning"},
+            {"279","down","dinning"},{"280","down","dinning"},{"303","down","door","dinning"},{"304","down","dinning"},{"305","down","dinning"},{"306","down","dinning"}};
+    public static String[][] kitchen_room_info = {{"368","up","left","kitchen"},{"369","down","kitchen"},{"370","up","kitchen"},{"371","up","kitchen"},{"372","up","kitchen"},
+            {"390","left","kitchen"},{"412","left","kitchen"}, {"434","left","kitchen"},{"456","left","kitchen"}};
+
+
+    public static String[][] clue_info = {{"163","clue"},{"164","clue"},{"165","clue"},{"166","clue"},{"185","clue"},{"188","clue"},{"207","clue"},
+            {"210","clue"},{"229","clue"},{"232","clue"},{"251","clue"},{"254","clue"},{"273","clue"},{"274","clue"},{"275","clue"},{"276","clue"}};
 
     //I created a room class to make data retrieval easier
     public static Room study_room, library_room, billiard_room, conservatory_room, hall_room, ball_room,
-            lounge_room, dinning_room, kitchen_room;
+            lounge_room, dinning_room, kitchen_room, clue_room;
 
     //This array stores all the rooms and their information
     public static ArrayList<Room> total_rooms = new ArrayList<>();
@@ -119,6 +127,7 @@ public class GameView extends View {
         lounge_room = new Room(lounge_room_info);
         dinning_room = new Room(dinning_room_info);
         kitchen_room = new Room(kitchen_room_info);
+        clue_room = new Room(clue_info);
 
         total_rooms.add(study_room);
         total_rooms.add(library_room);
@@ -129,6 +138,7 @@ public class GameView extends View {
         total_rooms.add(lounge_room);
         total_rooms.add(dinning_room);
         total_rooms.add(kitchen_room);
+        total_rooms.add(clue_room);
 
         System.out.println("************* moves:" + moves + "\n");
 
@@ -171,62 +181,19 @@ public class GameView extends View {
         kitchen = BitmapFactory.decodeResource(this.getResources(), R.drawable.kitchen);
         kitchen = Bitmap.createScaledBitmap(kitchen, 206, 208, true);
 
-        //assigns color based on what player chose
-        if(Objects.equals(Game.characterSelected, "scarlet")){
-            scarlet = BitmapFactory.decodeResource(this.getResources(), R.drawable.scarlet);
-            scarlet = Bitmap.createScaledBitmap(scarlet, 31, 30, true);
+        scarlet = BitmapFactory.decodeResource(this.getResources(), R.drawable.scarlet);
+        scarlet = Bitmap.createScaledBitmap(scarlet, 31, 30, true);
+        white = BitmapFactory.decodeResource(this.getResources(), R.drawable.white_player);
+        white = Bitmap.createScaledBitmap(white, 30, 30, true);
+        plum = BitmapFactory.decodeResource(this.getResources(), R.drawable.plum);
+        plum = Bitmap.createScaledBitmap(plum, 30, 30, true);
+        mustard = BitmapFactory.decodeResource(this.getResources(), R.drawable.mustard);
+        mustard = Bitmap.createScaledBitmap(mustard, 34, 30, true);
+        green = BitmapFactory.decodeResource(this.getResources(), R.drawable.green);
+        green = Bitmap.createScaledBitmap(green, 30, 30, true);
+        peacock = BitmapFactory.decodeResource(this.getResources(), R.drawable.peacock);
+        peacock = Bitmap.createScaledBitmap(peacock, 30, 30, true);
 
-            player = new Player(scarlet, 468, 0, 0);
-            player.setX(arrBoard.get(player.getPlacement()).getTileX() + 3);
-            player.setY(arrBoard.get(player.getPlacement()).getTileY() + 3);
-
-            System.out.println("Chose scarlet");
-        }
-        else if (Objects.equals(Game.characterSelected, "white")) {
-            white = BitmapFactory.decodeResource(this.getResources(), R.drawable.white_player);
-            white = Bitmap.createScaledBitmap(white, 30, 30, true);
-
-            player = new Player(white, 476, 0, 0);
-            player.setX(arrBoard.get(player.getPlacement()).getTileX() + 5);
-            player.setY(arrBoard.get(player.getPlacement()).getTileY() + 3);
-            System.out.println("Chose white");
-        }
-        else if (Objects.equals(Game.characterSelected, "plum")) {
-            plum = BitmapFactory.decodeResource(this.getResources(), R.drawable.plum);
-            plum = Bitmap.createScaledBitmap(plum, 30, 30, true);
-
-            player = new Player(plum, 330, 0, 0);
-            player.setX(arrBoard.get(player.getPlacement()).getTileX() + 4);
-            player.setY(arrBoard.get(player.getPlacement()).getTileY() + 6);
-            System.out.println("Chose plum");
-        }
-        else if (Objects.equals(Game.characterSelected, "mustard")) {
-            mustard = BitmapFactory.decodeResource(this.getResources(), R.drawable.mustard);
-            mustard = Bitmap.createScaledBitmap(mustard, 34, 30, true);
-
-            player = new Player(mustard, 351, 0, 0);
-            player.setX(arrBoard.get(player.getPlacement()).getTileX() + 1);
-            player.setY(arrBoard.get(player.getPlacement()).getTileY() + 3);
-            System.out.println("Chose mustard");
-        }
-        else if (Objects.equals(Game.characterSelected, "green")) {
-            green = BitmapFactory.decodeResource(this.getResources(), R.drawable.green);
-            green = Bitmap.createScaledBitmap(green, 30, 30, true);
-
-            player = new Player(green, 14, 0, 0);
-            player.setX(arrBoard.get(player.getPlacement()).getTileX() + 3);
-            player.setY(arrBoard.get(player.getPlacement()).getTileY() + 3);
-            System.out.println("Chose green");
-        }
-        else if (Objects.equals(Game.characterSelected, "peacock")) {
-            peacock = BitmapFactory.decodeResource(this.getResources(), R.drawable.peacock);
-            peacock = Bitmap.createScaledBitmap(peacock, 30, 30, true);
-
-            player = new Player(peacock, 7, 0, 0);
-            player.setX(arrBoard.get(player.getPlacement()).getTileX() + 3);
-            player.setY(arrBoard.get(player.getPlacement()).getTileY() + 5);
-            System.out.println("Chose peacock");
-        }
 
         //creates board
         for (int i = 0; i < h; i++) {
@@ -244,12 +211,7 @@ public class GameView extends View {
             }
         }
 
-        white = BitmapFactory.decodeResource(this.getResources(), R.drawable.white_player);
-        white = Bitmap.createScaledBitmap(white, 30, 30, true);
 
-        player = new Player(white, 476, 0, 0);
-        player.setX(arrBoard.get(player.getPlacement()).getTileX() + 5);
-        player.setY(arrBoard.get(player.getPlacement()).getTileY() + 3);
 
         handler = new Handler();
         r = new Runnable() {
@@ -309,12 +271,15 @@ public class GameView extends View {
                 //If the next move placement matches any of the border placement
                 if (String.valueOf(player.getPlacement() - 1).equals(element.getRoom()[i][0])) {
                     //If there's a border moving right
-                    if(element.getRoom()[i][element.getRoom()[i].length - 1].equals("right")){
+                    if(element.getRoom()[i][element.getRoom()[i].length - 2].equals("right")){
                         //There is a border there that the player can't move through
                         border = true;
                         break;
                     }
+                    //if going into the center
+                    Game.checkInRoom(i,element);
                 }
+
             }
             if(border){
                 break;
@@ -324,6 +289,8 @@ public class GameView extends View {
         //After the scan of all the room's border's, if there was no border detected, then
         //it's ok to move there
         if(!border){
+//
+
             moves--;
             player.setPlacement(player.getPlacement() - 1);
             player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
@@ -343,11 +310,12 @@ public class GameView extends View {
                 //If the next move placement matches any of the border placement
                 if (String.valueOf(player.getPlacement() + 1).equals(element.getRoom()[i][0])) {
                     //If there's a border moving left
-                    if(element.getRoom()[i][element.getRoom()[i].length-1]=="left"){
+                    if(element.getRoom()[i][element.getRoom()[i].length-2]=="left"){
                         //There is a border there that the player can't move through
                         border = true;
                         break;
                     }
+                    Game.checkInRoom(i,element);
                 }
             }
             if(border){
@@ -367,21 +335,24 @@ public class GameView extends View {
     }
 
     public static void MoveUp() {
-        System.out.println("Line 358, In Game class, in moveup");
-
         //Boolean if the player is going into a wall
         boolean border = false;
         //Check each room
         for (Room element : total_rooms) {
             for (int i = 0; i <= element.getRoom().length-1; i++) {
+
+
+                System.out.println("element.getRoom()[i][1]: " + element.getRoom()[i][1]);
+
                 //If the next move placement matches any of the border placement
                 if (String.valueOf(player.getPlacement() - 22).equals(element.getRoom()[i][0])) {
-                    //If there's a border moving down
-                    if(element.getRoom()[i][1]=="down"){
+                    //If there's a border moving left
+                    if(element.getRoom()[i][element.getRoom()[i].length-2]=="down"){
                         //There is a border there that the player can't move through
                         border = true;
                         break;
                     }
+                    Game.checkInRoom(i,element);
                 }
             }
             if(border){
@@ -412,12 +383,13 @@ public class GameView extends View {
             for (int i = 0; i <= element.getRoom().length-1; i++) {
                 //If the next move placement matches any of the border placement
                 if (String.valueOf(player.getPlacement() + 22).equals(element.getRoom()[i][0])) {
-                    //If there's a border moving up
-                    if(element.getRoom()[i][1]=="up"){
+                    //If there's a border moving left
+                    if(element.getRoom()[i][element.getRoom()[i].length-2]=="up"){
                         //There is a border there that the player can't move through
                         border = true;
                         break;
                     }
+                    Game.checkInRoom(i,element);
                 }
             }
             if(border){
@@ -434,5 +406,8 @@ public class GameView extends View {
         }
         System.out.println("---------------------------------------- \n\n");
     }
+
+
+
 
 }
