@@ -66,10 +66,8 @@ public class PlayerInfo {
     public void setRoll(Integer roll) {
         this.roll = roll;
     }
-    public void changeTurn() {
-        if(turn) {
-            turn = false;
-        } else {turn = true;}
+    public void setTurn(Boolean turn) {
+        this.turn = turn;
     }
     public void setCards(Set<Card> cards) {
 //        TODO: Set the cards

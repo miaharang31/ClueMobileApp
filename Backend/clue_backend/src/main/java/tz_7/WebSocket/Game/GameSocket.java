@@ -90,67 +90,76 @@ public class GameSocket {
     @OnMessage
     public void onMessage(Session session, String message) throws IOException {
         logger.info("Entered Message: " + message);
-//        switch (message) {
-////            TODO: Handle different game mechanics
-//            case "Game Deleted":
-//                logger.info("Entered Game Deletion");
-//                broadcast("Game Deleted");
-//                break;
-//            case "Turn Ended":
-//                logger.info("Enter Turn Ending");
+        switch (message) {
+//            TODO: Handle different game mechanics
+            case "Game Deleted":
+                logger.info("Entered Game Deletion");
+                broadcast("Game Deleted");
+                break;
+            case "Turn Ended":
+                logger.info("Enter Turn Ending");
 //                Player curPlayer = sessionPlayerMap.get(session);
-//                GameState state = playerGameStateMap.get(curPlayer);
+//                GameState state = playerGameStateMap.remove(curPlayer);
 //
 ////                Switching the db information on if it is their turn or not
 //                PlayerInfo info = playerInfoRepository.findByPlayer(curPlayer);
-//                info.changeTurn();
+//                info.setTurn(false);
 //                playerInfoRepository.save(info);
 //
 //                Player nextPlayer = state.getNextPlayer();
+//                state = gameStateRepository.findById(state.getID()).get();
+//                gameStateRepository.save(state);
 //                info = playerInfoRepository.findByPlayer(nextPlayer);
-//                info.changeTurn();
+//                info.setTurn(true);
 //                playerInfoRepository.save(info);
-//
-////                Telling everyone but the current player that a turn has ended
+
+//                Telling everyone but the current player that a turn has ended
+                broadcast("Turn Ended");
 //                Set<Player> players = state.getTurnOrder();
 //                for(Player player : players) {
 //                    if(player != curPlayer) {
 //                        sendMessageToPArticularUser(player, "Turn Ended");
 //                    }
 //                }
-//                break;
-//            case "Show Card":
-//                logger.info("Entered into Close");
-//                break;
-//            case "Game Ended":
-//                break;
-//            case "Guess":
-//                break;
-//            default:
-//                if(message.startsWith(">")) {
-////                    Giving a card [message formated : ">test 2" i.e ">username cardId cardname1 cardname2 cardname3"
-//                    String username = message.split(" ")[0].substring(1);
-//                    Player destPlayer = playerRepository.findByUsername(username).get();
-//                    Player cur = sessionPlayerMap.get(session);
-////                          Sending card id to player
-//                        sendMessageToPArticularUser(destPlayer, "<" + message.split(" ")[1]);
-//                } else if (message.startsWith("-")) {
-////                    Player had no card to give
-//                    Player player = sessionPlayerMap.get(session);
-//                    GameState game = playerGameStateMap.get(player);
-//
-//                    Player dest = game.getNextPlayer();
-//                    sendMessageToPArticularUser(dest, ">" + message.split(" ")[0].substring(1) + " " + message.split(" ")[1] + " " + message.split(" ")[2] + " " + message.split(" ")[3]);
-//
-//                } else if (message.startsWith("Guess")) {
-////                    guessing card [message formated : ">test 2" i.e "Guess cardname1 cardname2 cardname3"
+                break;
+            case "Show Card":
+                logger.info("Entered into Close");
+                break;
+            case "Game Ended":
+                break;
+            default:
+                if(message.startsWith(">")) {
+//                    Giving a card [message formated : ">test 2" i.e ">username cardId cardname1 cardname2 cardname3"
+                    String username = message.split(" ")[0].substring(1);
+                    Player destPlayer = playerRepository.findByUsername(username).get();
+                    Player cur = sessionPlayerMap.get(session);
+//                          Sending card id to player
+                        sendMessageToPArticularUser(destPlayer, "<" + message.split(" ")[1]);
+                } else if (message.startsWith("-")) {
+//                    Player had no card to give
+                    Player player = sessionPlayerMap.get(session);
+                    GameState game = playerGameStateMap.get(player);
+
+                    Player dest = game.getNextPlayer();
+                    sendMessageToPArticularUser(dest, ">" + message.split(" ")[0].substring(1) + " " + message.split(" ")[1] + " " + message.split(" ")[2] + " " + message.split(" ")[3]);
+
+                } else if (message.startsWith("Guess")) {
+//                    guessing card [message formated : ">test 2" i.e "Guess cardname1 cardname2 cardname3"
+                    Player player = sessionPlayerMap.get(session);
+                    GameState game = playerGameStateMap.get(player);
+
+                    Player dest = game.getNextPlayer();
+                    sendMessageToPArticularUser(dest, ">" + player.getUsername() + " " + message.split(" ")[1] + " " + message.split(" ")[2] + " " + message.split(" ")[3]);
+                } else if (message.startsWith("Final")) {
+//                    guessing card [message formated : ">test 2" i.e "Final cardname1 cardname2 cardname3"
 //                    Player player = sessionPlayerMap.get(session);
 //                    GameState game = playerGameStateMap.get(player);
 //
 //                    Player dest = game.getNextPlayer();
 //                    sendMessageToPArticularUser(dest, ">" + player.getUsername() + " " + message.split(" ")[1] + " " + message.split(" ")[2] + " " + message.split(" ")[3]);
-//                }
-//        }
+                    broadcast("Game Ended");
+                }
+        }
     }
 
     @OnClose
