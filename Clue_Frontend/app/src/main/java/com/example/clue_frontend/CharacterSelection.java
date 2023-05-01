@@ -92,7 +92,6 @@ public class CharacterSelection extends AppCompatActivity {
 
         startGame.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                System.out.println("TotalPlayers: " + totalPlayers);
                 if(numPlayers == totalPlayers) {
                     Intent intent = new Intent(CharacterSelection.this, Game.class);
                     startActivity(intent);
