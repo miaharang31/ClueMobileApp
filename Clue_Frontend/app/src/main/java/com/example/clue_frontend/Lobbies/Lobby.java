@@ -18,6 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.clue_frontend.GamePlay.Player.CharacterSelection;
 import com.example.clue_frontend.GamePlay.Game;
 import com.example.clue_frontend.MyApplication;
 import com.example.clue_frontend.R;
@@ -197,7 +198,7 @@ public class Lobby extends AppCompatActivity {
         startGame.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(Lobby.this, Game.class);
+                Intent intent = new Intent(Lobby.this, CharacterSelection.class);
 
                 if(app.isHost()) {
                     String url = "http://10.0.2.2:8080/game/new/lobby/" + app.getLobbyid();

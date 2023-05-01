@@ -146,6 +146,20 @@ public class GameState {
         weapons.remove(finalWeapon);
     }
 
+    public void deleteCards(String type) {
+        switch (type) {
+            case "w":
+                weapons = null;
+                break;
+            case "s":
+                suspects = null;
+                break;
+            case "r":
+                rooms = null;
+                break;
+        }
+    }
+
     /**
      * Sets the rooms for the game
      *  Sets the final weapon card as well
