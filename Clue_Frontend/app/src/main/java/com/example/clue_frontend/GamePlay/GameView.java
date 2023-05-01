@@ -140,7 +140,7 @@ public class GameView extends View {
         total_rooms.add(kitchen_room);
         total_rooms.add(clue_room);
 
-        System.out.println("************* moves:" + moves + "\n");
+//        System.out.println("************* moves:" + moves + "\n");
 
 
 
@@ -254,6 +254,9 @@ public class GameView extends View {
 // TODO: Set up chacter stuff.
 
 
+        player = new Player(GameView.scarlet, 468, 0, 0);
+        player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
+        player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
         //draws player pieces
         canvas.drawBitmap(player.getBm(), player.getX(), player.getY(), null);
 
@@ -296,7 +299,7 @@ public class GameView extends View {
             player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
             player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
         }
-        System.out.println("---------------------------------------- \n\n");
+//        System.out.println("---------------------------------------- \n\n");
     }
 
     public static void TurnRight() {
@@ -331,7 +334,7 @@ public class GameView extends View {
             player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
 
         }
-        System.out.println("---------------------------------------- \n\n");
+//        System.out.println("---------------------------------------- \n\n");
     }
 
     public static void MoveUp() {
@@ -342,7 +345,7 @@ public class GameView extends View {
             for (int i = 0; i <= element.getRoom().length-1; i++) {
 
 
-                System.out.println("element.getRoom()[i][1]: " + element.getRoom()[i][1]);
+//                System.out.println("element.getRoom()[i][1]: " + element.getRoom()[i][1]);
 
                 //If the next move placement matches any of the border placement
                 if (String.valueOf(player.getPlacement() - 22).equals(element.getRoom()[i][0])) {
@@ -371,7 +374,7 @@ public class GameView extends View {
             player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
             player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
         }
-        System.out.println("---------------------------------------- \n\n");
+//        System.out.println("---------------------------------------- \n\n");
 
     }
 
@@ -404,7 +407,7 @@ public class GameView extends View {
             player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
             player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
         }
-        System.out.println("---------------------------------------- \n\n");
+//        System.out.println("---------------------------------------- \n\n");
     }
 
 
