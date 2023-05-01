@@ -72,13 +72,9 @@ public class Game extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         //this.getWindow().setFlags(WindowManager.LayoutParams.FLAGS_CHANGED, WindowManager.LayoutParams.FLAGS_CHANGED);
+
         DisplayMetrics dm = new DisplayMetrics();
         this.getWindowManager().getDefaultDisplay().getMetrics(dm);
-        Constraints.SCREEN_WIDTH = dm.widthPixels;
-        Constraints.SCREEN_HEIGHT = dm.heightPixels;
-
-
-        //characterSelected = getCharacter();
 
         setContentView(R.layout.board);
 
@@ -405,7 +401,6 @@ public class Game extends AppCompatActivity {
                     float yDiff = e2.getY() - e1.getY();
 
                     try {
-                        System.out.println("Line 101, In Game class, in try block");
                         if(GameView.moves > 0){
                             if (Math.abs(xDiff) > Math.abs(yDiff)) {
                                 if (Math.abs(xDiff) > threshold && Math.abs(velocityX) > velocity_threshold) {

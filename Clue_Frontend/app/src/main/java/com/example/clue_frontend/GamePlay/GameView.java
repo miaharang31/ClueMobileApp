@@ -1,5 +1,8 @@
 package com.example.clue_frontend.GamePlay;
 
+import static com.example.clue_frontend.GamePlay.Constraints.SCREEN_HEIGHT;
+import static com.example.clue_frontend.GamePlay.Constraints.SCREEN_WIDTH;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -52,7 +55,7 @@ public class GameView extends View {
     private static Bitmap green;
     private static Bitmap peacock;
 
-    public static int sizeOfMap = 35 * Constraints.SCREEN_WIDTH / 1000;
+    public static int sizeOfMap = (35 * Constraints.SCREEN_WIDTH) / 1000;
     private int h = 22, w = 22;
     public static ArrayList<Tile> arrBoard = new ArrayList<>();
 
@@ -98,7 +101,14 @@ public class GameView extends View {
     public GameView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
 
-        System.out.println("Line 99, In GameView");
+        //creates tiles for the boards
+        edge = BitmapFactory.decodeResource(this.getResources(), R.drawable.empty);
+        edge = Bitmap.createScaledBitmap(edge, sizeOfMap, sizeOfMap, true);
+        tile1 = BitmapFactory.decodeResource(this.getResources(), R.drawable.dark);
+        tile1 = Bitmap.createScaledBitmap(tile1, sizeOfMap, sizeOfMap, true);
+        tile2 = BitmapFactory.decodeResource(this.getResources(), R.drawable.light);
+        tile2 = Bitmap.createScaledBitmap(tile2, sizeOfMap, sizeOfMap, true);
+
         //create rooms
         study_room = new Room(study_room_info);
         library_room = new Room(library_room_info);
@@ -122,13 +132,7 @@ public class GameView extends View {
 
         System.out.println("************* moves:" + moves + "\n");
 
-        //creates tiles for the boards
-        edge = BitmapFactory.decodeResource(this.getResources(), R.drawable.empty);
-        edge = Bitmap.createScaledBitmap(edge, sizeOfMap, sizeOfMap, true);
-        tile1 = BitmapFactory.decodeResource(this.getResources(), R.drawable.dark);
-        tile1 = Bitmap.createScaledBitmap(tile1, sizeOfMap, sizeOfMap, true);
-        tile2 = BitmapFactory.decodeResource(this.getResources(), R.drawable.light);
-        tile2 = Bitmap.createScaledBitmap(tile2, sizeOfMap, sizeOfMap, true);
+
 
         //create starting places
         scarlet_start = BitmapFactory.decodeResource(this.getResources(), R.drawable.scarlet_start);
@@ -143,6 +147,7 @@ public class GameView extends View {
         green_start = Bitmap.createScaledBitmap(green_start, 47, 43, true);
         peacock_start = BitmapFactory.decodeResource(this.getResources(), R.drawable.peacock_start);
         peacock_start = Bitmap.createScaledBitmap(peacock_start, 46, 42, true);
+
 
         //create rooms
         study = BitmapFactory.decodeResource(this.getResources(), R.drawable.study);
@@ -166,14 +171,6 @@ public class GameView extends View {
         kitchen = BitmapFactory.decodeResource(this.getResources(), R.drawable.kitchen);
         kitchen = Bitmap.createScaledBitmap(kitchen, 206, 208, true);
 
-        white = BitmapFactory.decodeResource(this.getResources(), R.drawable.white_player);
-        white = Bitmap.createScaledBitmap(white, 30, 30, true);
-
-        player = new Player(white, 476, 0, 0);
-        player.setX(arrBoard.get(player.getPlacement()).getTileX() + 5);
-        player.setY(arrBoard.get(player.getPlacement()).getTileY() + 3);
-
-
         //assigns color based on what player chose
         if(Objects.equals(Game.characterSelected, "scarlet")){
             scarlet = BitmapFactory.decodeResource(this.getResources(), R.drawable.scarlet);
@@ -184,7 +181,8 @@ public class GameView extends View {
             player.setY(arrBoard.get(player.getPlacement()).getTileY() + 3);
 
             System.out.println("Chose scarlet");
-        } else if (Objects.equals(Game.characterSelected, "white")) {
+        }
+        else if (Objects.equals(Game.characterSelected, "white")) {
             white = BitmapFactory.decodeResource(this.getResources(), R.drawable.white_player);
             white = Bitmap.createScaledBitmap(white, 30, 30, true);
 
@@ -192,7 +190,8 @@ public class GameView extends View {
             player.setX(arrBoard.get(player.getPlacement()).getTileX() + 5);
             player.setY(arrBoard.get(player.getPlacement()).getTileY() + 3);
             System.out.println("Chose white");
-        } else if (Objects.equals(Game.characterSelected, "plum")) {
+        }
+        else if (Objects.equals(Game.characterSelected, "plum")) {
             plum = BitmapFactory.decodeResource(this.getResources(), R.drawable.plum);
             plum = Bitmap.createScaledBitmap(plum, 30, 30, true);
 
@@ -200,7 +199,8 @@ public class GameView extends View {
             player.setX(arrBoard.get(player.getPlacement()).getTileX() + 4);
             player.setY(arrBoard.get(player.getPlacement()).getTileY() + 6);
             System.out.println("Chose plum");
-        }else if (Objects.equals(Game.characterSelected, "mustard")) {
+        }
+        else if (Objects.equals(Game.characterSelected, "mustard")) {
             mustard = BitmapFactory.decodeResource(this.getResources(), R.drawable.mustard);
             mustard = Bitmap.createScaledBitmap(mustard, 34, 30, true);
 
@@ -208,7 +208,8 @@ public class GameView extends View {
             player.setX(arrBoard.get(player.getPlacement()).getTileX() + 1);
             player.setY(arrBoard.get(player.getPlacement()).getTileY() + 3);
             System.out.println("Chose mustard");
-        }else if (Objects.equals(Game.characterSelected, "green")) {
+        }
+        else if (Objects.equals(Game.characterSelected, "green")) {
             green = BitmapFactory.decodeResource(this.getResources(), R.drawable.green);
             green = Bitmap.createScaledBitmap(green, 30, 30, true);
 
@@ -216,7 +217,8 @@ public class GameView extends View {
             player.setX(arrBoard.get(player.getPlacement()).getTileX() + 3);
             player.setY(arrBoard.get(player.getPlacement()).getTileY() + 3);
             System.out.println("Chose green");
-        }else if (Objects.equals(Game.characterSelected, "peacock")) {
+        }
+        else if (Objects.equals(Game.characterSelected, "peacock")) {
             peacock = BitmapFactory.decodeResource(this.getResources(), R.drawable.peacock);
             peacock = Bitmap.createScaledBitmap(peacock, 30, 30, true);
 
@@ -226,22 +228,28 @@ public class GameView extends View {
             System.out.println("Chose peacock");
         }
 
-
         //creates board
         for (int i = 0; i < h; i++) {
             for (int j = 0; j < w; j++) {
                 if (j == 0 | i == 0 | i == (h - 1) | j == (w - 1)) {
-                    arrBoard.add(new Tile(edge, j * sizeOfMap + Constraints.SCREEN_WIDTH / 2 - (w / 2) * sizeOfMap,
+                    arrBoard.add(new Tile(edge, j * sizeOfMap + SCREEN_WIDTH / 2 - (w / 2) * sizeOfMap,
                             i * sizeOfMap + 200 * Constraints.SCREEN_HEIGHT / 1920, sizeOfMap, sizeOfMap));
                 } else if ((i + j) % 2 == 0) {
-                    arrBoard.add(new Tile(tile1, j * sizeOfMap + Constraints.SCREEN_WIDTH / 2 - (w / 2) * sizeOfMap,
+                    arrBoard.add(new Tile(tile1, j * sizeOfMap + SCREEN_WIDTH / 2 - (w / 2) * sizeOfMap,
                             i * sizeOfMap + 200 * Constraints.SCREEN_HEIGHT / 1920, sizeOfMap, sizeOfMap));
                 } else {
-                    arrBoard.add(new Tile(tile2, j * sizeOfMap + Constraints.SCREEN_WIDTH / 2 - (w / 2) * sizeOfMap,
+                    arrBoard.add(new Tile(tile2, j * sizeOfMap + SCREEN_WIDTH / 2 - (w / 2) * sizeOfMap,
                             i * sizeOfMap + 200 * Constraints.SCREEN_HEIGHT / 1920, sizeOfMap, sizeOfMap));
                 }
             }
         }
+
+        white = BitmapFactory.decodeResource(this.getResources(), R.drawable.white_player);
+        white = Bitmap.createScaledBitmap(white, 30, 30, true);
+
+        player = new Player(white, 476, 0, 0);
+        player.setX(arrBoard.get(player.getPlacement()).getTileX() + 5);
+        player.setY(arrBoard.get(player.getPlacement()).getTileY() + 3);
 
         handler = new Handler();
         r = new Runnable() {
