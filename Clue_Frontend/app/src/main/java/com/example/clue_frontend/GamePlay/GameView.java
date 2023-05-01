@@ -19,16 +19,18 @@ import com.example.clue_frontend.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
 
 public class GameView extends View {
     static Random rand = new Random();
-    public static int moves = rand.nextInt(23) + 1;
+    public static int moves = 0;
     //public static int moves = DiceRoller.numSpaces;
 
-    public static int number_of_players = 6;
+    public static int number_of_players;
+    public static List<String> roles = new ArrayList<>();
     public static Bitmap edge;
     private static Bitmap tile1;
     private static Bitmap tile2;
@@ -263,151 +265,158 @@ public class GameView extends View {
         handler.postDelayed(r, 100);
     }
 
+    public static void roll() {
+        Random rand = new Random(12 + 1);
+        moves = rand.nextInt();
+    }
+
     public static void TurnLeft() {
-        //Boolean if the player is going into a wall
-        boolean border = false;
+            //Boolean if the player is going into a wall
+            boolean border = false;
 
-        //Check each room
-        for (Room element : total_rooms) {
-            for (int i = 0; i <= element.getRoom().length-1; i++) {
+            //Check each room
+            for (Room element : total_rooms) {
+                for (int i = 0; i <= element.getRoom().length-1; i++) {
 
-                //If the next move placement matches any of the border placement
-                if (String.valueOf(player.getPlacement() - 1).equals(element.getRoom()[i][0])) {
-                    //If there's a border moving right
-                    if(element.getRoom()[i][element.getRoom()[i].length - 2].equals("right")){
-                        //There is a border there that the player can't move through
-                        border = true;
-                        break;
+                    //If the next move placement matches any of the border placement
+                    if (String.valueOf(player.getPlacement() - 1).equals(element.getRoom()[i][0])) {
+                        //If there's a border moving right
+                        if(element.getRoom()[i][element.getRoom()[i].length - 2].equals("right")){
+                            //There is a border there that the player can't move through
+                            border = true;
+                            break;
+                        }
+                        //if going into the center
+                        Game.checkInRoom(i,element);
                     }
-                    //if going into the center
-                    Game.checkInRoom(i,element);
+
                 }
-
+                if(border){
+                    break;
+                }
             }
-            if(border){
-                break;
-            }
-        }
 
-        //After the scan of all the room's border's, if there was no border detected, then
-        //it's ok to move there
-        if(!border){
+            //After the scan of all the room's border's, if there was no border detected, then
+            //it's ok to move there
+            if(!border){
 //
 
-            moves--;
-            player.setPlacement(player.getPlacement() - 1);
-            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
-            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
-        }
+                moves--;
+                player.setPlacement(player.getPlacement() - 1);
+                player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
+                player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
+            }
 //        System.out.println("---------------------------------------- \n\n");
     }
 
     public static void TurnRight() {
-        //Boolean if the player is going into a wall
-        boolean border = false;
+            //Boolean if the player is going into a wall
+            boolean border = false;
 
-        //Check each room
-        for (Room element : total_rooms) {
-            for (int i = 0; i <= element.getRoom().length-1; i++) {
+            //Check each room
+            for (Room element : total_rooms) {
+                for (int i = 0; i <= element.getRoom().length-1; i++) {
 
-                //If the next move placement matches any of the border placement
-                if (String.valueOf(player.getPlacement() + 1).equals(element.getRoom()[i][0])) {
-                    //If there's a border moving left
-                    if(element.getRoom()[i][element.getRoom()[i].length-2]=="left"){
-                        //There is a border there that the player can't move through
-                        border = true;
-                        break;
+                    //If the next move placement matches any of the border placement
+                    if (String.valueOf(player.getPlacement() + 1).equals(element.getRoom()[i][0])) {
+                        //If there's a border moving left
+                        if(element.getRoom()[i][element.getRoom()[i].length-2]=="left"){
+                            //There is a border there that the player can't move through
+                            border = true;
+                            break;
+                        }
+                        Game.checkInRoom(i,element);
                     }
-                    Game.checkInRoom(i,element);
+                }
+                if(border){
+                    break;
                 }
             }
-            if(border){
-                break;
-            }
-        }
-        //After the scan of all the room's border's, if there was no border detected, then
-        //it's ok to move there
-        if (!border){
-            moves--;
-            player.setPlacement(player.getPlacement() + 1);
-            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
-            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
+            //After the scan of all the room's border's, if there was no border detected, then
+            //it's ok to move there
+            if (!border){
+                moves--;
+                player.setPlacement(player.getPlacement() + 1);
+                player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
+                player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
 
-        }
+            }
 //        System.out.println("---------------------------------------- \n\n");
+
     }
 
     public static void MoveUp() {
-        //Boolean if the player is going into a wall
-        boolean border = false;
-        //Check each room
-        for (Room element : total_rooms) {
-            for (int i = 0; i <= element.getRoom().length-1; i++) {
+            //Boolean if the player is going into a wall
+            boolean border = false;
+            //Check each room
+            for (Room element : total_rooms) {
+                for (int i = 0; i <= element.getRoom().length-1; i++) {
 
 
 //                System.out.println("element.getRoom()[i][1]: " + element.getRoom()[i][1]);
 
-                //If the next move placement matches any of the border placement
-                if (String.valueOf(player.getPlacement() - 22).equals(element.getRoom()[i][0])) {
-                    //If there's a border moving left
-                    if(element.getRoom()[i][element.getRoom()[i].length-2]=="down"){
-                        //There is a border there that the player can't move through
-                        border = true;
-                        break;
+                    //If the next move placement matches any of the border placement
+                    if (String.valueOf(player.getPlacement() - 22).equals(element.getRoom()[i][0])) {
+                        //If there's a border moving left
+                        if(element.getRoom()[i][element.getRoom()[i].length-2]=="down"){
+                            //There is a border there that the player can't move through
+                            border = true;
+                            break;
+                        }
+                        Game.checkInRoom(i,element);
                     }
-                    Game.checkInRoom(i,element);
+                }
+                if(border){
+                    break;
                 }
             }
-            if(border){
-                break;
-            }
-        }
 
-        //After the scan of all the room's border's, if there was no border detected, then
-        //it's ok to move there
-        if(!border){
-            moves--;
-            System.out.println("new_moves: " + moves);
-            System.out.println("before player placement: " + player.getPlacement());
-            player.setPlacement(player.getPlacement() - 22);
-            System.out.println("after player placement: " + player.getPlacement());
-            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
-            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
-        }
+            //After the scan of all the room's border's, if there was no border detected, then
+            //it's ok to move there
+            if(!border){
+                moves--;
+                System.out.println("new_moves: " + moves);
+                System.out.println("before player placement: " + player.getPlacement());
+                player.setPlacement(player.getPlacement() - 22);
+                System.out.println("after player placement: " + player.getPlacement());
+                player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
+                player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
+            }
 //        System.out.println("---------------------------------------- \n\n");
 
     }
 
     public static void MoveDown() {
-        //Boolean if the player is going into a wall
-        boolean border = false;
-        //Check each room
-        for (Room element : total_rooms) {
-            for (int i = 0; i <= element.getRoom().length-1; i++) {
-                //If the next move placement matches any of the border placement
-                if (String.valueOf(player.getPlacement() + 22).equals(element.getRoom()[i][0])) {
-                    //If there's a border moving left
-                    if(element.getRoom()[i][element.getRoom()[i].length-2]=="up"){
-                        //There is a border there that the player can't move through
-                        border = true;
-                        break;
+            //Boolean if the player is going into a wall
+            boolean border = false;
+            //Check each room
+            for (Room element : total_rooms) {
+                for (int i = 0; i <= element.getRoom().length-1; i++) {
+                    //If the next move placement matches any of the border placement
+                    if (String.valueOf(player.getPlacement() + 22).equals(element.getRoom()[i][0])) {
+                        //If there's a border moving left
+                        if(element.getRoom()[i][element.getRoom()[i].length-2]=="up"){
+                            //There is a border there that the player can't move through
+                            border = true;
+                            break;
+                        }
+                        Game.checkInRoom(i,element);
                     }
-                    Game.checkInRoom(i,element);
+                }
+                if(border){
+                    break;
                 }
             }
-            if(border){
-                break;
+            //After the scan of all the room's border's, if there was no border detected, then
+            //it's ok to move there
+            if(!border){
+                moves--;
+                player.setPlacement(player.getPlacement() + 22);
+                player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
+                player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
             }
-        }
-        //After the scan of all the room's border's, if there was no border detected, then
-        //it's ok to move there
-        if(!border){
-            moves--;
-            player.setPlacement(player.getPlacement() + 22);
-            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
-            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
-        }
 //        System.out.println("---------------------------------------- \n\n");
+
     }
 
 

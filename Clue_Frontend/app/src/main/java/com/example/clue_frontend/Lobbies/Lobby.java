@@ -87,8 +87,8 @@ public class Lobby extends AppCompatActivity {
 
         RequestQueue queue = Volley.newRequestQueue(Lobby.this);
         app = (MyApplication) getApplication();
-        String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/" + app.getLobbyid();
-//        String url = "http://10.0.2.2:8080/lobby/" + app.getLobbyid();
+//        String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/" + app.getLobbyid();
+        String url = "http://10.0.2.2:8080/lobby/" + app.getLobbyid();
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -99,8 +99,8 @@ public class Lobby extends AppCompatActivity {
 
                             max.setText(response.get("maxPlayers").toString());
 //                            Get the host to display their name
-                            String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/host/" + gameID;
-//                            String url = "http://10.0.2.2:8080/lobby/host/" + gameID;
+//                            String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/host/" + gameID;
+                            String url = "http://10.0.2.2:8080/lobby/host/" + gameID;
                             JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                                     new Response.Listener<JSONObject>() {
                                         @Override
@@ -133,8 +133,8 @@ public class Lobby extends AppCompatActivity {
 //                                    TODO: FIGURE OUT HOW TO DO DYNAMICALLY
                             cur.setText(response.get("numPlayers").toString());
 //                                    Display names of players in lobby
-                            url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/nothost/" + gameID;
-//                                    url = "http://10.0.2.2:8080/lobby/nothost/" + gameID;
+//                            url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/nothost/" + gameID;
+                                    url = "http://10.0.2.2:8080/lobby/nothost/" + gameID;
                             JsonArrayRequest request1  = new JsonArrayRequest(Request.Method.GET, url, null,
                                     new Response.Listener<JSONArray>() {
                                         @Override
@@ -203,8 +203,30 @@ public class Lobby extends AppCompatActivity {
                 Intent intent = new Intent(Lobby.this, CharacterSelection.class);
 
                 if(app.isHost()) {
-//                    String url = "http://10.0.2.2:8080/game/new/lobby/" + app.getLobbyid();
-                    String url = "http://coms-309-038.class.las.iastate.edu:8080/game/new/lobby/" + app.getLobbyid();
+                    String url = "http://10.0.2.2:8080/game/new/lobby/" + app.getLobbyid();
+//                    String url = "http://coms-309-038.class.las.iastate.edu:8080/game/new/lobby/" + app.getLobbyid();
+                    JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, null,
+                            new Response.Listener<JSONObject>() {
+                                @Override
+                                public void onResponse(JSONObject response) {
+                                    try {
+                                        app.setGameid((int) response.get("id"));
+                                    } catch (JSONException e) {
+                                        throw new RuntimeException(e);
+                                    }
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Toast.makeText(Lobby.this, "Error: " + error, Toast.LENGTH_SHORT).show();
+                                    Log.d("ResponseError", error.toString());
+                                }
+                            });
+                    queue.add(request);
+                } else  {
+                    String url = "http://10.0.2.2:8080/game/new/lobby/" + app.getLobbyid();
+//                    String url = "http://coms-309-038.class.las.iastate.edu:8080/game/new/lobby/" + app.getLobbyid();
                     JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, null,
                             new Response.Listener<JSONObject>() {
                                 @Override

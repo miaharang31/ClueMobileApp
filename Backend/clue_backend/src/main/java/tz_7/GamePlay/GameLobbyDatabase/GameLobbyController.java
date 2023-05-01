@@ -54,7 +54,7 @@ public class GameLobbyController {
 
 //        If there is a lobby created by that player, delete it
 //        then create a new one
-        if(tmp != null) {
+        if(host.getGameLobbyHost() != null) {
             deleteLobby(host.getGameLobbyHost().getID());
         }
 

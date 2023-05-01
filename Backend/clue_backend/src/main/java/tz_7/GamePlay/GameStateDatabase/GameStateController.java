@@ -65,8 +65,10 @@ public class GameStateController {
         playerRepository.saveAll(state.getTurnOrder());
 
         PlayerInfo info = playerInfoRepository.findByPlayer(state.getCurrentPlayer());
-        info.setTurn(true);
-        playerInfoRepository.save(info);
+        if(info != null) {
+            info.setTurn(true);
+            playerInfoRepository.save(info);
+        }
 
         return state;
     }
@@ -217,6 +219,11 @@ public class GameStateController {
         return new ResponseEntity<List<GameState>>(repo.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/host/{id}")
+    public GameState getAllStates(@PathVariable Integer id) {
+        return repo.findByHostID(id).get(0);
+    }
+
     /**
      * Gets mapping the provides the caller with all the players in the game
      * @param id
@@ -263,6 +270,18 @@ public class GameStateController {
     @GetMapping(value = "/{id}")
     public GameState getGameByID (@PathVariable Integer id) {
         GameState state = repo.getById(id);
+        return state;
+    }
+
+    /**
+     * Get mapping to get a state by ID
+     * @return
+     *  true - if all the ids match
+     *  false - if the ids don't match
+     */
+    @GetMapping(value = "/host/{id}")
+    public GameState getGameByHostID (@PathVariable Integer id) {
+        GameState state = repo.findByHostID(id).get(1);
         return state;
     }
 
