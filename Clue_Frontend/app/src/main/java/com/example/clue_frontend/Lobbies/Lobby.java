@@ -203,7 +203,8 @@ public class Lobby extends AppCompatActivity {
                 Intent intent = new Intent(Lobby.this, CharacterSelection.class);
 
                 if(app.isHost()) {
-                    String url = "http://10.0.2.2:8080/game/new/lobby/" + app.getLobbyid();
+//                    String url = "http://10.0.2.2:8080/game/new/lobby/" + app.getLobbyid();
+                    String url = "http://coms-309-038.class.las.iastate.edu:8080/game/new/lobby/" + app.getLobbyid();
                     JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, null,
                             new Response.Listener<JSONObject>() {
                                 @Override
