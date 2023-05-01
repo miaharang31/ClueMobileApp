@@ -50,6 +50,11 @@ public class PlayerInfo {
         cardHand = new HashSet<>();
     }
 
+    public PlayerInfo(boolean turn) {
+        this.turn = turn;
+        cardHand = new HashSet<>();
+    }
+
     public void setPlayer(Player player) {
         this.player = player;
     }

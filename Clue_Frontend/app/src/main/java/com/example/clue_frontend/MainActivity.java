@@ -25,6 +25,8 @@ import com.example.clue_frontend.GamePlay.Constraints;
 import com.example.clue_frontend.GamePlay.Game;
 import com.example.clue_frontend.GamePlay.Player.EndGameWinOrLose;
 import com.example.clue_frontend.HomeActivities.Home;
+import com.example.clue_frontend.Lobbies.HostLobby;
+import com.example.clue_frontend.Lobbies.Lobby;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 //Intent intent = new Intent(MainActivity.this, Home.class);
                 Intent intent = new Intent(MainActivity.this, Game.class);
                 //Intent intent = new Intent(MainActivity.this, CharacterSelection.class);
+                
 
                 EditText username = findViewById(R.id.loginUsername);
                 EditText password = findViewById(R.id.loginPassword);
