@@ -273,23 +273,24 @@ public class Game extends AppCompatActivity {
                             queue.add(objectRequest);
 //                            TODO: idk yet i just feel like there should be something here (move piece?? that might be a different message)
                             break;
-                        case "Show Card":
-//                            TODO: pick card to show
-//                             figure out how its getting back to other user
-//                                IS DIFFERENT ON SERVER DON'T MESS WITH IT
-                            break;
-                        case "Recieve Card":
-//                            TODO: Show the card the player chose
-//                             figure out how its getting back to other user
-//                                IS DIFFERENT ON SERVER DON'T MESS WITH IT
-                            break;
+//                        case "Show Card":
+////                            TODO: pick card to show
+////                             figure out how its getting back to other user
+////                                IS DIFFERENT ON SERVER DON'T MESS WITH IT
+//                            break;
+//                        case "Recieve Card":
+////                            TODO: Show the card the player chose
+////                             figure out how its getting back to other user
+////                                IS DIFFERENT ON SERVER DON'T MESS WITH IT
+//                            break;
                         case "Game Ended":
 //                            TODO: Handle ending screens
                             app.setGameid(0);
                             break;
                         case "Guess":
 //                            TODO: When player enters room, show guess list
-//                                When player hits 'make guess', send to the server that they
+//                                When player hits 'make guess', send to the server that the
+                            makeAGuess();
                             break;
                         case "Final Guess":
 //                            TODO: When player enters center room
@@ -402,6 +403,23 @@ public class Game extends AppCompatActivity {
 
 //        Tells the server a player has finished their turn
         sendMessage(gameClient, "Turn Ended");
+    }
+
+    /**
+     * Method that when called pulls up the guess checklist
+     *  The room will be set to the room the player is in
+     *  User will then choose which suspect and weapon to guess
+     *  A message will be sent to the server with the names of the three guesses and
+     */
+    private void makeAGuess() {
+//        TODO: Pull up guess checklist
+//                Set room to current room
+//                let player choose suspect and weapon
+//                send server that a guess has been made
+    }
+
+    private void makeFinalGuess() {
+
     }
 
     private void sendMessage(WebSocketClient client, String message) {
