@@ -46,12 +46,12 @@ public class ViewCards extends AppCompatActivity {
         exit = findViewById(R.id.exitCards);
         // filling suspect array
         suspects = new ImageView[]{findViewById(R.id.mustardCard), findViewById(R.id.plumCard),
-                                   findViewById(R.id.greenCard), findViewById(R.id.peacockCard),
-                                   findViewById(R.id.scarletCard), findViewById(R.id.whiteCard)};
+                findViewById(R.id.greenCard), findViewById(R.id.peacockCard),
+                findViewById(R.id.scarletCard), findViewById(R.id.whiteCard)};
         // filling weapons array
         weapons = new ImageView[]{findViewById(R.id.knifeCard), findViewById(R.id.candlestickCard),
-                                  findViewById(R.id.revolverCard), findViewById(R.id.ropeCard),
-                                  findViewById(R.id.pipeCard), findViewById(R.id.wrenchCard)};
+                findViewById(R.id.revolverCard), findViewById(R.id.ropeCard),
+                findViewById(R.id.pipeCard), findViewById(R.id.wrenchCard)};
 
         rooms = new ImageView[]{findViewById(R.id.hallCard), findViewById(R.id.loungeCard),
                 findViewById(R.id.diningRoomCard), findViewById(R.id.kitchenCard),
@@ -70,7 +70,7 @@ public class ViewCards extends AppCompatActivity {
                             try {
                                 JSONObject card = response.getJSONObject(i);
                                 Resources res = context.getResources();
-                                Log.d("Suspect", card.getString("cardImage"));
+                                //Log.d("Suspect", card.getString("cardImage"));
                                 int id = res.getIdentifier(card.getString("cardImage"), "drawable", getPackageName());
 //                                Drawable d = ResourcesCompat.getDrawable(res, R.drawable.mustard, null);
                                 suspects[i].setImageDrawable(res.getDrawable(id));
@@ -100,10 +100,10 @@ public class ViewCards extends AppCompatActivity {
                             try {
                                 JSONObject card = response.getJSONObject(i);
                                 Resources res = context.getResources();
-//                                System.out.println(card.getString("cardImage"));
-                                int id = res.getIdentifier(card.getString("cardImage"), "drawable", null);
+                               // Log.d("Suspect", card.getString("cardImage"));
+                                int id = res.getIdentifier(card.getString("cardImage"), "drawable", getPackageName());
 //                                Drawable d = ResourcesCompat.getDrawable(res, R.drawable.mustard, null);
-                                suspects[i].setImageDrawable(res.getDrawable(id));
+                                weapons[i].setImageDrawable(res.getDrawable(id));
 //                                        (response.getJSONObject(i).getInt("Mustard"));
                             } catch (JSONException e) {
                                 throw new RuntimeException(e);
@@ -118,7 +118,7 @@ public class ViewCards extends AppCompatActivity {
                 });
         queue.add(request);
 
-        // setting weapon cards
+        // setting room cards
         url = "http://coms-309-038.class.las.iastate.edu:8080/card/room";
         queue = Volley.newRequestQueue(ViewCards.this);
         request = new JsonArrayRequest(Request.Method.GET, url, null,
@@ -126,11 +126,17 @@ public class ViewCards extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONArray response) {
                         for(int i = 0; i < rooms.length; i++){
-//                            try {
-//                               // rooms[i].setImageResource(response.getJSONObject(i).getInt("Mustard"));
-//                            } catch (JSONException e) {
-//                                throw new RuntimeException(e);
-//                            }
+                            try {
+                                JSONObject card = response.getJSONObject(i);
+                                Resources res = context.getResources();
+                               // Log.d("Suspect", card.getString("cardImage"));
+                                int id = res.getIdentifier(card.getString("cardImage"), "drawable", getPackageName());
+//                                Drawable d = ResourcesCompat.getDrawable(res, R.drawable.mustard, null);
+                                rooms[i].setImageDrawable(res.getDrawable(id));
+//                                        (response.getJSONObject(i).getInt("Mustard"));
+                            } catch (JSONException e) {
+                                throw new RuntimeException(e);
+                            }
                         }
                     }
                 },
