@@ -133,21 +133,23 @@ public class GameSocket {
                     String username = message.split(" ")[0].substring(1);
                     Player destPlayer = playerRepository.findByUsername(username).get();
                     Player cur = sessionPlayerMap.get(session);
-
-                    int cardId = Integer.parseInt(message.split(" ")[1]);
-                    if(cardId == 0) {
-//                        Player couldn't give card
-                        sendMessageToPArticularUser(cur, "-" + username);
-                    } else {
 //                          Sending card id to player
                         sendMessageToPArticularUser(destPlayer, "<" + message.split(" ")[1]);
-                    }
-                } else if (message.startsWith("<")) {
-//                    Recieving a card [message formated : ">2" i.e "<cardId"
-
                 } else if (message.startsWith("-")) {
 //                    Player had no card to give
+                    Player player = sessionPlayerMap.get(session);
+                    GameState game = playerGameStateMap.get(player);
 
+                    Player dest = game.getNextPlayer();
+                    sendMessageToPArticularUser(dest, ">" + message.split(" ")[0].substring(1) + " " + message.split(" ")[1] + " " + message.split(" ")[2] + " " + message.split(" ")[3]);
+
+                } else if (message.startsWith("Guess")) {
+//                    guessing card [message formated : ">test 2" i.e "Guess cardname1 cardname2 cardname3"
+                    Player player = sessionPlayerMap.get(session);
+                    GameState game = playerGameStateMap.get(player);
+
+                    Player dest = game.getNextPlayer();
+                    sendMessageToPArticularUser(dest, ">" + player.getUsername() + " " + message.split(" ")[1] + " " + message.split(" ")[2] + " " + message.split(" ")[3]);
                 }
 //                TODO: Maybe another one for like if the player doesn't have a card to show
         }

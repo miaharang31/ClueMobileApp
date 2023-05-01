@@ -271,26 +271,16 @@ public class Game extends AppCompatActivity {
                                         }
                                     });
                             queue.add(objectRequest);
-//                            TODO: idk yet i just feel like there should be something here (move piece?? that might be a different message)
+//                            TODO: move piece of player that just ended the game (might need to add to default) "turnended: x, y"
                             break;
-//                        case "Show Card":
-////                            TODO: pick card to show
-////                             figure out how its getting back to other user
-////                                IS DIFFERENT ON SERVER DON'T MESS WITH IT
-//                            break;
-//                        case "Recieve Card":
-////                            TODO: Show the card the player chose
-////                             figure out how its getting back to other user
-////                                IS DIFFERENT ON SERVER DON'T MESS WITH IT
-//                            break;
                         case "Game Ended":
 //                            TODO: Handle ending screens
                             app.setGameid(0);
                             break;
                         case "Guess":
-//                            TODO: When player enters room, show guess list
-//                                When player hits 'make guess', send to the server that the
-                            makeAGuess();
+//                            TODO: Get room player is in
+                            String room = null;
+                            makeAGuess(room);
                             break;
                         case "Final Guess":
 //                            TODO: When player enters center room
@@ -298,26 +288,16 @@ public class Game extends AppCompatActivity {
 //                                      - Store chosen cards in array
 //                                      - Send request to check if correct
 //                                      - End Game
-                            JSONArray finalCards = null;
-//                            url = "http://10.0.2.2:8080/game/"+app.getGameid()+"/checkGuess";
-                            url = "http://coms-309-038.class.las.iastate.edu:8080/game/" + app.getGameid() + "/checkGuess";
                             break;
                         default:
                             if(m.startsWith(">")) {
 //                                Sending a card
-//                                TODO: This is the area where the card hand will pop up and the player can either select a card to show or choose to not show any.
-//                                          If no cards are shown, the player will tell the server that they couldn't show a card
+                                giveCard(m.split(" ")[0].substring(1), m.split(" ")[1], m.split(" ")[2], m.split(" ")[3]);
                             } else if(m.startsWith("<")) {
 //                                Recieving card
-//                                TODO: This is where the player will see a card being recieve from another user
-//                                        The card will show and disappear then the player will tell the server they ended their turn
-//                                          Get next player until it returns current player so turn order is on track.
-                            } else if (m.startsWith("-")) {
-//                                TODO: This is sent to the current player when the user couldn't show a card
-//                                        If there are more players left, move to the next one and tell the server to send card
-//                                        Else display that no cards could be shown and end game
+                                showCard(Integer.parseInt(m.split(" ")[0].substring(1)));
                             }
-//                            TODO: idk what to put here ngl
+                            break;
 //                      TODO: Think of other things happening in the game
                     }
                 }
@@ -405,21 +385,58 @@ public class Game extends AppCompatActivity {
         sendMessage(gameClient, "Turn Ended");
     }
 
+    private void makeFinalGuess() {
+
+        JSONArray finalCards = null;
+//                            url = "http://10.0.2.2:8080/game/"+app.getGameid()+"/checkGuess";
+        String url = "http://coms-309-038.class.las.iastate.edu:8080/game/" + app.getGameid() + "/checkGuess";
+    }
+
     /**
      * Method that when called pulls up the guess checklist
      *  The room will be set to the room the player is in
      *  User will then choose which suspect and weapon to guess
      *  A message will be sent to the server with the names of the three guesses and
      */
-    private void makeAGuess() {
+    private void makeAGuess(String room) {
+        String weapon = null, suspect = null;
+
 //        TODO: Pull up guess checklist
 //                Set room to current room
 //                let player choose suspect and weapon
 //                send server that a guess has been made
+
+        gameClient.send("Guess " + weapon + room + suspect);
     }
 
-    private void makeFinalGuess() {
+    /**
+     * Displays card hand, player chooses card to show to the current player whose turn it is
+     *  If there are no cards they want to show, they hit a button
+     *  if a card is chosen to be show, it sends the server a message with the username of the player to send it to and the id of the chosen card
+     *  else it will send the server that they couldnt show a card
+     *      the server will choose the next user to run this method
+     * @param username
+     *  Username of the player who is making the guess
+     * @param card1
+     *  name of the cards they want
+     * @param card2
+     *  name of the cards they want
+     * @param card3
+     *  name of the cards they want
+     */
+    private void giveCard(String username, String card1, String card2, String card3) {
+//        TODO: Pop up card hand, player select card, send id of selected card to server
+//                create button to say no cards can be shown
+        if("sends card" == "") {
+            gameClient.send(">" + username + "id of selected card");
+        } else if ("choose no cards button clicked" == "") {
+//            TODO: Set on touch listener for button to send this and go back to gane
+            gameClient.send("-" + username + card1 + card2 + card3);
+        }
+    }
 
+    private void showCard(int cardID) {
+        gameClient.send("Turn Ended");
     }
 
     private void sendMessage(WebSocketClient client, String message) {
