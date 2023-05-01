@@ -76,17 +76,21 @@ public class Game extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
+
         //this.getWindow().setFlags(WindowManager.LayoutParams.FLAGS_CHANGED, WindowManager.LayoutParams.FLAGS_CHANGED);
 
-
-        setContentView(R.layout.board);
+        System.out.println("line 82 in game, About to start game");
+        startGame();
+        System.out.println("line 84 in game, passed start game");
 
 
 //        Dealing with chat
         send = (Button) findViewById(R.id.button);
         message = (EditText) findViewById(R.id.message);
         chatBox = (TextView) findViewById(R.id.chat_box);
-//        connectChat();
+
+        //Uncomment soon
+        //connectChat();
 
         connectGame();
 
@@ -110,36 +114,6 @@ public class Game extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-
-    public String getCharacter(){
-        MyApplication app = (MyApplication) getApplication();
-        System.out.println("Line 105, In Game class, in characterSelected method ");
-
-        String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/role/" + app.getUserid();
-//        String url = "http://10.0.2.2:8080/info/player/role/" + app.getUserid();
-
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            characterSelected = response.get("name").toString();
-                            System.out.println("Line 117, In Game class, characterSelected: " + characterSelected);
-                        } catch (JSONException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-                });
-        queue.add(request);
-        return characterSelected;
     }
 
     private void connectChat() {
@@ -190,17 +164,18 @@ public class Game extends AppCompatActivity {
         }
 
         chatClient.connect();
+//      Uncomment soon
 
-        send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    chatClient.send(message.getText().toString());
-                } catch (Exception e) {
-                    Log.d("ExceptionSendMessage:", e.getMessage().toString());
-                }
-            }
-        });
+//        send.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                try {
+//                    chatClient.send(message.getText().toString());
+//                } catch (Exception e) {
+//                    Log.d("ExceptionSendMessage:", e.getMessage().toString());
+//                }
+//            }
+//        });
     }
 
     private void connectGame() {
@@ -392,32 +367,88 @@ public class Game extends AppCompatActivity {
 
 
     private void startGame(){
-        Log.d("Game", "Entered in Start Game");
+        app = (MyApplication) getApplication();
+        queue = Volley.newRequestQueue(Game.this);
+        String url2 = "http://coms-309-038.class.las.iastate.edu:8080/game/"+ app.getGameid() + "/next/" ;
+        System.out.println("url2: " + url2);
+        JsonObjectRequest request2 = new JsonObjectRequest(Request.Method.GET, url2, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            System.out.println("Next character" + response.get("firstname"));
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(Game.this, "ERROR [get role]: " + error, Toast.LENGTH_SHORT).show();
+                        Log.d("ResponseError", error.toString());
+                    }
+                });
+        queue.add(request2);
 
-//        String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/"+app.getGameid()+"/role";
-//        System.out.println("line 246, about to do request, url: " + url);
-//        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-//                new Response.Listener<JSONObject>() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        try {
-//                            System.out.println("line 252, about to do playTurn, response.getString(\"name\"): "
-//                                    + response.getString("name"));
-//                            playTurn(response.getString("name"));
-//                        } catch (JSONException e) {
-//                            throw new RuntimeException(e);
-//                        }
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Toast.makeText(Game.this, "ERROR [get role]: " + error, Toast.LENGTH_SHORT).show();
-//                        Log.d("ResponseError", error.toString());
-//                    }
-//                });
-//        queue.add(request);
-        playTurn("scarlet");
+
+
+        String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/"+app.getGameid()+"/role";
+        System.out.println("line 389, in startGame(), about to do request, url: " + url);
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            System.out.println("line 252, about to do playTurn, response.get(\"turn\"): " + response.get("turn"));
+                            if((boolean)response.get("turn")){
+                                playTurn(response.getString("name"));
+                                setContentView(R.layout.board);
+                            }
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(Game.this, "ERROR [get role]: " + error, Toast.LENGTH_SHORT).show();
+                        Log.d("ResponseError", error.toString());
+                    }
+                });
+        queue.add(request);
+
+
+
+
+//        System.out.println("line 392, in playturn, role: " + role);
+//        if(Objects.equals(role, "scarlet")){
+//            player = new Player(GameView.scarlet, 468, 0, 0);
+//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
+//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
+//        } else if (Objects.equals(role, "white")) {
+//            player = new Player(GameView.white, 476, 0, 0);
+//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 5);
+//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
+//        }else if (Objects.equals(role, "plum")) {
+//            player = new Player(GameView.plum, 330, 0, 0);
+//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 4);
+//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 6);
+//        }else if (Objects.equals(role, "mustard")) {
+//            player = new Player(GameView.white, 476, 0, 0);
+//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 5);
+//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
+//        }else if (Objects.equals(role, "green")) {
+//            player = new Player(GameView.green, 14, 0, 0);
+//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
+//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
+//        }else if (Objects.equals(role, "peacock")) {
+//            player = new Player(GameView.peacock, 7, 0, 0);
+//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
+//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 5);
+//        }
+
     }
 
     private void playTurn(String role) {
@@ -428,8 +459,7 @@ public class Game extends AppCompatActivity {
 //              - Move character:  Already done with the SwipeListener and MoveUp/Down/Left/Right functions in GameView
 //              - If in room, make guess: Is this already going to be handled in the guess case, line 285???
 //              - else, end turn: Handled below
-
-
+        
 //        System.out.println("line 392, in playturn, role: " + role);
 //        if(Objects.equals(role, "scarlet")){
 //            player = new Player(GameView.scarlet, 468, 0, 0);
@@ -465,7 +495,6 @@ public class Game extends AppCompatActivity {
 //            gameClient.send("Turn Ended");
 //        }
     }
-
     private void makeFinalGuess() {
         Log.d("Game", "Entered in Final Guess");
 //        TODO: Display final cards checklist, set the chosen cards in an array, check if guess is correct, end the game
