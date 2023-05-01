@@ -37,12 +37,15 @@ public class ExampleInstrumentedTest {
 
 
     @Test
-    public void capitalizeString() {
+    public void compareLoginStrings() {
         String testString = "name";
         String resultString = "name";
         // Type in testString and send request
         onView(withId(R.id.firstName)).perform(typeText(testString), closeSoftKeyboard());
-        onView(withId(R.id.signUpButton)).perform(click());
+        onView(withId(R.id.lastName)).perform(typeText(testString), closeSoftKeyboard());
+        onView(withId(R.id.email)).perform(typeText(testString), closeSoftKeyboard());
+        onView(withId(R.id.signUpUsername)).perform(typeText(testString), closeSoftKeyboard());
+        onView(withId(R.id.signUpPassword)).perform(click());
 
         // Put thread to sleep to allow volley to handle the request
         try {
