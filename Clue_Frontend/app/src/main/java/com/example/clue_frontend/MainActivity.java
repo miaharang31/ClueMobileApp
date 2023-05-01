@@ -58,14 +58,10 @@ public class MainActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //Intent intent = new Intent(MainActivity.this, Home.class);
-                //Intent intent = new Intent(MainActivity.this, Game.class);
-
                 Intent intent = new Intent(MainActivity.this, Home.class);
                 //Intent intent = new Intent(MainActivity.this, Game.class);
-//                Intent intent = new Intent(MainActivity.this, CharacterSelection.class);
-//                startActivity(intent);
+                //Intent intent = new Intent(MainActivity.this, CharacterSelection.class);
+
 
                 EditText username = findViewById(R.id.loginUsername);
                 EditText password = findViewById(R.id.loginPassword);
