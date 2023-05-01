@@ -61,7 +61,7 @@ public class Game extends AppCompatActivity {
 
     JSONObject gameState = new JSONObject();
 
-    RequestQueue queue = Volley.newRequestQueue(Game.this);
+    RequestQueue queue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,14 +73,11 @@ public class Game extends AppCompatActivity {
         Constraints.SCREEN_WIDTH = dm.widthPixels;
         Constraints.SCREEN_HEIGHT = dm.heightPixels;
 
-        characterSelected = getCharacter();
-        System.out.println("Line 46, In Game class, character selected: " + characterSelected);
-
-
         relativeLayout = findViewById(R.id.relative_layout);
         swipeListener = new SwipeListener(relativeLayout);
 
         setContentView(R.layout.board);
+        queue = Volley.newRequestQueue(Game.this);
 
 //        Dealing with chat
         send = (Button) findViewById(R.id.button);
@@ -88,7 +85,7 @@ public class Game extends AppCompatActivity {
         chatBox = (TextView) findViewById(R.id.chat_box);
         connectChat();
 
-        connectGame();
+//        connectGame();
 
         relativeLayout = findViewById(R.id.relative_layout);
         swipeListener = new SwipeListener(relativeLayout);
@@ -110,35 +107,6 @@ public class Game extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-
-    public String getCharacter(){
-        MyApplication app = (MyApplication) getApplication();
-
-//        String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/role/" + app.getUserid();
-        String url = "http://10.0.2.2:8080/info/player/role/" + app.getUserid();
-
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            characterSelected = response.get("name").toString();
-                            System.out.println("Line 67, In Game class, characterSelected: " + characterSelected);
-                        } catch (JSONException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-                });
-        queue.add(request);
-        return characterSelected;
     }
 
     private void connectChat() {
