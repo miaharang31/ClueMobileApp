@@ -42,6 +42,8 @@ public class GameSocket {
     private final Logger logger = LoggerFactory.getLogger(GameChatSocket.class);
     private final CardRepository cardRepository;
 
+    private int playerIterator;
+
     public GameSocket(CardRepository cardRepository) {
         this.cardRepository = cardRepository;
     }
@@ -121,8 +123,13 @@ public class GameSocket {
                 break;
             default:
 //                TODO: Deal with Card stuff
+//                          - Player sends three different card names to the next user after them
+//                          - That user will select from their hand which cards to show
+//                                  If that user has non, click button to say none (will continue to next user)
+//                          - If a user selects a card to show, the player will see the card and their turn will end
+//                          - Else when the last user cant show a card, tell player that no cards were shown and end their turn.
                 if(message.startsWith(">")) {
-//                    Giving a card [message formated : ">test 2" i.e ">username cardId"
+//                    Giving a card [message formated : ">test 2" i.e ">username cardId cardname1 cardname2 cardname3"
                     String username = message.split(" ")[0].substring(1);
                     Player destPlayer = playerRepository.findByUsername(username).get();
                     Player cur = sessionPlayerMap.get(session);

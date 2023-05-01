@@ -288,7 +288,8 @@ public class Game extends AppCompatActivity {
                             app.setGameid(0);
                             break;
                         case "Guess":
-//                            TODO: When player enters room, make guess
+//                            TODO: When player enters room, show guess list
+//                                When player hits 'make guess', send to the server that they
                             break;
                         case "Final Guess":
 //                            TODO: When player enters center room
@@ -303,8 +304,17 @@ public class Game extends AppCompatActivity {
                         default:
                             if(m.startsWith(">")) {
 //                                Sending a card
+//                                TODO: This is the area where the card hand will pop up and the player can either select a card to show or choose to not show any.
+//                                          If no cards are shown, the player will tell the server that they couldn't show a card
                             } else if(m.startsWith("<")) {
 //                                Recieving card
+//                                TODO: This is where the player will see a card being recieve from another user
+//                                        The card will show and disappear then the player will tell the server they ended their turn
+//                                          Get next player until it returns current player so turn order is on track.
+                            } else if (m.startsWith("-")) {
+//                                TODO: This is sent to the current player when the user couldn't show a card
+//                                        If there are more players left, move to the next one and tell the server to send card
+//                                        Else display that no cards could be shown and end game
                             }
 //                            TODO: idk what to put here ngl
 //                      TODO: Think of other things happening in the game
