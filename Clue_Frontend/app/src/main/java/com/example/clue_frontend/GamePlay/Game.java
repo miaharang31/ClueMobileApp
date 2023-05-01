@@ -145,7 +145,7 @@ public class Game extends AppCompatActivity {
 
 //        String w = "ws://echo.websocket.org";
         //String w = "ws://10.0.2.2:8080/websocket/chat/"+app.getUserid();
-        String w = "http://coms-309-038.class.las.iastate.edu:8080/websocket/chat/"+app.getUserid();
+        String w = "ws://coms-309-038.class.las.iastate.edu:8080/websocket/chat/"+app.getUserid();
         Log.d("Socket", w);
         try {
             Log.d("Socket:", "Trying socket");
@@ -205,7 +205,7 @@ public class Game extends AppCompatActivity {
         };
 
         //String w = "ws://10.0.2.2:8080/websocket/game/"+app.getGameid()+"/player/"+app.getUserid()+"";
-        String w = "ws://10.0.2.2:8080/websocket/game/"+app.getGameid()+"/player/"+app.getUserid()+"";
+        String w = "ws://coms-309-038.class.las.iastate.edu:8080/websocket/game/"+app.getGameid()+"/player/"+app.getUserid()+"";
         Log.d("Socket", w);
         try {
             Log.d("Socket:", "Trying socket");
@@ -227,7 +227,8 @@ public class Game extends AppCompatActivity {
                             break;
                         case "Turn Ended" :
 //                            A player has ended their turn, start turn if its their turn
-                            url = "http://10.0.2.2:8080/info/player/"+app.getUserid();
+//                            url = "http://10.0.2.2:8080/info/player/"+app.getUserid();
+                            url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/"+app.getUserid();
                             objectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                                     new Response.Listener<JSONObject>() {
                                         @Override
@@ -235,7 +236,8 @@ public class Game extends AppCompatActivity {
                                             try {
                                                 Boolean isTurn = response.getBoolean("turn");
                                                 if(isTurn) {
-                                                    String url = "http://10.0.2.2:8080/info/player/"+app.getUserid()+"/role";
+//                                                    String url = "http://10.0.2.2:8080/info/player/"+app.getUserid()+"/role";
+                                                    String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/"+app.getUserid()+"/role";
                                                     JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                                                             new Response.Listener<JSONObject>() {
                                                                 @Override
@@ -290,7 +292,8 @@ public class Game extends AppCompatActivity {
 //                                      - Send request to check if correct
 //                                      - End Game
                             JSONArray finalCards = null;
-                            url = "http://10.0.2.2:8080/game/"+app.getGameid()+"/checkGuess";
+//                            url = "http://10.0.2.2:8080/game/"+app.getGameid()+"/checkGuess";
+                            url = "http://coms-309-038.class.las.iastate.edu:8080/game/"+app.getGameid()+"/checkGuess";
                             break;
                         default:
 //                            TODO: idk what to put here ngl
@@ -306,7 +309,8 @@ public class Game extends AppCompatActivity {
                 @Override
                 public void onOpen(ServerHandshake handshake) {
                     Log.d("OPEN", "run() returned: " + "is connecting");
-                    String url = "http://10.0.2.2:8080/game/" + app.getGameid();
+//                    String url = "http://10.0.2.2:8080/game/" + app.getGameid();
+                    String url = "http://coms-309-038.class.las.iastate.edu:8080/game/" + app.getGameid();
                     JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                             new Response.Listener<JSONObject>() {
                                 @Override
@@ -335,7 +339,8 @@ public class Game extends AppCompatActivity {
                 public void onClose(int code, String reason, boolean remote) {
                     Log.d("CLOSE", "onClose() returned: " + reason);
                     if(app.isHost()) {
-                        String url = "http://10.0.2.2:8080/game/" + app.getGameid() + "/delete";
+//                        String url = "http://10.0.2.2:8080/game/" + app.getGameid() + "/delete";
+                        String url = "http://coms-309-038.class.las.iastate.edu:8080/game/" + app.getGameid() + "/delete";
                         JsonObjectRequest request = new JsonObjectRequest(Request.Method.DELETE, url, null,
                                 new Response.Listener<JSONObject>() {
                                     @Override
