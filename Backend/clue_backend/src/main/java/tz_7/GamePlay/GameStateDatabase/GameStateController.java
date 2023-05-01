@@ -68,23 +68,26 @@ public class GameStateController {
 
     /**
      * Creates a game based on the lobby
-     * @param lobbyid
+     * @param id
      *  id of Lobby to create from
      */
     @PostMapping(value = "/new/lobby/{id}")
-    public GameState newSocketState(@PathVariable Integer lobbyid) {
-        GameLobby lobby = gameLobbyRepository.findById(lobbyid).get();
-        GameState state = repo.findByHostID(lobby.getHost().getId());
+    public GameState newSocketState(@PathVariable Integer id) {
+        GameLobby lobby = gameLobbyRepository.findById(id).get();
+        List<GameState> state = repo.findByHostID(lobby.getHost().getId());
         if(state != null) {
-            deleteGame(state.getID());
+            for(int i = 0; i < state.size(); i++) {
+                deleteGame(state.get(i).getID());
+            }
         }
 
-        state = new GameState(lobby);
-        state = newState(state);
-        state = addCards(state.getID(), "w");
-        state = addCards(state.getID(), "s");
-        state = addCards(state.getID(), "r");
-        return state;
+        GameState saved = new GameState(lobby);
+        saved = repo.save(saved);
+        saved = newState(saved);
+        saved = addCards(saved.getID(), "w");
+        saved = addCards(saved.getID(), "s");
+        saved = addCards(saved.getID(), "r");
+        return saved;
     }
 
     /**
@@ -159,17 +162,7 @@ public class GameStateController {
     public GameState removeCards(@PathVariable Integer id, @PathVariable String type) {
         GameState state = repo.findById(id).get();
         Set<Card> cards = cardRepository.findByType(type);
-        switch(type){
-            case "w" :
-                state.setWeapons(null);
-                break;
-            case "s" :
-                state.setSuspects(null);
-                break;
-            case "r" :
-                state.setRooms(null);
-                break;
-        }
+        state.deleteCards(type);
 
         Iterator<Card> tmp = cards.iterator();
         while(tmp.hasNext()) {

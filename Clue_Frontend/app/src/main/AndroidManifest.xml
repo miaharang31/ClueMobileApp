@@ -66,6 +66,9 @@
             android:name=".UserSignUp"
             android:label="@string/app_name" />
         <activity
+            android:name=".GamePlay.Player.CharacterSelection"
+            android:label="Clue" />
+        <activity
             android:name=".Lobbies.HostLobby"
             android:label="@string/app_name" />
         <activity
@@ -90,7 +93,7 @@
             android:name=".GamePlay.Player.playerGuess"
             android:label="playerGuess" />
         <activity
-            android:name=".GamePlay.Player.CharacterSelection"
+            android:name="CharacterSelection"
             android:label="Clue" />
         <activity
             android:name=".MainActivity"

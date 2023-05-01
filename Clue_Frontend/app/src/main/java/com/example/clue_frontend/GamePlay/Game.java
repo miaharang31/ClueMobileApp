@@ -67,20 +67,14 @@ public class Game extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        DisplayMetrics dm = new DisplayMetrics();
-        Constraints.SCREEN_WIDTH = dm.widthPixels;
-        Constraints.SCREEN_HEIGHT = dm.heightPixels;
-
-
-        //characterSelected = getCharacter();
-
-        setContentView(R.layout.board);
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         //this.getWindow().setFlags(WindowManager.LayoutParams.FLAGS_CHANGED, WindowManager.LayoutParams.FLAGS_CHANGED);
-        this.getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+
+        setContentView(R.layout.board);
 
 
 //        Dealing with chat
@@ -89,7 +83,7 @@ public class Game extends AppCompatActivity {
         chatBox = (TextView) findViewById(R.id.chat_box);
         connectChat();
 
-        connectGame();
+//        connectGame();
 
         relativeLayout = findViewById(R.id.relative_layout);
         swipeListener = new SwipeListener(relativeLayout);
@@ -218,6 +212,7 @@ public class Game extends AppCompatActivity {
             gameClient = new WebSocketClient(new URI(w), (Draft) drafts[0]) {
                 @Override
                 public void onMessage(String m) {
+                    RequestQueue queue = Volley.newRequestQueue(Game.this);
                     String url;
                     JsonObjectRequest objectRequest;
                     JsonArrayRequest arrayRequest;
@@ -406,7 +401,6 @@ public class Game extends AppCompatActivity {
                     float yDiff = e2.getY() - e1.getY();
 
                     try {
-                        System.out.println("Line 101, In Game class, in try block");
                         if(GameView.moves > 0){
                             if (Math.abs(xDiff) > Math.abs(yDiff)) {
                                 if (Math.abs(xDiff) > threshold && Math.abs(velocityX) > velocity_threshold) {
