@@ -166,14 +166,7 @@ public class GameView extends View {
         kitchen = BitmapFactory.decodeResource(this.getResources(), R.drawable.kitchen);
         kitchen = Bitmap.createScaledBitmap(kitchen, 206, 208, true);
 
-        white = BitmapFactory.decodeResource(this.getResources(), R.drawable.white_player);
-        white = Bitmap.createScaledBitmap(white, 30, 30, true);
-
-        player = new Player(white, 476, 0, 0);
-        player.setX(arrBoard.get(player.getPlacement()).getTileX() + 5);
-        player.setY(arrBoard.get(player.getPlacement()).getTileY() + 3);
-
-
+        System.out.println("Line 167, In GameView class, character selected: " + Game.characterSelected);
         //assigns color based on what player chose
         if(Objects.equals(Game.characterSelected, "scarlet")){
             scarlet = BitmapFactory.decodeResource(this.getResources(), R.drawable.scarlet);
@@ -191,7 +184,6 @@ public class GameView extends View {
             player = new Player(white, 476, 0, 0);
             player.setX(arrBoard.get(player.getPlacement()).getTileX() + 5);
             player.setY(arrBoard.get(player.getPlacement()).getTileY() + 3);
-            System.out.println("Chose white");
         } else if (Objects.equals(Game.characterSelected, "plum")) {
             plum = BitmapFactory.decodeResource(this.getResources(), R.drawable.plum);
             plum = Bitmap.createScaledBitmap(plum, 30, 30, true);
@@ -226,7 +218,6 @@ public class GameView extends View {
             System.out.println("Chose peacock");
         }
 
-
         //creates board
         for (int i = 0; i < h; i++) {
             for (int j = 0; j < w; j++) {
@@ -242,6 +233,15 @@ public class GameView extends View {
                 }
             }
         }
+
+
+        //TODO/NOTE: This is where the character piece and player is initialized. I just hard-coded it to be scarlet.
+        scarlet = BitmapFactory.decodeResource(this.getResources(), R.drawable.scarlet);
+        scarlet = Bitmap.createScaledBitmap(scarlet, 31, 30, true);
+
+        player = new Player(scarlet, 468, 0, 0);
+        player.setX(arrBoard.get(player.getPlacement()).getTileX() + 3);
+        player.setY(arrBoard.get(player.getPlacement()).getTileY() + 3);
 
         handler = new Handler();
         r = new Runnable() {
@@ -263,7 +263,7 @@ public class GameView extends View {
 
         //draws starting places
         canvas.drawBitmap(scarlet_start, 345, 996, null);
-        canvas.drawBitmap(white_start, 645, 993, null);
+        canvas.drawBitmap(white_start, 646, 993, null);
         canvas.drawBitmap(plum_start, 130, 777, null);
         canvas.drawBitmap(mustard_start, 907, 773, null);
         canvas.drawBitmap(green_start, 646, 218, null);
@@ -281,12 +281,9 @@ public class GameView extends View {
         canvas.drawBitmap(dinning, 627, 458, null);
         canvas.drawBitmap(kitchen, 715, 801, null);
 
-// TODO: Set up chacter stuff.
 
-
-        //draws player pieces
+        //This is where the player piece is drawn
         canvas.drawBitmap(player.getBm(), player.getX(), player.getY(), null);
-
         handler.postDelayed(r, 100);
     }
 
@@ -359,8 +356,8 @@ public class GameView extends View {
     }
 
     public static void MoveUp() {
-        System.out.println("Line 358, In Game class, in moveup");
 
+        System.out.println("In moveup");
         //Boolean if the player is going into a wall
         boolean border = false;
         //Check each room
@@ -385,10 +382,7 @@ public class GameView extends View {
         //it's ok to move there
         if(!border){
             moves--;
-            System.out.println("new_moves: " + moves);
-            System.out.println("before player placement: " + player.getPlacement());
             player.setPlacement(player.getPlacement() - 22);
-            System.out.println("after player placement: " + player.getPlacement());
             player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
             player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
         }

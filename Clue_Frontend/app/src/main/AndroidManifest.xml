@@ -55,7 +55,7 @@
             android:name=".GamePlay.Game"
             android:label="@string/app_name" />
         <activity
-            android:name="CharacterSelection"
+            android:name=".CharacterSelection"
             android:label="Clue" />
         <activity
             android:name=".HomeActivities.Home"
