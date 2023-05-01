@@ -65,8 +65,10 @@ public class GameStateController {
         playerRepository.saveAll(state.getTurnOrder());
 
         PlayerInfo info = playerInfoRepository.findByPlayer(state.getCurrentPlayer());
-        info.setTurn(true);
-        playerInfoRepository.save(info);
+        if(info != null) {
+            info.setTurn(true);
+            playerInfoRepository.save(info);
+        }
 
         return state;
     }

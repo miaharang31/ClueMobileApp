@@ -46,8 +46,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 
@@ -56,17 +58,19 @@ public class Game extends AppCompatActivity {
 
     View relativeLayout;
     SwipeListener swipeListener;
-    static String characterSelected;
 
     ImageView iv, imageView;
     MyApplication app;
     WebSocketClient chatClient, gameClient;
 
-    Button send;
+    Button send, roll;
     EditText message;
     TextView chatBox;
 
     JSONObject gameState = new JSONObject();
+
+    ArrayList<Integer> turn_order = new ArrayList<>();
+    int turn = 0;
 
     RequestQueue queue; // = Volley.newRequestQueue(Game.this);
 
@@ -80,45 +84,47 @@ public class Game extends AppCompatActivity {
         //this.getWindow().setFlags(WindowManager.LayoutParams.FLAGS_CHANGED, WindowManager.LayoutParams.FLAGS_CHANGED);
 
         System.out.println("line 82 in game, About to start game");
-        startGame();
+        setupGame();
         System.out.println("line 84 in game, passed start game");
 
         setContentView(R.layout.board);
-
-        String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/" + app.getUserid();
-        System.out.println("line 389, in startGame(), about to do request, url: " + url);
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            System.out.println("line 252, about to do playTurn, response.get(\"turn\"): " + response.get("turn"));
-                            if(true) {
-                                playTurn(response.getJSONObject("role").getString("name"));
-                            }
-                        } catch (JSONException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Game.this, "ERROR [get role]: " + error, Toast.LENGTH_SHORT).show();
-                        Log.d("ResponseError", error.toString());
-                    }
-                });
-        queue.add(request);
 
 //        Dealing with chat
         send = (Button) findViewById(R.id.button);
         message = (EditText) findViewById(R.id.message);
         chatBox = (TextView) findViewById(R.id.chat_box);
 
+        roll = (Button) findViewById(R.id.roll_button);
+        roll.setVisibility(View.GONE);
+
         //Uncomment soon
         //connectChat();
 
         connectGame();
+
+        if (turn_order.size() > 0 ) {
+            if (turn_order.get(turn) == app.getUserid()) {
+                String url = "http://10.0.2.2:8080info/player/" + app.getUserid() + "/role";
+                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                try {
+                                    playTurn(response.getString("name"));
+                                } catch (JSONException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+
+                            }
+                        });
+                queue.add(request);
+            }
+        }
 
         relativeLayout = findViewById(R.id.relative_layout);
         swipeListener = new SwipeListener(relativeLayout);
@@ -377,17 +383,26 @@ public class Game extends AppCompatActivity {
     }
 
 
-    private void startGame(){
+    private void setupGame(){
+        Log.d("Game", "Setting up game");
         app = (MyApplication) getApplication();
         queue = Volley.newRequestQueue(Game.this);
-        String url2 = "http://coms-309-038.class.las.iastate.edu:8080/game/"+ app.getGameid() + "/next" ;
-        System.out.println("url2: " + url2);
-        JsonObjectRequest request2 = new JsonObjectRequest(Request.Method.GET, url2, null,
+
+//        Getting the game state object and setting basics
+        String url = "http://10.0.2.2:8080/game/" + app.getGameid();
+//        String url = "http://coms-309-038.class.las.iastate.edu:8080/game/" + app.getGameid();
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            System.out.println("Next character " + response.get("firstname"));
+                            Log.d("Game", "in response");
+                            JSONArray arr =  response.getJSONArray("turnOrder");
+                            GameView.number_of_players = arr.length();
+                            for(int i = 0; i < arr.length(); i++) {
+                                GameView.roles.add(arr.getJSONObject(i).getString("name"));
+                                turn_order.add(arr.getJSONObject(i).getInt("id"));
+                            }
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
@@ -396,11 +411,10 @@ public class Game extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Game.this, "ERROR [get role]: " + error, Toast.LENGTH_SHORT).show();
-                        Log.d("ResponseError", error.toString());
+
                     }
                 });
-        queue.add(request2);
+        queue.add(request);
 
 //        System.out.println("line 392, in playturn, role: " + role);
 //        if(Objects.equals(role, "scarlet")){
@@ -433,8 +447,19 @@ public class Game extends AppCompatActivity {
 
     private void playTurn(String role) {
         Log.d("Game", "Entered into player turn. Player: " + role);
-
-        gameClient.send("Turn Ended");
+        System.out.println(turn_order.get(turnz));
+        roll.setVisibility(View.VISIBLE);
+        roll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GameView.roll();
+                if(true) { //TODO: if in room, make a guess
+                    makeAGuess("room");
+                } else if (false) { //TODO: if in final room
+                    makeFinalGuess();
+                }
+            }
+        });
 //        TODO: do whatever needs to be done turn wise
 //              - Move character:  Already done with the SwipeListener and MoveUp/Down/Left/Right functions in GameView
 //              - If in room, make guess: Is this already going to be handled in the guess case, line 285???
@@ -474,6 +499,17 @@ public class Game extends AppCompatActivity {
 //            //        Tells the server a player has finished their turn
 //            gameClient.send("Turn Ended");
 //        }
+    }
+
+    public void endTurn() {
+        int tmp = turn + 1;
+        if(tmp >= turn_order.size()) {
+            tmp = 0;
+        }
+        turn = tmp;
+        roll.setVisibility(View.GONE);
+        roll.setText("ROLL");
+        gameClient.send("Turn Ended");
     }
     private void makeFinalGuess() {
         Log.d("Game", "Entered in Final Guess");
