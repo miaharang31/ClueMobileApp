@@ -70,7 +70,7 @@
             android:name=".GamePlay.Player.playerGuess"
             android:label="playerGuess" />
         <activity
-            android:name=".GamePlay.Player.CharacterSelection"
+            android:name="CharacterSelection"
             android:label="Clue" />
         <activity
             android:name=".MainActivity"
