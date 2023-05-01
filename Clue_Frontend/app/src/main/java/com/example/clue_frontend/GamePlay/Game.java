@@ -67,13 +67,7 @@ public class Game extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
-        //this.getWindow().setFlags(WindowManager.LayoutParams.FLAGS_CHANGED, WindowManager.LayoutParams.FLAGS_CHANGED);
         DisplayMetrics dm = new DisplayMetrics();
-        this.getWindowManager().getDefaultDisplay().getMetrics(dm);
         Constraints.SCREEN_WIDTH = dm.widthPixels;
         Constraints.SCREEN_HEIGHT = dm.heightPixels;
 
@@ -81,6 +75,13 @@ public class Game extends AppCompatActivity {
         //characterSelected = getCharacter();
 
         setContentView(R.layout.board);
+        super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
+        //this.getWindow().setFlags(WindowManager.LayoutParams.FLAGS_CHANGED, WindowManager.LayoutParams.FLAGS_CHANGED);
+        this.getWindowManager().getDefaultDisplay().getMetrics(dm);
+
 
 //        Dealing with chat
         send = (Button) findViewById(R.id.button);
