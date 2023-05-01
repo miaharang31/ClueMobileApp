@@ -73,10 +73,9 @@ public class Game extends AppCompatActivity {
         getSupportActionBar().hide();
         //this.getWindow().setFlags(WindowManager.LayoutParams.FLAGS_CHANGED, WindowManager.LayoutParams.FLAGS_CHANGED);
 
-        DisplayMetrics dm = new DisplayMetrics();
-        this.getWindowManager().getDefaultDisplay().getMetrics(dm);
 
         setContentView(R.layout.board);
+
 
 //        Dealing with chat
         send = (Button) findViewById(R.id.button);
