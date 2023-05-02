@@ -64,21 +64,21 @@
 //        }
 //    }
 //
-////    @Test
-////    public void z_deleteGame() throws JSONException {
-////        Response response = RestAssured.given().
-////                header("charset","utf-8").
-////                when().
-////                get("/game/hosts/{id}", 1);
-////        String s = response.getBody().asString();
-////        JSONObject obj = new JSONObject(s);
-////
-////        response = RestAssured.given().
-////                header("charset","utf-8").
-////                when().
-////                delete("/game/{id}/delete", obj.get("id"));
-////
-////        int statusCode = response.getStatusCode();
-////        assertEquals(200, statusCode);
-////    }
+//    @Test
+//    public void z_deleteGame() throws JSONException {
+//        Response response = RestAssured.given().
+//                header("charset","utf-8").
+//                when().
+//                get("/game/hosts/{id}", 1);
+//        String s = response.getBody().asString();
+//        JSONObject obj = new JSONObject(s);
+//
+//        response = RestAssured.given().
+//                header("charset","utf-8").
+//                when().
+//                delete("/game/{id}/delete", obj.get("id"));
+//
+//        int statusCode = response.getStatusCode();
+//        assertEquals(200, statusCode);
+//    }
 //}

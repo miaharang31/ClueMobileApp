@@ -219,11 +219,6 @@ public class GameStateController {
         return new ResponseEntity<List<GameState>>(repo.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/host/{id}")
-    public GameState getAllStates(@PathVariable Integer id) {
-        return repo.findByHostID(id).get(0);
-    }
-
     /**
      * Gets mapping the provides the caller with all the players in the game
      * @param id
