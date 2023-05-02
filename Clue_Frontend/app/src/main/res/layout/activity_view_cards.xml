@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:focusable="auto"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    android:scrollbarStyle="insideOverlay"
+    android:scrollbars="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#520120"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbarStyle="insideOverlay"
+        android:scrollbars="vertical"
+        app:layout_constraintCircleRadius="10dp"
+        tools:context=".GamePlay.Checklist">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/abhaya_libre_medium"
+            android:text="Suspects"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="60sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0" />
+
+        <HorizontalScrollView
+            android:id="@+id/ScrollViewH1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:contentDescription="suspect cards"
+            android:fillViewport="true"
+            android:focusable="auto"
+            android:scrollbarAlwaysDrawHorizontalTrack="true"
+            android:scrollbarStyle="insideOverlay"
+            android:scrollbars="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#520120"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0">
+
+                <ImageView
+                    android:id="@+id/mustardCard"
+                    android:layout_width="295dp"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#520120"
+                    android:paddingLeft="5dp"
+                    android:src="@drawable/scarlet_card" />
+
+                <ImageView
+                    android:id="@+id/plumCard"
+                    android:layout_width="295dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:src="@drawable/scarlet_card" />
+
+                <ImageView
+                    android:id="@+id/greenCard"
+                    android:layout_width="295dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/scarlet_card" />
+
+                <ImageView
+                    android:id="@+id/peacockCard"
+                    android:layout_width="295dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/scarlet_card" />
+
+                <ImageView
+                    android:id="@+id/scarletCard"
+                    android:layout_width="295dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/scarlet_card" />
+
+                <ImageView
+                    android:id="@+id/whiteCard"
+                    android:layout_width="295dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:src="@drawable/scarlet_card" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="500dp"
+            android:fontFamily="@font/abhaya_libre_medium"
+            android:text="Weapons"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="60sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0" />
+
+        <HorizontalScrollView
+            android:id="@+id/ScrollViewH2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:contentDescription="weapon cards"
+            android:fillViewport="true"
+            android:focusable="auto"
+            android:scrollbarAlwaysDrawHorizontalTrack="true"
+            android:scrollbarStyle="insideOverlay"
+            android:scrollbars="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/textView3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#520120"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0">
+
+                <ImageView
+                    android:id="@+id/knifeCard"
+                    android:layout_width="295dp"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#520120"
+                    android:paddingLeft="5dp"
+                    android:src="@drawable/candlestick_card" />
+
+                <ImageView
+                    android:id="@+id/candlestickCard"
+                    android:layout_width="295dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:src="@drawable/candlestick_card" />
+
+                <ImageView
+                    android:id="@+id/revolverCard"
+                    android:layout_width="295dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/candlestick_card" />
+
+                <ImageView
+                    android:id="@+id/ropeCard"
+                    android:layout_width="295dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/candlestick_card" />
+
+                <ImageView
+                    android:id="@+id/pipeCard"
+                    android:layout_width="295dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/candlestick_card" />
+
+                <ImageView
+                    android:id="@+id/wrenchCard"
+                    android:layout_width="295dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:src="@drawable/candlestick_card" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="1000dp"
+            android:fontFamily="@font/abhaya_libre_medium"
+            android:text="Rooms"
+            android:textColor="@color/white"
+            android:textSize="60sp"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <HorizontalScrollView
+            android:id="@+id/ScrollViewH3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:contentDescription="room cards"
+            android:fillViewport="true"
+            android:focusable="auto"
+            android:scrollbarAlwaysDrawHorizontalTrack="true"
+            android:scrollbarStyle="insideOverlay"
+            android:scrollbars="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/exitCards"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#520120"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.0">
+
+                <ImageView
+                    android:id="@+id/hallCard"
+                    android:layout_width="295dp"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#520120"
+                    android:paddingLeft="5dp"
+                    android:src="@drawable/conservatory_card" />
+
+                <ImageView
+                    android:id="@+id/loungeCard"
+                    android:layout_width="295dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="5dp"
+                    android:src="@drawable/conservatory_card" />
+
+                <ImageView
+                    android:id="@+id/diningRoomCard"
+                    android:layout_width="295dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/conservatory_card" />
+
+                <ImageView
+                    android:id="@+id/kitchenCard"
+                    android:layout_width="295dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/conservatory_card" />
+
+                <ImageView
+                    android:id="@+id/ballroomCard"
+                    android:layout_width="295dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/conservatory_card" />
+
+                <ImageView
+                    android:id="@+id/conservatoryCard"
+                    android:layout_width="295dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:src="@drawable/conservatory_card" />
+
+                <ImageView
+                    android:id="@+id/billiardRoomCard"
+                    android:layout_width="295dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:src="@drawable/conservatory_card" />
+
+                <ImageView
+                    android:id="@+id/libraryCard"
+                    android:layout_width="295dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:src="@drawable/conservatory_card" />
+
+                <ImageView
+                    android:id="@+id/studyCard"
+                    android:layout_width="295dp"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:src="@drawable/conservatory_card" />
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+        <Button
+            android:id="@+id/exitCards"
+            android:layout_width="wrap_content"
+            android:layout_height="75dp"
+            android:layout_marginTop="1500dp"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="#B57114"
+            android:fontFamily="@font/abhaya_libre"
+            android:paddingBottom="5dp"
+            android:text="Exit"
+            android:textColor="@color/white"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

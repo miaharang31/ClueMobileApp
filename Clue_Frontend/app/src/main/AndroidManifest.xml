@@ -20,6 +20,25 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+
+            android:name=".administrative.UpgradeUser"
+            android:exported="false" />
+        <activity
+            android:name=".administrative.ViewCards"
+            android:exported="false" />
+        <activity
+            android:name=".administrative.ShowLobbies"
+            android:exported="false" />
+        <activity
+            android:name=".administrative.DeleteUser"
+            android:exported="false" />
+        <activity
+            android:name=".administrative.ShowUsers"
+            android:exported="false" />
+        <activity
+            android:name=".administrative.AdminSettings"
+            android:exported="false" />
+        <activity
             android:name=".GamePlay.Player.EndGameOtherPlayers"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
@@ -31,11 +50,15 @@
             android:name=".GamePlay.DiceRoller"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
+
+
         <activity
             android:name=".GamePlay.Player.Checklist"/>
         <activity
+
             android:name=".HomeActivities.Rules"
-            android:label="Rules" />
+            android:label="Clue" />
+
         <activity
             android:name=".HomeActivities.Settings"
             android:label="Settings"/>

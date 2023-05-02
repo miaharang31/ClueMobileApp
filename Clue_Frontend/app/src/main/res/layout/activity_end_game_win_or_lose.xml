@@ -5,7 +5,7 @@
     android:id="@+id/endGame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/transparent"
+    android:background="#520120"
     tools:context=".GamePlay.Player.EndGameWinOrLose">
 
     <TextView
@@ -16,7 +16,7 @@
         android:fontFamily="@font/abhaya_libre_extrabold"
         android:text="Congratulations! You solved the murder!"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -22,11 +22,24 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.clue_frontend.GamePlay.Constraints;
+
+
+
 import com.example.clue_frontend.GamePlay.Game;
+import com.example.clue_frontend.GamePlay.GameView;
+import com.example.clue_frontend.Lobbies.HostLobby;
+import com.example.clue_frontend.administrative.AdminSettings;
+import com.example.clue_frontend.administrative.UpgradeUser;
+
+
+import com.example.clue_frontend.GamePlay.Game;
+
 import com.example.clue_frontend.GamePlay.Player.EndGameWinOrLose;
+
 import com.example.clue_frontend.HomeActivities.Home;
 import com.example.clue_frontend.Lobbies.HostLobby;
 import com.example.clue_frontend.Lobbies.Lobby;
+
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -60,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Home.class);
 //                Intent intent = new Intent(MainActivity.this, Game.class);
-//                Intent intent = new Intent(MainActivity.this, HostLobby.class);
+
 
 
                 EditText username = findViewById(R.id.loginUsername);

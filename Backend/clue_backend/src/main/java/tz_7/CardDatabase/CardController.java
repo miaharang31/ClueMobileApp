@@ -77,6 +77,18 @@ public class CardController {
         return repository.save(card);
     }
 
+
+    @GetMapping(value = "/basicCards")
+    public Set<Card> getBasicCards() {
+        Set<Card> regCards = repository.getCardsByCardType("b");
+        return regCards;
+    }
+    @GetMapping(value = "/premiumCards")
+    public Set<Card> getPremiumCards() {
+        Set<Card> premCards = repository.getCardsByCardType("p");
+        return premCards;
+    }
+
     @Operation(summary = "Returns every card that is a weapon", description = "Returns every card that is a weapon using a get request")
     @ApiResponse(responseCode = "404", description = "not found!")
     @ApiResponse(responseCode = "403", description = "forbidden!")
