@@ -161,46 +161,6 @@ public class GameStateController {
         return saved;
     }
 
-//    /**
-//     * Sets the cards based on type for that game state
-//     * @param id
-//     *  ID of the game state
-//     * @param type
-//     *  Type of cards to add (i.e. w, s, r)
-//     * @return
-//     *  updated gamestate object
-//     */
-//    @Operation(summary = "Places the cards in the game", description = "Using a put request it places the cards we are playing with in the game")
-//    @ApiResponse(responseCode = "404", description = "not found!")
-//    @ApiResponse(responseCode = "403", description = "forbidden!")
-//    @ApiResponse(responseCode = "401", description = "not authorized!")
-//    @ApiResponse(responseCode = "200", description = "Success!")
-//    @PutMapping(value = "/{id}/setcards/{type}") //type is basic or premium
-//    public GameState addCards(@PathVariable Integer id, @PathVariable String type) {
-//        GameState state = repo.findById(id).get();
-//        Set<Card> cards = cardRepository.findByType(type);
-//        switch(type){
-//            case "w" :
-//                state.setWeapons(cards);
-//                break;
-//            case "s" :
-//                state.setSuspects(cards);
-//                break;
-//            case "r" :
-//                state.setRooms(cards);
-//                break;
-//        }
-//
-//        Iterator<Card> tmp = cards.iterator();
-//        while(tmp.hasNext()) {
-//            tmp.next().addGameState(state);
-//        }
-//        repo.save(state);
-//        cardRepository.saveAll(cards);
-//        return state;
-//    }
-    //DO NOT NEED BECAUSE WE WILL DO ALL IN DISTRIBUTE CARDS
-
     @PutMapping(value = "/{id}/distributeCards")
     public GameState distributeCards(@PathVariable Integer id) {
 
@@ -266,42 +226,6 @@ public class GameStateController {
         playerInfoRepository.saveAll(infos);
         return state;
     }
-
-//    /**
-//     * PREPARING FOR STATE DELETION
-//     *  Put mapping that removes the cards from the game state
-//     *  by type
-//     * @param id
-//     *  GameState ID
-//     * @param type
-//     *  type of card (i.e. w, s, r)
-//     * @return
-//     *  new GameState object
-//     */
-//    @PutMapping(value = "game/{id}/removeCards/{type}")
-//    public GameState removeCards(@PathVariable Integer id, @PathVariable String type) {
-//        GameState state = repo.findById(id).get();
-//        Set<Card> cards = cardRepository.findByType(type);
-//        switch(type){
-//            case "w" :
-//                state.setWeapons(null);
-//                break;
-//            case "s" :
-//                state.setSuspects(null);
-//                break;
-//            case "r" :
-//                state.setRooms(null);
-//                break;
-//        }
-//
-//        Iterator<Card> tmp = cards.iterator();
-//        while(tmp.hasNext()) {
-//            tmp.next().removeGameState(state);
-//        }
-//        repo.save(state);
-//        cardRepository.saveAll(cards);
-//        return state;
-//    }
 
     /**
      * PREPARING FOR STATE DELETION
@@ -376,7 +300,7 @@ public class GameStateController {
     @ApiResponse(responseCode = "200", description = "Success!")
     @GetMapping(value = "/{id}/checkGuess", consumes = "application/json")
     public Boolean checkGuess (@RequestBody Set<Card> guess, @PathVariable Integer id) {
-        GameState state = repo.getById(id);
+        GameState state = repo.findById(id).get();
         return state.checkFinalGuess(guess);
     }
     /**
@@ -387,7 +311,7 @@ public class GameStateController {
      */
     @GetMapping(value = "/{id}")
     public GameState getGameByID (@PathVariable Integer id) {
-        GameState state = repo.getById(id);
+        GameState state = repo.findById(id).get();
         return state;
     }
 

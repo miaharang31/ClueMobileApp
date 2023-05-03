@@ -37,29 +37,24 @@ public class GameState {
     /**
      * JPA Relationships
      */
-//    @Column(name = "versionID")
-//    @NotFound(action = NotFoundAction.IGNORE)
-////    TODO: create version database
-//    private Integer versionID;
 
-    @ManyToMany(mappedBy = "gameState")
+    @OneToMany(mappedBy = "gameState")
     @JsonIgnore
     private Set<Card> finalCards;
 
-    @ManyToMany(mappedBy = "gameState")
+    @OneToMany(mappedBy = "gameState")
     @JsonIgnore
     private Set<Card> cards;
 
-//    TODO: Combine weapons, rooms and suspects
-    @ManyToMany(mappedBy = "gameState")
+    @OneToMany(mappedBy = "gameState")
     @JsonIgnore
     private Set<Card> weapons;
 
-    @ManyToMany(mappedBy = "gameState")
+    @OneToMany(mappedBy = "gameState")
     @JsonIgnore
     private Set<Card> suspects;
 
-    @ManyToMany(mappedBy = "gameState")
+    @OneToMany(mappedBy = "gameState")
     @JsonIgnore
     private Set<Card> rooms;
 
@@ -73,11 +68,12 @@ public class GameState {
      *  this will be used to determine the current player
      */
     public GameState() {
-        turnOrder = new HashSet<>();
-        weapons = new HashSet<>();
-        suspects = new HashSet<>();
-        rooms = new HashSet<>();
-        finalCards = new HashSet<>();
+        turnOrder = new LinkedHashSet<>();
+        weapons = new LinkedHashSet<>();
+        suspects = new LinkedHashSet<>();
+        rooms = new LinkedHashSet<>();
+        finalCards = new LinkedHashSet<>();
+        cards = new LinkedHashSet <> ();
         turnNum = 0;
     }
 
@@ -174,7 +170,6 @@ public class GameState {
 //     * @param weapons
 //     *  Set of weapon cards
 //     */
-//    TODO: could probably make this one method
 //    public void setWeapons(Set<Card> weapons) {
 //        this.weapons = weapons;
 //        Random rand = new Random();
@@ -184,7 +179,6 @@ public class GameState {
 //        weapons.remove(finalWeapon);
 //    }
 
-//<<<<<<< HEAD
     public void setAllCards(String s) {
         CardController cardController = new CardController();
         if (s.equals("b")) {
@@ -193,35 +187,6 @@ public class GameState {
         else {
             cards = cardController.getPremiumCards();
         }
-//=======
-//    public void deleteCards(String type) {
-//        switch (type) {
-//            case "w":
-//                weapons = null;
-//                break;
-//            case "s":
-//                suspects = null;
-//                break;
-//            case "r":
-//                rooms = null;
-//                break;
-//        }
-//    }
-//
-//    /**
-//     * Sets the rooms for the game
-//     *  Sets the final weapon card as well
-//     * @param rooms
-//     *  Set of weapon cards
-//     */
-//    public void setRooms(Set<Card> rooms) {
-//        this.rooms = rooms;
-//        Random rand = new Random();
-//        int n = rand.nextInt(rooms.size());
-//        Card finalRoom = rooms.toArray(new Card[rooms.size()])[n];
-//        finalCards.add(finalRoom);
-//        rooms.remove(finalRoom);
-//>>>>>>> main
     }
     public void setFinalCards(String s) {
         Random rand = new Random();

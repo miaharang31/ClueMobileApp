@@ -46,7 +46,7 @@ public class GameSocket {
 
     private final Logger logger = LoggerFactory.getLogger(GameChatSocket.class);
 
-    private int playerIterator;
+    private Integer playerIterator;
 
     @Autowired
     public void setPlayerRepository(PlayerRepository repo) {

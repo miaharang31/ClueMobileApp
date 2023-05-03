@@ -30,6 +30,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.clue_frontend.GamePlay.Player.EndGameWinOrLose;
 import com.example.clue_frontend.GamePlay.Player.Player;
 import com.example.clue_frontend.GamePlay.Player.playerGuess;
 import com.example.clue_frontend.HomeActivities.Home;
@@ -65,7 +66,7 @@ public class Game extends AppCompatActivity {
 
     Button send, roll;
     EditText message;
-    TextView chatBox;
+    TextView chatBox, roll_num;
 
     JSONObject gameState = new JSONObject();
 
@@ -74,8 +75,21 @@ public class Game extends AppCompatActivity {
 
     RequestQueue queue; // = Volley.newRequestQueue(Game.this);
 
+    Player player;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        MyApplication app = (MyApplication) getApplication();
+        if(app.getUserid() == 1) {
+            app.setInfoid(202);
+        } else {
+            app.setInfoid(203);
+        }
+        app.setGameid(98);
+
+        System.out.println("Game: " + app.getGameid() + "\nInfo: " + app.getInfoid() + "\nUser: " + app.getUserid());
+
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -95,36 +109,16 @@ public class Game extends AppCompatActivity {
         chatBox = (TextView) findViewById(R.id.chat_box);
 
         roll = (Button) findViewById(R.id.roll_button);
+        roll_num = (TextView) findViewById(R.id.roll_num);
+
         roll.setVisibility(View.GONE);
+        roll_num.setVisibility(View.GONE);
 
         //Uncomment soon
-        connectChat();
+//        connectChat();
 
-//        connectGame();
-//
-//        if (turn_order.size() > 0 ) {
-//            if (turn_order.get(turn) == app.getUserid()) {
-//                String url = "http://10.0.2.2:8080info/player/" + app.getUserid() + "/role";
-//                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-//                        new Response.Listener<JSONObject>() {
-//                            @Override
-//                            public void onResponse(JSONObject response) {
-//                                try {
-//                                    playTurn(response.getString("name"));
-//                                } catch (JSONException e) {
-//                                    throw new RuntimeException(e);
-//                                }
-//                            }
-//                        },
-//                        new Response.ErrorListener() {
-//                            @Override
-//                            public void onErrorResponse(VolleyError error) {
-//
-//                            }
-//                        });
-//                queue.add(request);
-//            }
-//        }
+
+        connectGame();
 
         relativeLayout = findViewById(R.id.relative_layout);
         swipeListener = new SwipeListener(relativeLayout);
@@ -228,88 +222,32 @@ public class Game extends AppCompatActivity {
                     String url;
                     JsonObjectRequest objectRequest;
                     JsonArrayRequest arrayRequest;
+                    Intent intent;
                     Log.d("GAME", "run() returned: " + m);
                     switch (m) {
-//                        TODO: Handle message
-//                            This will include many messages depending on what the game is doing
                         case "Game Deleted":
-//                            Host has closed the game and deleted the game state, make all players leave game
+//                            Host has closed the game or something went wrong and the gamestate was deleted, make all players leave game
                             Log.d("Websocket", "Game Deleted, returning back to home");
-                            Intent intent = new Intent(Game.this, Home.class);
+                            if (app.getGameid() != 0) {app.setGameid(0);}
+                            intent = new Intent(Game.this, Home.class);
                             startActivity(intent);
                             break;
                         case "Turn Ended":
                             Log.d("Websocket", "Entered Turn Completion");
-
-                            gameClient.send("Final");
-////                            A player has ended their turn, start turn if its their turn
-////                            url = "http://10.0.2.2:8080/info/player/"+app.getUserid();
-//                            url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/" + app.getUserid();
-//                            objectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
-//                                    new Response.Listener<JSONObject>() {
-//                                        @Override
-//                                        public void onResponse(JSONObject response) {
-//                                            try {
-//                                                Boolean isTurn = response.getBoolean("turn");
-//                                                if (isTurn) {
-////                                                    String url = "http://10.0.2.2:8080/info/player/"+app.getUserid()+"/role";
-//                                                    String url = "http://coms-309-038.class.las.iastate.edu:8080/info/player/"+app.getUserid()+"/role";
-//                                                    System.out.println("line 246, about to do request, url: " + url);
-//                                                    JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-//                                                            new Response.Listener<JSONObject>() {
-//                                                                @Override
-//                                                                public void onResponse(JSONObject response) {
-//                                                                    try {
-//                                                                        System.out.println("line 252, about to do playTurn, response.getString(\"name\"): "
-//                                                                                + response.getString("name"));
-//                                                                        playTurn(response.getString("name"));
-//                                                                    } catch (JSONException e) {
-//                                                                        throw new RuntimeException(e);
-//                                                                    }
-//                                                                }
-//                                                            },
-//                                                            new Response.ErrorListener() {
-//                                                                @Override
-//                                                                public void onErrorResponse(VolleyError error) {
-//                                                                    Toast.makeText(Game.this, "ERROR [get role]: " + error, Toast.LENGTH_SHORT).show();
-//                                                                    Log.d("ResponseError", error.toString());
-//                                                                }
-//                                                            });
-//                                                    queue.add(request);
-//                                                }
-//                                            } catch (JSONException e) {
-//                                                throw new RuntimeException(e);
-//                                            }
-//                                        }
-//                                    },
-//                                    new Response.ErrorListener() {
-//                                        @Override
-//                                        public void onErrorResponse(VolleyError error) {
-//                                            Toast.makeText(Game.this, "ERROR [get info]: " + error, Toast.LENGTH_SHORT).show();
-//                                            Log.d("ResponseError", error.toString());
-//                                        }
-//                                    });
-//                            queue.add(objectRequest);
 //                            TODO: move piece of player that just ended the game (might need to add to default) "turnended: x, y"
+                            playTurn();
                             break;
                         case "Game Ended":
+                            intent = new Intent(Game.this, EndGameWinOrLose.class);
 //                            TODO: Handle ending screens
+                            app.setGameid(0);
                             gameClient.close();
+                            startActivity(intent);
                             break;
                         case "Guess":
 //                            TODO: Get room player is in
                             String room = null;
                             makeAGuess(room);
-                            break;
-                        case "Final Guess":
-//                            TODO: When player enters center room
-//                                --NOTE: Moving into the center room is
-//                                    taken care of. IDK how to end the game
-//                                      - Prompt final
-//                                      checklist
-//                                      - Store chosen cards in array
-//                                      - Send request to check if correct
-//                                      - End Game
                             break;
                         default:
                             if(m.startsWith(">")) {
@@ -320,6 +258,10 @@ public class Game extends AppCompatActivity {
 //                                Recieving card
                                 Log.d("Websocket", "Recieving Card: " + m.split(" ")[0].substring(1));
                                 showCard(Integer.parseInt(m.split(" ")[0].substring(1)));
+                            } else if(m.startsWith("Turn Ended")) { //m = Turn Ended <player role> x, y
+//                                TODO: Move piece to that x and y coord
+//                                    Probably need something to save the coords (db?)
+
                             }
                             break;
 //                      TODO: Think of other things happening in the game
@@ -347,25 +289,10 @@ public class Game extends AppCompatActivity {
                 @Override
                 public void onClose(int code, String reason, boolean remote) {
                     Log.d("GAME CLOSE", "onClose() returned: " + reason);
-                    if(app.isHost()) {
-//                        String url = "http://10.0.2.2:8080/game/" + app.getGameid() + "/delete";
-                        String url = "http://coms-309-038.class.las.iastate.edu:8080/game/" + app.getGameid() + "/delete";
-                        JsonObjectRequest request = new JsonObjectRequest(Request.Method.DELETE, url, null,
-                                new Response.Listener<JSONObject>() {
-                                    @Override
-                                    public void onResponse(JSONObject response) {
-                                        gameClient.send("Game Deleted");
-                                        app.setGameid(0);
-                                    }
-                                },
-                                new Response.ErrorListener() {
-                                    @Override
-                                    public void onErrorResponse(VolleyError error) {
-                                        Toast.makeText(Game.this, "Error: " + error, Toast.LENGTH_SHORT).show();
-                                        Log.d("ResponseError", error.toString());
-                                    }
-                                });
-                        queue.add(request);
+//                    When the connection is closed, if the gameID has been reset, return home
+                    if(app.getGameid() == 0) {
+                        Intent intent = new Intent(Game.this, Home.class);
+                        startActivity(intent);
                     }
                 }
 
@@ -389,116 +316,107 @@ public class Game extends AppCompatActivity {
         queue = Volley.newRequestQueue(Game.this);
 
 //        Getting the game state object and setting basics
-        String url = "http://10.0.2.2:8080/game/" + app.getGameid();
-//        String url = "http://coms-309-038.class.las.iastate.edu:8080/game/" + app.getGameid();
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            Log.d("Game", "in response");
-                            JSONArray arr =  response.getJSONArray("turnOrder");
-                            GameView.number_of_players = arr.length();
-                            for(int i = 0; i < arr.length(); i++) {
-                                GameView.roles.add(arr.getJSONObject(i).getString("name"));
-                                turn_order.add(arr.getJSONObject(i).getInt("id"));
-                            }
-                        } catch (JSONException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-                });
-        queue.add(request);
-
-//        System.out.println("line 392, in playturn, role: " + role);
-//        if(Objects.equals(role, "scarlet")){
-//            player = new Player(GameView.scarlet, 468, 0, 0);
-//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
-//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
-//        } else if (Objects.equals(role, "white")) {
-//            player = new Player(GameView.white, 476, 0, 0);
-//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 5);
-//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
-//        }else if (Objects.equals(role, "plum")) {
-//            player = new Player(GameView.plum, 330, 0, 0);
-//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 4);
-//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 6);
-//        }else if (Objects.equals(role, "mustard")) {
-//            player = new Player(GameView.white, 476, 0, 0);
-//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 5);
-//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
-//        }else if (Objects.equals(role, "green")) {
-//            player = new Player(GameView.green, 14, 0, 0);
-//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
-//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
-//        }else if (Objects.equals(role, "peacock")) {
-//            player = new Player(GameView.peacock, 7, 0, 0);
-//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
-//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 5);
-//        }
-
+//        String url = "http://10.0.2.2:8080/game/" + app.getGameid();
+////        String url = "http://coms-309-038.class.las.iastate.edu:8080/game/" + app.getGameid();
+//        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+//                new Response.Listener<JSONObject>() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        try {
+//                            Log.d("Game", "in response");
+//                            JSONArray arr =  response.getJSONArray("turnOrder");
+//                            GameView.number_of_players = arr.length();
+//                        } catch (JSONException e) {
+//                            throw new RuntimeException(e);
+//                        }
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        Toast .makeText(Game.this, "Error: " + error, Toast.LENGTH_SHORT).show();
+//                        Log.d("ResponseError", error.toString());
+//                    }
+//                });
+//        queue.add(request);
+        GameView.number_of_players = 1;
+        Log.d("Game", "Finished setting up game");
     }
 
-    private void playTurn(String role) {
-        Log.d("Game", "Entered into player turn. Player: " + role);
-        System.out.println(turn_order.get(turn));
-        roll.setVisibility(View.VISIBLE);
-        roll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                GameView.roll();
-                if(true) { //TODO: if in room, make a guess
-                    makeAGuess("room");
-                } else if (false) { //TODO: if in final room
-                    makeFinalGuess();
-                }
-            }
-        });
-//        TODO: do whatever needs to be done turn wise
-//              - Move character:  Already done with the SwipeListener and MoveUp/Down/Left/Right functions in GameView
-//              - If in room, make guess: Is this already going to be handled in the guess case, line 285???
-//              - else, end turn: Handled below
-        
-//        System.out.println("line 392, in playturn, role: " + role);
-//        if(Objects.equals(role, "scarlet")){
-//            player = new Player(GameView.scarlet, 468, 0, 0);
-//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
-//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
-//        } else if (Objects.equals(role, "white")) {
-//            player = new Player(GameView.white, 476, 0, 0);
-//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 5);
-//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
-//        }else if (Objects.equals(role, "plum")) {
-//            player = new Player(GameView.plum, 330, 0, 0);
-//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 4);
-//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 6);
-//        }else if (Objects.equals(role, "mustard")) {
-//            player = new Player(GameView.white, 476, 0, 0);
-//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 5);
-//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
-//        }else if (Objects.equals(role, "green")) {
-//            player = new Player(GameView.green, 14, 0, 0);
-//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
-//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
-//        }else if (Objects.equals(role, "peacock")) {
-//            player = new Player(GameView.peacock, 7, 0, 0);
-//            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
-//            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 5);
-//        }
+    private void playTurn() {
+        Log.d("Game", "Entered into player turn.");
+        queue = Volley.newRequestQueue(Game.this);
+//        String url = "http://10.0.2.2:8080/info/player/" + app.getUserid();
+//        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+//                new Response.Listener<JSONObject>() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+////                        Checks if it is that player's turn, if it is then it will show the roll button and start the turn process
+//                        try {
+//                            if((boolean) response.get("turn")) {
+                                roll.setVisibility(View.VISIBLE); //showing the roll button
+//                                String role = response.getString("role");
+                                    String role = "scarlet";
+                                roll.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        GameView.roll();
+                                        roll_num.setText("Moves: " + GameView.moves);
+                                        roll_num.setVisibility(View.VISIBLE); //showing the roll number
+                                        movePlayer(role);
+                                        if(true) { //TODO: if in room, make a guess
+                                            makeAGuess("room");
+                                        } else if (false) { //TODO: if in final room
+                                            makeFinalGuess();
+                                        }
+                                    }
+                                });
+
+                                roll.setVisibility(View.GONE); //making the roll button disappear
+                                roll_num.setVisibility(View.GONE); //making the roll button disappear
+//                            }
+//                        } catch (JSONException e) {
+//                            throw new RuntimeException(e);
+//                        }
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
 //
-////      ending turn
-//        if (GameView.moves == 0){
-//            GameView.rand = new Random();
-//            GameView.moves = GameView.rand.nextInt(23) + 1;
-//            //        Tells the server a player has finished their turn
-//            gameClient.send("Turn Ended");
-//        }
+//                    }
+//                });
+//        queue.add(request);
+
+        Log.d("Game", "Exiting player turn.");
+    }
+    public void movePlayer(String role) {
+//        Drawing players
+        if(Objects.equals(role, "scarlet")){
+            player = new Player(GameView.scarlet, 468, 0, 0);
+            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
+            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
+        } else if (Objects.equals(role, "white")) {
+            player = new Player(GameView.white, 476, 0, 0);
+            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 5);
+            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
+        }else if (Objects.equals(role, "plum")) {
+            player = new Player(GameView.plum, 330, 0, 0);
+            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 4);
+            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 6);
+        }else if (Objects.equals(role, "mustard")) {
+            player = new Player(GameView.white, 476, 0, 0);
+            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 5);
+            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
+        }else if (Objects.equals(role, "green")) {
+            player = new Player(GameView.green, 14, 0, 0);
+            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
+            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 3);
+        }else if (Objects.equals(role, "peacock")) {
+            player = new Player(GameView.peacock, 7, 0, 0);
+            player.setX(GameView.arrBoard.get(player.getPlacement()).getTileX() + 3);
+            player.setY(GameView.arrBoard.get(player.getPlacement()).getTileY() + 5);
+        }
     }
 
     public void endTurn() {
@@ -518,7 +436,27 @@ public class Game extends AppCompatActivity {
 //      String url = "http://10.0.2.2:8080/game/"+app.getGameid()+"/checkGuess";
         String url = "http://coms-309-038.class.las.iastate.edu:8080/game/" + app.getGameid() + "/checkGuess";
 //        TODO: Figure out volley stuff for checkGuess
-        gameClient.send("GAME");
+
+
+//        Delete's the game state once a player makes a final guess,
+//        url = "http://10.0.2.2:8080/game/" + app.getGameid() + "/delete";
+        url = "http://coms-309-038.class.las.iastate.edu:8080/game/" + app.getGameid() + "/delete";
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.DELETE, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        gameClient.send("Game Deleted");
+                        app.setGameid(0);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast .makeText(Game.this, "Error: " + error, Toast.LENGTH_SHORT).show();
+                        Log.d("ResponseError", error.toString());
+                    }
+                });
+        queue.add(request);
     }
 
     /**

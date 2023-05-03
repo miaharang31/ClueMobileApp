@@ -42,7 +42,6 @@ public class GameLobbyController {
      */
     private final Logger logger = LoggerFactory.getLogger(GameLobbyRepository.class);
 
-    //TODO: add the new lobby using a lobby request body
     @Operation(summary = "Returns the GameLobby using the host id", description = "Using a post request a game lobby is returned from the id of the host")
     @ApiResponse(responseCode = "404", description = "not found!")
     @ApiResponse(responseCode = "403", description = "forbidden!")
@@ -51,12 +50,14 @@ public class GameLobbyController {
     @PostMapping(value = "/lobby/new/{hostid}", consumes = "application/json")
     public GameLobby newLobby(@RequestBody GameLobby lobby, @PathVariable Integer hostid) {
         Player host = playerRepo.findById(hostid).get();
-        GameLobby tmp = repo.findByHost(host);
+        List<GameLobby> tmp = repo.findByHost(host);
 
 //        If there is a lobby created by that player, delete it
 //        then create a new one
-        if(host.getGameLobbyHost() != null) {
-            deleteLobby(host.getGameLobbyHost().getID());
+        if(tmp.size() > 0) {
+            for(int i = 0; i < tmp.size(); i ++) {
+                deleteLobby(tmp.get(i));
+            }
         }
 
         lobby.setHost(host);
@@ -119,7 +120,8 @@ public class GameLobbyController {
     @GetMapping(value = "lobby/find/host/{id}", produces = "application/json")
     public GameLobby getLobbyByHost(@PathVariable int id) {
         Player host = playerRepo.findById(id).get();
-        return repo.findByHost(host);
+        List<GameLobby> lobby = repo.findByHost(host);
+        return lobby.get(0);
     }
 
     /**
@@ -141,16 +143,16 @@ public class GameLobbyController {
     @PutMapping(value = "lobby/join/{playerID}/code/{gamecode}")
     public GameLobby addPlayerByGameCode(@PathVariable String gamecode, @PathVariable Integer playerID) {
     //        System.out.println(lobby.getGameCode());
-        Optional<GameLobby> tmp = repo.findByGameCode(gamecode);
+        List<GameLobby> tmp = repo.findByGameCode(gamecode);
         Optional<Player> player = playerRepo.findById(playerID);
-        if(tmp.get().addPlayer(player.get())) {
-            player.get().setGameLobby(tmp.get());
-            repo.save(tmp.get());
+        if(tmp.get(0).addPlayer(player.get())) {
+            player.get().setGameLobby(tmp.get(0));
+            repo.save(tmp.get(0));
             playerRepo.save(player.get());
         } else {
             //TODO: THROW ERROR OF SOME KIND
         }
-        return tmp.get();
+        return tmp.get(0);
     }
 
     /**
@@ -250,9 +252,19 @@ public class GameLobbyController {
     @ApiResponse(responseCode = "401", description = "not authorized!")
     @ApiResponse(responseCode = "200", description = "Success!")
     @DeleteMapping(value = "lobby/delete/{id}")
-    public void deleteLobby(@PathVariable Integer id) {
+    public void deleteLobbyByID(@PathVariable Integer id) {
         System.out.println(id);
         GameLobby lobby = repo.findById(id).get();
+        deleteLobby(lobby);
+    }
+
+    /**
+     * Delete Mapping to remove lobby session from database table
+     * @param lobby
+     *  GameLobby to delete
+     */
+    @DeleteMapping(value = "lobby/delete")
+    public void deleteLobby(@RequestBody GameLobby lobby) {
         lobby = removePlayer(lobby.getHost().getId(), lobby.getID());
         Set<Player> players = lobby.getPlayers();
         for (Player player : lobby.getPlayers()) {

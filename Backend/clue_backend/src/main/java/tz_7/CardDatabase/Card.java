@@ -13,7 +13,7 @@ public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cardID")
-    private int cardID;
+    private Integer cardID;
     private String cardType;
     private String name;
     private String type; //weapon, room, person
@@ -24,10 +24,10 @@ public class Card {
     @JsonIgnore
     private PlayerInfo playerInfo;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "gameState")
     @JsonIgnore
-    private Set<GameState> gameState;
+    private GameState gameState;
 
     public Card() {}
     public Card(int cardID, String cardType, String name, String type, String cardImage) {
@@ -50,7 +50,7 @@ public class Card {
         this.cardType = cardType;
     }
 
-    public void setGameState(Set<GameState> gameState) {
+    public void setGameState(GameState gameState) {
         this.gameState = gameState;
     }
 
@@ -89,13 +89,7 @@ public class Card {
         this.playerInfo = playerInfo;
     }
 
-    public void addGameState(GameState gameState) {
-        this.gameState.add(gameState);
-    }
-    public void removeGameState(GameState gameState) {
-        this.gameState.remove(gameState);
-    }
-    public Set<GameState> getGameState() {
+    public GameState getGameState() {
         return gameState;
     }
 }

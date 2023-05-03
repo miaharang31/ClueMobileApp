@@ -32,6 +32,11 @@ public class PlayerInfo {
         @Column(name = "turn")
         private Boolean turn;
 
+
+        private Integer x;
+        private Integer y;
+
+
     /**
      * JPA Relationships
      */
@@ -96,4 +101,22 @@ public class PlayerInfo {
     public Player getPlayer() {return player;}
     public Role getRole() {return role;}
     public Integer getRoll() {return roll;}
+
+
+    public Integer getX() {
+        return x;
+    }
+
+    public Integer getY() {
+        return y;
+    }
+
+
+    public void setX(Integer x) {
+        this.x = x;
+    }
+
+    public void setY(Integer y) {
+        this.y = y;
+    }
 }

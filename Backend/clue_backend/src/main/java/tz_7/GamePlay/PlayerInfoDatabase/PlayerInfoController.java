@@ -148,6 +148,22 @@ public class PlayerInfoController {
         return playerInfo.getRole();
     }
 
+
+    @PutMapping("/player/{id}/x/{x}/y/{y}")
+    public void setXandY(@PathVariable Integer id, @PathVariable Integer x, @PathVariable Integer y) {
+        PlayerInfo player = repo.findById(id).get();
+        player.setX(x);
+        player.setY(y);
+        repo.save(player);
+    }
+
+    @GetMapping("/player/coords/{id}")
+    public Integer[] getXandY(@PathVariable Integer id) {
+        PlayerInfo player = repo.findById(id).get();
+        Integer[] xandy = {player.getX(), player.getY()};
+        return xandy;
+    }
+
     /**
      * Delete Mapping to remove the information based on the
      * player ID

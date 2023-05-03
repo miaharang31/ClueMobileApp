@@ -96,7 +96,6 @@ public class Lobby extends AppCompatActivity {
 
 
         RequestQueue queue = Volley.newRequestQueue(Lobby.this);
-<<<<<<< HEAD
         try {
             connectLobby();
         } catch (URISyntaxException e) {
@@ -212,118 +211,6 @@ public class Lobby extends AppCompatActivity {
 //                }
 //        );
 //        queue.add(request);
-=======
-        app = (MyApplication) getApplication();
-//        String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/" + app.getLobbyid();
-        String url = "http://10.0.2.2:8080/lobby/" + app.getLobbyid();
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Log.d("Response", response.toString());
-                        try {
-                            int gameID = response.getInt("id");
-
-                            max.setText(response.get("maxPlayers").toString());
-//                            Get the host to display their name
-//                            String url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/host/" + gameID;
-                            String url = "http://10.0.2.2:8080/lobby/host/" + gameID;
-                            JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                                    new Response.Listener<JSONObject>() {
-                                        @Override
-                                        public void onResponse(JSONObject response) {
-                                            try {
-                                                app = (MyApplication) getApplication();
-                                                host.setText("Host: " + response.getString("firstname") + " " + response.getString("lastname"));
-                                                if ((Integer)response.get("id") == app.getUserid()) {
-                                                    startGame.setVisibility(View.VISIBLE);
-                                                    startGame.setText("Start Game");
-                                                }
-                                                else {
-                                                    startGame.setVisibility(View.VISIBLE);
-                                                    startGame.setText("Join Game");
-                                                }
-                                            } catch (JSONException e) {
-                                                throw new RuntimeException(e);
-                                            }
-
-                                        }
-                                    },
-                                    new Response.ErrorListener() {
-                                        @Override
-                                        public void onErrorResponse(VolleyError error) {
-                                            Toast.makeText(Lobby.this, "ERROR: " + error, Toast.LENGTH_SHORT);
-                                            Log.d("Error.Response", error.toString());
-                                        }
-                                    });
-                            queue.add(request);
-//                                    TODO: FIGURE OUT HOW TO DO DYNAMICALLY
-                            cur.setText(response.get("numPlayers").toString());
-//                                    Display names of players in lobby
-//                            url = "http://coms-309-038.class.las.iastate.edu:8080/lobby/nothost/" + gameID;
-                                    url = "http://10.0.2.2:8080/lobby/nothost/" + gameID;
-                            JsonArrayRequest request1  = new JsonArrayRequest(Request.Method.GET, url, null,
-                                    new Response.Listener<JSONArray>() {
-                                        @Override
-                                        public void onResponse(JSONArray response) {
-                                            for (int i = 0; i < response.length(); i++) {
-                                                try {
-                                                    switch (i) {
-                                                        case 0:
-                                                            player01_box.setVisibility(View.VISIBLE);
-                                                            player01.setText(response.getJSONObject(i).get("firstname") + " " + response.getJSONObject(i).get("lastname"));
-                                                            break;
-                                                        case 1:
-                                                            player02_box.setVisibility(View.VISIBLE);
-                                                            player02.setText(response.getJSONObject(i).get("firstname") + " " + response.getJSONObject(i).get("lastname"));
-                                                            break;
-                                                        case 2:
-                                                            player03_box.setVisibility(View.VISIBLE);
-                                                            player03.setText(response.getJSONObject(i).get("firstname") + " " + response.getJSONObject(i).get("lastname"));
-                                                            break;
-                                                        case 3:
-                                                            player04_box.setVisibility(View.VISIBLE);
-                                                            player04.setText(response.getJSONObject(i).get("firstname") + " " + response.getJSONObject(i).get("lastname"));
-                                                            break;
-                                                        case 4:
-                                                            player05_box.setVisibility(View.VISIBLE);
-                                                            player05.setText(response.getJSONObject(i).get("firstname") + " " + response.getJSONObject(i).get("lastname"));
-                                                            break;
-                                                        case 5:
-                                                            player06_box.setVisibility(View.VISIBLE);
-                                                            player06.setText(response.getJSONObject(i).get("firstname") + " " + response.getJSONObject(i).get("lastname"));
-                                                            break;
-
-                                                    }
-                                                } catch (JSONException e) {
-                                                    throw new RuntimeException(e);
-                                                }
-                                            }
-                                        }
-                                    },
-                                    new Response.ErrorListener() {
-                                        @Override
-                                        public void onErrorResponse(VolleyError error) {
-                                            Toast.makeText(Lobby.this, "ERROR: " + error, Toast.LENGTH_SHORT);
-                                            Log.d("Error.Response", error.toString());
-                                        }
-                                    });
-                            queue.add(request1);
-                        } catch (JSONException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Lobby.this, "ERROR: " + error, Toast.LENGTH_SHORT);
-                        Log.d("Error.Response", error.toString());
-                    }
-                }
-        );
-        queue.add(request);
->>>>>>> main
 
         startGame.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -333,31 +220,6 @@ public class Lobby extends AppCompatActivity {
                 if(app.isHost()) {
                     String url = "http://10.0.2.2:8080/game/new/lobby/" + app.getLobbyid();
 //                    String url = "http://coms-309-038.class.las.iastate.edu:8080/game/new/lobby/" + app.getLobbyid();
-<<<<<<< HEAD
-=======
-                    JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, null,
-                            new Response.Listener<JSONObject>() {
-                                @Override
-                                public void onResponse(JSONObject response) {
-                                    try {
-                                        app.setGameid((int) response.get("id"));
-                                    } catch (JSONException e) {
-                                        throw new RuntimeException(e);
-                                    }
-                                }
-                            },
-                            new Response.ErrorListener() {
-                                @Override
-                                public void onErrorResponse(VolleyError error) {
-                                    Toast.makeText(Lobby.this, "Error: " + error, Toast.LENGTH_SHORT).show();
-                                    Log.d("ResponseError", error.toString());
-                                }
-                            });
-                    queue.add(request);
-                } else  {
-                    String url = "http://10.0.2.2:8080/game/new/lobby/" + app.getLobbyid();
-//                    String url = "http://coms-309-038.class.las.iastate.edu:8080/game/new/lobby/" + app.getLobbyid();
->>>>>>> main
                     JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, null,
                             new Response.Listener<JSONObject>() {
                                 @Override
@@ -383,7 +245,6 @@ public class Lobby extends AppCompatActivity {
 
         });
     }
-<<<<<<< HEAD
     private void connectLobby() throws URISyntaxException {
         app = (MyApplication) getApplication();
         Draft[] drafts = {
@@ -530,57 +391,4 @@ Log.d("OnOpen", "Joined: " + app.getLobbyid() + " " + app.getUserid());
         }
         lobbyClient.connect();
     }
-=======
-//
-//    private void connectChat() {
-//        app = (MyApplication) getApplication();
-//        Draft[] drafts = {
-//                new Draft_6455()
-//        };
-//
-////        String w = "ws://echo.websocket.org";
-//        //String w = "ws://10.0.2.2:8080/websocket/chat/"+app.getUserid();
-//        String w = "http://coms-309-038.class.las.iastate.edu:8080/websocket/chat/"+app.getUserid();
-//        Log.d("Socket", w);
-//        try {
-//            Log.d("Socket:", "Trying socket");
-//            chatClient = new WebSocketClient(new URI(w), (Draft) drafts[0]) {
-//                @Override
-//                public void onMessage(String m) {
-//                    Log.d("", "run() returned: " + m);
-//                    message.getText().clear();
-//                    String s = chatBox.getText().toString();
-//                    chatBox.setText(s + m + "\n");
-//                    final int scrollAmount = chatBox.getLayout().getLineTop(chatBox.getLineCount()) - chatBox.getHeight();
-//                    if (scrollAmount > 0)
-//                        chatBox.scrollTo(0, scrollAmount);
-//                    else {
-//                        chatBox.scrollTo(0, 0);
-//                    }
-//                }
-//                @Override
-//                public void onOpen(ServerHandshake handshake) {
-//                    Log.d("OPEN", "run() returned: " + "is connecting");
-//
-//                }
-//
-//                @Override
-//                public void onClose(int code, String reason, boolean remote) {
-//                    Log.d("CLOSE", "onClose() returned: " + reason);
-//                }
-//
-//                @Override
-//                public void onError(Exception ex) {
-//                    Log.d("Exception:", ex.toString());
-//                }
-//            };
-//        } catch (URISyntaxException e) {
-//            Log.d("Exception:", e.getMessage().toString());
-//            e.printStackTrace();
-//        }
-//
-//        chatClient.connect();
-
-    //}
->>>>>>> main
 }

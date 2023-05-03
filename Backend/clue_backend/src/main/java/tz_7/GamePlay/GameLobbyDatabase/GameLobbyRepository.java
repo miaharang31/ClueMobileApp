@@ -13,8 +13,8 @@ import java.util.Optional;
 
 @Repository
 public interface GameLobbyRepository extends JpaRepository<GameLobby, Integer> {
-    GameLobby findByHost(Player host);
-    Optional<GameLobby> findByGameCode(String gameCode);
+    List<GameLobby> findByHost(Player host);
+    List<GameLobby> findByGameCode(String gameCode);
 
     @Override
     List<GameLobby> findAll();

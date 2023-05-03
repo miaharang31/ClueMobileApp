@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import tz_7.PlayerDatabase.Player;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -14,4 +15,5 @@ import java.util.Set;
 @Repository
 public interface GameStateRepository extends JpaRepository<GameState, Integer> {
     List<GameState> findByHostID(Integer hostID);
+
 }
